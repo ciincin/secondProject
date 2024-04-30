@@ -1,14 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- C A R T  W E B P A G E  -  E M P T Y -->
+    <div class="cart-empty-content">
+      <img src="assets/Icons/shopping-bag-o.svg" alt="shoppin bag icon" />
+      <h1 class="cart-empty-text">Su bolsa está vacía</h1>
+      <h2 class="cart-empty-ask-logging">
+        Inicie sesión para ver su bolsa y efectuar una compra.
+      </h2>
+      <button class="cart-empty-logging">
+        <span>Iniciar sesión</span>
+      </button>
+      <a href="#">
+        <span class="cart-empty-start-shop"> Iniciar compra </span>
+        <svg
+          width="18"
+          height="28"
+          viewBox="0 0 18 28"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          class="Icon__StyledSVG-lm07h6-0 jQCeKh Chevronstyles__ChevronIcon-sc-1qql32m-0 cEWHhy EmptyBagstyles__StyledChevron-sc-1q36k7v-2 jEdEMJ"
+        >
+          <path
+            d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </a>
+    </div>
+
+    <!-- C A R T  W E B P A G E  -->
+
+    <div class="cart-container">
+      <div class="cart-my-bag-container">
+        <div class="cart-my-bag">
+          <h1 class="cart-h1">Mi bolsa (1)</h1>
+        </div>
+
+        <div class="cart-my-bag-content">
+          <div class="cart-left-space">
+            <div class="cart-available">
+              <div class="cart-now-available">
+                <h2>Ya disponible</h2>
+              </div>
+              <div class="cart-article-container">
+                <div class="cart-article-fex">
+                  <div class="cart-item">
+                    <div class="cart-img-container">
+                      <img
+                        alt="Plaza Mayor Medieval"
+                        src="https://www.lego.com/cdn/cs/set/assets/blt363dbbfb53d05684/10332.png?fit=bounds&amp;format=png&amp;width=320&amp;height=320&amp;dpr=1"
+                      />
+                    </div>
+
+                    <div class="cart-information-container">
+                      <div class="cart-name">
+                        <h3><a href="#"> Plaza Mayor Medieval</a></h3>
+                      </div>
+
+                      <div class="cart-margin"></div>
+
+                      <div class="cart-price-add">
+                        <div class="cart-price">
+                          <span class="cart-price">229,99 €</span>
+                        </div>
+
+                        <div class="cart-add-more">
+                          <div class="cart-add-more-content">
+                            <button class="cart-rest-article">
+                              <svg
+                                class="minus"
+                                width="14px"
+                                height="2px"
+                                viewBox="0 0 14 2"
+                                aria-hidden="true"
+                              >
+                                <polygon
+                                  fill="#E0E0E0"
+                                  points="14 2 0 2 0 -6.03961325e-14 14 -6.03961325e-14"
+                                ></polygon>
+                              </svg>
+                              <span class="cart-rest">Decrease Quantity</span>
+                            </button>
+
+                            <div class="cart-number-articles">
+                              <input type="number" value="1" />
+                            </div>
+
+                            <button class="cart-add-article">
+                              <svg
+                                class="add"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14px"
+                                height="14px"
+                                viewBox="0 0 14 14"
+                                aria-hidden="true"
+                              >
+                                <polygon
+                                  fill="black"
+                                  points="14 8 0 8 0 6 14 6"
+                                ></polygon>
+                                <rect
+                                  fill="black"
+                                  fill-rule="nonzero"
+                                  x="6"
+                                  y="0"
+                                  width="2"
+                                  height="14"
+                                ></rect>
+                              </svg>
+                              <span class="cart-add">Increase Quantity</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
