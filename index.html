@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="https://assets.lego.com/fonts/v3/cera-pro/CeraPro-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,19 +12,27 @@
 <body>
   <header>
     <!-- Parte blanca -->
-    <!-- LOGO - https://assets.lego.com/logos/v4.5.0/brand-lego.svg -->
     <div>
       <div>
-        <a href=""></a>
+        <a href="">ZONA DE JUEGOS</a>
       </div>
       <div>
-        <button></button>
-        <p></p>
-        <button></button>
+        <button>&larr;</button>
+        <div>
+          <p> 
+            Rebajas para miembros de LEGO&#169; Insiders del 30/4 al 5/5&#42;
+            <a href="">Saber más</a>
+          </p>
+          
+        </div>
+        <button>&rarr;</button>
       </div>
       <div>
-        <button></button>
-        <a href=""></a>
+        <button>
+          <span>Iniciar sesión</span>
+        </button>
+        <span>&#124;  </span>
+        <a href="">Únete a LEGO&#169; Insiders</a>
       </div>
     </div>
 
@@ -31,12 +40,25 @@
     <div>
       <nav>
         <div>
-
+          <a href="#">
+            <img class="header-lego-logo" src="assets/header/brand-lego.svg" alt="LEGO" loading="eager">
+          </a>
+          <ul>
+            <li>Comprar</li>
+            <li>Descubrir</li>
+            <li>Ayuda</li>
+            <li><a href="">Día <i>Star Wars</i>&trade;</a></li>
+          </ul>
         </div>
         <div>
+          <div>
+            <button></button>
+          </div>
           <button></button>
-          <button></button>
-          <a href=""></a>
+          <a href="">
+            <!-- Cart webpage --> 
+            (0)
+          </a>
         </div>
       </nav>
     </div>
@@ -44,17 +66,127 @@
 
   <footer>
     <!-- Links -->
-    <div></div>
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <img class="footer-lego-logo" src="assets/footer/brand-lego.svg" alt="LEGO">
+            </div>
+            <div>
+              <button class="region-selector">
+                España
+              </button>
+            </div>
+          </div>
+          <div>
+            <a href="">Tarjetas regalo</a>
+            <a href="">Encuentra la inspiración</a>
+            <a href="">Catálogos LEGO</a>
+            <a href="">Encontrar una tienda</a>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h3>Quiénes somos</h3>
+            <ul>
+              <li><a href="">The LEGO Group</a></li>
+              <li><a href="">Noticias LEGO&#174;</a></li>
+              <li><a href="">Sostenibilidad</a></li>
+              <li><a href="">Declaración de transparencia de la cadena de suministro</a></li>
+              <li><a href="">Certificación de productos LEGO</a></li>
+              <li><a href="">Ofertas de trabajo LEGO</a></li>
+              <li><a href="">Línea ética LEGO</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Atención al cliente</h3>
+            <ul>
+              <li><a href="">Ponte en contacto con nosotros</a></li>
+              <li><a href="">Instrucciones de construcción</a></li>
+              <li><a href="">Piezas de repuesto</a></li>
+              <li><a href="">Envíos y devoluciones</a></li>
+              <li><a href="">Métodos de pago</a></li>
+              <li><a href="">Términos y condiciones</a></li>
+              <li><a href="">Productos retirados</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Atracciones</h3>
+            <ul>
+              <li><a href="">LEGO&#174; House</a></li>
+              <li><a href="">LEGOLAND&#174; Parks</a></li>
+              <li><a href="">LEGOLAND Discovery Centers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Más información</h3>
+            <ul>
+              <li><a href="">LEGO&#174; LIFE</a></li>
+              <li><a href="">LEGO Education</a></li>
+              <li><a href="">LEGO Ideas</a></li>
+              <li><a href="">LEGO Foundation</a></li>
+              <li><a href="">Programa para socios</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Media -->
-    <!-- FACEBOOK: https://www.lego.com/_next/static/images/facebook-895fba5a20c4facacb9655dade1d256c.svg -->
-    <!-- X: https://www.lego.com/_next/static/images/twitter-4bee8e762dd6042960b804964fd64103.svg -->
-    <!-- INSTAGRAM: https://www.lego.com/_next/static/images/instagram-e47f0d4b15ff76083b415be91e96f43b.svg -->
-    <!-- YOUTUBE: https://www.lego.com/_next/static/images/youtube-c51b2c62583921aae813fdc55df5f9d2.svg -->
-    <div></div>
+    <div>
+      <div>
+        <div>
+          <span>Suscríbete al correo electrónico de LEGO&#174; Shop</span>
+          <div>
+            <div>
+              <label for="">
+                <input type="text" name="" id="">
+                <span>Tu dirección de correo electrónico</span>
+              </label>
+            </div>
+            <button>&rarr;</button>
+          </div>
+        </div>
+        <div>
+          <span>Síguenos</span>
+          <div>
+            <a class="social-link" href="">
+              <img src="assets/footer/facebook-icon.svg" alt="facebook">
+            </a>
+            <a class="social-link" href="">
+              <img src="assets/footer/x-icon.svg" alt="twitter">
+            </a>
+            <a class="social-link" href="">
+              <img src="assets/footer/instagram-icon.svg" alt="instagram">
+            </a>
+            <a class="social-link" href="">
+              <img src="assets/footer/youtube-icon.svg" alt="youtube">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Copyright -->
-    <div></div>
+    <div>
+      <div>
+        <ul>
+          <li><a href="">Política de privacidad</a></li>
+          <li><a href="">Cookies</a></li>
+          <li><a href="">Aviso legal</a></li>
+          <li><a href="">Cláusulas de uso</a></li>
+          <li><a href="">Accesibilidad</a></li>
+          <li><a href="">Configuración de cookies</a></li>
+        </ul>
+        <p>
+          LEGO System A/S, DK-7190 Billund, Dinamarca. Solo se permite la compra en línea a personas mayores de 18 años.
+          LEGO, el logotipo LEGO, la minifigura, DUPLO, el logotipo de FRIENDS, el logotipo de MINIFIGURES,
+          DREAMZzz, NINJAGO, VIDIYO y MINDSTORMS son marcas comerciales de The LEGO Group. &#169;2024 The LEGO Group.
+          Todos los derechos reservados. El uso de este sitio supone la aceptación de las cláusulas de uso.
+        </p>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
