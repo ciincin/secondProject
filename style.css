@@ -1,3 +1,62 @@
-:root{
+:root {
     --cart-grey-backgroung: #f8f8f8;
+    --cart-blue-empty: #005ad2;
+    --cart-blue-empty-hovered:#0045b7;
+}
+
+/* C A R T  W E B P A G E  -  E M P T Y  */
+
+.cart-empty-content {
+    display: flex;
+    flex-direction: column;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 1.875rem 0px;
+    color: inherit;
+    font-size: 1.25rem;
+    line-height: 1.9375rem;
+    font-weight: 500;
+    text-transform: inherit;
+
+}
+
+.cart-bag-icono {
+    color: var(--cart-blue-empty);
+    height: 1.375rem;
+}
+
+.cart-empty-text {
+    margin: 0.67em 0;
+    font-size: large;
+    font-weight: 600;
+    margin: 1.5rem;
+}
+.cart-empty-ask-logging{
+    font-size: medium;
+    font-weight: 100;
+    margin: 0.75rem;
+}
+
+.cart-empty-logging{
+    background-color: var(--cart-blue-empty);
+    color:white;
+    border: none;
+    border-radius: 20px;
+    width:15%;
+    font-size: large;
+    font-weight: 600;
+    margin: 0.75rem;
+}
+
+.cart-empty-logging:hover {
+    background-color: var(--cart-blue-empty-hovered);
+}
+
+
+.cart-empty-logging-link{
+    text-decoration: none;
+    color:inherit;
+    font-size: small;
+    font-weight: 600;
+   
 }
