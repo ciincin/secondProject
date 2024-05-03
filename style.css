@@ -1,44 +1,188 @@
-:root{
+:root {
     --primary-violet: #6e34eb;
     --footer-blue: #201d48;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  font-family: sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: sans-serif;
 }
 
-header div, header ul {
-  display: flex;
+header div,
+header ul {
+    display: flex;
 }
 
 header .header-lego-logo {
-  width: 55px;
-  height: 55px;
+    width: 55px;
+    height: 55px;
 }
 
+
 footer .footer-lego-logo {
-  width: 90px;
-  height: 90px;
+    width: 90px;
+    height: 90px;
 }
 
 footer .region-selector {
-  width: 100.833px;
-  height: 39px;
-  padding: 10px;
-  border: none;
+    width: 100.833px;
+    height: 39px;
+    padding: 10px;
+    border: none;
 }
 
 footer .social-link {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 footer .social-link img {
-  width: inherit;
-  height: inherit;
+    width: inherit;
+    height: inherit;
+}
+
+
+/* S E T  D E  D I S N E Y */
+
+.disney-hr{
+    background-color: black;
+    height: 1px;
+    width: 100%;
+}
+
+.disney-nav{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 150px;
+}
+
+.disney-nav1{
+    width: 100%;
+    height: 40%;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.disney-nav2{
+    width: 100%;
+    height: 60%;
+    background-color: rgb(255, 215, 0);
+    text-align: center;
+}
+
+.disney-selection{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    align-items: center;
+    gap: 15px;
+}
+
+.disney-selection p {
+    margin: 0;
+    padding: 0;
+}
+
+.disney-selection a{
+    text-decoration: none;
+    color: #2f5f86;
+}
+
+.disney-banner{
+    display: flex;
+    height: 90px;
+    background-image: url(https://www.lego.com/cdn/cs/set/assets/blt1d9c86b632cb8019/Desktop.png?fit=crop&format=png&width=1600&height=90&dpr=1);
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.disney-banner button{
+    height: 40px;
+    width: 100px;
+    background-color: #565a5d;
+    border-radius: 40px;
+    border: none;
+    color:#ffffff;
+}
+
+.disney-banner .transparent-btn{
+    background-color: rgba(255, 255, 255, 0);
+    border: 3px solid grey;
+    color: black;
+}
+
+.set-description p, h3{
+margin: 0;
+padding: 0;
+}
+
+.set-description-layout, .disney-set-layout{
+    display: flex;
+    width: auto;
+    margin: 0 10vw;
+
+}
+
+.set-description{
+    display: flex;
+    height: auto;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: #f2f2f2;
+}
+
+.set-description-title{
+    margin-top: 30px;
+}
+
+.disney-set-layout{
+    display: flex;
+    flex-direction: row;
+    height: 1000px;
+    margin-top: 2vh;
+    background-color: rgb(233, 233, 233);
+    gap: 2vw;
+}
+
+.disney-set-filter{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-width: 200px;
+    width: 20%;
+    gap: 3vh;
+}
+
+.disney-set-card-layout{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-row: repeat(2, 510px); */
+    height: auto;
+    width: 100%;
+    background-color: yellow;
+}
+
+.disney-card1{
+    height: 500px;
+    width: 100%;
+    background-color: lightblue;
+    border: 1px solid black;
+}
+
+.disney-footer{
+    width: 100%;
+    height: 500px;
+    margin-top: 3vh;
+    background-color: #201d48;
 }
