@@ -1,3 +1,44 @@
 :root{
     --primary-violet: #6e34eb;
+    --footer-blue: #201d48;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: sans-serif;
+}
+
+header div, header ul {
+  display: flex;
+}
+
+header .header-lego-logo {
+  width: 55px;
+  height: 55px;
+}
+
+footer .footer-lego-logo {
+  width: 90px;
+  height: 90px;
+}
+
+footer .region-selector {
+  width: 100.833px;
+  height: 39px;
+  padding: 10px;
+  border: none;
+}
+
+footer .social-link {
+  width: 40px;
+  height: 40px;
+}
+
+footer .social-link img {
+  width: inherit;
+  height: inherit;
 }
