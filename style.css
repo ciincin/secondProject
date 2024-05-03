@@ -1,7 +1,7 @@
 :root {
     --cart-grey-backgroung: #f8f8f8;
     --cart-blue-empty: #005ad2;
-    --cart-blue-empty-hovered:#0045b7;
+    --cart-blue-empty-hovered: #0045b7;
 }
 
 /* C A R T  W E B P A G E  -  E M P T Y  */
@@ -17,7 +17,6 @@
     line-height: 1.9375rem;
     font-weight: 500;
     text-transform: inherit;
-
 }
 
 .cart-bag-icono {
@@ -31,18 +30,19 @@
     font-weight: 600;
     margin: 1.5rem;
 }
-.cart-empty-ask-logging{
+
+.cart-empty-ask-logging {
     font-size: medium;
     font-weight: 100;
     margin: 0.75rem;
 }
 
-.cart-empty-logging{
+.cart-empty-logging {
     background-color: var(--cart-blue-empty);
-    color:white;
+    color: white;
     border: none;
     border-radius: 20px;
-    width:15%;
+    width: 15%;
     font-size: large;
     font-weight: 600;
     margin: 0.75rem;
@@ -52,11 +52,35 @@
     background-color: var(--cart-blue-empty-hovered);
 }
 
-
-.cart-empty-logging-link{
+.cart-empty-logging-link {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
     font-size: small;
     font-weight: 600;
-   
+}
+
+/* C A R T  W E B P A G E */
+
+.cart-container {
+    background-color: var(--cart-grey-backgroung);
+}
+
+.cart-my-bag-content {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100rem;
+    gap: 1.25rem;
+    padding: 0px 1.875rem 1.875rem
+}
+
+.cart-left-space {
+    background-color: white;
+    flex-basis: 65%;
+}
+
+.cart-right-space {
+    background-color: white;
+    flex-basis: calc(35% - 1.25rem);
+    width: 100%;
 }
