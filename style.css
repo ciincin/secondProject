@@ -6,6 +6,8 @@
     --cart-blue-empty-hovered: #0045b7;
     --cart-green-now-available: #007133;
     --cart-grey-divider: rgb(224, 224, 224);
+    --cart-orange-button:#e96f14;
+    --cart-orange-button-hovered: #c9692b;
 }
 
 * {
@@ -455,17 +457,130 @@ h3 {
     border: none;
     background-color: white;
     color: var(--cart-blue-empty);
+    font-size: 1.25rem;
 
 }
-
-
-
-
-
-
 
 .cart-right-space {
     background-color: white;
     flex-basis: calc(35% - 1.25rem);
     width: 100%;
 }
+
+.cart-order-summary-container {
+    padding: 0px 1.25rem;
+}
+
+
+.cart-summary {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--cart-grey-divider);
+    padding: 1.25rem 0px 0.9375rem;
+    margin: 0px 0px 1.25rem;
+}
+
+.cart-promo-code {
+    border-bottom: 1px solid var(--cart-grey-divider);
+    padding-bottom: 0.75rem;
+}
+
+.cart-promo-button {
+    background-color: white;
+    border: none;
+}
+
+.cart-h3-flex {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+.cart-promo-open div {
+    height: 3rem;
+}
+
+.cart-promo-open div button {
+    background-color: var(--cart-grey-divider);
+    color: inherit;
+    border: none;
+
+}
+
+.cart-total-payment {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-free-delivery {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--cart-green-now-available)
+}
+
+.cart-green-check {
+
+    font-size: 2rem;
+}
+
+.cart-total-price{
+    font-size: larger;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.cart-iva-price{
+    font-size:small;
+}
+
+.cart-checkout{
+    display: flex;
+    justify-content: center;
+    background-color: var(--cart-orange-button);
+    border-radius:2rem;
+    width: 100%;
+    height: 3rem;
+    margin: 1rem;
+}
+
+.cart-checkout a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color:black;
+    font-size: 1.5rem;
+
+}
+
+.cart-fast-shopping{
+    border-top: 1px solid var(--cart-grey-divider);
+    padding: 1rem 1.25rem;
+}
+
+.cart-fast-shopping-title{
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.cart-fast-shopping-description{
+    font-size: 0.75rem;
+    margin:0.75rem 0 ;
+}
+
+.cart-paypal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cart-blue-empty);
+    border-radius: 2rem;
+    width: 100%;
+    height: 3rem;
+    margin: 1rem;
+}
+
