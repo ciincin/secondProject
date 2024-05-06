@@ -4,6 +4,8 @@
     --cart-grey-backgroung: #f8f8f8;
     --cart-blue-empty: #005ad2;
     --cart-blue-empty-hovered: #0045b7;
+    --cart-green-now-available: #007133;
+    --cart-grey-divider: rgb(224, 224, 224);
 }
 
 * {
@@ -24,7 +26,6 @@ header .header-lego-logo {
     width: 55px;
     height: 55px;
 }
-
 
 footer .footer-lego-logo {
     width: 90px;
@@ -48,37 +49,36 @@ footer .social-link img {
     height: inherit;
 }
 
-
 /* S E T  D E  D I S N E Y */
 
-.disney-hr{
+.disney-hr {
     background-color: black;
     height: 1px;
     width: 100%;
 }
 
-.disney-nav{
+.disney-nav {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 150px;
 }
 
-.disney-nav1{
+.disney-nav1 {
     width: 100%;
     height: 40%;
     background-color: #f8f8f8;
     text-align: center;
 }
 
-.disney-nav2{
+.disney-nav2 {
     width: 100%;
     height: 60%;
     background-color: rgb(255, 215, 0);
     text-align: center;
 }
 
-.disney-selection{
+.disney-selection {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -93,12 +93,12 @@ footer .social-link img {
     padding: 0;
 }
 
-.disney-selection a{
+.disney-selection a {
     text-decoration: none;
     color: #2f5f86;
 }
 
-.disney-banner{
+.disney-banner {
     display: flex;
     height: 90px;
     background-image: url(https://www.lego.com/cdn/cs/set/assets/blt1d9c86b632cb8019/Desktop.png?fit=crop&format=png&width=1600&height=90&dpr=1);
@@ -107,34 +107,35 @@ footer .social-link img {
     gap: 15px;
 }
 
-.disney-banner button{
+.disney-banner button {
     height: 40px;
     width: 100px;
     background-color: #565a5d;
     border-radius: 40px;
     border: none;
-    color:#ffffff;
+    color: #ffffff;
 }
 
-.disney-banner .transparent-btn{
+.disney-banner .transparent-btn {
     background-color: rgba(255, 255, 255, 0);
     border: 3px solid grey;
     color: black;
 }
 
-.set-description p, h3{
-margin: 0;
-padding: 0;
+.set-description p,
+h3 {
+    margin: 0;
+    padding: 0;
 }
 
-.set-description-layout, .disney-set-layout{
+.set-description-layout,
+.disney-set-layout {
     display: flex;
     width: auto;
     margin: 0 10vw;
-
 }
 
-.set-description{
+.set-description {
     display: flex;
     height: auto;
     width: 100%;
@@ -145,11 +146,11 @@ padding: 0;
     background-color: #f2f2f2;
 }
 
-.set-description-title{
+.set-description-title {
     margin-top: 30px;
 }
 
-.disney-set-layout{
+.disney-set-layout {
     display: flex;
     flex-direction: row;
     height: 1000px;
@@ -158,7 +159,7 @@ padding: 0;
     gap: 2vw;
 }
 
-.disney-set-filter{
+.disney-set-filter {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -167,7 +168,7 @@ padding: 0;
     gap: 3vh;
 }
 
-.disney-set-card-layout{
+.disney-set-card-layout {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /* grid-row: repeat(2, 510px); */
@@ -176,27 +177,25 @@ padding: 0;
     background-color: yellow;
 }
 
-.disney-card1{
+.disney-card1 {
     height: 500px;
     width: 100%;
     background-color: lightblue;
     border: 1px solid black;
 }
 
-.disney-footer{
+.disney-footer {
     width: 100%;
     height: 500px;
     margin-top: 3vh;
     background-color: #201d48;
 }
 
-
 /* C A R T  W E B P A G E  -  E M P T Y  */
 
 .cart-empty-content {
     display: flex;
     flex-direction: column;
-    -moz-box-align: center;
     align-items: center;
     padding: 1.875rem 0px;
     color: inherit;
@@ -252,19 +251,218 @@ padding: 0;
     background-color: var(--cart-grey-backgroung);
 }
 
+.cart-my-bag {
+    padding: 1.5rem;
+}
+
+.cart-h1 {
+    font-size: 1.5rem;
+}
+
 .cart-my-bag-content {
     display: flex;
     margin: 0 auto;
     width: 100%;
     max-width: 100rem;
     gap: 1.25rem;
-    padding: 0px 1.875rem 1.875rem
+    padding: 0px 1.875rem 1.875rem;
 }
 
 .cart-left-space {
-    background-color: white;
     flex-basis: 65%;
 }
+
+.cart-available {
+    background-color: white;
+}
+
+.cart-now-available h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.9375rem 1.25rem;
+    color: var(--cart-green-now-available);
+    border-bottom: 1px solid var(--cart-grey-divider);
+}
+
+.cart-article-container {
+    margin-bottom: 1.875rem;
+    padding: 0px 1.25rem;
+}
+
+.cart-article-fex {
+    display: flex;
+}
+
+.cart-img-container {
+    width: 20%;
+    height: auto;
+    margin-right: 3rem;
+    cursor: pointer;
+}
+
+.cart-img-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-information-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-name h3 a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.cart-name h3 a:hover {
+    text-decoration: underline;
+}
+
+.cart-margin {
+    width: auto;
+    height: 40%;
+}
+
+.cart-price-add {
+    display: flex;
+}
+
+.cart-price {
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    margin-right: 25%;
+}
+
+.cart-add-more {
+    flex: 0 1 45%;
+    width: auto;
+    height: 2.7rem;
+    max-width: 9.09rem;
+    margin: 0px 1.25rem;
+}
+
+.cart-add-more-content {
+    display: flex;
+    height: 2.7rem;
+    flex: 1 0 auto;
+    border-radius: 5px;
+}
+
+.cart-rest-article {
+    position: relative;
+    cursor: pointer;
+    flex-grow: 1;
+    height: 100%;
+    min-width: 2.5rem;
+    border: 1px solid var(--cart-grey-divider);
+    display: flex;
+    align-items: center;
+    border-radius: 5px 0px 0px 5px;
+    background-color: white;
+    justify-content: center;
+    touch-action: manipulation;
+}
+
+.cart-number-articles {
+    position: relative;
+    flex-grow: 1;
+    border-top: 1px solid var(--cart-grey-divider);
+    border-bottom: 1px solid var(--cart-grey-divider);
+    width: 2.5rem;
+    max-width: 5rem;
+}
+
+.cart-number-articles input {
+    background-image: none;
+    width: 100%;
+    height: 100%;
+    border: medium;
+    border-radius: 0px;
+    cursor: text;
+    text-align: center;
+    text-indent: 0px;
+    text-rendering: auto;
+    text-shadow: none;
+    word-spacing: 0px;
+    padding: 0px;
+    writing-mode: horizontal-tb;
+    appearance: textfield;
+}
+
+.cart-add-article {
+    position: relative;
+    cursor: pointer;
+    flex-grow: 1;
+    height: 100%;
+    min-width: 2.5rem;
+    border: 1px solid var(--cart-grey-divider);
+    display: flex;
+    align-items: center;
+    border-radius: 0px 5px 5px 0px;
+    background-color: white;
+    justify-content: center;
+    touch-action: manipulation;
+}
+
+.cart-wish-list {
+    overflow-y: visible;
+    align-self: end;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 1.125rem;
+    width: 35%;
+    align-items: center;
+    height: 2.5rem;
+}
+
+.cart-wish-list-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.9375rem;
+    padding: 0px;
+}
+
+.cart-heart-button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: var(--cart-grey-backgroung);
+    margin-right: 0.5rem;
+}
+
+.cart-heart-button:hover {
+    background-color: var(--cart-grey-divider);
+}
+
+.cart-wish-list-text {
+    font-weight: 600;
+}
+
+.cart-trash-button {
+    border: none;
+    background-color: white;
+    color: var(--cart-blue-empty);
+
+}
+
+
+
+
+
+
 
 .cart-right-space {
     background-color: white;
