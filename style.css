@@ -501,33 +501,38 @@ h3 {
 .cart-h3-flex {
     font-size: 0.875rem;
     font-weight: 600;
-   
+
 }
 
-.cart-h3-flex i{
+.cart-h3-flex i {
     font-size: 1rem;
+    margin-left: 0.5rem;
 }
 
 .cart-promo-open div {
     height: 3rem;
     margin-top: 1rem;
+
+
 }
 
-.display-none{
-    display:none;
+.cart-display-none {
+    display: none;
 }
+
 
 .cart-promo-open div button {
     background-color: var(--cart-grey-divider);
     color: inherit;
     border: none;
     font-weight: 600;
+
 }
 
 .cart-total-payment {
     display: flex;
     justify-content: space-between;
-    margin-top:1rem;
+    margin-top: 1rem;
 }
 
 .cart-free-delivery {
@@ -634,9 +639,10 @@ h3 {
     filter: brightness(0.95);
 }
 
-.cart-paypal-price i:first-child{
-    color:var(--cart-blue-pay);
+.cart-paypal-price i:first-child {
+    color: var(--cart-blue-pay);
 }
+
 .cart-pay {
     font-weight: 600;
     color: var(--cart-blue-pay);
