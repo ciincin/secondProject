@@ -509,6 +509,17 @@ h3 {
     margin-left: 0.5rem;
 }
 
+.rotate-down{
+    display:inline-block;
+    transition: transform 0.1s linear;
+    transform: rotate(90deg); 
+}
+
+.rotate-up{
+    display:inline-block;
+    transition: transform 0.1s linear;
+    transform: rotate(270deg);
+}
 .cart-promo-open div {
     height: 3rem;
     margin-top: 1rem;
