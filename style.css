@@ -454,6 +454,7 @@ h3 {
     background-color: var(--cart-grey-divider);
 }
 
+
 .cart-wish-list-text {
     font-weight: 600;
 }
@@ -520,11 +521,10 @@ h3 {
     transition: transform 0.1s linear;
     transform: rotate(270deg);
 }
+
 .cart-promo-open div {
     height: 3rem;
     margin-top: 1rem;
-
-
 }
 
 .cart-display-none {
