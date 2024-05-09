@@ -1,3 +1,8 @@
-En este proyecto hemos tomado la decision de que vamos a mostrar los sets de lego de disney como ejemplo para demostrar las funcionalidades que se van a extraer de la pagina oficial de lego.
+The objective of this project is to replicate the LEGO website: https://www.lego.com/es-es 
+This sprint has a duration of 5 weeks.
 
-https://www.lego.com/es-es/themes/disney?icmp=HP-SHQL-Standard-HP_QUICKLINK_DISNEY-TH-DI-I91VV1WXP0
+The main objective is to replicate 3 of the web pages with their functionalities:
+    1- The main website page
+    2- The shopping cart page 
+    3- The Disney sets page 
+
