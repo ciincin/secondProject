@@ -111,7 +111,7 @@ padding: 0;
 .disney-set-layout{
     display: flex;
     flex-direction: row;
-    height: 1000px;
+    height: 1500px;
     margin-top: 2vh;
     background-color: rgb(233, 233, 233);
     gap: 2vw;
@@ -129,14 +129,15 @@ padding: 0;
 .disney-set-card-layout{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* grid-row: repeat(2, 510px); */
+    grid-template-rows: repeat(4, 1fr); /* hay que hacer responsive en su altura */
+    min-height: 100vh;
     height: auto;
     width: 100%;
-    background-color: yellow;
+    background-color: rgb(252, 252, 193);
 }
 
 .disney-card1{
-    height: 500px;
+    height: 100%;
     width: 100%;
     background-color: lightblue;
     border: 1px solid black;
@@ -147,4 +148,9 @@ padding: 0;
     height: 500px;
     margin-top: 3vh;
     background-color: #201d48;
+}
+ 
+/* hay que buscar como hacer mas grande el checkbox (si es que se puede, quizas haya que crear un recuadro y agregarle un event listener */
+#filter-easterGifts{
+    height: 200px;
 }
