@@ -59,3 +59,5 @@ btnPromo.addEventListener("click", () => {
     promoBoxIsClosed = true;
   }
 });
+
+
