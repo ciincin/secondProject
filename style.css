@@ -1,6 +1,7 @@
-:root{
-    --primary-violet: #6e34eb;
-    --footer-blue: #201d48;
+:root {
+  --primary-violet: #6e34eb;
+  --header-yellow: #ffd502;
+  --footer-blue: #201d48;
 }
 
 * {
@@ -9,19 +10,111 @@
   padding: 0;
   text-decoration: none;
   list-style: none;
-  font-family: sans-serif;
 }
 
-header div, header ul {
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+header .utility-bar,
+header .main-bar {
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .utility-bar {
+  height: 55px;
+}
+
+header .utility-bar .container {
   display: flex;
 }
 
-header .header-lego-logo {
+header .main-bar {
+  height: 75px;
+  background-color: var(--header-yellow);
+}
+
+/* Problema ajustando la alineación */
+
+header .main-bar nav {
+  display: flex;
+}
+
+header .main-bar nav div {
+  display: flex;
+}
+
+header .main-bar ul {
+  display: flex;
+}
+
+header .lego-logo {
   width: 55px;
   height: 55px;
 }
 
-footer .footer-lego-logo {
+main .product-wrapper {
+  overflow: auto;
+}
+
+main .product-wrapper div {
+  width: 324px;
+  height: 324px;
+}
+
+main .product-wrapper img {
+  width: 70%;
+  display: block;
+  margin: auto;
+}
+
+main div:has(.add-to-cart-button) {
+  width: 325px;
+  height: 65px;
+}
+
+main .info:nth-child(1) {
+  overflow: auto;
+  height: auto;
+}
+
+main .add-to-cart-button,
+main .add-to-cart-button div {
+  width: inherit;
+  height: inherit;
+}
+
+footer {
+  background-color: var(--footer-blue);
+  color: white;
+}
+
+footer a:link,
+footer a:visited {
+  color: white;
+}
+
+footer .wrapper {
+  padding: 40px 20px 20px 20px;
+}
+
+footer .links div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+footer .lego-logo {
   width: 90px;
   height: 90px;
 }
@@ -41,4 +134,15 @@ footer .social-link {
 footer .social-link img {
   width: inherit;
   height: inherit;
+}
+
+footer .copyright {
+  height: 106px;
+  font-size: 0.75rem;
+}
+
+footer .copyright ul {
+  height: 48px;
+  display: flex;
+  gap: 30px;
 }
