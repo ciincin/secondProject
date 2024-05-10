@@ -226,7 +226,148 @@ footer {
   margin-right: 5px;
 }
 
+/* B A N N E R */
+.main-banner-content{
+  color: white;
+  display: block;
+  background-color: transparent;
+  position: absolute;
+  top: 10%;
+}
+
+.main-banner-buttons a{
+  border: 1px solid white;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  padding: 0.625rem 1.125rem;  
+}
+/*mini images */
+
+.main-mini-images-container ul{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  align-items: center;
+  margin-inline: 5vw;
+}
+
+.main-mini-images-container div {
+   text-align: center;
+}
+
+/* S E L E C C I O N E S D E E S T A S E M A N A */
+.main-seleccionesDeEstaSemana-cards-container{
+   display: flex;
+}
+
+.main-seleccionesDeEstaSemana-cards-container a{
+   text-decoration: none;
+   color: unset;
+}
+
+.main-seleccionesDeEstaSemana-cards-container img {
+   width: 25vw;
+}
+
+
+
 /* mid */
+
+
+/* I M A G E S */
+
+.main-encuentra-container{
+  height: 10vw;
+  display: flex;
+  justify-content: center;
+}
+
+.main-encuentra-text{
+  width: 50vw;
+  text-align: center;
+}
+
+.main-images-container,
+.main-images ul {
+  display: flex;
+  list-style: none;
+}
+
+.main-images img{
+  width: 20vw;
+  padding: 0.625rem;
+}
+
+.main-images-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.main-images-button {
+  border: 1px solid #0009;
+  border-radius: 25px;
+  display: flex;
+  background-color: #0009;
+}
+
+.main-images-button a {
+  padding: 0.5em;
+  color: white;
+}
+/* d e s t a c a m o s */
+
+.main-destacamos-cards-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-destacamos-card1{
+  display: flex;
+  flex-direction: column;
+}
+
+.main-destacamos-card1-text{
+  position: absolute;
+  left: 5%;
+  text-align: center;
+}
+
+.main-destacamos-card1-button{
+  display: flex;
+  justify-content: center;
+}
+
+.main-destacamos-card2n3{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.main-destacamos-card2-container{ 
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.main-destacamos-card3-container{
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* d e s c u b r e */
+
+.main-descubre-cards{
+  display: flex;
+}
+
+.main-descubre-cards img{
+  width: 20vw;
+}
+
+
+/* p a r r a f o f i n a l */
+
 
 /* F O O T E R */
 .wrapper h3 {
