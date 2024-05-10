@@ -93,7 +93,12 @@ body{
     gap: 15px;
 }
 
-.disney-selection p {
+
+.disney-selection{
+    margin-left: 40px;
+}
+
+.disney-selection p{
     margin: 0;
     padding: 0;
 }
@@ -106,6 +111,8 @@ body{
 .disney-banner{
     display: flex;
     height: 90px;
+    margin: 0 auto;
+    max-width: 1600px;
     background-image: url(https://www.lego.com/cdn/cs/set/assets/blt1d9c86b632cb8019/Desktop.png?fit=crop&format=png&width=1600&height=90&dpr=1);
     align-items: center;
     justify-content: center;
@@ -128,66 +135,118 @@ body{
 }
 
 .set-description p, h3{
-margin: 0;
-padding: 0;
+    margin: 0;
+    padding:0;
 }
 
-.set-description-layout, .disney-set-layout{
-    display: flex;
-    width: auto;
-    margin: 0 10vw;
-
-}
 
 .set-description{
     display: flex;
     height: auto;
-    width: 100%;
+    margin: 20px auto 60px auto;
+    max-width: 1540px;
+    width: 95%;
     padding: 20px;
-    gap: 20px;
+    /* gap: 20px; */
     flex-direction: column;
-    margin-top: 20px;
-   
     background-color: #f2f2f2;
 }
 
 .set-description-title{
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .disney-set-layout{
     display: flex;
     flex-direction: row;
-    height: 1500px;
-    margin-top: 2vh;
-    background-color: rgb(233, 233, 233);
-    gap: 2vw;
+    margin: 0 auto;
+    max-width: 1540px;
+    max-height: 1800px;
+    width: 95%;
+    height: 120.8vw; /* utilizo vw para hacerlo responsive al ancho de pantalla aprox 1650px */
+    /* gap: 2vw; */
 }
 
 .disney-set-filter{
     display: flex;
     flex-direction: column;
     height: auto;
-    min-width: 200px;
+    min-width: 220px;
     width: 20%;
-    gap: 3vh;
+    gap: 1rem;
+}
+
+.form-check-input{
+    width: 23px;
+    height: 23px;
+    border-radius: 0;
+}
+.form-check-input::before{
+    content: "";
+}
+
+.form-check-input:checked{
+    background-color: transparent;
+    /* content: url(https://img.icons8.com/forma-bold-filled/24/checkmark.png); */
+    content: url(https://img.icons8.com/puffy-filled/32/checkmark.png)
+    /* content: url(https://img.icons8.com/material-two-tone/24/checkmark--v2.png); */
 }
 
 .disney-set-card-layout{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr); /* hay que hacer responsive en su altura */
-    min-height: 100vh;
-    height: auto;
+    grid-template-rows: repeat(3, 1fr); /* hay que hacer responsive en su altura */
+    margin-left: 20px;
+    height: 100%;
     width: 100%;
-    background-color: rgb(252, 252, 193);
 }
 
 .disney-card1{
     height: 100%;
     width: 100%;
-    background-color: lightblue;
+    padding: 2%;
     border: 1px solid black;
+}
+
+.disney-card1-likeButton-banner{
+    height: 6%;
+    width: 100%;
+}
+
+.disney-card1-imageSet-container{
+    height: 60%;
+    width: 100%;
+}
+
+.disney-card1-imageSet{
+    height: 100%;
+    width: 100%;
+    padding: 0 1.7%;
+}
+
+.disney-card1-infoSet-container{
+    height: 4%;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.disney-card1-titleSet-container{
+    height: 9%;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.disney-card1-priceSet-container{
+    height: 4.5%;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.disney-card1-addToCart-container{
+    height: 8.5%;
+    width: 100%;
+    margin-top: 3%;
 }
 
 .disney-footer{
@@ -197,11 +256,11 @@ padding: 0;
     background-color: #201d48;
 }
  
-/* hay que buscar como hacer mas grande el checkbox (si es que se puede, quizas haya que crear un recuadro y agregarle un event listener */
-#filter-easterGifts{
-    height: 200px;
-}
 
+
+/* @media @media (max-width: 429px){
+
+} */
 
 /* C A R T  W E B P A G E  -  E M P T Y  */
 
