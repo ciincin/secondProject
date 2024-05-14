@@ -1,6 +1,0 @@
-Nombre: Castillo Disney
-Precio: 399,99
-Edad: 18+
-Piezas: 4837
-Rating: 4.8
-url: https://www.lego.com/es-es/product/disney-castle-43222
