@@ -1295,3 +1295,20 @@ body{
   height: 12%;
 
 }
+
+
+/* M E D I A  Q U E R I E S  */
+
+@media (min-width: 901px) {
+  .cart-my-bag-content{
+    display:flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 56.251em) {
+  
+}
+
+
+/* C A R T */
