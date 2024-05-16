@@ -1,3 +1,80 @@
+let cartList = [
+  {
+    id: 0,
+    image: "assets/disney-sets/cabañaBlancanieves/cabaña600x450.webp",
+    title: "Cabaña de Blancanieves y los Siete Enanitos",
+    price: 219.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 1,
+    image: "assets/disney-sets/castilloDisney/disney417x600.webp",
+    title: "Castillo Disney",
+    price: 399.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 2,
+    image: "assets/disney-sets/frozen/frozen600x450.webp",
+    title: "Palacio de Hielo de Elsa",
+    price: 99.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 3,
+    image: "assets/disney-sets/insideOut/insideOut600x400.webp",
+    title: "Inside Out 2 Mood Cubes",
+    price: 34.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 4,
+    image: "assets/disney-sets/reyLeon/reyLeon600x450.webp",
+    title: "El Rey León: Simba Cachorro",
+    price: 19.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 5,
+    image: "assets/disney-sets/sirenita/sirenita600x450.webp",
+    title: "Mini Castillo de Disney Ariel",
+    price: 39.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 6,
+    image: "assets/disney-sets/stitch/stitch600x450.webp",
+    title: "Stitch",
+    price: 64.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 7,
+    image: "assets/disney-sets/up/up600x450.webp",
+    title: "Casa de Up",
+    price: 54.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+  {
+    id: 8,
+    image: "assets/disney-sets/wall-e/wall-e600x450.webp",
+    title: "EVA y WALL•E",
+    price: 14.99,
+    amount: 1,
+    emptyHeart: true,
+  },
+];
+
+
+
 // C A R T
 
 // add/remove the same article
@@ -97,80 +174,7 @@ btnPromo.addEventListener("click", () => {
 
 // Add new items to cart
 
-let cartList = [
-  {
-    id: 0,
-    image: "assets/disney-sets/cabañaBlancanieves/cabaña600x450.webp",
-    title: "Cabaña de Blancanieves y los Siete Enanitos",
-    price: 219.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 1,
-    image: "assets/disney-sets/castilloDisney/disney417x600.webp",
-    title: "Castillo Disney",
-    price: 399.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 2,
-    image: "assets/disney-sets/frozen/frozen600x450.webp",
-    title: "Palacio de Hielo de Elsa",
-    price: 99.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 3,
-    image: "assets/disney-sets/insideOut/insideOut600x400.webp",
-    title: "Inside Out 2 Mood Cubes",
-    price: 34.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 4,
-    image: "assets/disney-sets/reyLeon/reyLeon600x450.webp",
-    title: "El Rey León: Simba Cachorro",
-    price: 19.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 5,
-    image: "assets/disney-sets/sirenita/sirenita600x450.webp",
-    title: "Mini Castillo de Disney Ariel",
-    price: 39.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 6,
-    image: "assets/disney-sets/stitch/stitch600x450.webp",
-    title: "Stitch",
-    price: 64.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 7,
-    image: "assets/disney-sets/up/up600x450.webp",
-    title: "Casa de Up",
-    price: 54.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-  {
-    id: 8,
-    image: "assets/disney-sets/wall-e/wall-e600x450.webp",
-    title: "EVA y WALL•E",
-    price: 14.99,
-    amount: 1,
-    emptyHeart: true,
-  },
-];
+
 
 localStorage.setItem("cart", JSON.stringify(cartList));
 
