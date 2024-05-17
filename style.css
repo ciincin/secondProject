@@ -241,7 +241,12 @@ footer {
 .main-banner-container{
   display: flex;
   text-align: right;
+  width: 100vw;
 }
+.main-banner-img{
+  width: 100vw;
+}
+
 
 .main-banner-content{
   color: white;
@@ -253,6 +258,10 @@ footer {
   right: 5%;
   top: 30%;
   width: 34%;
+}
+
+.main-banner-container a{
+  width: 100vw;
 }
 
 .main-banner-text1{
