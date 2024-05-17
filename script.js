@@ -1,6 +1,6 @@
 let cartList = [
   {
-    id: 0,
+    id: 1,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña-600x450.webp",
     title: "Cabaña de Blancanieves y los Siete Enanitos",
     price: 219.99,
@@ -10,7 +10,7 @@ let cartList = [
     pieces: 2228,
   },
   {
-    id: 1,
+    id: 2,
     image: "assets/disney-sets/castilloDisney/disney-417x600.webp",
     title: "Castillo Disney",
     price: 399.99,
@@ -20,7 +20,7 @@ let cartList = [
     pieces: 4837,
   },
   {
-    id: 2,
+    id: 3,
     image: "assets/disney-sets/frozen/frozen-600x450.webp",
     title: "Palacio de Hielo de Elsa",
     price: 99.99,
@@ -30,7 +30,7 @@ let cartList = [
     pieces: 630,
   },
   {
-    id: 3,
+    id: 4,
     image: "assets/disney-sets/insideOut/insideOut-600x400.webp",
     title: "Inside Out 2 Mood Cubes",
     price: 34.99,
@@ -40,7 +40,7 @@ let cartList = [
     pieces: 394,
   },
   {
-    id: 4,
+    id: 5,
     image: "assets/disney-sets/reyLeon/reyLeon-600x450.webp",
     title: "El Rey León: Simba Cachorro",
     price: 19.99,
@@ -50,7 +50,7 @@ let cartList = [
     pieces: 222,
   },
   {
-    id: 5,
+    id: 6,
     image: "assets/disney-sets/sirenita/sirenita-600x450.webp",
     title: "Mini Castillo de Disney Ariel",
     price: 39.99,
@@ -60,7 +60,7 @@ let cartList = [
     pieces: 557,
   },
   {
-    id: 6,
+    id: 7,
     image: "assets/disney-sets/stitch/stitch-600x450.webp",
     title: "Stitch",
     price: 64.99,
@@ -70,7 +70,7 @@ let cartList = [
     pieces: 730,
   },
   {
-    id: 7,
+    id: 8,
     image: "assets/disney-sets/up/up-600x450.webp",
     title: "Casa de Up",
     price: 54.99,
@@ -80,7 +80,7 @@ let cartList = [
     pieces: 598,
   },
   {
-    id: 8,
+    id: 9,
     image: "assets/disney-sets/wall-e/walle-600x450.webp",
     title: "EVA y WALL•E",
     price: 14.99,
@@ -91,10 +91,22 @@ let cartList = [
   },
 ];
 
+let shoppingCart = [
+  {
+    id: 8,
+    amount: 1,
+  },
+  {
+    id: 5,
+    amount: 2,
+  }
+];
+
+
 // la constante fullUrl almacena el valor de la referencia del .html
 const fullUrl = window.location.href;
 
-// Event listener que activa el forEach del objeto cartList dependiendo del href del html
+// Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   fullUrl === "http://127.0.0.1:5500/disney.html"
     ? cartList.forEach((item) => {
@@ -106,18 +118,19 @@ window.addEventListener("DOMContentLoaded", () => {
           item.pieces
         );
       })
-    : cartList.forEach((item) => {
+    : findProduct(getProductToLocalStorage()).forEach((item) => {
         cartContainer.innerHTML += modifiedTemplate(
           item.id,
           item.title,
           item.image,
           item.price,
-          getProductToLocalStorage()[item.id].amount
+          item.amount
         );
       });
 });
 
 // D I S N E Y  S E T S //
+
 const disneyLayout = document.getElementById("disney-set-layout");
 
 function disneySetsTemplate(title, image, price, age, pieces) {
@@ -165,20 +178,12 @@ function disneySetsTemplate(title, image, price, age, pieces) {
 
 // C A R T
 
-// cartList.forEach((item) => {
-//   localStorage.setItem(
-//     `item ${item.id}`,
-//     JSON.stringify({
-//       id: item.id,
-//       shortTitle: item.shortTitle,
-//       amount: item.amount,
-//     })
-//   );
-// });
-
 // let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
-
 // let cartArrayObject = JSON.parse(jsonCart);
+
+
+//contenedor donde se le agregan los productos del carrito de compra
+const cartContainer = document.getElementById("cart-container");
 
 // add/remove the same article
 let amountItem = 1;
@@ -278,22 +283,8 @@ btnPromo.addEventListener("click", () => {
 
 //Esto es una prueba para añadir los articulos al carrito
 
-// function addProductToLocalStorage(productID) {
-//   let accumulator = 0;
-//   btnPromo.addEventListener("click", () => {
-//     accumulator++;
-
-//     localStorage.setItem(
-//       `index: ${productID}`,
-//       JSON.stringify({
-//         id: cartList[productID].id,
-//         shortTitle: cartList[productID].shortTitle,
-//         amount: accumulator,
-//       })
-//     );
-//   });
-// }
-
+// función que será inicializada a través de la propiedad "onclick" del tag <button>
+// cada botón tendrá el "id" del objeto "catalogo"
 function addProductToLocalStorage(productID) {
   let accumulator = 0;
   btnPromo.addEventListener("click", () => {
@@ -302,29 +293,31 @@ function addProductToLocalStorage(productID) {
     localStorage.setItem(
       `index: ${productID}`,
       JSON.stringify({
-        id: cartList[productID].id,
-        shortTitle: cartList[productID].shortTitle,
+        id: cartList[(productID-1)].id,
         amount: accumulator,
       })
     );
 
-    localStorage.setItem(
-      `index: 0`,
-      JSON.stringify({
-        id: cartList[0].id,
-        shortTitle: cartList[0].shortTitle,
-        amount: 12,
-      })
-    );
+    //! descomentar para testear si los amounts son distintos, ver si se pinta correctamente
+    // localStorage.setItem(
+    //   `index: 0`,
+    //   JSON.stringify({
+    //     id: cartList[0].id,
+    //     shortTitle: cartList[0].shortTitle,
+    //     amount: 12,
+    //   })
+    // );
   });
 }
 
-addProductToLocalStorage(0);
-addProductToLocalStorage(2);
-addProductToLocalStorage(3);
-addProductToLocalStorage(4);
-// addProductToLocalStorage(0);
+// inicializamos la función para testear como funcionaría en los respectivos botones.
+  addProductToLocalStorage(2);
+  addProductToLocalStorage(3);
+  addProductToLocalStorage(4);
+  addProductToLocalStorage(1);
 
+
+  //función que se encarga de recoger la información del "localstorage" y la devuelve dentro de una lista nueva
 function getProductToLocalStorage() {
   let cartArray = [];
 
@@ -342,7 +335,26 @@ function getProductToLocalStorage() {
 
   return cartArray;
 }
-getProductToLocalStorage();
+
+
+// esta funcion se encarga de buscar del catalogo las cosas que esten en el get del localstorage
+function findProduct(cartArray){
+  const productsInCart = [];
+  cartArray.forEach((shoppingProduct) => {
+    console.log("shopping product", shoppingProduct);
+    cartList.forEach(item => {
+      if (shoppingProduct.id === item.id){
+      console.log("product found in catalog", shoppingProduct.id);
+        productsInCart.push({...item, amount:shoppingProduct.amount})
+      }
+    })
+  })
+  return productsInCart
+}
+
+//! haciendo uso de los callbacks podemos ya filtrar la lista del localstorage con nuestro catalogo
+// console.log(findProduct(getProductToLocalStorage()))
+
 
 // Add new items to cart
 
@@ -421,25 +433,12 @@ function modifiedTemplate(id, title, image, price, amount) {
           <span class="cart-text-edit">(Editar)</span>
         </button>
     </div>
-  
+
   </div>
   `;
   return templateItem;
 }
 
-let cartContainer = document.getElementById("cart-container");
-// let amountAux = getProductToLocalStorage();
-
-// for (let i = 0; i < cartList.length; i++) {
-//   console.log(amountAux);
-//   cartContainer.innerHTML += modifiedTemplate(
-//     cartList[i].id,
-//     cartList[i].title,
-//     cartList[i].image,
-//     cartList[i].price,
-//     2
-//   );
-// }
 
 //sum the total price of the cart
 
