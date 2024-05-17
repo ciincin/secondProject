@@ -923,34 +923,34 @@ body {
 
 /* S E T  D E  D I S N E Y */
 
-.disney-hr {
+.disney-hr{
   background-color: black;
   height: 1px;
   width: 100%;
 }
 
-.disney-nav {
+.disney-nav{
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 150px;
 }
 
-.disney-nav1 {
+.disney-nav1{
   width: 100%;
   height: 40%;
   background-color: #f8f8f8;
   text-align: center;
 }
 
-.disney-nav2 {
+.disney-nav2{
   width: 100%;
   height: 60%;
   background-color: rgb(255, 215, 0);
   text-align: center;
 }
 
-.disney-selection {
+.disney-selection{
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -961,21 +961,21 @@ body {
 }
 
 
-.disney-selection {
+.disney-selection{
   margin-left: 40px;
 }
 
-.disney-selection p {
+.disney-selection p{
   margin: 0;
   padding: 0;
 }
 
-.disney-selection a {
+.disney-selection a{
   text-decoration: none;
   color: #2f5f86;
 }
 
-.disney-banner {
+.disney-banner{
   display: flex;
   height: 90px;
   margin: 0 auto;
@@ -986,29 +986,28 @@ body {
   gap: 15px;
 }
 
-.disney-banner button {
+.disney-banner button{
   height: 40px;
   width: 100px;
   background-color: #565a5d;
   border-radius: 40px;
   border: none;
-  color: #ffffff;
+  color:#ffffff;
 }
 
-.disney-banner .transparent-btn {
+.disney-banner .transparent-btn{
   background-color: rgba(255, 255, 255, 0);
   border: 3px solid grey;
   color: black;
 }
 
-.set-description p,
-h3 {
+.set-description p, h3{
   margin: 0;
-  padding: 0;
+  padding:0;
 }
 
 
-.set-description {
+.set-description{
   display: flex;
   height: auto;
   margin: 20px auto 60px auto;
@@ -1020,24 +1019,23 @@ h3 {
   background-color: #f2f2f2;
 }
 
-.set-description-title {
+.set-description-title{
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
-.disney-set-layout {
+.disney-set-layout{
   display: flex;
   flex-direction: row;
   margin: 0 auto;
   max-width: 1540px;
   max-height: 1800px;
   width: 95%;
-  height: 120.8vw;
-  /* utilizo vw para hacerlo responsive al ancho de pantalla aprox 1650px */
+  height: 120.8vw; /* utilizo vw para hacerlo responsive al ancho de pantalla aprox 1650px */
   /* gap: 2vw; */
 }
 
-.disney-set-filter {
+.disney-set-filter{
   display: flex;
   flex-direction: column;
   height: auto;
@@ -1046,86 +1044,153 @@ h3 {
   gap: 1rem;
 }
 
-.form-check-input {
+.form-check-input{
   width: 23px;
   height: 23px;
   border-radius: 0;
 }
-
-.form-check-input::before {
+.form-check-input::before{
   content: "";
 }
 
-.form-check-input:checked {
+.form-check-input:checked{
   background-color: transparent;
   /* content: url(https://img.icons8.com/forma-bold-filled/24/checkmark.png); */
   content: url(https://img.icons8.com/puffy-filled/32/checkmark.png)
-    /* content: url(https://img.icons8.com/material-two-tone/24/checkmark--v2.png); */
+  /* content: url(https://img.icons8.com/material-two-tone/24/checkmark--v2.png); */
 }
 
-.disney-set-card-layout {
+.disney-set-card-layout{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  /* hay que hacer responsive en su altura */
+  grid-template-rows: repeat(3, 1fr); /* hay que hacer responsive en su altura */
   margin-left: 20px;
   height: 100%;
   width: 100%;
 }
 
-.disney-card1 {
+.disney-card1{
   height: 100%;
   width: 100%;
   padding: 2%;
   border: 1px solid black;
 }
 
-.disney-card1-likeButton-banner {
+.disney-card1-likeButton-banner{
   height: 6%;
   width: 100%;
 }
 
-.disney-card1-imageSet-container {
+.disney-card1-imageSet-container{
   height: 60%;
   width: 100%;
 }
 
-.disney-card1-imageSet {
+.disney-card1-imageSet{
   height: 100%;
   width: 100%;
   padding: 0 1.7%;
 }
 
-.disney-card1-infoSet-container {
+.disney-card1-infoSet-container{
+display: flex;
+flex-direction: row;
   height: 4%;
   width: 100%;
   margin-top: 3%;
 }
 
-.disney-card1-titleSet-container {
+.disney-icon-container{
+display: flex;
+height: 20px;
+width: 20px;
+}
+
+.disney-age-icon{
+width: 100%;
+height: 100%;
+}
+
+.disney-textIcon-container{
+display: inline-flex;
+justify-content: end;
+align-items: end;
+margin-right: 15px;
+}
+
+.disney-age-text{
+font-size: 0.85rem;
+
+}
+
+.disney-card1-titleSet-container{
   height: 9%;
   width: 100%;
   margin-top: 3%;
 }
 
-.disney-card1-priceSet-container {
+.disney-card1-priceSet-container{
   height: 4.5%;
   width: 100%;
   margin-top: 3%;
 }
 
-.disney-card1-addToCart-container {
+.disney-card1-addToCart-container{
+display: flex;
   height: 8.5%;
   width: 100%;
   margin-top: 3%;
 }
 
-.disney-footer {
+.disney-card1-addToCart-innerContainer{
+display: flex;
+flex-direction: row;
+}
+
+.disney-btn-addToCart{
+background-color: var(--cart-orange-button);
+border:none;
+min-width: 180px;
+border-radius: 40px;
+}
+
+.disney-btn-addToCart:hover{
+background-color: #bb5a10;
+}
+
+.disney-bagIcon-container{
+display: flex;
+height: 20px;
+width: 20px;
+justify-self: center;
+align-self: center;
+}
+
+.disney-bag-icon{
+width: 100%;
+height: 100%;
+}
+
+.disney-btn-addToCart-text{
+margin-left: 10px;
+color: black;
+font-size: 1.1rem;
+}
+
+.disney-footer{
   width: 100%;
   height: 500px;
   margin-top: 3vh;
   background-color: #201d48;
 }
+
+
+
+/* @media @media (max-width: 429px){
+
+} */
+
+
 /* C A R T  W E B P A G E  -  E M P T Y  */
 
 .cart-empty-content {
