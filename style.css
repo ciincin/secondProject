@@ -271,20 +271,28 @@ footer {
 }
 
 .main-bar .sub-nav {
-  width: 50em;
+  width: 40em;
   height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
   background-color: #fff;
-  z-index: 2;
-  display: none;
+  z-index: 5;
 }
 
 .main-bar .sub-nav ul {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.main-bar .sub-nav button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 30px;
 }
 
 /* B A N N E R */
