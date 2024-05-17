@@ -35,7 +35,7 @@
           <div>
             <p>
               Rebajas para miembros de LEGO&#169; Insiders del 30/4 al 5/5&#42;
-              <a href="">Saber más</a>
+              <a href="#">Saber más</a>
             </p>
           </div>
           <!-- <div>
@@ -103,6 +103,60 @@
           <li><a href=""><span>Día <i>Star Wars</i>&trade;</span></a></li>
         </ul>
       </div>
+      <div class="sub-nav"> 
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+          </svg>
+        </button>
+        <ul>
+          <li>
+            <summary>Sets por tema</summary>
+          </li>
+          <li>
+            <summary>Edades</summary>
+          </li>
+          <li>
+            <summary>Rangos por precios</summary>
+          </li>
+          <li>
+            <summary>Artículos LEGO</summary>
+          </li>
+          <li>
+            <summary>Intereses</summary>
+          </li>
+          <li>
+            <summary>Pick and Build</summary>
+          </li>
+          <li>
+            <a href="#">Exclusivos</a>
+          </li>
+          <li>
+            <a href="#">Novedades</a>
+          </li>
+          <li>
+            <a href="#">Los más vendidos</a>
+          </li>
+          <li>
+            <a href="#">Decoración del hogar</a>
+          </li>
+          <li>
+            <a href="#">Ofertas y rebajas</a>
+          </li>
+          <li>
+            <a href="#">Tarjetas regalos</a>
+          </li>
+          <li>
+            <a href="#">Próximamente</a>
+          </li>
+          <li>
+            <a href="#">Encuentra la inspiración</a>
+          </li>
+          <li>
+            <a href="#">Última oportunidad para comprar</a>
+          </li>
+        </ul>
+      </div>
       <div>
         <button class="search-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -111,6 +165,7 @@
               d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
           </svg>
         </button>
+        <input type="text" class="search-bar" placeholder="Buscar...">
         <button class="favourite-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
             viewBox="0 0 16 16">
@@ -424,11 +479,12 @@
       </ul>
     </div>
 
+    <!-- C A R R O U S E L -->
     <section class="carrousel">
-      <div class="carrousel-title">What others are buying</div>
+      <div class="carrousel-title">Compras de otros clientes</div>
       <div class="carrousel-container">
         <div class="previous-button">
-          <button>
+          <button id="scroll-left-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
@@ -861,7 +917,7 @@
           </div>
         </div>
         <div class="next-button">
-          <button>
+          <button id="scroll-right-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
@@ -1258,6 +1314,7 @@
                       class="Imagestyles__Img-sc-1qqdbhr-0 dRCknD" />
                   </picture>
                 </div>
+
                 <div class="main-descubre-card2-text">
                   <h3>
                     <span>Cómo fue que construimos una mesa de DUNGEONS &amp;
