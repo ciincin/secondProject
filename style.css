@@ -12,6 +12,10 @@
   --cart-blue-paypal: #0070ba;
   --cart-blue-pay: #253b80;
   --cart-blue-pal: #179bd7;
+  /* MAIN */
+  --main-black-button: #0009;
+  --main-blue-background: #021C47;
+  --main-white-font: rgb(255, 255, 255);
 }
 
 * {
@@ -297,48 +301,138 @@ footer {
 }
 
 /* B A N N E R */
-.main-banner-content {
-  color: white;
-  display: block;
-  background-color: transparent;
-  position: absolute;
-  top: 10%;
+.main-banner-container{
+  display: flex;
+  width: 100vw;
+}
+.main-banner-img{
+  width: 100vw;
+  
 }
 
-.main-banner-buttons a {
+.main-banner-img img{
+  width: 100%;
+}
+
+
+.main-banner-content{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: transparent;
+  position: absolute;
+  right: 5%;
+  top: 30%;
+  width: 34%;
+}
+
+.main-banner-container a{
+  width: 100vw;
+}
+
+.main-banner-text1{
+  font-size: 2.5rem;
+  line-height: 3.125rem;
+}
+
+.main-banner-text2{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.main-banner-buttons a{
   border: 1px solid white;
   border-radius: 4px;
   background-color: white;
   color: black;
-  padding: 0.625rem 1.125rem;
+  padding: 0.625rem 1.125rem;  
+  align-content: center;
 }
 
-/*mini images */
 
-.main-mini-images-container ul {
+/*mini images */
+.main-mini-images-container{
+  background-color: var(--main-blue-background);
+  padding: 1.25rem;
+}
+.main-mini-images-container ul{
   display: flex;
   justify-content: space-between;
   list-style: none;
   align-items: center;
-  margin-inline: 5vw;
+  margin-inline: 10vw;
+  color: var(--main-white-font);
 }
 
 .main-mini-images-container div {
-  text-align: center;
+   text-align: center;
+   letter-spacing: .01em;
+   font-size: .75rem;
+   line-height: 1.62;
+   padding-top: .75rem;
 }
 
 /* S E L E C C I O N E S D E E S T A S E M A N A */
-.main-seleccionesDeEstaSemana-cards-container {
-  display: flex;
+.main-seleccionesDeEstaSemana-cards{
+  padding: 2.5rem;
 }
 
-.main-seleccionesDeEstaSemana-cards-container a {
-  text-decoration: none;
-  color: unset;
+.main-seleccionesDeEstaSemana-containerTitle{
+  margin-bottom: 1.25rem;
+}
+
+.main-seleccionesDeEstaSemana-cards-container{
+   display: flex;
+   justify-content: center;
+}
+
+.main-seleccionesDeEstaSemana-card1,
+.main-seleccionesDeEstaSemana-card2,
+.main-seleccionesDeEstaSemana-card3{
+  width: 40%; 
+}
+
+.main-seleccionesDeEstaSemana-card1,
+.main-seleccionesDeEstaSemana-card2{
+  margin-right: 1.25rem;
+}
+
+.main-seleccionesDeEstaSemana-cards-container a{
+   text-decoration: none;
+   color: unset;
 }
 
 .main-seleccionesDeEstaSemana-cards-container img {
-  width: 25vw;
+   width: 30vw;
+}
+
+.main-seleccionesDeEstaSemana-cards-container h3, p{
+  margin-bottom: 0.9375rem;
+}
+
+.main-seleccionesDeEstaSemana-cards-container h3{
+  font-size: 1.25rem;
+  line-height: 1.9375rem;
+}
+
+.main-seleccionesDeEstaSemana-cards-container p{
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+}
+
+.main-seleccionesDeEstaSemana-card1-text,
+.main-seleccionesDeEstaSemana-card2-text,
+.main-seleccionesDeEstaSemana-card3-text div{
+  font-size: 1rem;
+  line-height: 1.5625rem;
+}
+
+.main-seleccionesDeEstaSemana-card1-text,
+.main-seleccionesDeEstaSemana-card2-text,
+.main-seleccionesDeEstaSemana-card3-text{
+  padding-top: 1.25rem;
+  text-align: center;
 }
 
 
@@ -534,15 +628,22 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 
 /* I M A G E S */
 
-.main-encuentra-container {
-  height: 10vw;
+.main-encuentra-container{
   display: flex;
   justify-content: center;
 }
 
-.main-encuentra-text {
-  width: 50vw;
+.main-encuentra-text{
+  width: 50rem;
   text-align: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.main-encuentra-text div{
+  padding: .75rem .75rem;
+  letter-spacing: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .main-images-container,
@@ -551,7 +652,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   list-style: none;
 }
 
-.main-images img {
+.main-images img{
   width: 20vw;
   padding: 0.625rem;
 }
@@ -562,52 +663,51 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 .main-images-button {
-  border: 1px solid #0009;
+  border: 1px solid var(--main-black-button);
   border-radius: 25px;
   display: flex;
-  background-color: #0009;
+  background-color: var(--main-black-button);
 }
 
 .main-images-button a {
   padding: 0.5em;
   color: white;
 }
-
 /* d e s t a c a m o s */
 
-.main-destacamos-cards-container {
+.main-destacamos-cards-container{
   display: flex;
   flex-wrap: wrap;
 }
 
-.main-destacamos-card1 {
+.main-destacamos-card1{
   display: flex;
   flex-direction: column;
 }
 
-.main-destacamos-card1-text {
+.main-destacamos-card1-text{
   position: absolute;
   left: 5%;
   text-align: center;
 }
 
-.main-destacamos-card1-button {
+.main-destacamos-card1-button{
   display: flex;
   justify-content: center;
 }
 
-.main-destacamos-card2n3 {
+.main-destacamos-card2n3{
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.main-destacamos-card2-container {
+.main-destacamos-card2-container{ 
   display: flex;
   flex-direction: row-reverse;
 }
 
-.main-destacamos-card3-container {
+.main-destacamos-card3-container{
   display: flex;
   flex-direction: row;
 }
@@ -615,11 +715,11 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 
 /* d e s c u b r e */
 
-.main-descubre-cards {
+.main-descubre-cards{
   display: flex;
 }
 
-.main-descubre-cards img {
+.main-descubre-cards img{
   width: 20vw;
 }
 
