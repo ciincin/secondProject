@@ -19,12 +19,12 @@
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  font-family: sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: sans-serif;
 }
 
 a:visited {
@@ -40,7 +40,7 @@ footer {
   background-color: var(--footer-blue);
 }
 
-/* H E A D ER */
+  /* H E A D ER */
 .utility-bar {
   height: 55px;
   padding: 0 30px;
@@ -97,10 +97,6 @@ footer {
 .utility-bar .container>div {
   display: flex;
 }
-.utility-bar .container>div  a{
-  margin-left: 0.75rem;
-  color: #005ad2;
-}
 
 .utility-bar .container>div div {
   width: 100%;
@@ -152,7 +148,6 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   background-color: var(--header-yellow);
 }
 
@@ -172,7 +167,6 @@ footer {
 }
 
 .main-bar ul li button {
-  position: relative;
   color: #000000;
   font-size: 1em;
   border: none;
@@ -180,20 +174,6 @@ footer {
   background: transparent;
   cursor: pointer;
   transform: scale(1, .9);
-}
-
-.main-bar ul li button::before {
-  content: "";
-  background: #000;
-  width: 0%;
-  height: 3px;
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-}
-
-.main-bar ul li button:hover::before {
-  width: 100%;
 }
 
 .main-bar ul li a {
@@ -230,23 +210,6 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-}
-
-.main-bar input {
-  display: none;
-}
-
-.main-bar .search-bar {
-  width: 200px;
-  padding: 5px;
-  margin-left: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.main-bar .search-bar.active {
-  display: inline-block;
 }
 
 .main-bar .favourite-icon {
@@ -272,32 +235,6 @@ footer {
   height: 20px;
   width: 16px;
   margin-right: 5px;
-}
-
-.main-bar .sub-nav {
-  width: 40em;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  z-index: 5;
-  display: none;
-}
-
-.main-bar .sub-nav ul {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.main-bar .sub-nav button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 30px;
 }
 
 /* B A N N E R */
@@ -337,7 +274,7 @@ footer {
   line-height: 1.75rem;
 }
 
-.main-banner-buttons a {
+.main-banner-buttons a{
   border: 1px solid white;
   border-radius: 4px;
   background-color: white;
@@ -394,9 +331,9 @@ footer {
   margin-right: 1.25rem;
 }
 
-.main-seleccionesDeEstaSemana-cards-container a {
-  text-decoration: none;
-  color: unset;
+.main-seleccionesDeEstaSemana-cards-container a{
+   text-decoration: none;
+   color: unset;
 }
 
 .main-seleccionesDeEstaSemana-cards-container img {
@@ -432,203 +369,9 @@ footer {
 }
 
 
-.main-seleccionesDeEstaSemana-card1-text,
-.main-seleccionesDeEstaSemana-card2-text,
-.main-seleccionesDeEstaSemana-card3-text{
-  padding-top: 1.25rem;
-  text-align: center;
-}
 
 
-
-
-/* C A R R U S E L */
-
-main .carrousel {
-  margin: 70px 0;
-}
-
-main .carrousel-title {
-  padding: 10px 84px;
-  font-size: 1.5rem;
-}
-
-main .carrousel-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-main .carrousel-container .previous-button button,
-main .carrousel-container .next-button button {
-  margin: 0 0.5rem 0 0.9375rem;
-  padding: 5px;
-  background-color: #fff;
-  border: 1px solid rgb(192, 192, 192);
-  border-radius: 60%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 250ms ease-in-out;
-}
-
-main .carrousel-container .previous-button button:hover,
-main .carrousel-container .next-button button:hover {
-  background-color: #e0e0e0;
-}
-
-main .carrousel-container .previous-button svg,
-main .carrousel-container .next-button svg {
-  position: relative;
-  width: 25px;
-  height: 25px;
-}
-
-main .carrousel-container .previous-button svg {
-  left: -2px;
-}
-
-main .carrousel-container .next-button svg {
-  right: -2px;
-}
-
-main .carrousel-container .carrousel-wrapper {
-  padding-bottom: 45px;
-  display: inline-flex;
-  gap: 35px;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-}
-
-main .carrousel-container .carrousel-wrapper div:first-child {
-  font-size: 1.5em;
-  letter-spacing: 1.5px;
-}
-
-main .carrousel-container .carrousel-object {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-main .carrousel-container .carrousel-object div:first-child {
-  position: relative;
-}
-
-main .carrousel-container .carrousel-object .image-card {
-  width: 325.75px;
-  height: 325.75px;
-  padding: 15px;
-  border: 0.1px solid rgb(224, 224, 224);
-  text-align: center;
-}
-
-main .carrousel-container .carrousel-object .image-card a {
-  width: 100%;
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-main .carrousel-container .carrousel-object .image-card img {
-  width: 245px;
-  height: auto;
-  transition: transform 600ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-main .carrousel-container .carrousel-object .image-card img:hover {
-  transform: scale(1.1);
-}
-
-main .carrousel-container .carrousel-object .image-card button {
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  border: none;
-  border-radius: 15px;
-  background: #f8f8f8;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-main .carrousel-container .carrousel-object .image-card div:nth-child(3) {
-  width: 50px;
-  height: 26px;
-  background-color: #ffd502;
-  font-size: 0.75rem;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main .carrousel-container .carrousel-object>div:first-child div:nth-child(2) {
-  height: 60px;
-  padding-top: 0.3125rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.9px;
-}
-
-main .carrousel-container .carrousel-object>div:nth-child(2) {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  bottom: 0;
-}
-
-main .carrousel-container .carrousel-object .star-review {
-  margin-bottom: 5px;
-  display: flex;
-}
-
-main .carrousel-container .carrousel-object .star-review img {
-  width: 15px;
-  height: 15px;
-}
-
-main .carrousel-container .carrousel-object .price {
-  font-family: sans-serif;
-  font-size: 1.1rem !important;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-main .carrousel-container .carrousel-object .shop-button {
-  width: 325px;
-  height: 58px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main .carrousel-container .carrousel-object .shop-button button {
-  width: 100%;
-  height: 100%;
-  background: var(--cart-orange-button);
-  border: 2px solid var(--cart-orange-button);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-main .carrousel-container .carrousel-object .shop-button button:hover {
-  background-color: transparent;
-}
-
+/* mid */
 
 
 /* I M A G E S */
@@ -639,7 +382,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 .main-encuentra-text{
-  width: 50vw;
+  width: 50rem;
   text-align: center;
   padding: 2.5rem 1.25rem;
 }
@@ -657,7 +400,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   list-style: none;
 }
 
-.main-images img {
+.main-images img{
   width: 20vw;
   padding: 0.625rem;
 }
@@ -678,42 +421,41 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   padding: 0.5em;
   color: white;
 }
-
 /* d e s t a c a m o s */
 
-.main-destacamos-cards-container {
+.main-destacamos-cards-container{
   display: flex;
   flex-wrap: wrap;
 }
 
-.main-destacamos-card1 {
+.main-destacamos-card1{
   display: flex;
   flex-direction: column;
 }
 
-.main-destacamos-card1-text {
+.main-destacamos-card1-text{
   position: absolute;
   left: 5%;
   text-align: center;
 }
 
-.main-destacamos-card1-button {
+.main-destacamos-card1-button{
   display: flex;
   justify-content: center;
 }
 
-.main-destacamos-card2n3 {
+.main-destacamos-card2n3{
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.main-destacamos-card2-container {
+.main-destacamos-card2-container{ 
   display: flex;
   flex-direction: row-reverse;
 }
 
-.main-destacamos-card3-container {
+.main-destacamos-card3-container{
   display: flex;
   flex-direction: row;
 }
@@ -721,11 +463,11 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 
 /* d e s c u b r e */
 
-.main-descubre-cards {
+.main-descubre-cards{
   display: flex;
 }
 
-.main-descubre-cards img {
+.main-descubre-cards img{
   width: 20vw;
 }
 
@@ -788,7 +530,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   justify-items: start;
 }
 
-.wrapper .links div:nth-child(2)>div {
+.wrapper .links div:nth-child(2) > div {
   height: fit-content;
   width: 235px;
   margin-right: 20px;
@@ -796,7 +538,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   flex-wrap: wrap;
 }
 
-.wrapper .links div:nth-child(2)>div>ul {
+.wrapper .links div:nth-child(2) > div > ul {
   line-height: 1.5625rem;
   align-items: center;
 }
@@ -844,35 +586,35 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   margin-right: 20px;
 }
 
-.wrapper .media>div:first-child {
+.wrapper .media > div:first-child {
   display: flex;
   flex-direction: column;
 }
 
 
-.wrapper .media>div:first-child>div {
+.wrapper .media > div:first-child > div {
   height: 55px;
   display: flex;
   align-items: center;
 }
 
-.wrapper .media>div:first-child>div>div {
+.wrapper .media > div:first-child > div > div {
   position: relative;
 }
 
-.wrapper .media>div:first-child>div label {
+.wrapper .media > div:first-child > div label {
   display: block;
   height: 100%;
 }
 
-.wrapper .media>div:first-child>div input {
+.wrapper .media > div:first-child > div input {
   height: 3.45rem;
   padding: 1.125rem 1.25rem 0px;
   border: none;
   border-radius: 0;
 }
 
-.wrapper .media>div:first-child button {
+.wrapper .media > div:first-child button {
   height: 100%;
   width: auto;
   padding: 0 15px;
@@ -882,7 +624,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   z-index: 2;
 }
 
-.wrapper .media>div:first-child div span {
+.wrapper .media > div:first-child div span {
   display: block;
   color: rgb(117, 117, 117);
   font-size: 0.75em;
@@ -895,7 +637,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 
-.wrapper .media>div:nth-child(2) {
+.wrapper .media > div:nth-child(2) {
   display: flex;
   flex-direction: column;
 }
@@ -920,218 +662,214 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   margin-bottom: 20px;
 }
 
-body {
-  width: 100%;
-  margin: 0;
-  font-size: 1.1em;
+body{
+    width: 100%;
+    margin: 0;
+    font-size: 1.1em;
 }
 
 /* S E T  D E  D I S N E Y */
 
-.disney-hr {
-  background-color: black;
-  height: 1px;
-  width: 100%;
+.disney-hr{
+    background-color: black;
+    height: 1px;
+    width: 100%;
 }
 
-.disney-nav {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 150px;
+.disney-nav{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 150px;
 }
 
-.disney-nav1 {
-  width: 100%;
-  height: 40%;
-  background-color: #f8f8f8;
-  text-align: center;
+.disney-nav1{
+    width: 100%;
+    height: 40%;
+    background-color: #f8f8f8;
+    text-align: center;
 }
 
-.disney-nav2 {
-  width: 100%;
-  height: 60%;
-  background-color: rgb(255, 215, 0);
-  text-align: center;
+.disney-nav2{
+    width: 100%;
+    height: 60%;
+    background-color: rgb(255, 215, 0);
+    text-align: center;
 }
 
-.disney-selection {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 50px;
-  background-color: #ffffff;
-  align-items: center;
-  gap: 15px;
-}
-
-
-.disney-selection {
-  margin-left: 40px;
-}
-
-.disney-selection p {
-  margin: 0;
-  padding: 0;
-}
-
-.disney-selection a {
-  text-decoration: none;
-  color: #2f5f86;
-}
-
-.disney-banner {
-  display: flex;
-  height: 90px;
-  margin: 0 auto;
-  max-width: 1600px;
-  background-image: url(https://www.lego.com/cdn/cs/set/assets/blt1d9c86b632cb8019/Desktop.png?fit=crop&format=png&width=1600&height=90&dpr=1);
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-.disney-banner button {
-  height: 40px;
-  width: 100px;
-  background-color: #565a5d;
-  border-radius: 40px;
-  border: none;
-  color: #ffffff;
-}
-
-.disney-banner .transparent-btn {
-  background-color: rgba(255, 255, 255, 0);
-  border: 3px solid grey;
-  color: black;
-}
-
-.set-description p,
-h3 {
-  margin: 0;
-  padding: 0;
+.disney-selection{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    align-items: center;
+    gap: 15px;
 }
 
 
-.set-description {
-  display: flex;
-  height: auto;
-  margin: 20px auto 60px auto;
-  max-width: 1540px;
-  width: 95%;
-  padding: 20px;
-  /* gap: 20px; */
-  flex-direction: column;
-  background-color: #f2f2f2;
+.disney-selection{
+    margin-left: 40px;
 }
 
-.set-description-title {
-  margin-top: 10px;
-  margin-bottom: 20px;
+.disney-selection p{
+    margin: 0;
+    padding: 0;
 }
 
-.disney-set-layout {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  max-width: 1540px;
-  max-height: 1800px;
-  width: 95%;
-  height: 120.8vw;
-  /* utilizo vw para hacerlo responsive al ancho de pantalla aprox 1650px */
-  /* gap: 2vw; */
+.disney-selection a{
+    text-decoration: none;
+    color: #2f5f86;
 }
 
-.disney-set-filter {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  min-width: 220px;
-  width: 20%;
-  gap: 1rem;
+.disney-banner{
+    display: flex;
+    height: 90px;
+    margin: 0 auto;
+    max-width: 1600px;
+    background-image: url(https://www.lego.com/cdn/cs/set/assets/blt1d9c86b632cb8019/Desktop.png?fit=crop&format=png&width=1600&height=90&dpr=1);
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
-.form-check-input {
-  width: 23px;
-  height: 23px;
-  border-radius: 0;
+.disney-banner button{
+    height: 40px;
+    width: 100px;
+    background-color: #565a5d;
+    border-radius: 40px;
+    border: none;
+    color:#ffffff;
 }
 
-.form-check-input::before {
-  content: "";
+.disney-banner .transparent-btn{
+    background-color: rgba(255, 255, 255, 0);
+    border: 3px solid grey;
+    color: black;
 }
 
-.form-check-input:checked {
-  background-color: transparent;
-  /* content: url(https://img.icons8.com/forma-bold-filled/24/checkmark.png); */
-  content: url(https://img.icons8.com/puffy-filled/32/checkmark.png)
+.set-description p, h3{
+    margin: 0;
+    padding:0;
+}
+
+
+.set-description{
+    display: flex;
+    height: auto;
+    margin: 20px auto 60px auto;
+    max-width: 1540px;
+    width: 95%;
+    padding: 20px;
+    /* gap: 20px; */
+    flex-direction: column;
+    background-color: #f2f2f2;
+}
+
+.set-description-title{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.disney-set-layout{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: 1540px;
+    max-height: 1800px;
+    width: 95%;
+    height: 120.8vw; /* utilizo vw para hacerlo responsive al ancho de pantalla aprox 1650px */
+    /* gap: 2vw; */
+}
+
+.disney-set-filter{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-width: 220px;
+    width: 20%;
+    gap: 1rem;
+}
+
+.form-check-input{
+    width: 23px;
+    height: 23px;
+    border-radius: 0;
+}
+.form-check-input::before{
+    content: "";
+}
+
+.form-check-input:checked{
+    background-color: transparent;
+    /* content: url(https://img.icons8.com/forma-bold-filled/24/checkmark.png); */
+    content: url(https://img.icons8.com/puffy-filled/32/checkmark.png)
     /* content: url(https://img.icons8.com/material-two-tone/24/checkmark--v2.png); */
 }
 
-.disney-set-card-layout {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  /* hay que hacer responsive en su altura */
-  margin-left: 20px;
-  height: 100%;
-  width: 100%;
+.disney-set-card-layout{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); /* hay que hacer responsive en su altura */
+    margin-left: 20px;
+    height: 100%;
+    width: 100%;
 }
 
-.disney-card1 {
-  height: 100%;
-  width: 100%;
-  padding: 2%;
-  border: 1px solid black;
+.disney-card1{
+    height: 100%;
+    width: 100%;
+    padding: 2%;
+    border: 1px solid black;
 }
 
-.disney-card1-likeButton-banner {
-  height: 6%;
-  width: 100%;
+.disney-card1-likeButton-banner{
+    height: 6%;
+    width: 100%;
 }
 
-.disney-card1-imageSet-container {
-  height: 60%;
-  width: 100%;
+.disney-card1-imageSet-container{
+    height: 60%;
+    width: 100%;
 }
 
-.disney-card1-imageSet {
-  height: 100%;
-  width: 100%;
-  padding: 0 1.7%;
+.disney-card1-imageSet{
+    height: 100%;
+    width: 100%;
+    padding: 0 1.7%;
 }
 
-.disney-card1-infoSet-container {
-  height: 4%;
-  width: 100%;
-  margin-top: 3%;
+.disney-card1-infoSet-container{
+    height: 4%;
+    width: 100%;
+    margin-top: 3%;
 }
 
-.disney-card1-titleSet-container {
-  height: 9%;
-  width: 100%;
-  margin-top: 3%;
+.disney-card1-titleSet-container{
+    height: 9%;
+    width: 100%;
+    margin-top: 3%;
 }
 
-.disney-card1-priceSet-container {
-  height: 4.5%;
-  width: 100%;
-  margin-top: 3%;
+.disney-card1-priceSet-container{
+    height: 4.5%;
+    width: 100%;
+    margin-top: 3%;
 }
 
-.disney-card1-addToCart-container {
-  height: 8.5%;
-  width: 100%;
-  margin-top: 3%;
+.disney-card1-addToCart-container{
+    height: 8.5%;
+    width: 100%;
+    margin-top: 3%;
 }
 
-.disney-footer {
-  width: 100%;
-  height: 500px;
-  margin-top: 3vh;
-  background-color: #201d48;
+.disney-footer{
+    width: 100%;
+    height: 500px;
+    margin-top: 3vh;
+    background-color: #201d48;
 }
-
+ 
 
 
 /* @media @media (max-width: 429px){
@@ -1451,14 +1189,14 @@ h3 {
   margin-left: 0.5rem;
 }
 
-.rotate-down {
-  display: inline-block;
+.rotate-down{
+  display:inline-block;
   transition: transform 0.1s linear;
-  transform: rotate(90deg);
+  transform: rotate(90deg); 
 }
 
-.rotate-up {
-  display: inline-block;
+.rotate-up{
+  display:inline-block;
   transition: transform 0.1s linear;
   transform: rotate(270deg);
 }
