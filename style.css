@@ -1,17 +1,21 @@
 :root {
-
-  --header-yellow: #ffd502;
-  --footer-blue: #201d48;
-  /* CART */
-  --cart-grey-backgroung: #f8f8f8;
-  --cart-blue-empty: #005ad2;
-  --cart-blue-empty-hovered: #0045b7;
-  --cart-green-now-available: #007133;
-  --cart-grey-divider: rgb(224, 224, 224);
-  --cart-orange-button: #e96f14;
-  --cart-blue-paypal: #0070ba;
-  --cart-blue-pay: #253b80;
-  --cart-blue-pal: #179bd7;
+    
+    --header-yellow: #ffd502;
+    --footer-blue: #201d48;
+    /* CART */
+    --cart-grey-backgroung: #f8f8f8;
+    --cart-blue-empty: #005ad2;
+    --cart-blue-empty-hovered: #0045b7;
+    --cart-green-now-available: #007133;
+    --cart-grey-divider: rgb(224, 224, 224);
+    --cart-orange-button: #e96f14;
+    --cart-blue-paypal: #0070ba;
+    --cart-blue-pay: #253b80;
+    --cart-blue-pal: #179bd7;
+    /* MAIN */
+    --main-black-button: #0009;
+    --main-blue-background: #021C47;
+    --main-white-font: rgb(255, 255, 255);
 }
 
 * {
@@ -297,12 +301,40 @@ footer {
 }
 
 /* B A N N E R */
-.main-banner-content {
+.main-banner-container{
+  display: flex;
+  text-align: right;
+  width: 100vw;
+}
+.main-banner-img{
+  width: 100vw;
+}
+
+
+.main-banner-content{
   color: white;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   background-color: transparent;
   position: absolute;
-  top: 10%;
+  right: 5%;
+  top: 30%;
+  width: 34%;
+}
+
+.main-banner-container a{
+  width: 100vw;
+}
+
+.main-banner-text1{
+  font-size: 2.5rem;
+  line-height: 3.125rem;
+}
+
+.main-banner-text2{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .main-banner-buttons a {
@@ -310,26 +342,56 @@ footer {
   border-radius: 4px;
   background-color: white;
   color: black;
-  padding: 0.625rem 1.125rem;
+  padding: 0.625rem 1.125rem;  
+  align-content: center;
 }
 
-/*mini images */
 
-.main-mini-images-container ul {
+/*mini images */
+.main-mini-images-container{
+  background-color: var(--main-blue-background);
+  padding: 1.25rem;
+}
+.main-mini-images-container ul{
   display: flex;
   justify-content: space-between;
   list-style: none;
   align-items: center;
-  margin-inline: 5vw;
+  margin-inline: 10vw;
+  color: var(--main-white-font);
 }
 
 .main-mini-images-container div {
-  text-align: center;
+   text-align: center;
+   letter-spacing: .01em;
+   font-size: .75rem;
+   line-height: 1.62;
+   padding-top: .75rem;
 }
 
 /* S E L E C C I O N E S D E E S T A S E M A N A */
-.main-seleccionesDeEstaSemana-cards-container {
-  display: flex;
+.main-seleccionesDeEstaSemana-cards{
+  padding: 2.5rem;
+}
+
+.main-seleccionesDeEstaSemana-containerTitle{
+  margin-bottom: 1.25rem;
+}
+
+.main-seleccionesDeEstaSemana-cards-container{
+   display: flex;
+   justify-content: center;
+}
+
+.main-seleccionesDeEstaSemana-card1,
+.main-seleccionesDeEstaSemana-card2,
+.main-seleccionesDeEstaSemana-card3{
+  width: 40%; 
+}
+
+.main-seleccionesDeEstaSemana-card1,
+.main-seleccionesDeEstaSemana-card2{
+  margin-right: 1.25rem;
 }
 
 .main-seleccionesDeEstaSemana-cards-container a {
@@ -338,8 +400,45 @@ footer {
 }
 
 .main-seleccionesDeEstaSemana-cards-container img {
-  width: 25vw;
+   width: 30vw;
 }
+
+.main-seleccionesDeEstaSemana-cards-container h3, p{
+  margin-bottom: 0.9375rem;
+}
+
+.main-seleccionesDeEstaSemana-cards-container h3{
+  font-size: 1.25rem;
+  line-height: 1.9375rem;
+}
+
+.main-seleccionesDeEstaSemana-cards-container p{
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+}
+
+.main-seleccionesDeEstaSemana-card1-text,
+.main-seleccionesDeEstaSemana-card2-text,
+.main-seleccionesDeEstaSemana-card3-text div{
+  font-size: 1rem;
+  line-height: 1.5625rem;
+}
+
+.main-seleccionesDeEstaSemana-card1-text,
+.main-seleccionesDeEstaSemana-card2-text,
+.main-seleccionesDeEstaSemana-card3-text{
+  padding-top: 1.25rem;
+  text-align: center;
+}
+
+
+.main-seleccionesDeEstaSemana-card1-text,
+.main-seleccionesDeEstaSemana-card2-text,
+.main-seleccionesDeEstaSemana-card3-text{
+  padding-top: 1.25rem;
+  text-align: center;
+}
+
 
 
 
@@ -534,15 +633,22 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 
 /* I M A G E S */
 
-.main-encuentra-container {
-  height: 10vw;
+.main-encuentra-container{
   display: flex;
   justify-content: center;
 }
 
-.main-encuentra-text {
+.main-encuentra-text{
   width: 50vw;
   text-align: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.main-encuentra-text div{
+  padding: .75rem .75rem;
+  letter-spacing: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .main-images-container,
@@ -562,10 +668,10 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 .main-images-button {
-  border: 1px solid #0009;
+  border: 1px solid var(--main-black-button);
   border-radius: 25px;
   display: flex;
-  background-color: #0009;
+  background-color: var(--main-black-button);
 }
 
 .main-images-button a {
