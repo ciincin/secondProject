@@ -278,6 +278,7 @@ footer {
   left: 0;
   background-color: #fff;
   z-index: 5;
+  display: none;
 }
 
 .main-bar .sub-nav ul {
