@@ -1,79 +1,101 @@
-let cartList = [
+const cartList = [
   {
-    id: 0,
+    id: 1,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña600x450.webp",
     title: "Cabaña de Blancanieves y los Siete Enanitos",
+    shortTitle: "Blancanieves",
     price: 219.99,
     amount: 1,
     emptyHeart: true,
   },
   {
-    id: 1,
+    id: 2,
     image: "assets/disney-sets/castilloDisney/disney417x600.webp",
     title: "Castillo Disney",
+    shortTitle: "Disney",
     price: 399.99,
-    amount: 1,
+    amount: 3,
     emptyHeart: true,
   },
   {
-    id: 2,
+    id: 3,
     image: "assets/disney-sets/frozen/frozen600x450.webp",
     title: "Palacio de Hielo de Elsa",
+    shortTitle: "Elsa",
     price: 99.99,
     amount: 1,
     emptyHeart: true,
   },
   {
-    id: 3,
+    id: 4,
     image: "assets/disney-sets/insideOut/insideOut600x400.webp",
     title: "Inside Out 2 Mood Cubes",
+    shortTitle: "InsideOut",
     price: 34.99,
     amount: 1,
     emptyHeart: true,
   },
   {
-    id: 4,
+    id: 5,
     image: "assets/disney-sets/reyLeon/reyLeon600x450.webp",
     title: "El Rey León: Simba Cachorro",
+    shortTitle: "Simba",
     price: 19.99,
     amount: 1,
     emptyHeart: true,
   },
   {
-    id: 5,
+    id: 6,
     image: "assets/disney-sets/sirenita/sirenita600x450.webp",
     title: "Mini Castillo de Disney Ariel",
+    shortTitle: "Sirenita",
     price: 39.99,
     amount: 1,
     emptyHeart: true,
   },
   {
-    id: 6,
+    id: 7,
     image: "assets/disney-sets/stitch/stitch600x450.webp",
     title: "Stitch",
+    shortTitle: "Stitch",
     price: 64.99,
     amount: 1,
     emptyHeart: true,
   },
   {
-    id: 7,
+    id: 8,
     image: "assets/disney-sets/up/up600x450.webp",
     title: "Casa de Up",
+    shortTitle: "Up",
     price: 54.99,
     amount: 1,
     emptyHeart: true,
   },
   {
-    id: 8,
+    id: 9,
     image: "assets/disney-sets/wall-e/wall-e600x450.webp",
     title: "EVA y WALL•E",
+    shortTitle: "WALLE",
     price: 14.99,
     amount: 1,
     emptyHeart: true,
   },
 ];
 
+// cartList.forEach((item) => {
+//   localStorage.setItem(
+//     `item ${item.id}`,
+//     JSON.stringify({
+//       id: item.id,
+//       shortTitle: item.shortTitle,
+//       amount: item.amount,
+//     })
+//   );
+// });
 
+// let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
+
+// let cartArrayObject = JSON.parse(jsonCart);
 
 // C A R T
 
@@ -160,6 +182,7 @@ const iconArrow = document.getElementById("cart-icon");
 const promoBox = document.getElementById("cart-promo-open");
 
 let promoBoxIsClosed = true;
+
 btnPromo.addEventListener("click", () => {
   promoBox.classList.toggle("cart-display-none");
 
@@ -172,31 +195,95 @@ btnPromo.addEventListener("click", () => {
   }
 });
 
+//Esto es una prueba para añadir los articulos al carrito
+
+// function addProductToLocalStorage(productID) {
+//   let accumulator = 0;
+//   btnPromo.addEventListener("click", () => {
+//     accumulator++;
+
+//     localStorage.setItem(
+//       `index: ${productID}`,
+//       JSON.stringify({
+//         id: cartList[productID].id,
+//         shortTitle: cartList[productID].shortTitle,
+//         amount: accumulator,
+//       })
+//     );
+//   });
+// }
+
+function addProductToLocalStorage(productID) {
+  let accumulator = 0;
+  btnPromo.addEventListener("click", () => {
+    accumulator++;
+
+    localStorage.setItem(
+      `index: ${productID}`,
+      JSON.stringify({
+        id: cartList[productID].id,
+        shortTitle: cartList[productID].shortTitle,
+        amount: accumulator,
+      })
+    );
+
+    localStorage.setItem(
+      `index: 0`,
+      JSON.stringify({
+        id: cartList[0].id,
+        shortTitle: cartList[0].shortTitle,
+        amount: 12,
+      })
+    );
+  });
+}
+
+addProductToLocalStorage(0);
+addProductToLocalStorage(2);
+addProductToLocalStorage(3);
+addProductToLocalStorage(4);
+// addProductToLocalStorage(0);
+
+function getProductToLocalStorage() {
+  let cartArray = [];
+
+  for (let i = 0; i < cartList.length; i++) {
+    let jsonItem = localStorage.getItem(`index: ${i}`);
+
+    if (jsonItem !== null) {
+      jsonItem = localStorage.getItem(`index: ${i}`);
+
+      let itemObj = JSON.parse(jsonItem);
+
+      cartArray.push(itemObj);
+    }
+  }
+
+  return cartArray;
+}
+getProductToLocalStorage();
+
 // Add new items to cart
 
-
-
-localStorage.setItem("cart", JSON.stringify(cartList));
-
-function modifiedTemplate(id) {
+function modifiedTemplate(id, title, image, price, amount) {
   let templateItem = `
   <div class="cart-article-fex">
   <div class="cart-img-container">
     <img
-      alt="Cabaña de Blancanieves y los Siete Enanitos"
-      src="assets/disney-sets/cabañaBlancanieves/cabaña600x450.webp"
+      alt=${title}
+      src= ${image}
     />
   </div>
 
   <div class="cart-information-container">
     <div class="cart-name">
-      <h3><a href="#">Cabaña de Blancanieves y los Siete Enanitos</a></h3>
+      <h3><a href="#">${title}</a></h3>
     </div>
 
     <div class="cart-margin"></div>
 
     <div class="cart-price-add">
-      <div class="cart-price">219.99 €</div>
+      <div class="cart-price">${price} €</div>
 
       <div class="cart-add-more">
         <div class="cart-add-more-content">
@@ -211,7 +298,7 @@ function modifiedTemplate(id) {
           <div class="cart-number-articles">
             <input
               type="text"
-              value="1"
+              value="${amount}"
               min="1"
               id="cart-input-${id}"
             />
@@ -254,14 +341,48 @@ function modifiedTemplate(id) {
 }
 
 let cartContainer = document.getElementById("cart-container");
+// let amountAux = getProductToLocalStorage();
+
+// for (let i = 0; i < cartList.length; i++) {
+//   console.log(amountAux);
+//   cartContainer.innerHTML += modifiedTemplate(
+//     cartList[i].id,
+//     cartList[i].title,
+//     cartList[i].image,
+//     cartList[i].price,
+//     2
+//   );
+// }
+
+
+//!Preguntar a Santiago
 
 cartList.forEach((item) => {
-  cartContainer.innerHTML += modifiedTemplate(item.id);
+  cartContainer.innerHTML += modifiedTemplate(
+    item.id,
+    item.title,
+    item.image,
+    item.price,
+    getProductToLocalStorage()[(item.id)].amount,
+  );
+
 });
 
 //sum the total price of the cart
 
-let totalPrice = document.getElementById("cart-sum-total-price");
+let subtotal = document.getElementById("cart-sum-total-price");
+let totalPrice = document.getElementById("cart-total-price");
+let iva = document.getElementById("cart-IVA");
+let paypal = document.getElementById("paypal-3-payments");
 
-const suma = cartList.reduce((acc, item) => acc + item.price, 0);
-totalPrice.textContent = `${suma.toFixed(2)} €`;
+const sumSubtotal = cartList.reduce((acc, item) => acc + item.price, 0);
+subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
+
+const sumTotalPrice = cartList.reduce((acc, item) => acc + item.price, 0);
+totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
+
+const ivaTotal = sumSubtotal * 0.21;
+iva.textContent = `${ivaTotal.toFixed(2)} €`;
+
+const paypalPayments = sumSubtotal / 3;
+paypal.textContent = `${paypalPayments.toFixed(2)} €`;

@@ -12,6 +12,7 @@
     --cart-blue-paypal: #0070ba;
     --cart-blue-pay: #253b80;
     --cart-blue-pal: #179bd7;
+    --cart-light-blue-delivery: #e5f2ff;
 }
 
 * {
@@ -872,11 +873,9 @@ body{
 }
 
 .cart-article-container {
-  margin-bottom: 1.875rem;
   padding: 0px 1.25rem;
   display: flex;
   flex-direction: column;
-
 }
 
 .cart-article-fex {
@@ -1058,6 +1057,32 @@ body{
   flex-basis: calc(35% - 1.25rem);
   width: 100%;
 }
+
+.cart-delivery-container{
+  
+  text-align: center;  
+  background-color: var(--cart-light-blue-delivery);
+  padding: 1rem;
+}
+.cart-delivery-text{
+  font-weight: 600;
+}
+
+ /* PREGUNTAR SANTIAGO */
+
+ 
+.cart-delivery-white-space{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:1rem;
+  
+}
+
+.cart-progress-inline-block {
+  display: inline-block;
+}
+
 
 .cart-right-first {
   background-color: white;
@@ -1302,7 +1327,14 @@ body{
 @media only screen and (max-width: 1260px){
   .cart-my-bag-content {
    display: block;
+
   }
+
+  .cart-divisor{
+    background-color: var(--cart-grey-backgroung);
+    height: 1.5rem;
+  }
+  
   .cart-payment-methods img {
     width: 7%;
     height: 7%;
@@ -1310,6 +1342,8 @@ body{
   
   }
   
+ 
+
  }
 
  @media only screen and (max-width: 900px){
