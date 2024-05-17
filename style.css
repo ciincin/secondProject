@@ -12,6 +12,7 @@
   --cart-blue-paypal: #0070ba;
   --cart-blue-pay: #253b80;
   --cart-blue-pal: #179bd7;
+  --cart-light-blue-delivery: #e5f2ff;
   /* MAIN */
   --main-black-button: #0009;
   --main-blue-background: #021C47;
@@ -1125,13 +1126,6 @@ h3 {
   margin-top: 3vh;
   background-color: #201d48;
 }
-
-
-
-/* @media @media (max-width: 429px){
-
-} */
-
 /* C A R T  W E B P A G E  -  E M P T Y  */
 
 .cart-empty-content {
@@ -1227,16 +1221,20 @@ h3 {
 }
 
 .cart-article-container {
-  margin-bottom: 1.875rem;
   padding: 0px 1.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-article-fex {
   display: flex;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--cart-grey-divider);
 }
 
 .cart-img-container {
-  width: 20%;
+  width: 30%;
   height: auto;
   margin-right: 3rem;
   cursor: pointer;
@@ -1248,7 +1246,7 @@ h3 {
 }
 
 .cart-information-container {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1389,7 +1387,6 @@ h3 {
   background-color: var(--cart-grey-divider);
 }
 
-
 .cart-wish-list-text {
   font-weight: 600;
 }
@@ -1402,9 +1399,31 @@ h3 {
 }
 
 .cart-right-space {
-
   flex-basis: calc(35% - 1.25rem);
   width: 100%;
+}
+
+.cart-delivery-container {
+  text-align: center;
+  background-color: var(--cart-light-blue-delivery);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.cart-delivery-text {
+  font-weight: 600;
+}
+
+/* PREGUNTAR SANTIAGO */
+
+.cart-delivery-white-space {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cart-progress-inline-block {
+  display: inline-block;
 }
 
 .cart-right-first {
@@ -1437,7 +1456,6 @@ h3 {
 .cart-h3-flex {
   font-size: 0.875rem;
   font-weight: 600;
-
 }
 
 .cart-h3-flex i {
@@ -1466,13 +1484,11 @@ h3 {
   display: none;
 }
 
-
 .cart-promo-open div button {
   background-color: var(--cart-grey-divider);
   color: inherit;
   border: none;
   font-weight: 600;
-
 }
 
 .cart-total-payment {
@@ -1485,7 +1501,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--cart-green-now-available)
+  color: var(--cart-green-now-available);
 }
 
 .cart-green-check {
@@ -1527,7 +1543,6 @@ h3 {
   text-decoration: none;
   color: black;
   font-size: 1.25rem;
-
 }
 
 .cart-fast-shopping {
@@ -1641,5 +1656,78 @@ h3 {
 .cart-payment-methods img {
   width: 12%;
   height: 12%;
-
 }
+
+.cart-edit-button {
+  display: none;
+}
+
+
+/* M E D I A  Q U E R I E S  */
+
+@media only screen and (max-width: 1260px) {
+  /* C A R T */
+  .cart-my-bag-content {
+    display: block;
+  }
+
+  .cart-divisor {
+    background-color: var(--cart-grey-backgroung);
+    height: 1.5rem;
+  }
+
+  .cart-payment-methods img {
+    width: 7%;
+    height: 7%;
+    gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+
+  /* C A R T */
+  .cart-my-bag-content {
+    display: block;
+  }
+
+  .cart-img-container {
+    width: 15%;
+    height: auto;
+    margin-right: 3rem;
+    cursor: pointer;
+  }
+
+  .cart-payment-methods img {
+    width: 7%;
+    height: 7%;
+    gap: 1rem;
+  }
+
+  .cart-wish-list {
+    width: auto;
+  }
+  .cart-wish-list-text {
+    display: none;
+  }
+
+  .cart-trash {
+    height: 1rem;
+    
+  }
+
+  .cart-edit-button {
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    background-color: white;
+    color: var(--cart-blue-empty);
+    border: none;
+    font-size: 0.8rem;
+    
+  }
+}
+
+
+
+
+
