@@ -784,9 +784,45 @@ body{
 }
 
 .disney-card1-addToCart-container{
+  display: flex;
     height: 8.5%;
     width: 100%;
     margin-top: 3%;
+}
+
+.disney-card1-addToCart-innerContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.disney-btn-addToCart{
+  background-color: var(--cart-orange-button);
+  border:none;
+  min-width: 180px;
+  border-radius: 40px;
+}
+
+.disney-btn-addToCart:hover{
+  background-color: #bb5a10;
+}
+
+.disney-bagIcon-container{
+  display: flex;
+  height: 20px;
+  width: 20px;
+  justify-self: center;
+  align-self: center;
+}
+
+.disney-bag-icon{
+  width: 100%;
+  height: 100%;
+}
+
+.disney-btn-addToCart-text{
+  margin-left: 10px;
+  color: black;
+  font-size: 1.1rem;
 }
 
 .disney-footer{
