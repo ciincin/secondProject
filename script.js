@@ -91,10 +91,36 @@ let cartList = [
   },
 ];
 
-// D I S N E Y  S E T S //
-const disneyLayout = document.getElementById("disney-set-layout")
+// la constante fullUrl almacena el valor de la referencia del .html
+const fullUrl = window.location.href;
 
-function disneySetsTemplate(title, image, price, age, pieces){
+// Event listener que activa el forEach del objeto cartList dependiendo del href del html
+window.addEventListener("DOMContentLoaded", () => {
+  fullUrl === "http://127.0.0.1:5500/disney.html"
+    ? cartList.forEach((item) => {
+        disneyLayout.innerHTML += disneySetsTemplate(
+          item.title,
+          item.image,
+          item.price,
+          item.minAge,
+          item.pieces
+        );
+      })
+    : cartList.forEach((item) => {
+        cartContainer.innerHTML += modifiedTemplate(
+          item.id,
+          item.title,
+          item.image,
+          item.price,
+          getProductToLocalStorage()[item.id].amount
+        );
+      });
+});
+
+// D I S N E Y  S E T S //
+const disneyLayout = document.getElementById("disney-set-layout");
+
+function disneySetsTemplate(title, image, price, age, pieces) {
   let disneyTemplateItem = `
   <div class="disney-card1">
                 <div class="disney-card1-likeButton-banner"></div>
@@ -134,23 +160,8 @@ function disneySetsTemplate(title, image, price, age, pieces){
                     </button>
                 </div>
             </div>`;
-            return disneyTemplateItem;
+  return disneyTemplateItem;
 }
-
-
-//! Este for each reescribe el de cart, hay que hacer un eventlistener/function 
-
-cartList.forEach(item => {
-  disneyLayout.innerHTML += disneySetsTemplate(
-    item.title,
-    item.image,
-    item.price,
-    item.minAge,
-    item.pieces
-  )
-})
-
-
 
 // C A R T
 
@@ -168,7 +179,6 @@ cartList.forEach(item => {
 // let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
 
 // let cartArrayObject = JSON.parse(jsonCart);
-
 
 // add/remove the same article
 let amountItem = 1;
@@ -430,20 +440,6 @@ let cartContainer = document.getElementById("cart-container");
 //     2
 //   );
 // }
-
-
-//!Preguntar a Santiago
-
-cartList.forEach((item) => {
-  cartContainer.innerHTML += modifiedTemplate(
-    item.id,
-    item.title,
-    item.image,
-    item.price,
-    getProductToLocalStorage()[(item.id)].amount,
-  );
-
-});
 
 //sum the total price of the cart
 
