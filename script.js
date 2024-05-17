@@ -316,32 +316,32 @@ function modifiedTemplate(id, title, image, price, amount) {
     </div>
   </div>
 
-  
-    <article class="cart-wish-list">
-      <div class="cart-wish-list-container">
-        <div class="cart-heart-button-container" >
-          <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(this.id)">
-            <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
-          </button>
+
+      <article class="cart-wish-list">
+        <div class="cart-wish-list-container">
+          <div class="cart-heart-button-container" >
+            <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(this.id)">
+              <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
+            </button>
+          </div>
+
+          <div class="cart-wish-list-text" id="add-wish-list-${id}">
+            Añadir a la lista de deseos
+          </div>
         </div>
+      </article>
 
-        <div class="cart-wish-list-text" id="add-wish-list-${id}">
-          Añadir a la lista de deseos
-        </div>
-      </div>
-    </article>
+      <div class="cart-trash">
+        <button class="cart-trash-button">
+          <i class="bi bi-trash3"></i>
+        </button>
 
-    <div class="cart-trash">
-      <button class="cart-trash-button">
-        <i class="bi bi-trash3"></i>
-      </button>
-
-      <button class="cart-edit-button">
-        <span class="cart-text-edit">(Editar)</span>
-      </button>
+        <button class="cart-edit-button">
+          <span class="cart-text-edit">(Editar)</span>
+        </button>
     </div>
-  </div>
   
+  </div>
   `;
   return templateItem;
 }

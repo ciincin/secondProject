@@ -1305,9 +1305,11 @@ h3 {
   display: none;
 }
 
+
 /* M E D I A  Q U E R I E S  */
 
 @media only screen and (max-width: 1260px) {
+  /* C A R T */
   .cart-my-bag-content {
     display: block;
   }
@@ -1325,6 +1327,8 @@ h3 {
 }
 
 @media only screen and (max-width: 900px) {
+
+  /* C A R T */
   .cart-my-bag-content {
     display: block;
   }
@@ -1350,19 +1354,20 @@ h3 {
   }
 
   .cart-trash {
-    height: 200px;
-    position: relative;
-    right: 0;
+    height: 1rem;
     
   }
 
   .cart-edit-button {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
     background-color: white;
     color: var(--cart-blue-empty);
     border: none;
     font-size: 0.8rem;
+    
   }
 }
 
-/* C A R T */
+
