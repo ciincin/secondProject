@@ -1,10 +1,9 @@
-let cartList = [
+let cartListPrueba = [
   {
     id: 0,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg",
     title: "Cabaña de Blancanieves y los Siete Enanitos",
     price: 219.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 18,
     pieces: 2228,
@@ -14,7 +13,6 @@ let cartList = [
     image: "assets/disney-sets/cars/cars-600x450.jpg",
     title: "Diversión en el Autolavado con Rayo McQueen y Mate",
     price: 34.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 2,
     pieces: 29,
@@ -24,7 +22,6 @@ let cartList = [
     image: "assets/disney-sets/frozen/frozen-600x450.jpg",
     title: "Palacio de Hielo de Elsa",
     price: 99.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 6,
     pieces: 630,
@@ -34,7 +31,6 @@ let cartList = [
     image: "assets/disney-sets/insideOut/insideOut-600x400.jpg",
     title: "Inside Out 2 Mood Cubes",
     price: 34.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 9,
     pieces: 394,
@@ -44,7 +40,6 @@ let cartList = [
     image: "assets/disney-sets/reyLeon/reyLeon-600x450.jpg",
     title: "El Rey León: Simba Cachorro",
     price: 19.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 6,
     pieces: 222,
@@ -54,7 +49,6 @@ let cartList = [
     image: "assets/disney-sets/sirenita/sirenita-600x450.jpg",
     title: "Mini Castillo de Disney Ariel",
     price: 39.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 12,
     pieces: 557,
@@ -64,7 +58,6 @@ let cartList = [
     image: "assets/disney-sets/stitch/stitch-600x450.jpg",
     title: "Stitch",
     price: 64.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 9,
     pieces: 730,
@@ -74,7 +67,6 @@ let cartList = [
     image: "assets/disney-sets/up/up-600x450.jpg",
     title: "Casa de Up",
     price: 54.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 9,
     pieces: 598,
@@ -84,23 +76,25 @@ let cartList = [
     image: "assets/disney-sets/wall-e/walle-600x450.jpg",
     title: "EVA y WALL•E",
     price: 14.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 10,
     pieces: 155,
   },
 ];
 
-let shoppingCart = [
-  {
-    id: 8,
-    amount: 1,
-  },
-  {
-    id: 5,
-    amount: 2,
-  }
-];
+
+//Para las pruebas de codigo
+
+// let shoppingCart = [
+//   {
+//     id: 8,
+//     amount: 1,
+//   },
+//   {
+//     id: 5,
+//     amount: 2,
+//   }
+// ];
 
 
 // la constante fullUrl almacena el valor de la referencia del .html
@@ -109,7 +103,7 @@ const fullUrl = window.location.href;
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   fullUrl === "http://127.0.0.1:5500/disney.html"
-    ? cartList.forEach((item) => {
+    ? cartListPrueba.forEach((item) => {
         disneyLayout.innerHTML += disneySetsTemplate(
           item.title,
           item.image,
@@ -200,7 +194,7 @@ function decrease(id) {
 function decreaseAmount(idOfTheObj) {
   let amount = 1;
 
-  cartList.forEach((obj) => {
+  cartListPrueba.forEach((obj) => {
     if (obj.id == idOfTheObj) {
       if (obj.amount > 1) {
         obj.amount--;
@@ -223,7 +217,7 @@ function increase(id) {
 
 function increaseAmountObj(idOfTheObj) {
   let amount;
-  cartList.forEach((obj) => {
+  cartListPrueba.forEach((obj) => {
     if (obj.id == idOfTheObj) {
       obj.amount++;
       amount = obj.amount;
@@ -242,7 +236,7 @@ function addToTheWishList(idOfTheObj) {
   const heart = document.getElementById(`cart-icon-heart-${ourIdInNumber}`);
   const wishList = document.getElementById(`add-wish-list-${ourIdInNumber}`);
 
-  cartList.forEach((obj) => {
+  cartListPrueba.forEach((obj) => {
     if (obj.id == ourIdInNumber) {
       if (obj.emptyHeart) {
         // fill the heart
@@ -293,7 +287,7 @@ function addProductToLocalStorage(productID) {
     localStorage.setItem(
       `index: ${productID}`,
       JSON.stringify({
-        id: cartList[(productID-1)].id,
+        id: cartListPrueba[(productID-1)].id,
         amount: accumulator,
       })
     );
@@ -321,7 +315,7 @@ function addProductToLocalStorage(productID) {
 function getProductToLocalStorage() {
   let cartArray = [];
 
-  for (let i = 0; i < cartList.length; i++) {
+  for (let i = 0; i < cartListPrueba.length; i++) {
     let jsonItem = localStorage.getItem(`index: ${i}`);
 
     if (jsonItem !== null) {
@@ -342,7 +336,7 @@ function findProduct(cartArray){
   const productsInCart = [];
   cartArray.forEach((shoppingProduct) => {
     console.log("shopping product", shoppingProduct);
-    cartList.forEach(item => {
+    cartListPrueba.forEach(item => {
       if (shoppingProduct.id === item.id){
       console.log("product found in catalog", shoppingProduct.id);
         productsInCart.push({...item, amount:shoppingProduct.amount})
@@ -447,10 +441,10 @@ let totalPrice = document.getElementById("cart-total-price");
 let iva = document.getElementById("cart-IVA");
 let paypal = document.getElementById("paypal-3-payments");
 
-const sumSubtotal = cartList.reduce((acc, item) => acc + item.price, 0);
+const sumSubtotal = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
 subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
 
-const sumTotalPrice = cartList.reduce((acc, item) => acc + item.price, 0);
+const sumTotalPrice = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
 totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
 
 const ivaTotal = sumSubtotal * 0.21;
