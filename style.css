@@ -440,24 +440,24 @@ footer {
 
 /* C A R R U S E L */
 
-main .carrousel {
+ .carrousel {
   margin: 70px 0;
 }
 
-main .carrousel-title {
+ .carrousel-title {
   padding: 10px 84px;
   font-size: 1.5rem;
 }
 
-main .carrousel-container {
+ .carrousel-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-main .carrousel-container .previous-button button,
-main .carrousel-container .next-button button {
+ .carrousel-container .previous-button button,
+ .carrousel-container .next-button button {
   margin: 0 0.5rem 0 0.9375rem;
   padding: 5px;
   background-color: #fff;
@@ -470,27 +470,27 @@ main .carrousel-container .next-button button {
   transition: background-color 250ms ease-in-out;
 }
 
-main .carrousel-container .previous-button button:hover,
-main .carrousel-container .next-button button:hover {
+ .carrousel-container .previous-button button:hover,
+ .carrousel-container .next-button button:hover {
   background-color: #e0e0e0;
 }
 
-main .carrousel-container .previous-button svg,
-main .carrousel-container .next-button svg {
+ .carrousel-container .previous-button svg,
+ .carrousel-container .next-button svg {
   position: relative;
   width: 25px;
   height: 25px;
 }
 
-main .carrousel-container .previous-button svg {
+ .carrousel-container .previous-button svg {
   left: -2px;
 }
 
-main .carrousel-container .next-button svg {
+ .carrousel-container .next-button svg {
   right: -2px;
 }
 
-main .carrousel-container .carrousel-wrapper {
+ .carrousel-container .carrousel-wrapper {
   padding-bottom: 45px;
   display: inline-flex;
   gap: 35px;
@@ -498,23 +498,23 @@ main .carrousel-container .carrousel-wrapper {
   scroll-behavior: smooth;
 }
 
-main .carrousel-container .carrousel-wrapper div:first-child {
+ .carrousel-container .carrousel-wrapper div:first-child {
   font-size: 1.5em;
   letter-spacing: 1.5px;
 }
 
-main .carrousel-container .carrousel-object {
+ .carrousel-container .carrousel-object {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-main .carrousel-container .carrousel-object div:first-child {
+ .carrousel-container .carrousel-object div:first-child {
   position: relative;
 }
 
-main .carrousel-container .carrousel-object .image-card {
+ .carrousel-container .carrousel-object .image-card {
   width: 325.75px;
   height: 325.75px;
   padding: 15px;
@@ -522,7 +522,7 @@ main .carrousel-container .carrousel-object .image-card {
   text-align: center;
 }
 
-main .carrousel-container .carrousel-object .image-card a {
+ .carrousel-container .carrousel-object .image-card a {
   width: 100%;
   height: 100%;
   display: inline-flex;
@@ -530,17 +530,17 @@ main .carrousel-container .carrousel-object .image-card a {
   justify-content: center;
 }
 
-main .carrousel-container .carrousel-object .image-card img {
+ .carrousel-container .carrousel-object .image-card img {
   width: 245px;
   height: auto;
   transition: transform 600ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-main .carrousel-container .carrousel-object .image-card img:hover {
+ .carrousel-container .carrousel-object .image-card img:hover {
   transform: scale(1.1);
 }
 
-main .carrousel-container .carrousel-object .image-card button {
+ .carrousel-container .carrousel-object .image-card button {
   width: 30px;
   height: 30px;
   padding: 5px;
@@ -556,7 +556,7 @@ main .carrousel-container .carrousel-object .image-card button {
   justify-content: center;
 }
 
-main .carrousel-container .carrousel-object .image-card div:nth-child(3) {
+ .carrousel-container .carrousel-object .image-card div:nth-child(3) {
   width: 50px;
   height: 26px;
   background-color: #ffd502;
@@ -569,7 +569,7 @@ main .carrousel-container .carrousel-object .image-card div:nth-child(3) {
   align-items: center;
 }
 
-main .carrousel-container .carrousel-object>div:first-child div:nth-child(2) {
+ .carrousel-container .carrousel-object>div:first-child div:nth-child(2) {
   height: 60px;
   padding-top: 0.3125rem;
   font-size: 0.9rem;
@@ -577,7 +577,7 @@ main .carrousel-container .carrousel-object>div:first-child div:nth-child(2) {
   letter-spacing: 0.9px;
 }
 
-main .carrousel-container .carrousel-object>div:nth-child(2) {
+ .carrousel-container .carrousel-object>div:nth-child(2) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -585,24 +585,24 @@ main .carrousel-container .carrousel-object>div:nth-child(2) {
   bottom: 0;
 }
 
-main .carrousel-container .carrousel-object .star-review {
+ .carrousel-container .carrousel-object .star-review {
   margin-bottom: 5px;
   display: flex;
 }
 
-main .carrousel-container .carrousel-object .star-review img {
+ .carrousel-container .carrousel-object .star-review img {
   width: 15px;
   height: 15px;
 }
 
-main .carrousel-container .carrousel-object .price {
+ .carrousel-container .carrousel-object .price {
   font-family: sans-serif;
   font-size: 1.1rem !important;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
-main .carrousel-container .carrousel-object .shop-button {
+ .carrousel-container .carrousel-object .shop-button {
   width: 325px;
   height: 58px;
   border-radius: 4px;
@@ -611,7 +611,7 @@ main .carrousel-container .carrousel-object .shop-button {
   align-items: center;
 }
 
-main .carrousel-container .carrousel-object .shop-button button {
+ .carrousel-container .carrousel-object .shop-button button {
   width: 100%;
   height: 100%;
   background: var(--cart-orange-button);
@@ -621,7 +621,7 @@ main .carrousel-container .carrousel-object .shop-button button {
   font-size: 1rem;
 }
 
-main .carrousel-container .carrousel-object .shop-button button:hover {
+ .carrousel-container .carrousel-object .shop-button button:hover {
   background-color: transparent;
 }
 

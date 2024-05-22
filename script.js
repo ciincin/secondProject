@@ -1,6 +1,6 @@
 let cartListPrueba = [
   {
-    id: 0,
+    id: 1,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg",
     title: "Cabaña de Blancanieves y los Siete Enanitos",
     price: 219.99,
@@ -9,7 +9,7 @@ let cartListPrueba = [
     pieces: 2228,
   },
   {
-    id: 1,
+    id: 2,
     image: "assets/disney-sets/cars/cars-600x450.jpg",
     title: "Diversión en el Autolavado con Rayo McQueen y Mate",
     price: 34.99,
@@ -18,7 +18,7 @@ let cartListPrueba = [
     pieces: 29,
   },
   {
-    id: 2,
+    id: 3,
     image: "assets/disney-sets/frozen/frozen-600x450.jpg",
     title: "Palacio de Hielo de Elsa",
     price: 99.99,
@@ -27,7 +27,7 @@ let cartListPrueba = [
     pieces: 630,
   },
   {
-    id: 3,
+    id: 4,
     image: "assets/disney-sets/insideOut/insideOut-600x400.jpg",
     title: "Inside Out 2 Mood Cubes",
     price: 34.99,
@@ -36,7 +36,7 @@ let cartListPrueba = [
     pieces: 394,
   },
   {
-    id: 4,
+    id: 5,
     image: "assets/disney-sets/reyLeon/reyLeon-600x450.jpg",
     title: "El Rey León: Simba Cachorro",
     price: 19.99,
@@ -45,7 +45,7 @@ let cartListPrueba = [
     pieces: 222,
   },
   {
-    id: 5,
+    id: 6,
     image: "assets/disney-sets/sirenita/sirenita-600x450.jpg",
     title: "Mini Castillo de Disney Ariel",
     price: 39.99,
@@ -54,7 +54,7 @@ let cartListPrueba = [
     pieces: 557,
   },
   {
-    id: 6,
+    id: 7,
     image: "assets/disney-sets/stitch/stitch-600x450.jpg",
     title: "Stitch",
     price: 64.99,
@@ -63,7 +63,7 @@ let cartListPrueba = [
     pieces: 730,
   },
   {
-    id: 7,
+    id: 8,
     image: "assets/disney-sets/up/up-600x450.jpg",
     title: "Casa de Up",
     price: 54.99,
@@ -72,7 +72,7 @@ let cartListPrueba = [
     pieces: 598,
   },
   {
-    id: 8,
+    id: 9,
     image: "assets/disney-sets/wall-e/walle-600x450.jpg",
     title: "EVA y WALL•E",
     price: 14.99,
@@ -81,7 +81,6 @@ let cartListPrueba = [
     pieces: 155,
   },
 ];
-
 
 //Para las pruebas de codigo
 
@@ -95,7 +94,6 @@ let cartListPrueba = [
 //     amount: 2,
 //   }
 // ];
-
 
 // la constante fullUrl almacena el valor de la referencia del .html
 const fullUrl = window.location.href;
@@ -121,6 +119,10 @@ window.addEventListener("DOMContentLoaded", () => {
           item.amount
         );
       });
+  // shoppingCartEmpty() Esto funciona, solo hay que inicializarlo
+  increaseAmount(1);
+  increaseAmount(2);
+  increaseAmount(3);
 });
 
 // D I S N E Y  S E T S //
@@ -175,55 +177,79 @@ function disneySetsTemplate(title, image, price, age, pieces) {
 // let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
 // let cartArrayObject = JSON.parse(jsonCart);
 
-
 //contenedor donde se le agregan los productos del carrito de compra
 const cartContainer = document.getElementById("cart-container");
 
 // add/remove the same article
-let amountItem = 1;
+// let amountItem = 1;
 
-function decrease(id) {
-  let ourId = id.split("-")[2];
+// function decrease(id) {
+//   let ourId = id.split("-")[2];
 
-  let ourIdInNumber = Number(ourId);
+//   let ourIdInNumber = Number(ourId);
 
-  let input = document.getElementById(`cart-input-${ourIdInNumber}`);
-  input.value = decreaseAmount(ourIdInNumber);
-}
+//   let input = document.getElementById(`cart-input-${ourIdInNumber}`);
+//   input.value = decreaseAmount(ourIdInNumber);
+// }
 
-function decreaseAmount(idOfTheObj) {
-  let amount = 1;
+// function decreaseAmount(idOfTheObj) {
+//   let amount = 1;
 
-  cartListPrueba.forEach((obj) => {
-    if (obj.id == idOfTheObj) {
-      if (obj.amount > 1) {
-        obj.amount--;
-        amount = obj.amount;
-      }
-    }
+//   cartListPrueba.forEach((obj) => {
+//     if (obj.id == idOfTheObj) {
+//       if (obj.amount > 1) {
+//         obj.amount--;
+//         amount = obj.amount;
+//       }
+//     }
+//   });
+
+//   return amount;
+// }
+
+// function increase(id) {
+//   let ourId = id.split("-")[2];
+
+//   let ourIdInNumber = Number(ourId);
+
+//   let input = document.getElementById(`cart-input-${ourIdInNumber}`);
+//   input.value = increaseAmountObj(ourIdInNumber);
+// }
+
+// function increaseAmountObj(idOfTheObj) {
+//   let amount;
+//   cartListPrueba.forEach((obj) => {
+//     if (obj.id == idOfTheObj) {
+//       obj.amount++;
+//       amount = obj.amount;
+//     }
+//   });
+//   return amount;
+// }
+
+function increaseAmount(productID) {
+  const addBtn = document.getElementById(`button-increase-${productID}`);
+
+  addBtn.addEventListener("click", () => {
+    const selectedString = localStorage.getItem(`index: ${productID - 1}`);
+    const selectedObj = JSON.parse(selectedString);
+    let accumulator=selectedObj.amount;
+   
+    accumulator++
+    // console.log(accumulator);
+    localStorage.setItem(
+      `index: ${productID-1}`,
+      JSON.stringify({
+        id: cartListPrueba[productID-1].id,
+        amount: accumulator,
+      })
+    );
+
+    // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
+
+    location.href=location.href
+   
   });
-
-  return amount;
-}
-
-function increase(id) {
-  let ourId = id.split("-")[2];
-
-  let ourIdInNumber = Number(ourId);
-
-  let input = document.getElementById(`cart-input-${ourIdInNumber}`);
-  input.value = increaseAmountObj(ourIdInNumber);
-}
-
-function increaseAmountObj(idOfTheObj) {
-  let amount;
-  cartListPrueba.forEach((obj) => {
-    if (obj.id == idOfTheObj) {
-      obj.amount++;
-      amount = obj.amount;
-    }
-  });
-  return amount;
 }
 
 //heart button
@@ -280,14 +306,21 @@ btnPromo.addEventListener("click", () => {
 // función que será inicializada a través de la propiedad "onclick" del tag <button>
 // cada botón tendrá el "id" del objeto "catalogo"
 function addProductToLocalStorage(productID) {
-  let accumulator = 0;
   btnPromo.addEventListener("click", () => {
+    let accumulator = 0;
+
+    const storedProduct = JSON.parse(
+      localStorage.getItem(`index: ${productID-1}`)
+    );
+    if (storedProduct) {
+      accumulator = storedProduct.amount;
+    }
     accumulator++;
 
     localStorage.setItem(
-      `index: ${productID}`,
+      `index: ${productID-1}`,
       JSON.stringify({
-        id: cartListPrueba[(productID-1)].id,
+        id: cartListPrueba[productID - 1].id,
         amount: accumulator,
       })
     );
@@ -301,17 +334,18 @@ function addProductToLocalStorage(productID) {
     //     amount: 12,
     //   })
     // );
+
+    location.href = location.href;
   });
 }
 
 // inicializamos la función para testear como funcionaría en los respectivos botones.
-  addProductToLocalStorage(2);
-  addProductToLocalStorage(3);
-  addProductToLocalStorage(4);
-  addProductToLocalStorage(1);
 
+addProductToLocalStorage(1);
+addProductToLocalStorage(2);
+addProductToLocalStorage(3);
 
-  //función que se encarga de recoger la información del "localstorage" y la devuelve dentro de una lista nueva
+//función que se encarga de recoger la información del "localstorage" y la devuelve dentro de una lista nueva
 function getProductToLocalStorage() {
   let cartArray = [];
 
@@ -330,25 +364,34 @@ function getProductToLocalStorage() {
   return cartArray;
 }
 
+function shoppingCartEmpty() {
+  const cartFullContainer = document.getElementById("cart-full-container");
+  const cartEmptyContainer = document.getElementById("cart-empty-cart");
+
+  if (getProductToLocalStorage().length == 0) {
+    cartFullContainer.classList.toggle("cart-display-none");
+  } else {
+    cartEmptyContainer.classList.toggle("cart-display-none");
+  }
+}
 
 // esta funcion se encarga de buscar del catalogo las cosas que esten en el get del localstorage
-function findProduct(cartArray){
+function findProduct(cartArray) {
   const productsInCart = [];
   cartArray.forEach((shoppingProduct) => {
-    console.log("shopping product", shoppingProduct);
-    cartListPrueba.forEach(item => {
-      if (shoppingProduct.id === item.id){
-      console.log("product found in catalog", shoppingProduct.id);
-        productsInCart.push({...item, amount:shoppingProduct.amount})
+    // console.log("shopping product", shoppingProduct);
+    cartListPrueba.forEach((item) => {
+      if (shoppingProduct.id === item.id) {
+        // console.log("product found in catalog", shoppingProduct.id);
+        productsInCart.push({ ...item, amount: shoppingProduct.amount });
       }
-    })
-  })
-  return productsInCart
+    });
+  });
+  return productsInCart;
 }
 
 //! haciendo uso de los callbacks podemos ya filtrar la lista del localstorage con nuestro catalogo
 // console.log(findProduct(getProductToLocalStorage()))
-
 
 // Add new items to cart
 
@@ -394,8 +437,8 @@ function modifiedTemplate(id, title, image, price, amount) {
           <button
             class="cart-add-article"
             id="button-increase-${id}"
-            onclick="increase(this.id)"
-          >
+             onclick="increase(this.id)"  >
+          
             <i class="bi bi-plus-lg"></i>
           </button>
         </div>
@@ -433,7 +476,6 @@ function modifiedTemplate(id, title, image, price, amount) {
   return templateItem;
 }
 
-
 //sum the total price of the cart
 
 let subtotal = document.getElementById("cart-sum-total-price");
@@ -452,3 +494,9 @@ iva.textContent = `${ivaTotal.toFixed(2)} €`;
 
 const paypalPayments = sumSubtotal / 3;
 paypal.textContent = `${paypalPayments.toFixed(2)} €`;
+
+// Función para eliminar articulos
+
+function deleteArticles(id) {
+  localStorage.removeItem(`index: ${id}`);
+}

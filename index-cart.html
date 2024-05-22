@@ -24,7 +24,7 @@
   </head>
   <body>
     <!-- C A R T  W E B P A G E  -  E M P T Y -->
-    <div class="cart-empty-content">
+    <div class="cart-empty-content" id="cart-empty-cart">
       <div class="cart-bag-icono"><i class="bi bi-bag"></i></div>
       <h1 class="cart-empty-text">Su bolsa está vacía</h1>
       <h2 class="cart-empty-ask-logging">
@@ -41,7 +41,7 @@
 
     <!-- C A R T  W E B P A G E  -->
 
-    <div class="cart-container">
+    <div class="cart-container" id="cart-full-container">
       <div class="cart-my-bag">
         <h1 class="cart-h1">Mi bolsa (1)</h1>
       </div>
@@ -229,11 +229,459 @@
       </div>
     </div>
 
+    <section class="carrousel">
+      <div class="carrousel-title">Compras de otros clientes</div>
+      <div class="carrousel-container">
+        <div class="previous-button">
+          <button id="scroll-left-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+            </svg>
+          </button>
+        </div>
+        <div class="carrousel-wrapper">
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-1_batman.png" alt="Gotham City™ de Batman: La Serie Animada">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Gotham City™ de Batman: La Serie Animada</a>
+              </div>
+            </div>
+            <div>
+              <div class="star-review">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-half-star.svg" alt="">
+              </div>
+              <div class="price">
+                299,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-2_dungeons-and-dragons.png" alt="Dungeons & Dragons: Aventura del Dragón Rojo">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Dungeons & Dragons: Aventura del Dragón Rojo</a>
+              </div>
+            </div>
+            <div>
+              <div class="star-review">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="">
+                <img src="assets/cards/review-half-star.svg" alt="">
+              </div>
+              <div class="price">
+                359,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-3_gru.png" alt="Modelo de Gru y los Minions">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Modelo de Gru y los Minions</a>
+              </div>
+            </div>
+            <div>            
+              <div class="price">
+                54,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-4_lab-space.png" alt="Laboratorio Científico Espacial">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Laboratorio Científico Espacial</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                39,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-5_botanic-almanac.jpg" alt="Botanical Almanac">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Botanical Almanac</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                17,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-6_midnight-crow.png" alt="Cuervo de Medianoche de la Bruja Jamás">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Cuervo de Medianoche de la Bruja Jamás</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                99,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-7_whitesnow.png" alt="Llavero de Blancanieves">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Dungeons & Dragons: Red Dragon's Tale</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                5,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-8_roses.png" alt="Ramo de Rosas">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Ramo de Rosas</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                59,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-9_peppa-pig.png" alt="Jardín y Casa del Árbol de Peppa Pig">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Jardín y Casa del Árbol de Peppa Pig</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                19,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-10_trex.png" alt="Dinosaurio Robot C-Rex de Cooper">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Dinosaurio Robot C-Rex de Cooper</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                79,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-11_minion-bus.png" alt="Bus de Fiesta Musical de los Minions">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Bus de Fiesta Musical de los Minions</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                39,99 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img src="assets/cards/card-12_bag.jpg" alt="Cartera de Minifiguras">
+                </a>
+                <div>
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  New
+                </div>
+              </div>
+              <div>
+                <a href="">Cartera de Minifiguras</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">
+                10,00 €
+              </div>
+              <div class="shop-button">
+                <button>
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="next-button">
+          <button id="scroll-right-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <script defer src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-  </body>
+   </body>
 </html>
