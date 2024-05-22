@@ -16,10 +16,14 @@
   /* MAIN */
   --main-black-button: #0009;
   --main-black-font:  rgb(0, 0, 0);
-  --main-blue-background: #021C47;
+  --main-blueDark-background: #021C47;
   --main-white-font: rgb(255, 255, 255);
   --main-purple-dark:  #18152d;
   --main-gray-background:  rgb(228, 229, 236);
+  --main-orange-background:  rgb(250, 153, 77);
+  --main-blue-background: #abd9ff;
+  --main-grayLight-background: #f2f2f2;
+  --main-blue-font: #006db7;
 }
 
 * {
@@ -369,7 +373,7 @@ footer {
 
 /*mini images */
 .main-mini-images-container{
-  background-color: var(--main-blue-background);
+  background-color: var(--main-blueDark-background);
   padding: 1.25rem;
 }
 .main-mini-images-container ul{
@@ -745,9 +749,15 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   margin-right: 1.25rem;
 }
 
+.main-destacamos-card1-container a{
+  display: flex;
+  height: 100%;
+}
+
 .main-destacamos-card1{
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .main-destacamos-card1-text{
@@ -790,7 +800,12 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 .main-destacamos-card2n3{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 47%;
+}
+
+.main-destacamos-card2{
+  margin-bottom: 1.25rem;
+  background-color: var(--main-orange-background);
 }
 
 .main-destacamos-card2-container{ 
@@ -798,16 +813,161 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   flex-direction: row-reverse;
 }
 
-.main-destacamos-card3-container{
-  display: flex;
-  flex-direction: row;
+.main-destacamos-card2-text{
+  width: 50%;
+  position: relative;
 }
 
+.main-destacamos-card2-textContent{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem;
+  color: var(--main-black-font);
+}
+
+.main-destacamos-card2-textContent h2{
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  line-height: 2.3125rem;
+}
+
+.main-destacamos-card2-textContent p{
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+  margin: 0px 0px 1.25rem;
+}
+
+.main-destacamos-card2-textContent svg{
+  display: flex;
+} 
+
+
+.main-destacamos-card2-button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main-destacamos-card2-button p{
+  line-height: 1.75rem;
+  margin: 0px 0.75rem 0px 0px;
+}
+
+.main-destacamos-card2-button svg{
+  line-height: 0;
+  height: 13px;
+  width: 8px;
+}
+
+.main-destacamos-card3 a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--main-blue-background);
+}
+
+.main-destacamos-card3-container{
+  display: flex;
+  padding-bottom: 0px;
+  flex-direction: row;
+  text-align: left;
+  overflow: hidden;  
+}
+
+.main-destacamos-card3-text{
+  height: auto;
+}
+
+.main-destacamos-card3-textContent{
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem;
+  color: var(--main-black-font);
+}
+
+.main-destacamos-card3-textContent h2{
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  line-height: 2.3125rem;
+}
+
+.main-destacamos-card3-textContent p{
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+  margin: 0px 0px 1.25rem;
+}
+
+.main-destacamos-card3-button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main-destacamos-card3-button p{
+  line-height: 1.75rem;
+  margin: 0px 0.75rem 0px 0px;
+  white-space: nowrap;
+}
+
+.main-destacamos-card3-button svg{
+  line-height: 0;
+  height: 13px;
+  width: 8px;
+}
 
 /* d e s c u b r e */
 
+.main-descubre-container{
+  width: 100%;
+  background-color: var(--main-gray-background);
+  color: var(--main-black-font);
+}
+
+.main-descubre-content{
+  max-width: 82.5rem;
+  margin: 0px auto;
+  padding: 2.5rem 1.25rem;
+}
+
+.main-descubre-title{
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.main-descubre-title h2{
+  font-size: 2rem;
+  line-height: 2.6875rem;
+}
+
 .main-descubre-cards{
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: var(--main-black-font);
+}
+
+.main-descubre-card1-container,
+.main-descubre-card2-container,
+.main-descubre-card3-container{
+  margin-right: 1.25rem;
+  width: 25%;
+  margin-bottom: 0px;
+}
+
+.main-descubre-card4-container{
+  margin-right: 0px;
+  width: 25%;
+  margin-bottom: 0px;
 }
 
 .main-descubre-cards img{
@@ -815,8 +975,98 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 
+.main-descubre-card1-text,
+.main-descubre-card2-text,
+.main-descubre-card3-text,
+.main-descubre-card4-text{
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.25rem;
+  align-items: center;
+}
+
+.main-descubre-card1-text h3,
+.main-descubre-card2-text h3,
+.main-descubre-card3-text h3,
+.main-descubre-card4-text h3{
+  font-size: 1.25rem;
+  line-height: 1.9375rem;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0.9375rem;
+}
+
+.main-descubre-card1-text p,
+.main-descubre-card2-text p,
+.main-descubre-card3-text p,
+.main-descubre-card4-text p{
+  margin-top: 0px;
+  margin-bottom: 0.9375rem;
+  width: 100%;
+  color: var(--main-black-font);
+  font-size: 0.875rem;
+  line-height: 1.1875rem;
+}
+
+.main-descubre-card1-button,
+.main-descubre-card2-button,
+.main-descubre-card3-button,
+.main-descubre-card4-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-descubre-card1-button span,
+.main-descubre-card2-button span,
+.main-descubre-card3-button span,
+.main-descubre-card4-button span{
+  font-size: 1rem;
+  line-height: 1.5625rem;
+  color: var(--main-black-font);    
+}
+
+.main-descubre-card1-button svg,
+.main-descubre-card2-button svg,
+.main-descubre-card3-button svg,
+.main-descubre-card4-button svg{
+  line-height: 0;
+  height: 12px;
+  width: 8px;
+  margin-left: 0.625rem;
+}
+
 /* p a r r a f o f i n a l */
 
+.main-parrafo-container{
+  background-color: var(--main-white-font);
+  margin: 0px auto;
+  padding: 2.5rem 1.25rem;
+}
+
+.main-parrafo-text{
+  padding: 1.25rem 1rem;
+  background-color: var(--main-grayLight-background);
+}
+
+.main-parrafo-text p{
+  letter-spacing: 0;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.main-parrafo-text a{
+  color: var(--main-blue-font);
+}
+
+.main-parrafo-text button{
+  display: block;
+  border-collapse: collapse;
+  color: var(--main-blue-font);
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
 
 /* F O O T E R */
 .wrapper h3 {
