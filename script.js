@@ -158,58 +158,105 @@ function disneySetsTemplate(title, image, price, age, pieces) {
 
 // C A R T
 
-// let jsonCart =localStorage.setItem("cart", JSON.stringify(CartListPrueba)); // guarda todo el carrito
+// let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
 // let cartArrayObject = JSON.parse(jsonCart);
-
 
 //contenedor donde se le agregan los productos del carrito de compra
 const cartContainer = document.getElementById("cart-container");
 
 // add/remove the same article
-let amountItem = 1;
+// let amountItem = 1;
 
-function decrease(id) {
-  let ourId = id.split("-")[2];
+// function decrease(id) {
+//   let ourId = id.split("-")[2];
 
-  let ourIdInNumber = Number(ourId);
+//   let ourIdInNumber = Number(ourId);
 
-  let input = document.getElementById(`cart-input-${ourIdInNumber}`);
-  input.value = decreaseAmount(ourIdInNumber);
+//   let input = document.getElementById(`cart-input-${ourIdInNumber}`);
+//   input.value = decreaseAmount(ourIdInNumber);
+// }
+
+// function decreaseAmount(idOfTheObj) {
+//   let amount = 1;
+
+//   cartListPrueba.forEach((obj) => {
+//     if (obj.id == idOfTheObj) {
+//       if (obj.amount > 1) {
+//         obj.amount--;
+//         amount = obj.amount;
+//       }
+//     }
+//   });
+
+//   return amount;
+// }
+
+// function increase(id) {
+//   let ourId = id.split("-")[2];
+
+//   let ourIdInNumber = Number(ourId);
+
+//   let input = document.getElementById(`cart-input-${ourIdInNumber}`);
+//   input.value = increaseAmountObj(ourIdInNumber);
+// }
+
+// function increaseAmountObj(idOfTheObj) {
+//   let amount;
+//   cartListPrueba.forEach((obj) => {
+//     if (obj.id == idOfTheObj) {
+//       obj.amount++;
+//       amount = obj.amount;
+//     }
+//   });
+//   return amount;
+// }
+
+function increaseAmount(productID) {
+  const selectedString = localStorage.getItem(`index: ${productID - 1}`);
+  const selectedObj = JSON.parse(selectedString);
+  let accumulator = selectedObj.amount;
+
+  accumulator++;
+
+  localStorage.setItem(
+    `index: ${productID - 1}`,
+    JSON.stringify({
+      id: cartListPrueba[productID - 1].id,
+      amount: accumulator,
+    })
+  );
+
+  // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
+
+  location.href = location.href;
 }
 
-function decreaseAmount(idOfTheObj) {
-  let amount = 1;
 
-  CartListPrueba.forEach((obj) => {
-    if (obj.id == idOfTheObj) {
-      if (obj.amount > 1) {
-        obj.amount--;
-        amount = obj.amount;
-      }
-    }
-  });
+function decreaseAmount(productID) {
+  const decreaseBtn = document.getElementById(`button-decrease-${productID}`)
+  const selectedString = localStorage.getItem(`index: ${productID - 1}`);
+  const selectedObj = JSON.parse(selectedString);
+  let accumulator = selectedObj.amount;
 
-  return amount;
+  if (accumulator>=1){
+  accumulator--;
+ 
+  localStorage.setItem(
+    `index: ${productID - 1}`,
+    JSON.stringify({
+      id: cartListPrueba[productID - 1].id,
+      amount: accumulator,
+    })
+  );
+
+  // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
+
+  location.href = location.href;
+} else {
+
+  //!Hay que continuar por aqui
+
 }
-
-function increase(id) {
-  let ourId = id.split("-")[2];
-
-  let ourIdInNumber = Number(ourId);
-
-  let input = document.getElementById(`cart-input-${ourIdInNumber}`);
-  input.value = increaseAmountObj(ourIdInNumber);
-}
-
-function increaseAmountObj(idOfTheObj) {
-  let amount;
-  CartListPrueba.forEach((obj) => {
-    if (obj.id == idOfTheObj) {
-      obj.amount++;
-      amount = obj.amount;
-    }
-  });
-  return amount;
 }
 
 //heart button
@@ -222,7 +269,7 @@ function addToTheWishList(idOfTheObj) {
   const heart = document.getElementById(`cart-icon-heart-${ourIdInNumber}`);
   const wishList = document.getElementById(`add-wish-list-${ourIdInNumber}`);
 
-  CartListPrueba.forEach((obj) => {
+  cartListPrueba.forEach((obj) => {
     if (obj.id == ourIdInNumber) {
       if (obj.emptyHeart) {
         // fill the heart
@@ -267,41 +314,43 @@ btnPromo.addEventListener("click", () => {
 // cada botón tendrá el "id" del objeto "catalogo"
 function addProductToLocalStorage(productID) {
   let accumulator = 0;
-  btnPromo.addEventListener("click", () => {
-    accumulator++;
 
-    localStorage.setItem(
-      `index: ${productID}`,
-      JSON.stringify({
-        id: CartListPrueba[(productID-1)].id,
-        amount: accumulator,
-      })
-    );
+  const storedProduct = JSON.parse(
+    localStorage.getItem(`index: ${productID - 1}`)
+  );
+  if (storedProduct) {
+    accumulator = storedProduct.amount;
+  }
+  accumulator++;
 
-    //! descomentar para testear si los amounts son distintos, ver si se pinta correctamente
-    // localStorage.setItem(
-    //   `index: 0`,
-    //   JSON.stringify({
-    //     id: CartListPrueba[0].id,
-    //     shortTitle: CartListPrueba[0].shortTitle,
-    //     amount: 12,
-    //   })
-    // );
-  });
+  localStorage.setItem(
+    `index: ${productID - 1}`,
+    JSON.stringify({
+      id: cartListPrueba[productID - 1].id,
+      amount: accumulator,
+    })
+  );
+
+  //! descomentar para testear si los amounts son distintos, ver si se pinta correctamente
+  // localStorage.setItem(
+  //   `index: 0`,
+  //   JSON.stringify({
+  //     id: cartList[0].id,
+  //     shortTitle: cartList[0].shortTitle,
+  //     amount: 12,
+  //   })
+  // );
+
+  location.href = location.href;
 }
 
-// inicializamos la función para testear como funcionaría en los respectivos botones.
-  addProductToLocalStorage(2);
-  addProductToLocalStorage(3);
-  addProductToLocalStorage(4);
-  addProductToLocalStorage(1);
+// inicializamos la función para testear como funcionaría en los respectivos botones.;
 
-
-  //función que se encarga de recoger la información del "localstorage" y la devuelve dentro de una lista nueva
+//función que se encarga de recoger la información del "localstorage" y la devuelve dentro de una lista nueva
 function getProductToLocalStorage() {
   let cartArray = [];
 
-  for (let i = 0; i < CartListPrueba.length; i++) {
+  for (let i = 0; i < cartListPrueba.length; i++) {
     let jsonItem = localStorage.getItem(`index: ${i}`);
 
     if (jsonItem !== null) {
@@ -316,25 +365,34 @@ function getProductToLocalStorage() {
   return cartArray;
 }
 
+function shoppingCartEmpty() {
+  const cartFullContainer = document.getElementById("cart-full-container");
+  const cartEmptyContainer = document.getElementById("cart-empty-cart");
+
+  if (getProductToLocalStorage().length == 0) {
+    cartFullContainer.classList.toggle("cart-display-none");
+  } else {
+    cartEmptyContainer.classList.toggle("cart-display-none");
+  }
+}
 
 // esta funcion se encarga de buscar del catalogo las cosas que esten en el get del localstorage
-function findProduct(cartArray){
+function findProduct(cartArray) {
   const productsInCart = [];
   cartArray.forEach((shoppingProduct) => {
-    console.log("shopping product", shoppingProduct);
-    CartListPrueba.forEach(item => {
-      if (shoppingProduct.id === item.id){
-      console.log("product found in catalog", shoppingProduct.id);
-        productsInCart.push({...item, amount:shoppingProduct.amount})
+    // console.log("shopping product", shoppingProduct);
+    cartListPrueba.forEach((item) => {
+      if (shoppingProduct.id === item.id) {
+        // console.log("product found in catalog", shoppingProduct.id);
+        productsInCart.push({ ...item, amount: shoppingProduct.amount });
       }
-    })
-  })
-  return productsInCart
+    });
+  });
+  return productsInCart;
 }
 
 //! haciendo uso de los callbacks podemos ya filtrar la lista del localstorage con nuestro catalogo
 // console.log(findProduct(getProductToLocalStorage()))
-
 
 // Add new items to cart
 
@@ -363,7 +421,7 @@ function modifiedTemplate(id, title, image, price, amount) {
           <button
             class="cart-rest-article"
             id="button-decrease-${id}"
-            onclick="decrease(this.id)"
+            onclick="decreaseAmount(${id})"
           >
             <i class="bi bi-dash-lg"></i>
           </button>
@@ -380,8 +438,8 @@ function modifiedTemplate(id, title, image, price, amount) {
           <button
             class="cart-add-article"
             id="button-increase-${id}"
-            onclick="increase(this.id)"
-          >
+             onclick="increaseAmount(${id})"  >
+          
             <i class="bi bi-plus-lg"></i>
           </button>
         </div>
@@ -419,7 +477,6 @@ function modifiedTemplate(id, title, image, price, amount) {
   return templateItem;
 }
 
-
 //sum the total price of the cart
 
 let subtotal = document.getElementById("cart-sum-total-price");
@@ -427,10 +484,10 @@ let totalPrice = document.getElementById("cart-total-price");
 let iva = document.getElementById("cart-IVA");
 let paypal = document.getElementById("paypal-3-payments");
 
-const sumSubtotal = CartListPrueba.reduce((acc, item) => acc + item.price, 0);
+const sumSubtotal = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
 subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
 
-const sumTotalPrice = CartListPrueba.reduce((acc, item) => acc + item.price, 0);
+const sumTotalPrice = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
 totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
 
 const ivaTotal = sumSubtotal * 0.21;
@@ -438,3 +495,9 @@ iva.textContent = `${ivaTotal.toFixed(2)} €`;
 
 const paypalPayments = sumSubtotal / 3;
 paypal.textContent = `${paypalPayments.toFixed(2)} €`;
+
+// Función para eliminar articulos
+
+function deleteArticles(id) {
+  localStorage.removeItem(`index: ${id}`);
+}
