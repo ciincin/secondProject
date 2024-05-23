@@ -253,7 +253,7 @@ function decreaseAmount(productID) {
   const selectedObj = JSON.parse(selectedString);
   let accumulator = selectedObj.amount;
 
-  if (accumulator>=1){
+  if (accumulator>1){
   accumulator--;
  
   localStorage.setItem(
@@ -268,9 +268,7 @@ function decreaseAmount(productID) {
 
   location.href = location.href;
 } else {
-
-  //!Hay que continuar por aqui
-
+  decreaseBtn.attributes = "disabled"
 }
 }
 
