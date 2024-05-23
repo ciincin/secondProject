@@ -108,9 +108,10 @@ window.addEventListener("DOMContentLoaded", () => {
           item.amount
         );
       });
-      sumPriceCart();
-      shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
-      btnCode()
+
+  shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
+  btnCode();
+  sumPriceCart();
 });
 
 // D I S N E Y  S E T S //
@@ -183,28 +184,27 @@ function increaseAmount(productID) {
   location.href = location.href;
 }
 
-
 function decreaseAmount(productID) {
-  const decreaseBtn = document.getElementById(`button-decrease-${productID}`)
+  const decreaseBtn = document.getElementById(`button-decrease-${productID}`);
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
   const selectedObj = JSON.parse(selectedString);
   let accumulator = selectedObj.amount;
 
-  if (accumulator>1){
-  accumulator--;
- 
-  localStorage.setItem(
-    `index: ${productID - 1}`,
-    JSON.stringify({
-      id: cartListPrueba[productID - 1].id,
-      amount: accumulator,
-    })
-  );
+  if (accumulator > 1) {
+    accumulator--;
 
-  location.href = location.href;
-} else {
-  decreaseBtn.attributes = "disabled"
-}
+    localStorage.setItem(
+      `index: ${productID - 1}`,
+      JSON.stringify({
+        id: cartListPrueba[productID - 1].id,
+        amount: accumulator,
+      })
+    );
+
+    location.href = location.href;
+  } else {
+    decreaseBtn.attributes = "disabled";
+  }
 }
 
 //heart button
@@ -237,24 +237,24 @@ function addToTheWishList(idOfTheObj) {
 }
 
 //promo code button
-function btnCode (){
-const btnPromo = document.getElementById("cart-promo-button");
-const iconArrow = document.getElementById("cart-icon");
-const promoBox = document.getElementById("cart-promo-open");
+function btnCode() {
+  const btnPromo = document.getElementById("cart-promo-button");
+  const iconArrow = document.getElementById("cart-icon");
+  const promoBox = document.getElementById("cart-promo-open");
 
-let promoBoxIsClosed = true;
+  let promoBoxIsClosed = true;
 
-btnPromo.addEventListener("click", () => {
-  promoBox.classList.toggle("cart-display-none");
+  btnPromo.addEventListener("click", () => {
+    promoBox.classList.toggle("cart-display-none");
 
-  if (promoBoxIsClosed) {
-    iconArrow.classList.replace("rotate-down", "rotate-up");
-    promoBoxIsClosed = false;
-  } else {
-    iconArrow.classList.replace("rotate-up", "rotate-down");
-    promoBoxIsClosed = true;
-  }
-});
+    if (promoBoxIsClosed) {
+      iconArrow.classList.replace("rotate-down", "rotate-up");
+      promoBoxIsClosed = false;
+    } else {
+      iconArrow.classList.replace("rotate-up", "rotate-down");
+      promoBoxIsClosed = true;
+    }
+  });
 }
 //Esto es una prueba para añadir los articulos al carrito
 
@@ -278,9 +278,9 @@ function addProductToLocalStorage(productID) {
       amount: accumulator,
     })
   );
-if(fullUrl === "http://127.0.0.1:5500/index-cart.html"){
-  location.href = location.href;
-}
+  if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+    location.href = location.href;
+  }
 }
 
 // inicializamos la función para testear como funcionaría en los respectivos botones.;
@@ -420,38 +420,40 @@ function modifiedTemplate(id, title, image, price, amount) {
 
 //sum the total price of the cart
 
-function sumPriceCart(){
-let subtotal = document.getElementById("cart-sum-total-price");
-let totalPrice = document.getElementById("cart-total-price");
-let iva = document.getElementById("cart-IVA");
-let paypal = document.getElementById("paypal-3-payments");
+function sumPriceCart() {
+  let subtotal = document.getElementById("cart-sum-total-price");
+  let totalPrice = document.getElementById("cart-total-price");
+  let iva = document.getElementById("cart-IVA");
+  let paypal = document.getElementById("paypal-3-payments");
 
-// const sumSubtotal = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
+  let localStorageProduct = getProductToLocalStorage();
 
-if(cartListPrueba[0].id == getProductToLocalStorage()[0].id){
-let productPrice = cartListPrueba[0].price;
-let productAmount = getProductToLocalStorage()[0].amount;
+  let productTotalPrice = 0;
+  cartListPrueba.forEach((priceItem) => {
+    localStorageProduct.forEach((idItem) => {
+      if (priceItem.id == idItem.id) {
+        let productPrice = priceItem.price;
+        let productAmount = idItem.amount;
 
-console.log(productAmount);
+        let multiplyAmountbyPrice = productAmount * productPrice;
 
-}
+        productTotalPrice = multiplyAmountbyPrice + productTotalPrice;
+        subtotal.textContent = `${productTotalPrice.toFixed(2)} €`;
 
+        totalPrice.textContent = `${productTotalPrice.toFixed(2)} €`;
 
+        const ivaTotal = productTotalPrice * 0.21;
+        iva.textContent = `${ivaTotal.toFixed(2)} €`;
 
-subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
-
-const sumTotalPrice = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
-totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
-
-const ivaTotal = sumSubtotal * 0.21;
-iva.textContent = `${ivaTotal.toFixed(2)} €`;
-
-const paypalPayments = sumSubtotal / 3;
-paypal.textContent = `${paypalPayments.toFixed(2)} €`;
+        const paypalPayments = productTotalPrice / 3;
+        paypal.textContent = `${paypalPayments.toFixed(2)} €`;
+      }
+    });
+  });
 }
 
 // Función para eliminar articulos
 
 function deleteArticles(id) {
-  localStorage.removeItem(`index: ${id-1}`);
+  localStorage.removeItem(`index: ${id - 1}`);
 }
