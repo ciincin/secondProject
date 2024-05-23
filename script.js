@@ -1,4 +1,4 @@
-let cartListPrueba = [
+let CartListPrueba = [
   {
     id: 1,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg",
@@ -89,7 +89,7 @@ const fullUrl = window.location.href;
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   fullUrl === "http://127.0.0.1:5500/disney.html"
-    ? cartList.forEach((item) => {
+    ? CartListPrueba.forEach((item) => {
         disneyLayout.innerHTML += disneySetsTemplate(
           item.title,
           item.image,
@@ -158,7 +158,7 @@ function disneySetsTemplate(title, image, price, age, pieces) {
 
 // C A R T
 
-// let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
+// let jsonCart =localStorage.setItem("cart", JSON.stringify(CartListPrueba)); // guarda todo el carrito
 // let cartArrayObject = JSON.parse(jsonCart);
 
 
@@ -180,7 +180,7 @@ function decrease(id) {
 function decreaseAmount(idOfTheObj) {
   let amount = 1;
 
-  cartList.forEach((obj) => {
+  CartListPrueba.forEach((obj) => {
     if (obj.id == idOfTheObj) {
       if (obj.amount > 1) {
         obj.amount--;
@@ -203,7 +203,7 @@ function increase(id) {
 
 function increaseAmountObj(idOfTheObj) {
   let amount;
-  cartList.forEach((obj) => {
+  CartListPrueba.forEach((obj) => {
     if (obj.id == idOfTheObj) {
       obj.amount++;
       amount = obj.amount;
@@ -222,7 +222,7 @@ function addToTheWishList(idOfTheObj) {
   const heart = document.getElementById(`cart-icon-heart-${ourIdInNumber}`);
   const wishList = document.getElementById(`add-wish-list-${ourIdInNumber}`);
 
-  cartList.forEach((obj) => {
+  CartListPrueba.forEach((obj) => {
     if (obj.id == ourIdInNumber) {
       if (obj.emptyHeart) {
         // fill the heart
@@ -273,7 +273,7 @@ function addProductToLocalStorage(productID) {
     localStorage.setItem(
       `index: ${productID}`,
       JSON.stringify({
-        id: cartList[(productID-1)].id,
+        id: CartListPrueba[(productID-1)].id,
         amount: accumulator,
       })
     );
@@ -282,8 +282,8 @@ function addProductToLocalStorage(productID) {
     // localStorage.setItem(
     //   `index: 0`,
     //   JSON.stringify({
-    //     id: cartList[0].id,
-    //     shortTitle: cartList[0].shortTitle,
+    //     id: CartListPrueba[0].id,
+    //     shortTitle: CartListPrueba[0].shortTitle,
     //     amount: 12,
     //   })
     // );
@@ -301,7 +301,7 @@ function addProductToLocalStorage(productID) {
 function getProductToLocalStorage() {
   let cartArray = [];
 
-  for (let i = 0; i < cartList.length; i++) {
+  for (let i = 0; i < CartListPrueba.length; i++) {
     let jsonItem = localStorage.getItem(`index: ${i}`);
 
     if (jsonItem !== null) {
@@ -322,7 +322,7 @@ function findProduct(cartArray){
   const productsInCart = [];
   cartArray.forEach((shoppingProduct) => {
     console.log("shopping product", shoppingProduct);
-    cartList.forEach(item => {
+    CartListPrueba.forEach(item => {
       if (shoppingProduct.id === item.id){
       console.log("product found in catalog", shoppingProduct.id);
         productsInCart.push({...item, amount:shoppingProduct.amount})
@@ -427,10 +427,10 @@ let totalPrice = document.getElementById("cart-total-price");
 let iva = document.getElementById("cart-IVA");
 let paypal = document.getElementById("paypal-3-payments");
 
-const sumSubtotal = cartList.reduce((acc, item) => acc + item.price, 0);
+const sumSubtotal = CartListPrueba.reduce((acc, item) => acc + item.price, 0);
 subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
 
-const sumTotalPrice = cartList.reduce((acc, item) => acc + item.price, 0);
+const sumTotalPrice = CartListPrueba.reduce((acc, item) => acc + item.price, 0);
 totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
 
 const ivaTotal = sumSubtotal * 0.21;
