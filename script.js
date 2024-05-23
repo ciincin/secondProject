@@ -111,6 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
   btnCode();
+  productCounter(getProductToLocalStorage());
   sumPriceCart();
 });
 
@@ -452,8 +453,26 @@ function sumPriceCart() {
   });
 }
 
+// función para poner el numero de articulos del carrito
+
+function productCounter(getProductLS) {
+  let totalAmount = 0;
+  getProductLS.forEach((item) => {
+    totalAmount = totalAmount + item.amount;
+  });
+
+  const myCart = document.getElementById("cart-product-amount");
+  myCart.innerHTML = `Mi bolsa (${totalAmount})`;
+
+  const valueProduct = document.getElementById("cart-value-product-amount");
+  valueProduct.innerHTML = `Valor del pedido de (${totalAmount}) articulos`;
+}
+
 // Función para eliminar articulos
+//!Esta función no funciona 
 
 function deleteArticles(id) {
   localStorage.removeItem(`index: ${id - 1}`);
 }
+
+deleteArticles()
