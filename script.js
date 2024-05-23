@@ -1,3 +1,5 @@
+//! RECUERDA !! Index 0 corresponde con id 1
+
 let cartListPrueba = [
   {
     id: 1,
@@ -120,9 +122,6 @@ window.addEventListener("DOMContentLoaded", () => {
         );
       });
   // shoppingCartEmpty() Esto funciona, solo hay que inicializarlo
-  increaseAmount(1);
-  increaseAmount(2);
-  increaseAmount(3);
 });
 
 // D I S N E Y  S E T S //
@@ -228,28 +227,51 @@ const cartContainer = document.getElementById("cart-container");
 // }
 
 function increaseAmount(productID) {
-  const addBtn = document.getElementById(`button-increase-${productID}`);
+  const selectedString = localStorage.getItem(`index: ${productID - 1}`);
+  const selectedObj = JSON.parse(selectedString);
+  let accumulator = selectedObj.amount;
 
-  addBtn.addEventListener("click", () => {
-    const selectedString = localStorage.getItem(`index: ${productID - 1}`);
-    const selectedObj = JSON.parse(selectedString);
-    let accumulator=selectedObj.amount;
-   
-    accumulator++
-    // console.log(accumulator);
-    localStorage.setItem(
-      `index: ${productID-1}`,
-      JSON.stringify({
-        id: cartListPrueba[productID-1].id,
-        amount: accumulator,
-      })
-    );
+  accumulator++;
 
-    // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
+  localStorage.setItem(
+    `index: ${productID - 1}`,
+    JSON.stringify({
+      id: cartListPrueba[productID - 1].id,
+      amount: accumulator,
+    })
+  );
 
-    location.href=location.href
-   
-  });
+  // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
+
+  location.href = location.href;
+}
+
+
+function decreaseAmount(productID) {
+  const decreaseBtn = document.getElementById(`button-decrease-${productID}`)
+  const selectedString = localStorage.getItem(`index: ${productID - 1}`);
+  const selectedObj = JSON.parse(selectedString);
+  let accumulator = selectedObj.amount;
+
+  if (accumulator>=1){
+  accumulator--;
+ 
+  localStorage.setItem(
+    `index: ${productID - 1}`,
+    JSON.stringify({
+      id: cartListPrueba[productID - 1].id,
+      amount: accumulator,
+    })
+  );
+
+  // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
+
+  location.href = location.href;
+} else {
+
+  //!Hay que continuar por aqui
+
+}
 }
 
 //heart button
@@ -306,44 +328,38 @@ btnPromo.addEventListener("click", () => {
 // función que será inicializada a través de la propiedad "onclick" del tag <button>
 // cada botón tendrá el "id" del objeto "catalogo"
 function addProductToLocalStorage(productID) {
-  btnPromo.addEventListener("click", () => {
-    let accumulator = 0;
+  let accumulator = 0;
 
-    const storedProduct = JSON.parse(
-      localStorage.getItem(`index: ${productID-1}`)
-    );
-    if (storedProduct) {
-      accumulator = storedProduct.amount;
-    }
-    accumulator++;
+  const storedProduct = JSON.parse(
+    localStorage.getItem(`index: ${productID - 1}`)
+  );
+  if (storedProduct) {
+    accumulator = storedProduct.amount;
+  }
+  accumulator++;
 
-    localStorage.setItem(
-      `index: ${productID-1}`,
-      JSON.stringify({
-        id: cartListPrueba[productID - 1].id,
-        amount: accumulator,
-      })
-    );
+  localStorage.setItem(
+    `index: ${productID - 1}`,
+    JSON.stringify({
+      id: cartListPrueba[productID - 1].id,
+      amount: accumulator,
+    })
+  );
 
-    //! descomentar para testear si los amounts son distintos, ver si se pinta correctamente
-    // localStorage.setItem(
-    //   `index: 0`,
-    //   JSON.stringify({
-    //     id: cartList[0].id,
-    //     shortTitle: cartList[0].shortTitle,
-    //     amount: 12,
-    //   })
-    // );
+  //! descomentar para testear si los amounts son distintos, ver si se pinta correctamente
+  // localStorage.setItem(
+  //   `index: 0`,
+  //   JSON.stringify({
+  //     id: cartList[0].id,
+  //     shortTitle: cartList[0].shortTitle,
+  //     amount: 12,
+  //   })
+  // );
 
-    location.href = location.href;
-  });
+  location.href = location.href;
 }
 
-// inicializamos la función para testear como funcionaría en los respectivos botones.
-
-addProductToLocalStorage(1);
-addProductToLocalStorage(2);
-addProductToLocalStorage(3);
+// inicializamos la función para testear como funcionaría en los respectivos botones.;
 
 //función que se encarga de recoger la información del "localstorage" y la devuelve dentro de una lista nueva
 function getProductToLocalStorage() {
@@ -420,7 +436,7 @@ function modifiedTemplate(id, title, image, price, amount) {
           <button
             class="cart-rest-article"
             id="button-decrease-${id}"
-            onclick="decrease(this.id)"
+            onclick="decreaseAmount(${id})"
           >
             <i class="bi bi-dash-lg"></i>
           </button>
@@ -437,7 +453,7 @@ function modifiedTemplate(id, title, image, price, amount) {
           <button
             class="cart-add-article"
             id="button-increase-${id}"
-             onclick="increase(this.id)"  >
+             onclick="increaseAmount(${id})"  >
           
             <i class="bi bi-plus-lg"></i>
           </button>
