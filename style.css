@@ -14,7 +14,8 @@
   --cart-blue-pal: #179bd7;
   --cart-light-blue-delivery: #e5f2ff;
   /* MAIN */
-  --main-black-button: #0009;
+  --main-gray-button: #0009;
+  --main-grayLight-button: #757575;
   --main-black-font:  rgb(0, 0, 0);
   --main-blueDark-background: #021C47;
   --main-white-font: rgb(255, 255, 255);
@@ -332,6 +333,10 @@ footer {
   text-align: right;
 }
 
+.main-banner-content :hover{
+  cursor: pointer;
+}
+
 .main-banner-container a{
   width: 100vw;
 }
@@ -376,6 +381,7 @@ footer {
   background-color: var(--main-blueDark-background);
   padding: 1.25rem;
 }
+
 .main-mini-images-container ul{
   display: flex;
   justify-content: space-between;
@@ -384,6 +390,11 @@ footer {
   margin-inline: 8vw;
   color: var(--main-white-font);
   gap: 1.25rem;
+}
+
+.main-mini-images-container li:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .main-mini-images-container div {
@@ -419,10 +430,10 @@ footer {
   margin-right: 1.25rem;
 }
 
-.main-seleccionesDeEstaSemana-cards-container a{
+/* .main-seleccionesDeEstaSemana-cards-container a{
    text-decoration: none;
    color: unset;
-}
+} */
 
 .main-seleccionesDeEstaSemana-cards-container img {
    width: 30vw;
@@ -460,8 +471,10 @@ footer {
 .main-seleccionesDeEstaSemana-card2-text svg,
 .main-seleccionesDeEstaSemana-card3-text svg{
   margin-left: 0.625rem;
+  line-height: 0;
+  height: 12px;
+  width: 8px;
 }
-
 
 /* C A R R U S E L */
 
@@ -702,11 +715,16 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 .main-images-button {
-  border: 1px solid var(--main-black-button);
+  border: 1px solid var(--main-grayLight-button);
   border-radius: 25px;
   display: flex;
-  background-color: var(--main-black-button);
+  background-color: var(--main-grayLight-button);
   color: var(--main-white-font);
+}
+
+.main-images-button:hover{
+  text-decoration: underline;
+  background-color: var(--main-gray-button);
 }
 
 .main-images-button a {
@@ -717,6 +735,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   letter-spacing: 0;
   font-size: 1rem;
   line-height: 1.5;
+  align-items: center;
 }
 
 .main-images-button svg{
@@ -724,6 +743,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 /* d e s t a c a m o s */
+
 .main-destacamosDescubre-container{
   background-color: var(--main-gray-background); 
 }
@@ -752,6 +772,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 .main-destacamos-card1-container a{
   display: flex;
   height: 100%;
+  cursor: pointer;
 }
 
 .main-destacamos-card1{
@@ -762,6 +783,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 
 .main-destacamos-card1-text{
   position: absolute;
+  left: 8%;
   text-align: center;
   padding: 2.5rem 1.25rem;
 }
@@ -811,6 +833,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 .main-destacamos-card2-container{ 
   display: flex;
   flex-direction: row-reverse;
+  cursor: pointer;
 }
 
 .main-destacamos-card2-text{
@@ -875,6 +898,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   flex-direction: row;
   text-align: left;
   overflow: hidden;  
+  cursor: pointer;
 }
 
 .main-destacamos-card3-text{
@@ -962,12 +986,14 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   margin-right: 1.25rem;
   width: 25%;
   margin-bottom: 0px;
+  cursor: pointer;
 }
 
 .main-descubre-card4-container{
   margin-right: 0px;
   width: 25%;
   margin-bottom: 0px;
+  cursor: pointer;
 }
 
 .main-descubre-cards img{
