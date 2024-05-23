@@ -84,19 +84,6 @@ let cartListPrueba = [
   },
 ];
 
-//Para las pruebas de codigo
-
-// let shoppingCart = [
-//   {
-//     id: 8,
-//     amount: 1,
-//   },
-//   {
-//     id: 5,
-//     amount: 2,
-//   }
-// ];
-
 // la constante fullUrl almacena el valor de la referencia del .html
 const fullUrl = window.location.href;
 
@@ -111,7 +98,7 @@ window.addEventListener("DOMContentLoaded", () => {
           item.minAge,
           item.pieces
         );
-      })
+      }) //Cart website
     : findProduct(getProductToLocalStorage()).forEach((item) => {
         cartContainer.innerHTML += modifiedTemplate(
           item.id,
@@ -121,7 +108,9 @@ window.addEventListener("DOMContentLoaded", () => {
           item.amount
         );
       });
-  // shoppingCartEmpty() Esto funciona, solo hay que inicializarlo
+      sumPriceCart();
+      shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
+      btnCode()
 });
 
 // D I S N E Y  S E T S //
@@ -173,58 +162,8 @@ function disneySetsTemplate(title, image, price, age, pieces) {
 
 // C A R T
 
-// let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
-// let cartArrayObject = JSON.parse(jsonCart);
-
 //contenedor donde se le agregan los productos del carrito de compra
 const cartContainer = document.getElementById("cart-container");
-
-// add/remove the same article
-// let amountItem = 1;
-
-// function decrease(id) {
-//   let ourId = id.split("-")[2];
-
-//   let ourIdInNumber = Number(ourId);
-
-//   let input = document.getElementById(`cart-input-${ourIdInNumber}`);
-//   input.value = decreaseAmount(ourIdInNumber);
-// }
-
-// function decreaseAmount(idOfTheObj) {
-//   let amount = 1;
-
-//   cartListPrueba.forEach((obj) => {
-//     if (obj.id == idOfTheObj) {
-//       if (obj.amount > 1) {
-//         obj.amount--;
-//         amount = obj.amount;
-//       }
-//     }
-//   });
-
-//   return amount;
-// }
-
-// function increase(id) {
-//   let ourId = id.split("-")[2];
-
-//   let ourIdInNumber = Number(ourId);
-
-//   let input = document.getElementById(`cart-input-${ourIdInNumber}`);
-//   input.value = increaseAmountObj(ourIdInNumber);
-// }
-
-// function increaseAmountObj(idOfTheObj) {
-//   let amount;
-//   cartListPrueba.forEach((obj) => {
-//     if (obj.id == idOfTheObj) {
-//       obj.amount++;
-//       amount = obj.amount;
-//     }
-//   });
-//   return amount;
-// }
 
 function increaseAmount(productID) {
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
@@ -240,8 +179,6 @@ function increaseAmount(productID) {
       amount: accumulator,
     })
   );
-
-  // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
 
   location.href = location.href;
 }
@@ -263,8 +200,6 @@ function decreaseAmount(productID) {
       amount: accumulator,
     })
   );
-
-  // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
 
   location.href = location.href;
 } else {
@@ -302,7 +237,7 @@ function addToTheWishList(idOfTheObj) {
 }
 
 //promo code button
-
+function btnCode (){
 const btnPromo = document.getElementById("cart-promo-button");
 const iconArrow = document.getElementById("cart-icon");
 const promoBox = document.getElementById("cart-promo-open");
@@ -320,7 +255,7 @@ btnPromo.addEventListener("click", () => {
     promoBoxIsClosed = true;
   }
 });
-
+}
 //Esto es una prueba para añadir los articulos al carrito
 
 // función que será inicializada a través de la propiedad "onclick" del tag <button>
@@ -343,18 +278,9 @@ function addProductToLocalStorage(productID) {
       amount: accumulator,
     })
   );
-
-  //! descomentar para testear si los amounts son distintos, ver si se pinta correctamente
-  // localStorage.setItem(
-  //   `index: 0`,
-  //   JSON.stringify({
-  //     id: cartList[0].id,
-  //     shortTitle: cartList[0].shortTitle,
-  //     amount: 12,
-  //   })
-  // );
-
+if(fullUrl === "http://127.0.0.1:5500/index-cart.html"){
   location.href = location.href;
+}
 }
 
 // inicializamos la función para testear como funcionaría en los respectivos botones.;
@@ -377,6 +303,8 @@ function getProductToLocalStorage() {
 
   return cartArray;
 }
+
+console.log(getProductToLocalStorage());
 
 function shoppingCartEmpty() {
   const cartFullContainer = document.getElementById("cart-full-container");
@@ -492,12 +420,24 @@ function modifiedTemplate(id, title, image, price, amount) {
 
 //sum the total price of the cart
 
+function sumPriceCart(){
 let subtotal = document.getElementById("cart-sum-total-price");
 let totalPrice = document.getElementById("cart-total-price");
 let iva = document.getElementById("cart-IVA");
 let paypal = document.getElementById("paypal-3-payments");
 
-const sumSubtotal = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
+// const sumSubtotal = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
+
+if(cartListPrueba[0].id == getProductToLocalStorage()[0].id){
+let productPrice = cartListPrueba[0].price;
+let productAmount = getProductToLocalStorage()[0].amount;
+
+console.log(productAmount);
+
+}
+
+
+
 subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
 
 const sumTotalPrice = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
@@ -508,9 +448,10 @@ iva.textContent = `${ivaTotal.toFixed(2)} €`;
 
 const paypalPayments = sumSubtotal / 3;
 paypal.textContent = `${paypalPayments.toFixed(2)} €`;
+}
 
 // Función para eliminar articulos
 
 function deleteArticles(id) {
-  localStorage.removeItem(`index: ${id}`);
+  localStorage.removeItem(`index: ${id-1}`);
 }
