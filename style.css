@@ -1455,6 +1455,12 @@ font-size: 1.1rem;
 
 .cart-wish-list-text {
   font-weight: 600;
+ width: 10rem;
+}
+
+.cart-wish-trash-container{
+  display: flex;
+  
 }
 
 .cart-trash-button {
@@ -1481,15 +1487,9 @@ font-size: 1.1rem;
 
 /* PREGUNTAR SANTIAGO */
 
-.cart-delivery-white-space {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
+.cart-delivery-white-space{
+display: inline;
 
-.cart-progress-inline-block {
-  display: inline-block;
 }
 
 .cart-right-first {
@@ -1514,7 +1514,11 @@ font-size: 1.1rem;
   padding-bottom: 0.75rem;
 }
 
+
 .cart-promo-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   border: none;
 }
@@ -1522,6 +1526,7 @@ font-size: 1.1rem;
 .cart-h3-flex {
   font-size: 0.875rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .cart-h3-flex i {
@@ -1549,6 +1554,7 @@ font-size: 1.1rem;
 .cart-display-none {
   display: none;
 }
+
 
 .cart-promo-open div button {
   background-color: var(--cart-grey-divider);
@@ -1586,14 +1592,16 @@ font-size: 1.1rem;
   font-size: small;
 }
 
+
 .cart-checkout {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: var(--cart-orange-button);
   border-radius: 2rem;
   width: 100%;
   height: 3rem;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 .cart-checkout:hover {
@@ -1623,7 +1631,7 @@ font-size: 1.1rem;
 
 .cart-fast-shopping-description {
   font-size: 0.75rem;
-  margin: 0.75rem 0;
+  margin: 0.75rem;
 }
 
 .cart-paypal {
@@ -1636,7 +1644,7 @@ font-size: 1.1rem;
   border-radius: 2rem;
   width: 100%;
   height: 3rem;
-  margin: 1rem;
+  margin: 1rem 0;
   gap: 0.5rem;
 }
 
@@ -1658,7 +1666,7 @@ font-size: 1.1rem;
   border-radius: 2rem;
   width: 100%;
   height: 3rem;
-  margin: 1rem;
+  margin: 1rem 0;
   gap: 0.5rem;
 }
 
@@ -1729,6 +1737,9 @@ font-size: 1.1rem;
 }
 
 
+
+
+
 /* M E D I A  Q U E R I E S  */
 
 @media only screen and (max-width: 1260px) {
@@ -1776,11 +1787,6 @@ font-size: 1.1rem;
     display: none;
   }
 
-  .cart-trash {
-    height: 1rem;
-    
-  }
-
   .cart-edit-button {
     display: flex;
     justify-content: space-between;
@@ -1790,6 +1796,21 @@ font-size: 1.1rem;
     border: none;
     font-size: 0.8rem;
     
+  }
+
+  .cart-wish-trash-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cart-add-more-content {
+   display: none;
+  }
+
+  .cart-display-flex {
+    display: flex;
   }
 }
 

@@ -219,7 +219,7 @@ function decreaseAmount(productID) {
 
 //heart button
 
-//! funcion que comprueba el estado de emptyHeart, se inicializa en el primer event listener.
+// funcion que comprueba el estado de emptyHeart, se inicializa en el primer event listener.
 function emptyHeartCheck() {
   checkEmptyHeartList = getProductToLocalStorage();
   checkEmptyHeartList.forEach((element) => {
@@ -239,7 +239,7 @@ function emptyHeartCheck() {
   });
 }
 
-//! Nueva funcion de addToTheWishList -> hay que cambiar ambos templates reemplazar el this.id.
+// Nueva funcion de addToTheWishList -> hay que cambiar ambos templates reemplazar el this.id.
 function addToTheWishList(productID) {
   const heart = document.getElementById(`cart-icon-heart-${productID}`);
   const wishList = document.getElementById(`add-wish-list-${productID}`);
@@ -363,7 +363,7 @@ function getProductToLocalStorage() {
   return cartArray;
 }
 
-console.log(getProductToLocalStorage());
+// console.log(getProductToLocalStorage());
 
 function shoppingCartEmpty() {
   const cartFullContainer = document.getElementById("cart-full-container");
@@ -391,8 +391,8 @@ function findProduct(cartArray) {
   return productsInCart;
 }
 
-//! haciendo uso de los callbacks podemos ya filtrar la lista del localstorage con nuestro catalogo
-// console.log(findProduct(getProductToLocalStorage()))
+
+
 
 // Add new items to cart
 
@@ -417,7 +417,7 @@ function modifiedTemplate(id, title, image, price, amount) {
       <div class="cart-price">${price} €</div>
 
       <div class="cart-add-more">
-        <div class="cart-add-more-content">
+        <div class="cart-add-more-content"  id="cart-article-display-${id}">
           <button
             class="cart-rest-article"
             id="button-decrease-${id}"
@@ -467,7 +467,7 @@ function modifiedTemplate(id, title, image, price, amount) {
           <i class="bi bi-trash3"></i>
         </button>
 
-        <button class="cart-edit-button">
+        <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
           <span class="cart-text-edit">(Editar)</span>
         </button>
     </div>
@@ -475,6 +475,21 @@ function modifiedTemplate(id, title, image, price, amount) {
   </div>
   `;
   return templateItem;
+}
+
+//!Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
+
+function editButtonQuery(productID) {
+  const displayArticle = document.getElementById(
+    `cart-article-display-${productID}`
+  );
+ 
+ displayArticle.classList.add("cart-display-flex")
+//  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
+if(displayArticle.className === "cart-add-more-content cart-display-flex" && window.screen.availWidth<900){
+  displayArticle.className ="cart-add-more-content cart-display-flex";
+}
+
 }
 
 //sum the total price of the cart
