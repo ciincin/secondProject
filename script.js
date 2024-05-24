@@ -1,4 +1,4 @@
-let CartListPrueba = [
+let cartListPrueba = [
   {
     id: 1,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg",
@@ -89,34 +89,40 @@ const fullUrl = window.location.href;
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   fullUrl === "http://127.0.0.1:5500/disney.html"
-    ? CartListPrueba.forEach((item) => {
-        disneyLayout.innerHTML += disneySetsTemplate(
-          item.title,
-          item.image,
-          item.price,
-          item.minAge,
-          item.pieces
-        );
-      })
+    ? cartListPrueba.forEach((item) => {
+      disneyLayout.innerHTML += disneySetsTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.minAge,
+        item.pieces
+      );
+    })
     : findProduct(getProductToLocalStorage()).forEach((item) => {
-        cartContainer.innerHTML += modifiedTemplate(
-          item.id,
-          item.title,
-          item.image,
-          item.price,
-          item.amount
-        );
-      });
+      cartContainer.innerHTML += modifiedTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.amount
+      );
+    });
+  emptyHeartCheck();
 });
 
 // D I S N E Y  S E T S //
 
 const disneyLayout = document.getElementById("disney-set-layout");
 
-function disneySetsTemplate(title, image, price, age, pieces) {
+function disneySetsTemplate(id, title, image, price, age, pieces) {
   let disneyTemplateItem = `
   <div class="disney-card1">
-                <div class="disney-card1-likeButton-banner"></div>
+                <div class="disney-card1-likeButton-banner">
+                <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
+              <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
+            </button>
+                </div>
                 <div class="disney-card1-imageSet-container">
                     <!-- aqui es donde va el carrousel -->
                     <img class="disney-card1-imageSet" src=${image}
@@ -143,7 +149,7 @@ function disneySetsTemplate(title, image, price, age, pieces) {
                     <span><b>${price}</b><i class="bi bi-currency-euro"></i></span>
                 </div>
                 <div class="disney-card1-addToCart-container">
-                    <button type="button" class="btn btn-primary disney-btn-addToCart">
+                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id})">
                         <div class="disney-card1-addToCart-innerContainer">
                             <div class="disney-bagIcon-container">
                                 <img  class="disney-bag-icon" src="assets/disney-sets/shopping-bag-o.svg" alt="age-icon">
@@ -238,54 +244,80 @@ function decreaseAmount(productID) {
   const selectedObj = JSON.parse(selectedString);
   let accumulator = selectedObj.amount;
 
-  if (accumulator>=1){
-  accumulator--;
- 
-  localStorage.setItem(
-    `index: ${productID - 1}`,
-    JSON.stringify({
-      id: cartListPrueba[productID - 1].id,
-      amount: accumulator,
-    })
+  if (accumulator >= 1) {
+    accumulator--;
+
+    localStorage.setItem(
+      `index: ${productID - 1}`,
+      JSON.stringify({
+        id: cartListPrueba[productID - 1].id,
+        amount: accumulator,
+      })
+    );
+
+    // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
+
+    location.href = location.href;
+  } else {
+
+    //!Hay que continuar por aqui
+
+  }
+}
+
+
+
+//! Nueva funcion de addToTheWishList -> hay que cambiar ambos templates reemplazar el this.id.
+function addToTheWishList(productID) {
+
+  const heart = document.getElementById(`cart-icon-heart-${productID}`);
+  const wishList = document.getElementById(`add-wish-list-${productID}`);
+
+  const storedProduct = JSON.parse(
+    localStorage.getItem(`index: ${productID - 1}`)
   );
 
-  // console.log(getProductToLocalStorage()); Para comprobar que se actualiza también cartArray
-
-  location.href = location.href;
-} else {
-
-  //!Hay que continuar por aqui
-
-}
-}
-
-//heart button
-
-function addToTheWishList(idOfTheObj) {
-  let ourId = idOfTheObj.split("-")[3];
-
-  let ourIdInNumber = Number(ourId);
-
-  const heart = document.getElementById(`cart-icon-heart-${ourIdInNumber}`);
-  const wishList = document.getElementById(`add-wish-list-${ourIdInNumber}`);
-
   cartListPrueba.forEach((obj) => {
-    if (obj.id == ourIdInNumber) {
+    if (obj.id == productID) {
       if (obj.emptyHeart) {
         // fill the heart
         heart.classList.replace("bi-heart", "bi-heart-fill");
-        wishList.textContent = `Quitar de la lista de deseos`;
-        obj.emptyHeart = false;
-        return;
+        // wishList.textContent = `Quitar de la lista de deseos`;
+        if (storedProduct) {
+          storedProduct.emptyHeart = false;
+        }
+        return obj.emptyHeart = false;
+
       } else {
         // empty the heart
         heart.classList.replace("bi-heart-fill", "bi-heart");
-        wishList.textContent = `Añadir a la lista de deseos`;
-        obj.emptyHeart = true;
-        return;
+        // wishList.textContent = `Añadir a la lista de deseos`;
+        if (storedProduct) {
+          storedProduct.emptyHeart = true;
+        }
+        return obj.emptyHeart = true;
       }
     }
   });
+
+  if (storedProduct) {
+    localStorage.setItem(
+      `index: ${productID - 1}`,
+      JSON.stringify({
+        id: cartListPrueba[productID - 1].id,
+        amount: storedProduct.amount,
+        emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+      })
+    );
+  } else {
+    localStorage.setItem(
+      `index: ${productID - 1}`,
+      JSON.stringify({
+        id: cartListPrueba[productID - 1].id,
+        amount: 0,
+        emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+      }));
+  }
 }
 
 //promo code button
@@ -296,17 +328,17 @@ const promoBox = document.getElementById("cart-promo-open");
 
 let promoBoxIsClosed = true;
 
-btnPromo.addEventListener("click", () => {
-  promoBox.classList.toggle("cart-display-none");
+// btnPromo.addEventListener("click", () => {
+//   promoBox.classList.toggle("cart-display-none");
 
-  if (promoBoxIsClosed) {
-    iconArrow.classList.replace("rotate-down", "rotate-up");
-    promoBoxIsClosed = false;
-  } else {
-    iconArrow.classList.replace("rotate-up", "rotate-down");
-    promoBoxIsClosed = true;
-  }
-});
+//   if (promoBoxIsClosed) {
+//     iconArrow.classList.replace("rotate-down", "rotate-up");
+//     promoBoxIsClosed = false;
+//   } else {
+//     iconArrow.classList.replace("rotate-up", "rotate-down");
+//     promoBoxIsClosed = true;
+//   }
+// });
 
 //Esto es una prueba para añadir los articulos al carrito
 
@@ -328,23 +360,32 @@ function addProductToLocalStorage(productID) {
     JSON.stringify({
       id: cartListPrueba[productID - 1].id,
       amount: accumulator,
+      emptyHeart: cartListPrueba[productID - 1].emptyHeart,
     })
   );
 
-  //! descomentar para testear si los amounts son distintos, ver si se pinta correctamente
-  // localStorage.setItem(
-  //   `index: 0`,
-  //   JSON.stringify({
-  //     id: cartList[0].id,
-  //     shortTitle: cartList[0].shortTitle,
-  //     amount: 12,
-  //   })
-  // );
-
-  location.href = location.href;
+  if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+    location.href = location.href;
+  }
 }
 
-// inicializamos la función para testear como funcionaría en los respectivos botones.;
+//! funcion que comprueba el estado de emptyHeart, se inicializa en el primer event listener.
+function emptyHeartCheck() {
+  checkEmptyHeartList = getProductToLocalStorage();
+  checkEmptyHeartList.forEach(element => {
+    cartListPrueba.forEach((item) => {
+      if (element.id === item.id) {
+        item.emptyHeart = element.emptyHeart
+        let heart = document.getElementById(`cart-icon-heart-${item.id}`)
+        if (element.emptyHeart === false) {
+          heart.classList.replace("bi-heart", "bi-heart-fill");
+        }
+      }
+    })
+  });
+
+}
+
 
 //función que se encarga de recoger la información del "localstorage" y la devuelve dentro de una lista nueva
 function getProductToLocalStorage() {
@@ -390,7 +431,6 @@ function findProduct(cartArray) {
   });
   return productsInCart;
 }
-
 //! haciendo uso de los callbacks podemos ya filtrar la lista del localstorage con nuestro catalogo
 // console.log(findProduct(getProductToLocalStorage()))
 
@@ -451,7 +491,7 @@ function modifiedTemplate(id, title, image, price, amount) {
       <article class="cart-wish-list">
         <div class="cart-wish-list-container">
           <div class="cart-heart-button-container" >
-            <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(this.id)">
+            <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
               <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
             </button>
           </div>
@@ -479,25 +519,25 @@ function modifiedTemplate(id, title, image, price, amount) {
 
 //sum the total price of the cart
 
-let subtotal = document.getElementById("cart-sum-total-price");
-let totalPrice = document.getElementById("cart-total-price");
-let iva = document.getElementById("cart-IVA");
-let paypal = document.getElementById("paypal-3-payments");
+// let subtotal = document.getElementById("cart-sum-total-price");
+// let totalPrice = document.getElementById("cart-total-price");
+// let iva = document.getElementById("cart-IVA");
+// let paypal = document.getElementById("paypal-3-payments");
 
-const sumSubtotal = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
-subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
+// const sumSubtotal = CartListPrueba.reduce((acc, item) => acc + item.price, 0);
+// subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
 
-const sumTotalPrice = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
-totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
+// const sumTotalPrice = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
+// totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
 
-const ivaTotal = sumSubtotal * 0.21;
-iva.textContent = `${ivaTotal.toFixed(2)} €`;
+// const ivaTotal = sumSubtotal * 0.21;
+// iva.textContent = `${ivaTotal.toFixed(2)} €`;
 
-const paypalPayments = sumSubtotal / 3;
-paypal.textContent = `${paypalPayments.toFixed(2)} €`;
+// const paypalPayments = sumSubtotal / 3;
+// paypal.textContent = `${paypalPayments.toFixed(2)} €`;
 
-// Función para eliminar articulos
+// // Función para eliminar articulos
 
-function deleteArticles(id) {
-  localStorage.removeItem(`index: ${id}`);
-}
+// function deleteArticles(id) {
+//   localStorage.removeItem(`index: ${id}`);
+// }
