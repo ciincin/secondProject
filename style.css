@@ -774,9 +774,10 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   flex-direction: column;
 }
 
+/* este contenedor debe ir dentro del contenedor padre */
 .main-destacamos-card1-text{
   position: absolute;
-  left: 8%;
+  left: 25rem; 
   text-align: center;
   padding: 2.5rem 1.25rem;
 }
