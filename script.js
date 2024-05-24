@@ -487,7 +487,8 @@ function editButtonQuery(productID) {
  displayArticle.classList.add("cart-display-flex")
 //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
 if(displayArticle.className === "cart-add-more-content cart-display-flex" && window.screen.availWidth<900){
-  displayArticle.className ="cart-add-more-content cart-display-flex";
+  // displayArticle.className ="cart-add-more-content cart-display-flex";
+  displayArticle.classList.add("cart-display-flex")
 }
 
 }
