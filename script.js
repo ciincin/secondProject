@@ -386,6 +386,7 @@ function addProductToLocalStorage(productID) {
     JSON.stringify({
       id: cartListPrueba[productID - 1].id,
       amount: accumulator,
+      emptyHeart: cartListPrueba[productID - 1].emptyHeart,
     })
   );
   if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
