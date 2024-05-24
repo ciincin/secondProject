@@ -36,15 +36,23 @@ body {
   font-family: sans-serif;
 }
 
+header {
+  position: relative;
+  top: 0;
+  width: 100%;
+  transition: top 0.3s;
+  z-index: 2;
+}
+
 footer {
   padding: 40px 40px 0 40px;
   background-color: var(--footer-blue);
 }
 
-/* H E A D ER */
 .utility-bar {
   height: 55px;
   padding: 0 30px;
+  background: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,41 +85,54 @@ footer {
 }
 
 .utility-bar .container {
-  width: 555px;
   max-width: 34.6875rem;
   height: 51px;
   margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   gap: 20px;
 }
 
-.utility-bar .container button {
+.utility-bar .container > button {
+  margin: 0 auto;
   padding: 12px;
   height: 51px;
   width: 42px;
-  background-color: #ffffff;
+  background: transparent;
   border: none;
   cursor: pointer;
 }
 
-.utility-bar .container>div {
+.utility-bar .container > .slider-p {
+  height: 100%;
   display: flex;
-}
-.utility-bar .container>div  a{
-  margin-left: 0.75rem;
-  color: #005ad2;
+  align-items: center;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
-.utility-bar .container>div div {
-  width: 100%;
+.utility-bar .container .slider-p-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease;
+  margin: 0 auto;
+}
+
+.utility-bar .container .slider-text {
+  min-width: 100%;
+  margin: 0;
+  font-size: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.utility-bar .container>div div p {
-  font-size: 0.75rem;
+.utility-bar .container .slider-text a {
+  margin-left: 0.75rem;
+  pointer-events: all;
+  color: #1668d5;
 }
 
 .utility-bar .account-and-vip {
@@ -128,7 +149,7 @@ footer {
   margin-right: 10px;
 }
 
-.utility-bar .account-and-vip button,
+.log-in,
 .utility-bar .account-and-vip a {
   background: transparent;
   display: flex;
@@ -157,22 +178,23 @@ footer {
   background-color: var(--header-yellow);
 }
 
-.main-bar ul,
+.main-bar .main-bar-nav,
 .main-bar div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.main-bar ul li {
+.main-bar .main-bar-nav >  li {
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: nowrap;
   margin-right: 3.125rem;
+  font-size: 0.90rem;
 }
 
-.main-bar ul li button {
+.main-bar .main-bar-nav > li button {
   position: relative;
   color: #000000;
   font-size: 1em;
@@ -183,7 +205,7 @@ footer {
   transform: scale(1, .9);
 }
 
-.main-bar ul li button::before {
+.main-bar .main-bar-nav > li button::before {
   content: "";
   background: #000;
   width: 0%;
@@ -193,24 +215,24 @@ footer {
   bottom: -2px;
 }
 
-.main-bar ul li button:hover::before {
+.main-bar .main-bar-nav > li button:hover::before {
   width: 100%;
 }
 
-.main-bar ul li a {
+.main-bar .main-bar-nav > li a {
   height: 40px;
   width: 181px;
-  padding: 5px 20px;
   background: #ffffff;
   color: #d4182f;
   font-size: 1em;
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
-  cursor: pointer;
   transform: scale(1, .9);
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .main-bar .lego-logo {
@@ -440,24 +462,24 @@ footer {
 
 /* C A R R U S E L */
 
-main .carrousel {
+.carrousel {
   margin: 70px 0;
 }
 
-main .carrousel-title {
+ .carrousel-title {
   padding: 10px 84px;
   font-size: 1.5rem;
 }
 
-main .carrousel-container {
+ .carrousel-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-main .carrousel-container .previous-button button,
-main .carrousel-container .next-button button {
+ .carrousel-container .previous-button button,
+ .carrousel-container .next-button button {
   margin: 0 0.5rem 0 0.9375rem;
   padding: 5px;
   background-color: #fff;
@@ -470,27 +492,27 @@ main .carrousel-container .next-button button {
   transition: background-color 250ms ease-in-out;
 }
 
-main .carrousel-container .previous-button button:hover,
-main .carrousel-container .next-button button:hover {
+ .carrousel-container .previous-button button:hover,
+ .carrousel-container .next-button button:hover {
   background-color: #e0e0e0;
 }
 
-main .carrousel-container .previous-button svg,
-main .carrousel-container .next-button svg {
+ .carrousel-container .previous-button svg,
+ .carrousel-container .next-button svg {
   position: relative;
   width: 25px;
   height: 25px;
 }
 
-main .carrousel-container .previous-button svg {
+ .carrousel-container .previous-button svg {
   left: -2px;
 }
 
-main .carrousel-container .next-button svg {
+ .carrousel-container .next-button svg {
   right: -2px;
 }
 
-main .carrousel-container .carrousel-wrapper {
+ .carrousel-container .carrousel-wrapper {
   padding-bottom: 45px;
   display: inline-flex;
   gap: 35px;
@@ -498,23 +520,23 @@ main .carrousel-container .carrousel-wrapper {
   scroll-behavior: smooth;
 }
 
-main .carrousel-container .carrousel-wrapper div:first-child {
+ .carrousel-container .carrousel-wrapper div:first-child {
   font-size: 1.5em;
   letter-spacing: 1.5px;
 }
 
-main .carrousel-container .carrousel-object {
+ .carrousel-container .carrousel-object {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-main .carrousel-container .carrousel-object div:first-child {
+ .carrousel-container .carrousel-object div:first-child {
   position: relative;
 }
 
-main .carrousel-container .carrousel-object .image-card {
+ .carrousel-container .carrousel-object .image-card {
   width: 325.75px;
   height: 325.75px;
   padding: 15px;
@@ -522,7 +544,7 @@ main .carrousel-container .carrousel-object .image-card {
   text-align: center;
 }
 
-main .carrousel-container .carrousel-object .image-card a {
+ .carrousel-container .carrousel-object .image-card a {
   width: 100%;
   height: 100%;
   display: inline-flex;
@@ -530,17 +552,17 @@ main .carrousel-container .carrousel-object .image-card a {
   justify-content: center;
 }
 
-main .carrousel-container .carrousel-object .image-card img {
+ .carrousel-container .carrousel-object .image-card img {
   width: 245px;
   height: auto;
   transition: transform 600ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-main .carrousel-container .carrousel-object .image-card img:hover {
+ .carrousel-container .carrousel-object .image-card img:hover {
   transform: scale(1.1);
 }
 
-main .carrousel-container .carrousel-object .image-card button {
+ .carrousel-container .carrousel-object .image-card button {
   width: 30px;
   height: 30px;
   padding: 5px;
@@ -556,8 +578,8 @@ main .carrousel-container .carrousel-object .image-card button {
   justify-content: center;
 }
 
-main .carrousel-container .carrousel-object .image-card div:nth-child(3) {
-  width: 50px;
+ .carrousel-container .carrousel-object .image-card div:nth-child(3) {
+  width: 90px;
   height: 26px;
   background-color: #ffd502;
   font-size: 0.75rem;
@@ -569,7 +591,7 @@ main .carrousel-container .carrousel-object .image-card div:nth-child(3) {
   align-items: center;
 }
 
-main .carrousel-container .carrousel-object>div:first-child div:nth-child(2) {
+ .carrousel-container .carrousel-object>div:first-child div:nth-child(2) {
   height: 60px;
   padding-top: 0.3125rem;
   font-size: 0.9rem;
@@ -577,7 +599,7 @@ main .carrousel-container .carrousel-object>div:first-child div:nth-child(2) {
   letter-spacing: 0.9px;
 }
 
-main .carrousel-container .carrousel-object>div:nth-child(2) {
+ .carrousel-container .carrousel-object>div:nth-child(2) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -585,24 +607,24 @@ main .carrousel-container .carrousel-object>div:nth-child(2) {
   bottom: 0;
 }
 
-main .carrousel-container .carrousel-object .star-review {
+ .carrousel-container .carrousel-object .star-review {
   margin-bottom: 5px;
   display: flex;
 }
 
-main .carrousel-container .carrousel-object .star-review img {
+ .carrousel-container .carrousel-object .star-review img {
   width: 15px;
   height: 15px;
 }
 
-main .carrousel-container .carrousel-object .price {
+ .carrousel-container .carrousel-object .price {
   font-family: sans-serif;
   font-size: 1.1rem !important;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
-main .carrousel-container .carrousel-object .shop-button {
+ .carrousel-container .carrousel-object .shop-button {
   width: 325px;
   height: 58px;
   border-radius: 4px;
@@ -611,7 +633,7 @@ main .carrousel-container .carrousel-object .shop-button {
   align-items: center;
 }
 
-main .carrousel-container .carrousel-object .shop-button button {
+ .carrousel-container .carrousel-object .shop-button button {
   width: 100%;
   height: 100%;
   background: var(--cart-orange-button);
@@ -621,9 +643,10 @@ main .carrousel-container .carrousel-object .shop-button button {
   font-size: 1rem;
 }
 
-main .carrousel-container .carrousel-object .shop-button button:hover {
+ .carrousel-container .carrousel-object .shop-button button:hover {
   background-color: transparent;
 }
+
 
 
 
@@ -829,6 +852,10 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   justify-content: space-between;
 }
 
+.wrapper .media .links-hidden {
+  display: none;
+}
+
 .wrapper .media span {
   margin-bottom: 20px;
 }
@@ -839,35 +866,35 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   margin-right: 20px;
 }
 
-.wrapper .media>div:first-child {
+.wrapper .media .suscribe-media {
   display: flex;
   flex-direction: column;
 }
 
 
-.wrapper .media>div:first-child>div {
+.wrapper .media .suscribe-media>div {
   height: 55px;
   display: flex;
   align-items: center;
 }
 
-.wrapper .media>div:first-child>div>div {
+.wrapper .media .suscribe-media>div>div {
   position: relative;
 }
 
-.wrapper .media>div:first-child>div label {
+.wrapper .media .suscribe-media>div label {
   display: block;
   height: 100%;
 }
 
-.wrapper .media>div:first-child>div input {
+.wrapper .media .suscribe-media>div input {
   height: 3.45rem;
   padding: 1.125rem 1.25rem 0px;
   border: none;
   border-radius: 0;
 }
 
-.wrapper .media>div:first-child button {
+.wrapper .media .suscribe-media button {
   height: 100%;
   width: auto;
   padding: 0 15px;
@@ -875,9 +902,10 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
   border: 1px dotted transparent;
   border-radius: 0px 0.3125rem 0.3125rem 0px;
   z-index: 2;
+  cursor: pointer;
 }
 
-.wrapper .media>div:first-child div span {
+.wrapper .media .suscribe-media div span {
   display: block;
   color: rgb(117, 117, 117);
   font-size: 0.75em;
@@ -890,7 +918,7 @@ main .carrousel-container .carrousel-object .shop-button button:hover {
 }
 
 
-.wrapper .media>div:nth-child(2) {
+.wrapper .media .follow-us {
   display: flex;
   flex-direction: column;
 }
@@ -1748,6 +1776,44 @@ font-size: 1.1rem;
   }
 }
 
+@media only screen and (max-width: 1200px) {
+
+  /* H E A D E R */
+  .account-and-vip span {
+    display: none;
+  }
+
+  .account-and-vip > button,
+  .account-and-vip > a {
+    width: 50px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .utility-bar .account-and-vip > div,
+  .utility-bar .account-and-vip img,
+  .utility-bar .account-and-vip svg {
+    margin: 0;
+  }
+
+  /* F O O T E R */
+  .wrapper .links,
+  .wrapper .links > div:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+
+  .wrapper .links div:nth-child(2) > div {
+    margin-bottom: 50px;
+  }
+
+  .wrapper .links a {
+    font-size: 1rem;
+  }
+}
+
 @media only screen and (max-width: 900px) {
 
   /* C A R T */
@@ -1789,6 +1855,140 @@ font-size: 1.1rem;
     border: none;
     font-size: 0.8rem;
     
+  }
+   /* H E A D E R */
+
+   .utility-bar .kids-wrapper,
+   .utility-bar .account-and-vip,
+   .main-bar .main-bar-nav,
+   .main-bar .log-in span {
+     display: none;
+   }
+ 
+   .utility-bar {
+     background: #f8f8f8;
+   }
+ 
+   .utility-bar .container > button {
+     background: transparent;
+   }
+ 
+   .main-bar {
+     background: #fff;
+     display: flex;
+     justify-content: space-between;
+   }
+ 
+   .main-bar .lego-logo {
+     width: 40px;
+     height: 40px;
+   }
+ 
+   .main-bar .log-in {
+     height: 52px;
+     width: 20px;
+     margin-right: 1.25rem;
+     display: inline;
+   }
+ 
+   .main-bar .search-icon,
+   .main-bar .favourite-icon {
+     margin-right: 1.25rem;
+   }
+
+   /* F O O T E R */
+
+   footer {
+    padding: 1.25rem;
+   }
+
+   .wrapper .links > div:nth-child(2) {
+    display: none;
+   }
+
+   .wrapper .media {
+    display: block;
+   }
+
+   .wrapper .media .suscribe-media {
+    padding: 0 0 1.875rem;
+  }
+
+  .wrapper .media .suscribe-media > div > div,
+  .wrapper .media .suscribe-media > div > div input {
+   width: 100%;
+  }
+
+  .wrapper .media .links-hidden {
+   display: block;
+   margin-bottom: 2.5rem; 
+  }
+
+  .wrapper .media .links-hidden summary {
+    padding: 0.9375rem 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .wrapper .media .links-hidden summary::after {
+    content: '';
+    width: 18px;
+    height: 15px;
+    background: url('assets/footer/chevron-down.svg');
+    background-size: cover;
+    margin-left: .75em;
+    transition: 0.2s;
+  }
+
+  .wrapper .media .links-hidden details[open] > summary::after {
+    transform: rotate(180deg);
+  }
+
+  .wrapper .media .links-hidden details li {
+    padding: 0.9375rem 0;
+    font-size: 0.90rem;
+  }
+
+  .wrapper .media .links-hidden details li>a:hover {
+    text-decoration: underline;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  /* Footer */
+  .wrapper .links {
+    padding: 1.25rem 0;
+  }
+
+  .wrapper .links > div:first-child {
+    display: inline-flex;
+  }
+
+  .wrapper .links > div:first-child > div {
+    display: flex;
+    flex-direction: row;
+  } 
+
+  .wrapper .links > div:first-child .lego-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .wrapper .links > div:first-child .region-selector {
+    width: 120px;
+    height: 45px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  .wrapper .media {
+    padding-top: 0;
   }
 }
 

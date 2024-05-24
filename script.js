@@ -1,106 +1,89 @@
-let cartList = [
+//! RECUERDA !! Index 0 corresponde con id 1
+
+let cartListPrueba = [
   {
-    id: 0,
+    id: 1,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg",
     title: "Cabaña de Blancanieves y los Siete Enanitos",
     price: 219.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 18,
     pieces: 2228,
   },
   {
-    id: 1,
+    id: 2,
     image: "assets/disney-sets/cars/cars-600x450.jpg",
     title: "Diversión en el Autolavado con Rayo McQueen y Mate",
     price: 34.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 2,
     pieces: 29,
   },
   {
-    id: 2,
+    id: 3,
     image: "assets/disney-sets/frozen/frozen-600x450.jpg",
     title: "Palacio de Hielo de Elsa",
     price: 99.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 6,
     pieces: 630,
   },
   {
-    id: 3,
+    id: 4,
     image: "assets/disney-sets/insideOut/insideOut-600x400.jpg",
     title: "Inside Out 2 Mood Cubes",
     price: 34.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 9,
     pieces: 394,
   },
   {
-    id: 4,
+    id: 5,
     image: "assets/disney-sets/reyLeon/reyLeon-600x450.jpg",
     title: "El Rey León: Simba Cachorro",
     price: 19.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 6,
     pieces: 222,
   },
   {
-    id: 5,
+    id: 6,
     image: "assets/disney-sets/sirenita/sirenita-600x450.jpg",
     title: "Mini Castillo de Disney Ariel",
     price: 39.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 12,
     pieces: 557,
   },
   {
-    id: 6,
+    id: 7,
     image: "assets/disney-sets/stitch/stitch-600x450.jpg",
     title: "Stitch",
     price: 64.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 9,
     pieces: 730,
   },
   {
-    id: 7,
+    id: 8,
     image: "assets/disney-sets/up/up-600x450.jpg",
     title: "Casa de Up",
     price: 54.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 9,
     pieces: 598,
   },
   {
-    id: 8,
+    id: 9,
     image: "assets/disney-sets/wall-e/walle-600x450.jpg",
     title: "EVA y WALL•E",
     price: 14.99,
-    amount: 1,
     emptyHeart: true,
     minAge: 10,
     pieces: 155,
   },
 ];
 
-let shoppingCart = [
-  {
-    id: 8,
-    amount: 1,
-  },
-  {
-    id: 5,
-    amount: 2,
-  }
-];
 
 
 // la constante fullUrl almacena el valor de la referencia del .html
@@ -109,7 +92,7 @@ const fullUrl = window.location.href;
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   fullUrl === "http://127.0.0.1:5500/disney.html"
-    ? cartList.forEach((item) => {
+    ? cartListPrueba.forEach((item) => {
         disneyLayout.innerHTML += disneySetsTemplate(
           item.title,
           item.image,
@@ -128,6 +111,57 @@ window.addEventListener("DOMContentLoaded", () => {
         );
       });
 });
+
+// M A I N  W E B P A G E
+
+// Slider del header
+const buttonPrev = document.querySelector('.prev-slider');
+const buttonNext = document.querySelector('.next-slider');
+const sliderInner = document.querySelector('.slider-p-inner');
+let sliderHeaderIndex = 0;
+
+function updateSliderPosition() {
+  const width = document.querySelector('.slider-p').clientWidth;
+  sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
+}
+
+buttonPrev.addEventListener('click', () => {
+  if (sliderHeaderIndex > 0) {
+    sliderHeaderIndex--;
+    updateSliderPosition();
+  }
+});
+
+buttonNext.addEventListener('click', () => {
+  if (sliderHeaderIndex < sliderInner.children.length - 1) {
+    sliderHeaderIndex++;
+    updateSliderPosition();
+  }
+});
+
+// Scroll del carrusel
+document.addEventListener('DOMContentLoaded', () => {
+  const carrouselWrapper = document.querySelector('.carrousel-wrapper');
+  const scrollLeftButton = document.querySelector('.scroll-left-button');
+  const scrollRightButton = document.querySelector('.scroll-right-button');
+
+  scrollLeftButton.addEventListener('click', () => {
+    carrouselWrapper.scrollBy({
+      left: -1080,
+      behavior: 'smooth'
+    });
+  });
+
+  scrollRightButton.addEventListener('click', () => {
+    carrouselWrapper.scrollBy({
+      left: 1080,
+      behavior: 'smooth'
+    });
+  });
+});
+
+
+
 
 // D I S N E Y  S E T S //
 
@@ -178,7 +212,7 @@ function disneySetsTemplate(title, image, price, age, pieces) {
 
 // C A R T
 
-// let jsonCart =localStorage.setItem("cart", JSON.stringify(cartList)); // guarda todo el carrito
+// let jsonCart =localStorage.setItem("cart", JSON.stringify(cartListPrueba)); // guarda todo el carrito
 // let cartArrayObject = JSON.parse(jsonCart);
 
 
@@ -200,7 +234,7 @@ function decrease(id) {
 function decreaseAmount(idOfTheObj) {
   let amount = 1;
 
-  cartList.forEach((obj) => {
+  cartListPrueba.forEach((obj) => {
     if (obj.id == idOfTheObj) {
       if (obj.amount > 1) {
         obj.amount--;
@@ -223,7 +257,7 @@ function increase(id) {
 
 function increaseAmountObj(idOfTheObj) {
   let amount;
-  cartList.forEach((obj) => {
+  cartListPrueba.forEach((obj) => {
     if (obj.id == idOfTheObj) {
       obj.amount++;
       amount = obj.amount;
@@ -242,7 +276,7 @@ function addToTheWishList(idOfTheObj) {
   const heart = document.getElementById(`cart-icon-heart-${ourIdInNumber}`);
   const wishList = document.getElementById(`add-wish-list-${ourIdInNumber}`);
 
-  cartList.forEach((obj) => {
+  cartListPrueba.forEach((obj) => {
     if (obj.id == ourIdInNumber) {
       if (obj.emptyHeart) {
         // fill the heart
@@ -293,7 +327,7 @@ function addProductToLocalStorage(productID) {
     localStorage.setItem(
       `index: ${productID}`,
       JSON.stringify({
-        id: cartList[(productID-1)].id,
+        id: cartListPrueba[(productID-1)].id,
         amount: accumulator,
       })
     );
@@ -302,8 +336,8 @@ function addProductToLocalStorage(productID) {
     // localStorage.setItem(
     //   `index: 0`,
     //   JSON.stringify({
-    //     id: cartList[0].id,
-    //     shortTitle: cartList[0].shortTitle,
+    //     id: cartListPrueba[0].id,
+    //     shortTitle: cartListPrueba[0].shortTitle,
     //     amount: 12,
     //   })
     // );
@@ -321,7 +355,7 @@ function addProductToLocalStorage(productID) {
 function getProductToLocalStorage() {
   let cartArray = [];
 
-  for (let i = 0; i < cartList.length; i++) {
+  for (let i = 0; i < cartListPrueba.length; i++) {
     let jsonItem = localStorage.getItem(`index: ${i}`);
 
     if (jsonItem !== null) {
@@ -342,7 +376,7 @@ function findProduct(cartArray){
   const productsInCart = [];
   cartArray.forEach((shoppingProduct) => {
     console.log("shopping product", shoppingProduct);
-    cartList.forEach(item => {
+    cartListPrueba.forEach(item => {
       if (shoppingProduct.id === item.id){
       console.log("product found in catalog", shoppingProduct.id);
         productsInCart.push({...item, amount:shoppingProduct.amount})
@@ -447,10 +481,10 @@ let totalPrice = document.getElementById("cart-total-price");
 let iva = document.getElementById("cart-IVA");
 let paypal = document.getElementById("paypal-3-payments");
 
-const sumSubtotal = cartList.reduce((acc, item) => acc + item.price, 0);
+const sumSubtotal = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
 subtotal.textContent = `${sumSubtotal.toFixed(2)} €`;
 
-const sumTotalPrice = cartList.reduce((acc, item) => acc + item.price, 0);
+const sumTotalPrice = cartListPrueba.reduce((acc, item) => acc + item.price, 0);
 totalPrice.textContent = `${sumTotalPrice.toFixed(2)} €`;
 
 const ivaTotal = sumSubtotal * 0.21;
