@@ -89,40 +89,50 @@ const fullUrl = window.location.href;
 
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
-  fullUrl === "http://127.0.0.1:5500/disney.html"
-    ? cartListPrueba.forEach((item) => {
-        disneyLayout.innerHTML += disneySetsTemplate(
-          item.title,
-          item.image,
-          item.price,
-          item.minAge,
-          item.pieces
-        );
-      }) //Cart website
-    : findProduct(getProductToLocalStorage()).forEach((item) => {
-        cartContainer.innerHTML += modifiedTemplate(
-          item.id,
-          item.title,
-          item.image,
-          item.price,
-          item.amount
-        );
-      });
+  if (fullUrl === "http://127.0.0.1:5500/disney.html") {
+    cartListPrueba.forEach((item) => {
+      disneyLayout.innerHTML += disneySetsTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.minAge,
+        item.pieces
+      );
+    });
+    emptyHeartCheck();
+  } else if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+    //Cart website
+    findProduct(getProductToLocalStorage()).forEach((item) => {
+      cartContainer.innerHTML += modifiedTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.amount
+      );
+    });
 
-  shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
-  btnCode();
-  productCounter(getProductToLocalStorage());
-  sumPriceCart();
+    btnCode();
+    productCounter(getProductToLocalStorage());
+    sumPriceCart();
+    emptyHeartCheck();
+    shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
+  }
 });
 
 // D I S N E Y  S E T S //
 
 const disneyLayout = document.getElementById("disney-set-layout");
 
-function disneySetsTemplate(title, image, price, age, pieces) {
+function disneySetsTemplate(id, title, image, price, age, pieces) {
   let disneyTemplateItem = `
   <div class="disney-card1">
-                <div class="disney-card1-likeButton-banner"></div>
+                <div class="disney-card1-likeButton-banner">
+                <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
+              <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
+            </button>
+                </div>
                 <div class="disney-card1-imageSet-container">
                     <!-- aqui es donde va el carrousel -->
                     <img class="disney-card1-imageSet" src=${image}
@@ -149,7 +159,7 @@ function disneySetsTemplate(title, image, price, age, pieces) {
                     <span><b>${price}</b><i class="bi bi-currency-euro"></i></span>
                 </div>
                 <div class="disney-card1-addToCart-container">
-                    <button type="button" class="btn btn-primary disney-btn-addToCart">
+                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id})">
                         <div class="disney-card1-addToCart-innerContainer">
                             <div class="disney-bagIcon-container">
                                 <img  class="disney-bag-icon" src="assets/disney-sets/shopping-bag-o.svg" alt="age-icon">
@@ -161,7 +171,6 @@ function disneySetsTemplate(title, image, price, age, pieces) {
             </div>`;
   return disneyTemplateItem;
 }
-
 // C A R T
 
 //contenedor donde se le agregan los productos del carrito de compra
@@ -210,31 +219,80 @@ function decreaseAmount(productID) {
 
 //heart button
 
-function addToTheWishList(idOfTheObj) {
-  let ourId = idOfTheObj.split("-")[3];
+//! funcion que comprueba el estado de emptyHeart, se inicializa en el primer event listener.
+function emptyHeartCheck() {
+  checkEmptyHeartList = getProductToLocalStorage();
+  checkEmptyHeartList.forEach((element) => {
+    cartListPrueba.forEach((item) => {
+      if (element.id === item.id) {
+        item.emptyHeart = element.emptyHeart;
+        let heart = document.getElementById(`cart-icon-heart-${item.id}`);
+        const wishList = document.getElementById(`add-wish-list-${item.id}`);
+        if (element.emptyHeart === false) {
+          heart.classList.replace("bi-heart", "bi-heart-fill");
+          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            wishList.textContent = `Quitar de la lista de deseos`;
+          }
+        }
+      }
+    });
+  });
+}
 
-  let ourIdInNumber = Number(ourId);
+//! Nueva funcion de addToTheWishList -> hay que cambiar ambos templates reemplazar el this.id.
+function addToTheWishList(productID) {
+  const heart = document.getElementById(`cart-icon-heart-${productID}`);
+  const wishList = document.getElementById(`add-wish-list-${productID}`);
 
-  const heart = document.getElementById(`cart-icon-heart-${ourIdInNumber}`);
-  const wishList = document.getElementById(`add-wish-list-${ourIdInNumber}`);
+  const storedProduct = JSON.parse(
+    localStorage.getItem(`index: ${productID - 1}`)
+  );
 
   cartListPrueba.forEach((obj) => {
-    if (obj.id == ourIdInNumber) {
+    if (obj.id == productID) {
       if (obj.emptyHeart) {
         // fill the heart
         heart.classList.replace("bi-heart", "bi-heart-fill");
-        wishList.textContent = `Quitar de la lista de deseos`;
-        obj.emptyHeart = false;
-        return;
+        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+          wishList.textContent = `Quitar de la lista de deseos`;
+        }
+        if (storedProduct) {
+          storedProduct.emptyHeart = false;
+        }
+        return (obj.emptyHeart = false);
       } else {
         // empty the heart
         heart.classList.replace("bi-heart-fill", "bi-heart");
-        wishList.textContent = `Añadir a la lista de deseos`;
-        obj.emptyHeart = true;
-        return;
+        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+          wishList.textContent = `Añadir a la lista de deseos`;
+        }
+        if (storedProduct) {
+          storedProduct.emptyHeart = true;
+        }
+        return (obj.emptyHeart = true);
       }
     }
   });
+
+  if (storedProduct) {
+    localStorage.setItem(
+      `index: ${productID - 1}`,
+      JSON.stringify({
+        id: cartListPrueba[productID - 1].id,
+        amount: storedProduct.amount,
+        emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+      })
+    );
+  } else {
+    localStorage.setItem(
+      `index: ${productID - 1}`,
+      JSON.stringify({
+        id: cartListPrueba[productID - 1].id,
+        amount: 0,
+        emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+      })
+    );
+  }
 }
 
 //promo code button
@@ -405,7 +463,7 @@ function modifiedTemplate(id, title, image, price, amount) {
       </article>
 
       <div class="cart-trash">
-        <button class="cart-trash-button">
+        <button class="cart-trash-button" onclick="deleteArticles(${id})">
           <i class="bi bi-trash3"></i>
         </button>
 
@@ -469,10 +527,8 @@ function productCounter(getProductLS) {
 }
 
 // Función para eliminar articulos
-//!Esta función no funciona 
 
 function deleteArticles(id) {
   localStorage.removeItem(`index: ${id - 1}`);
+  location.href = location.href;
 }
-
-deleteArticles()
