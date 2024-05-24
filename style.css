@@ -1749,6 +1749,7 @@ font-size: 1.1rem;
   border-radius: 5px;
 }
 
+
 .cart-rest-article {
   position: relative;
   cursor: pointer;
@@ -1842,6 +1843,12 @@ font-size: 1.1rem;
 
 .cart-wish-list-text {
   font-weight: 600;
+ width: 10rem;
+}
+
+.cart-wish-trash-container{
+  display: flex;
+  
 }
 
 .cart-trash-button {
@@ -1868,15 +1875,9 @@ font-size: 1.1rem;
 
 /* PREGUNTAR SANTIAGO */
 
-.cart-delivery-white-space {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
+.cart-delivery-white-space{
+display: inline;
 
-.cart-progress-inline-block {
-  display: inline-block;
 }
 
 .cart-right-first {
@@ -1901,7 +1902,11 @@ font-size: 1.1rem;
   padding-bottom: 0.75rem;
 }
 
+
 .cart-promo-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   border: none;
 }
@@ -1909,6 +1914,7 @@ font-size: 1.1rem;
 .cart-h3-flex {
   font-size: 0.875rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .cart-h3-flex i {
@@ -1936,6 +1942,7 @@ font-size: 1.1rem;
 .cart-display-none {
   display: none;
 }
+
 
 .cart-promo-open div button {
   background-color: var(--cart-grey-divider);
@@ -1973,14 +1980,16 @@ font-size: 1.1rem;
   font-size: small;
 }
 
+
 .cart-checkout {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: var(--cart-orange-button);
   border-radius: 2rem;
   width: 100%;
   height: 3rem;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 .cart-checkout:hover {
@@ -2010,7 +2019,7 @@ font-size: 1.1rem;
 
 .cart-fast-shopping-description {
   font-size: 0.75rem;
-  margin: 0.75rem 0;
+  margin: 0.75rem;
 }
 
 .cart-paypal {
@@ -2023,7 +2032,7 @@ font-size: 1.1rem;
   border-radius: 2rem;
   width: 100%;
   height: 3rem;
-  margin: 1rem;
+  margin: 1rem 0;
   gap: 0.5rem;
 }
 
@@ -2045,7 +2054,7 @@ font-size: 1.1rem;
   border-radius: 2rem;
   width: 100%;
   height: 3rem;
-  margin: 1rem;
+  margin: 1rem 0;
   gap: 0.5rem;
 }
 
@@ -2118,23 +2127,7 @@ font-size: 1.1rem;
 
 /* M E D I A  Q U E R I E S  */
 
-@media only screen and (max-width: 1260px) {
-  /* C A R T */
-  .cart-my-bag-content {
-    display: block;
-  }
 
-  .cart-divisor {
-    background-color: var(--cart-grey-backgroung);
-    height: 1.5rem;
-  }
-
-  .cart-payment-methods img {
-    width: 7%;
-    height: 7%;
-    gap: 1rem;
-  }
-}
 
 @media only screen and (max-width: 1200px) {
 
@@ -2176,46 +2169,7 @@ font-size: 1.1rem;
 
 @media only screen and (max-width: 900px) {
 
-  /* C A R T */
-  .cart-my-bag-content {
-    display: block;
-  }
-
-  .cart-img-container {
-    width: 15%;
-    height: auto;
-    margin-right: 3rem;
-    cursor: pointer;
-  }
-
-  .cart-payment-methods img {
-    width: 7%;
-    height: 7%;
-    gap: 1rem;
-  }
-
-  .cart-wish-list {
-    width: auto;
-  }
-  .cart-wish-list-text {
-    display: none;
-  }
-
-  .cart-trash {
-    height: 1rem;
-    
-  }
-
-  .cart-edit-button {
-    display: flex;
-    justify-content: space-between;
-    bottom: 0;
-    background-color: white;
-    color: var(--cart-blue-empty);
-    border: none;
-    font-size: 0.8rem;
-    
-  }
+  
    /* H E A D E R */
 
    .utility-bar .kids-wrapper,
@@ -2353,5 +2307,78 @@ font-size: 1.1rem;
 }
 
 
+/* M E D I A  Q U E R I E S  */
+
+@media only screen and (max-width: 1260px) {
+  /* C A R T */
+  .cart-my-bag-content {
+    display: block;
+  }
+
+  .cart-divisor {
+    background-color: var(--cart-grey-backgroung);
+    height: 1.5rem;
+  }
+
+  .cart-payment-methods img {
+    width: 7%;
+    height: 7%;
+    gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+
+  /* C A R T */
+  .cart-my-bag-content {
+    display: block;
+  }
+
+  .cart-img-container {
+    width: 15%;
+    height: auto;
+    margin-right: 3rem;
+    cursor: pointer;
+  }
+
+  .cart-payment-methods img {
+    width: 7%;
+    height: 7%;
+    gap: 1rem;
+  }
+
+  .cart-wish-list {
+    width: auto;
+  }
+  .cart-wish-list-text {
+    display: none;
+  }
+
+  .cart-edit-button {
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    background-color: white;
+    color: var(--cart-blue-empty);
+    border: none;
+    font-size: 0.8rem;
+    
+  }
+
+  .cart-wish-trash-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cart-add-more-content {
+   display: none;
+  }
+
+  .cart-display-flex {
+    display: flex;
+  }
+}
 
 
