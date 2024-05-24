@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inicio | Oficial LEGO® Shop ES</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="assets/Icons/lego.ico" type="image/x-icon">
 </head>
 
 <body>
-  <header>
+  <header id="nav">
     <!-- Parte blanca -->
     <div class="utility-bar">
       <div class="kids-wrapper">
@@ -24,37 +25,31 @@
       </div>
 
       <div class="container">
-        <button>
+        <button class="prev-slider">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
               d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
           </svg>
         </button>
-        <div>
-          <div>
-            <p>
+        <div class="slider-p">
+          <div class="slider-p-inner">
+            <p class="slider-text">
               Rebajas para miembros de LEGO&#169; Insiders del 30/4 al 5/5&#42;
               <a href="#">Saber más</a>
             </p>
+            <p class="slider-text">
+              4X puntos en artículos seleccionados de LEGO® Star Wars™*
+            </p>
+            <p class="slider-text">
+              El Día de LEGO® Star Wars™ regresa del 1/5 al 5/5.
+            </p>
+            <p class="slider-text">
+              Envío GRATIS con pedidos superiores a 35&euro;!*
+            </p>
           </div>
-          <!-- <div>
-              <p>
-                4X puntos en artículos seleccionados de LEGO® Star Wars™*
-              </p>
-            </div>
-            <div>
-              <p>
-                El Día de LEGO® Star Wars™ regresa del 1/5 al 5/5.
-              </p>
-            </div>
-            <div>
-              <p>
-                Envío GRATIS con pedidos superiores a 35&euro;!*
-              </p>
-            </div> -->
         </div>
-        <button>
+        <button class="next-slider">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -64,7 +59,7 @@
       </div>
 
       <div class="account-and-vip">
-        <button>
+        <button class="log-in">
           <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             class="Icon__StyledSVG-lm07h6-0 cnHyRF UtilityBarstyles__AccountIcon-sc-1uwh8t8-5 KHcEY">
             <g transform="translate(1 1)" fill-rule="nonzero" fill="none">
@@ -85,7 +80,7 @@
         <div>&#124;</div>
         <a href="#">
           <img src="assets/header/icon-insider-out.svg" alt="">
-          <span>Únete a LEGO&#169; Insiders</span>
+          <span>Únete a LEGO<sup>&reg;</sup> Insiders</span>
         </a>
       </div>
     </div>
@@ -96,65 +91,11 @@
         <a href="#">
           <img class="lego-logo" src="assets/header/brand-lego.svg" alt="LEGO" loading="eager">
         </a>
-        <ul>
+        <ul class="main-bar-nav">
           <li><button>Comprar</button></li>
           <li><button>Descubrir</button></li>
           <li><button>Ayuda</button></li>
           <li><a href=""><span>Día <i>Star Wars</i>&trade;</span></a></li>
-        </ul>
-      </div>
-      <div class="sub-nav"> 
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-          </svg>
-        </button>
-        <ul>
-          <li>
-            <summary>Sets por tema</summary>
-          </li>
-          <li>
-            <summary>Edades</summary>
-          </li>
-          <li>
-            <summary>Rangos por precios</summary>
-          </li>
-          <li>
-            <summary>Artículos LEGO</summary>
-          </li>
-          <li>
-            <summary>Intereses</summary>
-          </li>
-          <li>
-            <summary>Pick and Build</summary>
-          </li>
-          <li>
-            <a href="#">Exclusivos</a>
-          </li>
-          <li>
-            <a href="#">Novedades</a>
-          </li>
-          <li>
-            <a href="#">Los más vendidos</a>
-          </li>
-          <li>
-            <a href="#">Decoración del hogar</a>
-          </li>
-          <li>
-            <a href="#">Ofertas y rebajas</a>
-          </li>
-          <li>
-            <a href="#">Tarjetas regalos</a>
-          </li>
-          <li>
-            <a href="#">Próximamente</a>
-          </li>
-          <li>
-            <a href="#">Encuentra la inspiración</a>
-          </li>
-          <li>
-            <a href="#">Última oportunidad para comprar</a>
-          </li>
         </ul>
       </div>
       <div>
@@ -191,7 +132,9 @@
     <div class="main-banner-container">
       <a href="">
         <picture class="main-banner-img">
-          <img src="https://www.lego.com/cdn/cs/set/assets/bltf11ee292a14922fa/10341-Home-202405-Home-IN-Hero-Standard-Large.jpg?fit=crop&format=webply&quality=80&width=1600&height=500&dpr=1" alt="Hay una mujer construyendo un modelo LEGO de un cohete de la NASA.">
+          <img
+            src="https://www.lego.com/cdn/cs/set/assets/bltf11ee292a14922fa/10341-Home-202405-Home-IN-Hero-Standard-Large.jpg?fit=crop&format=webply&quality=80&width=1600&height=500&dpr=1"
+            alt="Hay una mujer construyendo un modelo LEGO de un cohete de la NASA.">
         </picture>
       </a>
       <div class="main-banner-content">
@@ -442,12 +385,12 @@
 
     <!-- C A R R O U S E L -->
     <section class="carrousel">
-      <div class="carrousel-title">Compras de otros clientes</div>
+      <div class="carrousel-title">Recomendado para ti</div>
       <div class="carrousel-container">
         <div class="previous-button">
-          <button id="scroll-left-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
-              viewBox="0 0 16 16">
+          <button class="scroll-left-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-left" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
             </svg>
@@ -458,7 +401,8 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-1_batman.png" alt="Gotham City™ de Batman: La Serie Animada">
+                  <img src="assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg"
+                    alt="Cabaña de Blancanieves y los Siete Enanitos" />
                 </a>
                 <div>
                   <button>
@@ -469,29 +413,23 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Gotham City™ de Batman: La Serie Animada</a>
+                <a href="">Cabaña de Blancanieves y los Siete Enanitos</a>
               </div>
             </div>
             <div>
               <div class="star-review">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-half-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-half-star.svg" alt="" />
               </div>
-              <div class="price">
-                299,99 €
-              </div>
+              <div class="price">219,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(1)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -499,7 +437,8 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-2_dungeons-and-dragons.png" alt="Dungeons & Dragons: Aventura del Dragón Rojo">
+                  <img src="assets/disney-sets/cars/cars-600x450.jpg"
+                    alt="Diversión en el Autolavado con Rayo McQueen y Mate" />
                 </a>
                 <div>
                   <button>
@@ -510,29 +449,23 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Dungeons & Dragons: Aventura del Dragón Rojo</a>
+                <a href="">Diversión en el Autolavado con Rayo McQueen y Mate</a>
               </div>
             </div>
             <div>
               <div class="star-review">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-star.svg" alt="">
-                <img src="assets/cards/review-half-star.svg" alt="">
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-half-star.svg" alt="" />
               </div>
-              <div class="price">
-                359,99 €
-              </div>
+              <div class="price">34,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(2)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -540,7 +473,7 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-3_gru.png" alt="Modelo de Gru y los Minions">
+                  <img src="assets/disney-sets/frozen/frozen-600x450.jpg" alt="Palacio de Hielo de Elsa" />
                 </a>
                 <div>
                   <button>
@@ -551,22 +484,16 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Modelo de Gru y los Minions</a>
+                <a href="">Palacio de Hielo de Elsa</a>
               </div>
             </div>
-            <div>            
-              <div class="price">
-                54,99 €
-              </div>
+            <div>
+              <div class="price">99,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(3)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -574,7 +501,7 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-4_lab-space.png" alt="Laboratorio Científico Espacial">
+                  <img src="assets/disney-sets/insideOut/insideOut-600x400.jpg" alt="Inside Out 2 Mood Cubes" />
                 </a>
                 <div>
                   <button>
@@ -585,22 +512,16 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Laboratorio Científico Espacial</a>
+                <a href="">Inside Out 2 Mood Cubes</a>
               </div>
             </div>
             <div>
-              <div class="price">
-                39,99 €
-              </div>
+              <div class="price">34,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(4)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -608,7 +529,7 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-5_botanic-almanac.jpg" alt="Botanical Almanac">
+                  <img src="assets/disney-sets/reyLeon/reyLeon-600x450.jpg" alt="El Rey León: Simba Cachorro" />
                 </a>
                 <div>
                   <button>
@@ -619,22 +540,16 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Botanical Almanac</a>
+                <a href="">El Rey León: Simba Cachorro</a>
               </div>
             </div>
             <div>
-              <div class="price">
-                17,99 €
-              </div>
+              <div class="price">19,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(5)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -642,7 +557,7 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-6_midnight-crow.png" alt="Cuervo de Medianoche de la Bruja Jamás">
+                  <img src="assets/disney-sets/sirenita/sirenita-600x450.jpg" alt="Mini Castillo de Disney Ariel" />
                 </a>
                 <div>
                   <button>
@@ -653,22 +568,16 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Cuervo de Medianoche de la Bruja Jamás</a>
+                <a href="">Mini Castillo de Disney Ariel</a>
               </div>
             </div>
             <div>
-              <div class="price">
-                99,99 €
-              </div>
+              <div class="price">39,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(6)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -676,7 +585,7 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-7_whitesnow.png" alt="Llavero de Blancanieves">
+                  <img src="assets/disney-sets/stitch/stitch-600x450.jpg" alt="Stitch" />
                 </a>
                 <div>
                   <button>
@@ -687,22 +596,16 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Dungeons & Dragons: Red Dragon's Tale</a>
+                <a href="">Stitch</a>
               </div>
             </div>
             <div>
-              <div class="price">
-                5,99 €
-              </div>
+              <div class="price">64,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(7)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -710,7 +613,7 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-8_roses.png" alt="Ramo de Rosas">
+                  <img src="assets/disney-sets/up/up-600x450.jpg" alt="Casa de Up" />
                 </a>
                 <div>
                   <button>
@@ -721,22 +624,16 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Ramo de Rosas</a>
+                <a href="">Casa de "Up"</a>
               </div>
             </div>
             <div>
-              <div class="price">
-                59,99 €
-              </div>
+              <div class="price">54,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button onclick="addProductToLocalStorage(8)">Añadir a la bolsa</button>
               </div>
             </div>
           </div>
@@ -744,7 +641,7 @@
             <div>
               <div class="image-card">
                 <a href="#">
-                  <img src="assets/cards/card-9_peppa-pig.png" alt="Jardín y Casa del Árbol de Peppa Pig">
+                  <img src="assets/disney-sets/wall-e/walle-600x450.jpg" alt="EVA y WALL•E" />
                 </a>
                 <div>
                   <button>
@@ -755,132 +652,24 @@
                     </svg>
                   </button>
                 </div>
-                <div>
-                  New
-                </div>
+                <div>Novedad</div>
               </div>
               <div>
-                <a href="">Jardín y Casa del Árbol de Peppa Pig</a>
+                <a href="">EVA y WALL•E</a>
               </div>
             </div>
             <div>
-              <div class="price">
-                19,99 €
-              </div>
+              <div class="price">14,99 €</div>
               <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="carrousel-object">
-            <div>
-              <div class="image-card">
-                <a href="#">
-                  <img src="assets/cards/card-10_trex.png" alt="Dinosaurio Robot C-Rex de Cooper">
-                </a>
-                <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
-                  </button>
-                </div>
-                <div>
-                  New
-                </div>
-              </div>
-              <div>
-                <a href="">Dinosaurio Robot C-Rex de Cooper</a>
-              </div>
-            </div>
-            <div>
-              <div class="price">
-                79,99 €
-              </div>
-              <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="carrousel-object">
-            <div>
-              <div class="image-card">
-                <a href="#">
-                  <img src="assets/cards/card-11_minion-bus.png" alt="Bus de Fiesta Musical de los Minions">
-                </a>
-                <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
-                  </button>
-                </div>
-                <div>
-                  New
-                </div>
-              </div>
-              <div>
-                <a href="">Bus de Fiesta Musical de los Minions</a>
-              </div>
-            </div>
-            <div>
-              <div class="price">
-                39,99 €
-              </div>
-              <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="carrousel-object">
-            <div>
-              <div class="image-card">
-                <a href="#">
-                  <img src="assets/cards/card-12_bag.jpg" alt="Cartera de Minifiguras">
-                </a>
-                <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
-                  </button>
-                </div>
-                <div>
-                  New
-                </div>
-              </div>
-              <div>
-                <a href="">Cartera de Minifiguras</a>
-              </div>
-            </div>
-            <div>
-              <div class="price">
-                10,00 €
-              </div>
-              <div class="shop-button">
-                <button>
-                  Add to Bag
-                </button>
+                <button>Añadir a la bolsa</button>
               </div>
             </div>
           </div>
         </div>
         <div class="next-button">
-          <button id="scroll-right-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right"
-              viewBox="0 0 16 16">
+          <button class="scroll-right-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
             </svg>
@@ -1387,16 +1176,18 @@
       <!-- Links -->
       <div class="links">
         <div>
-          <img class="lego-logo" src="assets/footer/brand-lego.svg" alt="LEGO">
-          <button class="region-selector">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt"
-              viewBox="0 0 16 16">
-              <path
-                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
-              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-            </svg>
-            España
-          </button>
+          <div>
+            <img class="lego-logo" src="assets/footer/brand-lego.svg" alt="LEGO">
+            <button class="region-selector">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt"
+                viewBox="0 0 16 16">
+                <path
+                  d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+              </svg>
+              España
+            </button>
+          </div>
           <a href="">Tarjetas regalo</a>
           <a href="">Encuentra la inspiración</a>
           <a href="">Catálogos LEGO</a>
@@ -1446,16 +1237,15 @@
             </ul>
           </div>
         </div>
-
       </div>
       <!-- Media -->
       <div class="media">
-        <div>
+        <div class="suscribe-media">
           <span>Suscríbete al correo electrónico de LEGO&#174; Shop</span>
           <div>
             <div>
-              <label for="">
-                <input type="text" name="subscribe" id="">
+              <label for="subscribe">
+                <input type="text" name="subscribe" id="subscribe">
                 <span>Tu dirección de correo electrónico</span>
               </label>
             </div>
@@ -1468,7 +1258,51 @@
             </button>
           </div>
         </div>
-        <div>
+        <div class="links-hidden">
+          <details>
+            <summary>Quiénes somos</summary>
+            <ul>
+              <li><a href="">The LEGO Group</a></li>
+              <li><a href="">Noticias LEGO<sup>&reg;</sup></a></li>
+              <li><a href="">Sostenibilidad</a></li>
+              <li><a href="">Declaración de transparencia de la cadena de suministro</a></li>
+              <li><a href="">Certificación de productos LEGO</a></li>
+              <li><a href="">Ofertas de trabajo LEGO</a></li>
+              <li><a href="">Línea ética LEGO</a></li>
+            </ul>
+          </details>
+          <details>
+            <summary>Atención al cliente</summary>
+            <ul>
+              <li><a href="">Ponte en contacto con nosotros</a></li>
+              <li><a href="">Instrucciones de construcción</a></li>
+              <li><a href="">Piezas de repuesto</a></li>
+              <li><a href="">Envíos y devoluciones</a></li>
+              <li><a href="">Métodos de pago</a></li>
+              <li><a href="">Términos y condiciones</a></li>
+              <li><a href="">Productos retirados</a></li>
+            </ul>
+          </details>
+          <details>
+            <summary>Atracciones</summary>
+            <ul>
+              <li><a href="">LEGO<sup>&reg;</sup> House</a></li>
+              <li><a href="">LEGOLAND<sup>&reg;</sup> Parks</a></li>
+              <li><a href="">LEGOLAND Discovery Centers</a></li>
+            </ul>
+          </details>
+          <details>
+            <summary>Más información</summary>
+            <ul>
+              <li><a href="">LEGO<sup>&reg;</sup> Life</a></li>
+              <li><a href="">LEGO Education</a></li>
+              <li><a href="">LEGO Ideas</a></li>
+              <li><a href="">LEGO Foundation</a></li>
+              <li><a href="">Programa para socios</a></li>
+            </ul>
+          </details>
+        </div>
+        <div class="follow-us">
           <span>Síguenos</span>
           <div>
             <a class="social-link" href="">
