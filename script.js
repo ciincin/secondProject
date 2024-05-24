@@ -501,7 +501,7 @@ function modifiedTemplate(id, title, image, price, amount) {
         <div class="cart-wish-list-container">
           <div class="cart-heart-button-container" >
             <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
-              <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
+              <i class="bi-heart" id="cart-icon-heart-${id}" ></i>
             </button>
           </div>
 
