@@ -93,23 +93,25 @@ const fullUrl = window.location.href;
 window.addEventListener("DOMContentLoaded", () => {
   fullUrl === "http://127.0.0.1:5500/disney.html"
     ? cartListPrueba.forEach((item) => {
-        disneyLayout.innerHTML += disneySetsTemplate(
-          item.title,
-          item.image,
-          item.price,
-          item.minAge,
-          item.pieces
-        );
-      })
+      disneyLayout.innerHTML += disneySetsTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.minAge,
+        item.pieces
+      );
+    })
     : findProduct(getProductToLocalStorage()).forEach((item) => {
-        cartContainer.innerHTML += modifiedTemplate(
-          item.id,
-          item.title,
-          item.image,
-          item.price,
-          item.amount
-        );
-      });
+      cartContainer.innerHTML += modifiedTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.amount
+      );
+    });
+  emptyHeartCheck();
 });
 
 // M A I N  W E B P A G E
@@ -167,10 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const disneyLayout = document.getElementById("disney-set-layout");
 
-function disneySetsTemplate(title, image, price, age, pieces) {
+function disneySetsTemplate(id, title, image, price, age, pieces) {
   let disneyTemplateItem = `
   <div class="disney-card1">
-                <div class="disney-card1-likeButton-banner"></div>
+                <div class="disney-card1-likeButton-banner">
+                <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
+              <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
+            </button>
+                </div>
                 <div class="disney-card1-imageSet-container">
                     <!-- aqui es donde va el carrousel -->
                     <img class="disney-card1-imageSet" src=${image}
@@ -197,7 +203,7 @@ function disneySetsTemplate(title, image, price, age, pieces) {
                     <span><b>${price}</b><i class="bi bi-currency-euro"></i></span>
                 </div>
                 <div class="disney-card1-addToCart-container">
-                    <button type="button" class="btn btn-primary disney-btn-addToCart">
+                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id})">
                         <div class="disney-card1-addToCart-innerContainer">
                             <div class="disney-bagIcon-container">
                                 <img  class="disney-bag-icon" src="assets/disney-sets/shopping-bag-o.svg" alt="age-icon">
