@@ -120,7 +120,7 @@ window.addEventListener("DOMContentLoaded", () => {
     shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
   } else {
     // M A I N  W E B P A G E
-
+    emptyHeartCheck();
     // Slider del header
     const buttonPrev = document.querySelector(".prev-slider");
     const buttonNext = document.querySelector(".next-slider");

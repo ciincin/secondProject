@@ -7,6 +7,16 @@
   <title>Inicio | Oficial LEGO® Shop ES</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="shortcut icon" href="assets/Icons/lego.ico" type="image/x-icon">
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 </head>
 
 <body>
@@ -405,12 +415,8 @@
                     alt="Cabaña de Blancanieves y los Siete Enanitos" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-1" onclick="addToTheWishList(1)">
+                    <i class="bi bi-heart" id="cart-icon-heart-1" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -441,12 +447,8 @@
                     alt="Diversión en el Autolavado con Rayo McQueen y Mate" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-2" onclick="addToTheWishList(2)">
+                    <i class="bi bi-heart" id="cart-icon-heart-2" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -476,12 +478,8 @@
                   <img src="assets/disney-sets/frozen/frozen-600x450.jpg" alt="Palacio de Hielo de Elsa" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-3" onclick="addToTheWishList(3)">
+                    <i class="bi bi-heart" id="cart-icon-heart-3" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -504,12 +502,8 @@
                   <img src="assets/disney-sets/insideOut/insideOut-600x400.jpg" alt="Inside Out 2 Mood Cubes" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-4" onclick="addToTheWishList(4)">
+                    <i class="bi bi-heart" id="cart-icon-heart-4" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -532,12 +526,8 @@
                   <img src="assets/disney-sets/reyLeon/reyLeon-600x450.jpg" alt="El Rey León: Simba Cachorro" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-5" onclick="addToTheWishList(5)">
+                    <i class="bi bi-heart" id="cart-icon-heart-5" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -560,12 +550,8 @@
                   <img src="assets/disney-sets/sirenita/sirenita-600x450.jpg" alt="Mini Castillo de Disney Ariel" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-6" onclick="addToTheWishList(6)">
+                    <i class="bi bi-heart" id="cart-icon-heart-6" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -588,12 +574,8 @@
                   <img src="assets/disney-sets/stitch/stitch-600x450.jpg" alt="Stitch" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-7" onclick="addToTheWishList(7)">
+                    <i class="bi bi-heart" id="cart-icon-heart-7" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -616,12 +598,8 @@
                   <img src="assets/disney-sets/up/up-600x450.jpg" alt="Casa de Up" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-8" onclick="addToTheWishList(8)">
+                    <i class="bi bi-heart" id="cart-icon-heart-8" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -644,12 +622,8 @@
                   <img src="assets/disney-sets/wall-e/walle-600x450.jpg" alt="EVA y WALL•E" />
                 </a>
                 <div>
-                  <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-heart"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
+                  <button class="cart-heart-button" id="cart-btn-heart-9" onclick="addToTheWishList(9)">
+                    <i class="bi bi-heart" id="cart-icon-heart-9" ></i>
                   </button>
                 </div>
                 <div>Novedad</div>
@@ -1373,6 +1347,11 @@
   </footer>
 
   <script src="script.js"></script>
+  <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 </body>
 
 </html>
