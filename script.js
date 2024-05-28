@@ -448,80 +448,78 @@ function findProduct(cartArray) {
 function modifiedTemplate(id, title, image, price, amount) {
   let templateItem = `
   <div class="cart-article-fex">
-  <div class="cart-img-container">
-    <img
-      alt=${title}
-      src= ${image}
-    />
-  </div>
-
-  <div class="cart-information-container">
-    <div class="cart-name">
-      <h3><a href="#">${title}</a></h3>
+    <div class="cart-img-container">
+        <img
+            alt=${title}
+            src= ${image}
+        />
     </div>
 
-    <div class="cart-margin"></div>
-
-    <div class="cart-price-add">
-      <div class="cart-price">${price} €</div>
-
-      <div class="cart-add-more">
-        <div class="cart-add-more-content"  id="cart-article-display-${id}">
-          <button
-            class="cart-rest-article"
-            id="button-decrease-${id}"
-            onclick="decreaseAmount(${id})"
-          >
-            <i class="bi bi-dash-lg"></i>
-          </button>
-
-          <div class="cart-number-articles">
-            <input
-              type="text"
-              value="${amount}"
-              min="1"
-              id="cart-input-${id}"
-            />
-          </div>
-
-          <button
-            class="cart-add-article"
-            id="button-increase-${id}"
-             onclick="increaseAmount(${id})"  >
-          
-            <i class="bi bi-plus-lg"></i>
-          </button>
+    <div class="cart-information-container">
+        <div class="cart-name">
+            <h3><span href="#">${title}</span></h3>
         </div>
-      </div>
-    </div>
-  </div>
 
+        <div class="cart-margin"></div>
 
-      <article class="cart-wish-list">
-        <div class="cart-wish-list-container">
-          <div class="cart-heart-button-container" >
-            <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
-              <i class="bi-heart" id="cart-icon-heart-${id}" ></i>
-            </button>
-          </div>
+        <div class="cart-price-add">
+            <div class="cart-uds-price-container">
+                <div class="cart-uds">Uds. ${amount}</div>
+                <div class="cart-price">${price} €</div>
+            </div>
+            <div class="cart-add-more">
+                <div class="cart-add-more-content" id="cart-article-display-${id}">
+                    <button
+                        class="cart-rest-article"
+                        id="button-decrease-${id}"
+                        onclick="decreaseAmount(${id})"
+                    >
+                        <i class="bi bi-dash-lg"></i>
+                    </button>
 
-          <div class="cart-wish-list-text" id="add-wish-list-${id}">
-            Añadir a la lista de deseos
-          </div>
+                    <div class="cart-number-articles">
+                        <input
+                            type="text"
+                            value="${amount}"
+                            min="1"
+                            id="cart-input-${id}"
+                        />
+                    </div>
+
+                    <button
+                        class="cart-add-article"
+                        id="button-increase-${id}"
+                        onclick="increaseAmount(${id})"  >
+
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
+            <article class="cart-wish-list">
+                <div class="cart-wish-list-container">
+                    <div class="cart-heart-button-container" >
+                        <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
+                            <i class="bi-heart" id="cart-icon-heart-${id}" ></i>
+                        </button>
+                    </div>
+
+                    <div class="cart-wish-list-text" id="add-wish-list-${id}">
+                        Añadir a la lista de deseos
+                    </div>
+                </div>
+            </article>
+            <div class="cart-trash-mq">
+                <button class="cart-trash-button-mq" onclick="deleteArticles(${id})">
+                    <i class="bi bi-trash3"></i>
+                </button>
+
+                <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
+                    <span class="cart-text-edit" id="cart-btn-text">(Editar)</span>
+                </button>
+            </div>
+
         </div>
-      </article>
-
-      <div class="cart-trash">
-        <button class="cart-trash-button" onclick="deleteArticles(${id})">
-          <i class="bi bi-trash3"></i>
-        </button>
-
-        <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
-          <span class="cart-text-edit">(Editar)</span>
-        </button>
     </div>
-
-  </div>
   `;
   return templateItem;
 }
@@ -533,6 +531,8 @@ function editButtonQuery(productID) {
     `cart-article-display-${productID}`
   );
 
+  const textBtn = document.getElementById("cart-btn-text")
+
   displayArticle.classList.add("cart-display-flex");
   //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
   if (
@@ -541,7 +541,9 @@ function editButtonQuery(productID) {
   ) {
     // displayArticle.className ="cart-add-more-content cart-display-flex";
     displayArticle.classList.add("cart-display-flex");
+    textBtn.innerHTML="Listo"
   }
+
 }
 
 //sum the total price of the cart
@@ -569,7 +571,7 @@ function sumPriceCart() {
         totalPrice.textContent = `${productTotalPrice.toFixed(2)} €`;
 
         const ivaTotal = productTotalPrice * 0.21;
-        iva.textContent = `${ivaTotal.toFixed(2)} €`;
+        iva.textContent = `IVA ${ivaTotal.toFixed(2)} €`;
 
         const paypalPayments = productTotalPrice / 3;
         paypal.textContent = `${paypalPayments.toFixed(2)} €`;
