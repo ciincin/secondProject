@@ -84,22 +84,79 @@ let cartListPrueba = [
   },
 ];
 
+class LegoFilter {
+  constructor( name, condition, active) {
+    this.name = name;
+    this.condition = condition;
+    this.active = active;
+  }
+}
+
+let filterList = [
+  new LegoFilter("filter-price100+", (item) => item.price > 100, false),
+  new LegoFilter("filter-price50/100", (item) => 50 < item.price && item.price < 100, false),
+  new LegoFilter("filter-price0/20", (item) => 0 < item.price && item.price < 20, false), //0, 1, 2
+  new LegoFilter(3, (item) => item.minAge > 2, false),//3, 4, 5
+  new LegoFilter(4, (item) => item.minAge >= 3, false)
+]
+
+// Ejemplo some
+listaPerritos = [
+  {name: "Fifi", age: 2},
+  {name: "Tutu", age: 4}
+]
+
+listaPerritos.some((perrito) => perrito.age <= 1)
+// Ejemplo some END
+
+
+function refreshDisplay(newList) {
+  //destruir cuadrito
+  //pintar newList
+}
+
+function toggleFilter(filterName) {
+  const filterToChange = filterList.find(f => f.name === filterName);
+  filterToChange.active = !filterToChange.active
+
+  // Step 1: Filter active filters
+  const activeAgeFilters = filterList.filter((f, index) => f.active && index >= 3);
+  const activePriceFilters = filterList.filter((f, index) => f.active && index < 3);
+  // Step 2: Concatenate callbacks with "OR" logic
+  function someAge(item) {
+    if (activeAgeFilters.length == 0) {
+      return true;
+    }
+
+    // 50/100 Y 100+
+    // Se cumple al menos uno de tus filtros?
+
+    //de la lista activeAgeFilters verifica que se cumpla "some" de las condiciones: 
+    return activeAgeFilters.some(f => f.condition(item));
+  }
+  const somePrice = (item) => {
+    if (activePriceFilters.length == 0) {
+      return true;
+    }
+
+    return activePriceFilters.some(f => f.condition(item));
+  }
+  // Step 3: Apply the combined filter to the list of items
+  const filteredItems = cartListPrueba
+    .filter(someAge)
+    .filter(somePrice);
+
+  // refreshDisplay(filteredItems)
+  console.log(filteredItems)
+}
+
 // la constante fullUrl almacena el valor de la referencia del .html
 const fullUrl = window.location.href;
 
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   if (fullUrl === "http://127.0.0.1:5500/disney.html") {
-    cartListPrueba.forEach((item) => {
-      disneyLayout.innerHTML += disneySetsTemplate(
-        item.id,
-        item.title,
-        item.image,
-        item.price,
-        item.minAge,
-        item.pieces
-      );
-    });
+    displayProductsOnRefresh();
     emptyHeartCheck();
   } else if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
     //Cart website
@@ -129,9 +186,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function updateSliderPosition() {
       const width = document.querySelector(".slider-p").clientWidth;
-      sliderInner.style.transform = `translateX(${
-        -sliderHeaderIndex * width
-      }px)`;
+      sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width
+        }px)`;
     }
 
     buttonPrev.addEventListener("click", () => {
@@ -174,6 +230,75 @@ window.addEventListener("DOMContentLoaded", () => {
 // D I S N E Y  S E T S //
 
 const disneyLayout = document.getElementById("disney-set-layout");
+const filtersList = [];
+
+const copyList = JSON.stringify(cartListPrueba);
+let copiedList = JSON.parse(copyList)
+
+//all inputs variables
+const filterPrice1 = document.getElementById("filter-price0/20")
+filtersList.push(filterPrice1);
+const filterPrice2 = document.getElementById("filter-price20/50")
+filtersList.push(filterPrice2);
+const filterPrice3 = document.getElementById("filter-price50/100")
+filtersList.push(filterPrice3);
+const filterPrice4 = document.getElementById("filter-price100+")
+filtersList.push(filterPrice4);
+
+
+const filterAge1 = document.getElementById("filter-age2+")
+filtersList.push(filterAge1);
+const filterAge2 = document.getElementById("filter-age6+")
+filtersList.push(filterAge2);
+const filterAge3 = document.getElementById("filter-age9+")
+filtersList.push(filterAge3);
+const filterAge4 = document.getElementById("filter-age12+")
+filtersList.push(filterAge4);
+const filterAge5 = document.getElementById("filter-age18+")
+filtersList.push(filterAge5);
+
+
+const filterPieces1 = document.getElementById("filter-pieces100/249")
+filtersList.push(filterPieces1);
+const filterPieces2 = document.getElementById("filter-pieces250/499")
+filtersList.push(filterPieces2);
+const filterPieces3 = document.getElementById("filter-pieces500/999")
+filtersList.push(filterPieces3);
+const filterPieces4 = document.getElementById("filter-pieces1000+")
+filtersList.push(filterPieces4);
+
+function allFiltersUnchecked() {
+  let areAllFilterUnchecked = true;
+  filtersList.forEach(filter => {
+    if(filter.checked === true){
+      areAllFilterUnchecked = !filter.checked;
+      // areAllFilterUnchecked = filter.checked;
+    }
+  })
+
+  if (areAllFilterUnchecked === true){
+    
+    return location.href = location.href;
+  }
+
+
+  return copiedList
+  
+}
+
+
+function displayProductsOnRefresh() {
+  cartListPrueba.forEach((item) => {
+    disneyLayout.innerHTML += disneySetsTemplate(
+      item.id,
+      item.title,
+      item.image,
+      item.price,
+      item.minAge,
+      item.pieces
+    );
+  });
+}
 
 function disneySetsTemplate(id, title, image, price, age, pieces) {
   let disneyTemplateItem = `
@@ -221,6 +346,306 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
             </div>`;
   return disneyTemplateItem;
 }
+
+
+function filterByPriceRange(minPrice, maxPrice) {
+  // let filteredList = [];
+  const price = document.getElementById(`filter-price${minPrice}/${maxPrice}`)
+  const filteredPrice = copiedList.filter((product) => product.price > minPrice && product.price < maxPrice)
+
+  price.checked === true ? copiedList = [...filteredPrice] : console.log(`not checked ${minPrice}/${maxPrice}`);;
+  console.log(copiedList);
+
+  return copiedList
+}
+
+function filterByMaxPrice(maxPrice){
+  const price = document.getElementById(`filter-price${maxPrice}+`)
+  const filteredPrice = copiedList.filter((product) => product.price > maxPrice)
+
+  
+  price.checked === true ? copiedList = [...filteredPrice] : console.log(`not checked ${maxPrice}+`);
+
+console.log(copiedList);
+
+return copiedList
+
+}
+
+
+function filterByMinAge(age) {
+  const ageID = document.getElementById(`filter-age${age}+`)
+  const filteredAge = copiedList.filter((product) => product.minAge >= Age)
+
+  ageID.checked === true ? copiedList = [...filteredAge] : console.log(`not checked ${age}+`);;
+  console.log(copiedList);
+
+  return copiedList
+}
+
+
+function displayFilteredList(callback) {
+  disneyLayout.innerHTML = "";
+  callback.forEach((item) => {
+    disneyLayout.innerHTML += disneySetsTemplate(
+      item.id,
+      item.title,
+      item.image,
+      item.price,
+      item.minAge,
+      item.pieces
+    );
+  });
+  
+}
+
+// function showProductsFiltered(params) {
+  
+// }
+
+
+
+function filterProducts() {
+  const filteredProductsByPrice = [];
+  const filteredProductsByAge = [];
+  const listToDisplay = [];
+  let array = [];
+
+  if (listToDisplay.length === 0){
+    array = cartListPrueba;
+  } else {
+    array = listToDisplay;
+  }
+
+ 
+
+  console.log(listToDisplay);
+
+  // if (filteredProductsByPrice.length > 0) {
+  //   array = filteredProductsByPrice;
+  // } else if (filteredProductsByAge.length > 0) {
+  //   array = filteredProductsByAge;
+  // } else {
+  // }
+
+
+  // if (filteredProducts.length > 0){
+  //   filteredProducts = filterProducts();
+  // } else {
+  //   filteredProducts = [];
+  // }
+  const price0_20 = document.getElementById("filter-price0/20")
+  const filteredPrice0_20 = array.filter((product) => product.price > 0 && product.price < 20)
+
+  const price20_50 = document.getElementById("filter-price20/50")
+  const filteredPrice20_50 = array.filter((product) => product.price > 20 && product.price < 50)
+
+  const price50_100 = document.getElementById("filter-price50/100")
+  const filteredPrice50_100 = array.filter((product) => product.price > 50 && product.price < 100)
+
+  const priceGreaterThan100 = document.getElementById("filter-price100+")
+  const filteredPriceGreaterThan100 = array.filter((product) => product.price > 100)
+
+  if (listToDisplay.length === 0){
+  price0_20.checked === true ? filteredProductsByPrice.push(...filteredPrice0_20) : "0-20 not checked";
+  price20_50.checked === true ? filteredProductsByPrice.push(...filteredPrice20_50) : "20-50 not checked";
+  price50_100.checked === true ? filteredProductsByPrice.push(...filteredPrice50_100) : "50-100 not checked";
+  priceGreaterThan100.checked === true ? filteredProductsByPrice.push(...filteredPriceGreaterThan100) : "100+ not checked";
+  } else {
+    price0_20.checked === true ? array.push(...filteredPrice0_20) : "0-20 not checked";
+  price20_50.checked === true ? array.push(...filteredPrice20_50) : "20-50 not checked";
+  price50_100.checked === true ? array.push(...filteredPrice50_100) : "50-100 not checked";
+  priceGreaterThan100.checked === true ? array.push(...filteredPriceGreaterThan100) : "100+ not checked";
+  }
+
+
+  // filteredProductsByPrice.length !== 0 ? filteredProductsByPrice.sort((a, b) => a.price - b.price) : console.log("nothing to sort");
+
+  //age filters
+  const ageGreaterThan2 = document.getElementById("filter-age2+")
+  const filteredAgeGreaterThan2 = array.filter((product) => product.minAge >= 2)
+
+  const ageGreaterThan6 = document.getElementById("filter-age6+")
+  const filteredAgeGreaterThan6 = array.filter((product) => product.minAge >= 6)
+
+  const ageGreaterThan9 = document.getElementById("filter-age9+")
+  const filteredAgeGreaterThan9 = array.filter((product) => product.minAge >= 9)
+
+  const ageGreaterThan12 = document.getElementById("filter-age12+")
+  const filteredAgeGreaterThan12 = array.filter((product) => product.minAge >= 12)
+
+  const ageGreaterThan18 = document.getElementById("filter-age18+")
+  const filteredAgeGreaterThan18 = array.filter((product) => product.minAge >= 18)
+
+
+  if (listToDisplay.length === 0){
+    ageGreaterThan2.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan2) : "age 2+ not checked";
+    ageGreaterThan6.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan6) : "age 6+ not checked";
+    ageGreaterThan9.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan9) : "age 9+ not checked";
+    ageGreaterThan12.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan12) : "age 12+ not checked";
+    ageGreaterThan18.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan18) : "age 18+ not checked";
+    } else {
+      ageGreaterThan2.checked === true ? array.push(...filteredAgeGreaterThan2) : "age 2+ not checked";
+      ageGreaterThan6.checked === true ? array.push(...filteredAgeGreaterThan6) : "age 6+ not checked";
+      ageGreaterThan9.checked === true ? array.push(...filteredAgeGreaterThan9) : "age 9+ not checked";
+      ageGreaterThan12.checked === true ? array.push(...filteredAgeGreaterThan12) : "age 12+ not checked";
+      ageGreaterThan18.checked === true ? array.push(...filteredAgeGreaterThan18) : "age 18+ not checked";
+    }
+
+
+  // filteredProductsByAge.length !== 0 ? filteredProductsByAge.sort((a, b) => a.minAge - b.minAge) : console.log("nothing to sort");
+
+  // console.log(filteredProductsByPrice);
+  // console.log(filteredProductsByAge);
+  let newListDav = cartListPrueba; //Dav
+  if (listToDisplay.length === 0) {
+    cartListPrueba.forEach(item => {
+      if (filteredProductsByPrice.length > 0) {
+        newListDav = newListDav.filter(aplicarFiltroPrice) //dav
+        filteredProductsByPrice.forEach(priceItems => {
+          if (priceItems.id === item.id) {
+            listToDisplay.push(priceItems)
+          }
+        })
+      } else if (filteredProductsByAge.length > 0) {
+        filteredProductsByAge.forEach(ageItems => {
+          if (ageItems.id === item.id) {
+            listToDisplay.push(ageItems)
+          }
+        })
+      }
+    });
+  }
+
+
+  disneyLayout.innerHTML = "";
+
+  // if (filteredProductsByPrice.length === 0 && filteredProductsByAge.length === 0){
+  //   showProducts = cartListPrueba;
+  // }else if (filteredProductsByPrice.length > 0) {
+  //     showProducts = filteredProductsByPrice;
+  //   } else if (filteredProductsByAge.length > 0) {
+  //     showProducts = filteredProductsByAge;
+  //   }
+  //  else {
+  //   showProducts = cartListPrueba;
+  // }
+  if (listToDisplay.length === 0) {
+    cartListPrueba.forEach((item) => {
+      disneyLayout.innerHTML += disneySetsTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.minAge,
+        item.pieces
+      )
+    })
+  } else {
+    listToDisplay.forEach((item) => {
+      disneyLayout.innerHTML += disneySetsTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.minAge,
+        item.pieces
+      )
+    })
+  }
+
+
+  // if(!price0_20.checked && !price0_20.checked && !price50_100.checked && !priceGreaterThan100.checked && filteredProductsByPrice.length > 0){
+  //   cartListPrueba.forEach((item) => {
+  //     disneyLayout.innerHTML += disneySetsTemplate(
+  //       item.id,
+  //       item.title,
+  //       item.image,
+  //       item.price,
+  //       item.minAge,
+  //       item.pieces
+  //     );
+  //   }); 
+  // }
+
+
+  return listToDisplay;
+}
+
+
+// function filterProductsByAge() {
+//   const filteredProductsByAge = [];
+
+
+//   //age filters
+// const ageGreaterThan2 =  document.getElementById("filter-age2+")
+// const filteredAgeGreaterThan2 = cartListPrueba.filter((product) => product.minAge >= 2)
+
+// const ageGreaterThan6 =  document.getElementById("filter-age6+")
+// const filteredAgeGreaterThan6 = cartListPrueba.filter((product) => product.minAge >= 6)
+
+// const ageGreaterThan9 =  document.getElementById("filter-age9+")
+// const filteredAgeGreaterThan9 = cartListPrueba.filter((product) => product.minAge >= 9)
+
+// const ageGreaterThan12 =  document.getElementById("filter-age12+")
+// const filteredAgeGreaterThan12 = cartListPrueba.filter((product) => product.minAge >= 12)
+
+// const ageGreaterThan18 =  document.getElementById("filter-age18+")
+// const filteredAgeGreaterThan18 = cartListPrueba.filter((product) => product.minAge >= 18)
+
+// ageGreaterThan2.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan2) : console.log("age 2+ not checked");
+// ageGreaterThan6.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan6) : console.log("age 6+ not checked");
+// ageGreaterThan9.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan9) : console.log("age 9+ not checked");
+// ageGreaterThan12.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan12) : console.log("age 12+ not checked");
+// ageGreaterThan18.checked === true ? filteredProductsByAge.push(...filteredAgeGreaterThan18) : console.log("age 18+ not checked");
+
+
+// filteredProductsByAge.length !== 0 ? filteredProductsByAge.sort((a,b) => a.minAge - b.minAge) : console.log("nothing to sort");
+
+
+
+// return filteredProductsByAge; 
+
+// }
+
+
+
+
+function showFilteredProducts() {
+  disneyLayout.innerHTML = "";
+  if (filterProductsByAge().length > 0) {
+    array = filterProductsByAge()
+  } else if (filterProductsByPrice().length > 0) {
+    array = filterProductsByPrice()
+  } else {
+    array = cartListPrueba;
+  }
+  // console.log(filterProductsByPrice());
+  array.forEach((item) => {
+    disneyLayout.innerHTML += disneySetsTemplate(
+      item.id,
+      item.title,
+      item.image,
+      item.price,
+      item.minAge,
+      item.pieces
+    )
+  })
+
+  // if(disneyLayout.innerHTML === ""){
+  //   cartListPrueba.forEach((item) => {
+  //     disneyLayout.innerHTML += disneySetsTemplate(
+  //       item.id,
+  //       item.title,
+  //       item.image,
+  //       item.price,
+  //       item.minAge,
+  //       item.pieces
+  //     );
+  //   }); 
+  // }
+}
+
 
 //C A R T
 

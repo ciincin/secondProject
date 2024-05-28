@@ -43,7 +43,7 @@
 
     <section class="disney-banner">
       <img src="assets\disney-sets\_Logo_(Themes).png" alt="disney logo" />
-      <button>Productos</button>
+      <button onclick="allFiltersUnchecked()">Productos</button>
       <button class="transparent-btn">Saber más</button>
     </section>
 
@@ -89,6 +89,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="toggleFilter('filter-price0/20')"
           />
           <label class="form-check-label" for="filter-price0/20"
             >0 € - 20 €</label
@@ -100,6 +101,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredList(filterByPriceRange(20, 50)), allFiltersUnchecked()"
           />
           <label class="form-check-label" for="filter-price20/50"
             >20 € - 50 €</label
@@ -111,6 +113,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="toggleFilter('filter-price50/100')"
           />
           <label class="form-check-label" for="filter-price50/100"
             >50 € - 100 €</label
@@ -118,32 +121,35 @@
         </div>
         <div class="form-check">
           <input
-            id="filter-price100/200"
+            id="filter-price100+"
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredList(filterByMaxPrice(100)), allFiltersUnchecked()"
           />
-          <label class="form-check-label" for="filter-price100/200"
-            >100 € - 200 €</label
+          <label class="form-check-label" for="filter-price100+"
+            >100 €+</label
           >
-        </div>
-        <div class="form-check">
-          <input
-            id="filter-price200++"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-          />
-          <label class="form-check-label" for="filter-price200++">200 €+</label>
         </div>
         <span class="disney-hr"></span>
         <h4>Edad</h4>
+        <div class="form-check">
+          <input
+            id="filter-age2+"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            onclick="toggleFilter(3)"
+          />
+          <label class="form-check-label" for="filter-age2+">2+</label>
+        </div>
         <div class="form-check">
           <input
             id="filter-age6+"
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredList(filterByMinAge(6)), allFiltersUnchecked()"
           />
           <label class="form-check-label" for="filter-age6+">6+</label>
         </div>
@@ -153,17 +159,9 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredList(filterByMinAge(9)), allFiltersUnchecked()"
           />
           <label class="form-check-label" for="filter-age9+">9+</label>
-        </div>
-        <div class="form-check">
-          <input
-            id="filter-age10+"
-            class="form-check-input"
-            type="checkbox"
-            value=""
-          />
-          <label class="form-check-label" for="filter-age10+">10+</label>
         </div>
         <div class="form-check">
           <input
@@ -171,6 +169,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredList(filterByMinAge(12)), allFiltersUnchecked()"
           />
           <label class="form-check-label" for="filter-age12+">12+</label>
         </div>
@@ -180,6 +179,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredList(filterByMinAge(18)), allFiltersUnchecked()"
           />
           <label class="form-check-label" for="filter-age18+">18+</label>
         </div>
@@ -191,6 +191,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="allFiltersUnchecked()"
           />
           <label class="form-check-label" for="filter-pieces100/249"
             >100-249</label
