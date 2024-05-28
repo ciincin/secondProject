@@ -446,7 +446,7 @@ function findProduct(cartArray) {
 // Add new items to cart
 
 function modifiedTemplate(id, title, image, price, amount) {
-  let templateItem = `
+  let templateItem =  `
   <div class="cart-article-fex">
     <div class="cart-img-container">
         <img
@@ -507,11 +507,14 @@ function modifiedTemplate(id, title, image, price, amount) {
                         Añadir a la lista de deseos
                     </div>
                 </div>
+                <div class="cart-trash">
+                  <button class="cart-trash-button" onclick="deleteArticles(${id})">
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                </div>
+
             </article>
-            <div class="cart-trash">
-        <button class="cart-trash-button" onclick="deleteArticles(${id})">
-          <i class="bi bi-trash3"></i>
-        </button>
+           
             <div class="cart-trash-mq">
                 <button class="cart-trash-button-mq" onclick="deleteArticles(${id})">
                     <i class="bi bi-trash3"></i>
@@ -536,7 +539,7 @@ function editButtonQuery(productID) {
     `cart-article-display-${productID}`
   );
 
-  const textBtn = document.getElementById("cart-btn-text")
+  const textBtn = document.getElementById("cart-btn-text");
 
   displayArticle.classList.add("cart-display-flex");
   //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
@@ -546,9 +549,8 @@ function editButtonQuery(productID) {
   ) {
     // displayArticle.className ="cart-add-more-content cart-display-flex";
     displayArticle.classList.add("cart-display-flex");
-    textBtn.innerHTML="Listo"
+    textBtn.innerHTML = "Listo";
   }
-
 }
 
 //sum the total price of the cart
