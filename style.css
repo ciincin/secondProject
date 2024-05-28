@@ -2375,8 +2375,8 @@ h3 {
   }
 
   .cart-payment-methods img {
-    width: 7%;
-    height: 7%;
+    width: 16%;
+    height: 16%;
     gap: 1rem;
   }
 
@@ -2403,7 +2403,7 @@ h3 {
   }
 
   .cart-display-flex {
-    display: flex;
+    display: flex
   }
   .cart-paypal-price{
     display: flex;
@@ -2449,8 +2449,7 @@ h3 {
 
   .cart-name h3 span {
     color: rgb(0, 0, 0);
-    font-size: 0.8rem;
-    line-height: 0.2rem;
+    font-size: 0.75rem;
     font-weight: 600;
 
   }
@@ -2468,7 +2467,7 @@ h3 {
   .cart-price {
     font-size: 0.85rem;
     font-weight: 700;
-    
+    width: 4rem;
   }
 
   .cart-checkout,
