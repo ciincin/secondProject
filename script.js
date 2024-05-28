@@ -508,6 +508,10 @@ function modifiedTemplate(id, title, image, price, amount) {
                     </div>
                 </div>
             </article>
+            <div class="cart-trash">
+        <button class="cart-trash-button" onclick="deleteArticles(${id})">
+          <i class="bi bi-trash3"></i>
+        </button>
             <div class="cart-trash-mq">
                 <button class="cart-trash-button-mq" onclick="deleteArticles(${id})">
                     <i class="bi bi-trash3"></i>
@@ -519,6 +523,7 @@ function modifiedTemplate(id, title, image, price, amount) {
             </div>
 
         </div>
+    </div>
     </div>
   `;
   return templateItem;

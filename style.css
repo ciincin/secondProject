@@ -2404,6 +2404,7 @@ h3 {
 
   .cart-display-flex {
     display: flex
+  
   }
   .cart-paypal-price{
     display: flex;
@@ -2429,7 +2430,7 @@ h3 {
   
 
   .cart-img-container {
-    width: 3rem;
+    width: 4.5rem;
     flex-shrink: 0;
     margin-right: 1.5rem;
     cursor: pointer;
