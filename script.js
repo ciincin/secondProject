@@ -446,7 +446,7 @@ function findProduct(cartArray) {
 // Add new items to cart
 
 function modifiedTemplate(id, title, image, price, amount) {
-  let templateItem =  `
+  let templateItem = `
   <div class="cart-article-fex">
     <div class="cart-img-container">
         <img
@@ -535,24 +535,27 @@ function modifiedTemplate(id, title, image, price, amount) {
 //!Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
 
 function editButtonQuery(productID) {
-  const displayArticle = document.getElementById(
-    `cart-article-display-${productID}`
-  );
-  const containerArticle = document.getElementById("cart-container-article")
-
+  const displayArticle = document.getElementById(`cart-article-display-${productID}`);
+  const containerArticle = document.getElementById("cart-container-article");
   const textBtn = document.getElementById("cart-btn-text");
+  const isDisplayed = displayArticle.classList.contains("cart-display-flex");
 
-  displayArticle.classList.add("cart-display-flex");
-  //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
-  if (
-    displayArticle.className === "cart-add-more-content cart-display-flex" &&
-    window.screen.availWidth < 900
-  ) {
-    // displayArticle.className ="cart-add-more-content cart-display-flex";
-    containerArticle.classList.add("cart-display-flex-wrap");
+  if (isDisplayed) {
+    displayArticle.classList.remove("cart-display-flex");
+    containerArticle.classList.remove("cart-display-flex-wrap");
+    textBtn.innerHTML = "(Editar)";
+  } else {
     displayArticle.classList.add("cart-display-flex");
-    textBtn.innerHTML = "Listo";
-    
+    //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
+    if (
+      displayArticle.className === "cart-add-more-content cart-display-flex" &&
+      window.screen.availWidth < 900
+    ) {
+      // displayArticle.className ="cart-add-more-content cart-display-flex";
+      containerArticle.classList.add("cart-display-flex-wrap");
+      displayArticle.classList.add("cart-display-flex");
+      textBtn.innerHTML = "Listo";
+    }
   }
 }
 

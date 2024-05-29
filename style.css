@@ -2467,7 +2467,6 @@ h3 {
 
   .cart-price-add{
     width: inherit;
-    
   }
 
   .cart-price {
@@ -2483,6 +2482,8 @@ h3 {
 
   .cart-sent-back-container {
     flex-direction: column;
+    line-height: 0.75;
+    padding-top: 1rem;
   }
 
   .cart-payment-methods img {
@@ -2555,6 +2556,19 @@ h3 {
     font-weight: 500;
   }
 
+  .cart-order-summary-container{
+    padding-bottom: 1rem;
+  }
+
+  .cart-payment-container{
+    font-size: 0.9rem;
+  }
+  .cart-free-delivery{
+    display: flex;
+    gap:2rem;
+    justify-content: space-between;
+  }
+  
   .carrousel {
     padding-bottom: 5rem;
   }
