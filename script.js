@@ -462,7 +462,7 @@ function modifiedTemplate(id, title, image, price, amount) {
 
         <div class="cart-margin"></div>
 
-        <div class="cart-price-add" id="cart-container-article">
+        <div class="cart-price-add" id="cart-container-article-${id}">
             <div class="cart-uds-price-container">
                 <div class="cart-uds">Uds. ${amount}</div>
                 <div class="cart-price">${price} €</div>
@@ -521,7 +521,7 @@ function modifiedTemplate(id, title, image, price, amount) {
                 </button>
 
                 <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
-                    <span class="cart-text-edit" id="cart-btn-text">(Editar)</span>
+                    <span class="cart-text-edit" id="cart-btn-text-${id}">(Editar)</span>
                 </button>
             </div>
 
@@ -536,8 +536,8 @@ function modifiedTemplate(id, title, image, price, amount) {
 
 function editButtonQuery(productID) {
   const displayArticle = document.getElementById(`cart-article-display-${productID}`);
-  const containerArticle = document.getElementById("cart-container-article");
-  const textBtn = document.getElementById("cart-btn-text");
+  const containerArticle = document.getElementById(`cart-container-article-${productID}`);
+  const textBtn = document.getElementById(`cart-btn-text-${productID}`);
   const isDisplayed = displayArticle.classList.contains("cart-display-flex");
 
   if (isDisplayed) {

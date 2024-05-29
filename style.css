@@ -1691,7 +1691,7 @@ h3 {
 }
 
 .cart-information-container {
-  width: 80%;
+  width: 15rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1805,7 +1805,7 @@ h3 {
   flex-direction: row;
   justify-content: flex-start;
   border-radius: 1.125rem;
-  width: 35%;
+ 
   align-items: center;
   height: 2.5rem;
 }
@@ -1839,10 +1839,10 @@ h3 {
 }
 
 .cart-trash-button {
-  display: flex;
-  height: 12rem;
+  display: block;
+  margin-bottom: 10rem;
   border: none;
-  background-color: white;
+  background-color: transparent;
   color: var(--cart-blue-empty);
   font-size: 1.25rem;
 }
@@ -1964,7 +1964,7 @@ h3 {
 }
 
 .cart-iva-price {
-  font-size: small;
+  font-size: 0.75rem;
 }
 
 .cart-checkout {
@@ -2517,7 +2517,7 @@ h3 {
   .cart-total-text-fixed {
     display: flex;
     gap: 0.5rem;
-    align-items: center;
+    align-items: baseline;
   }
 
   .cart-paypal {
