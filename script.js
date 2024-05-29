@@ -153,28 +153,28 @@ window.addEventListener("DOMContentLoaded", () => {
     buttonNext.addEventListener("click", handleNextClick);
 
     // Scroll del carrusel
-    document.addEventListener("DOMContentLoaded", () => {
-      const carrouselWrapper = document.querySelector(".carrousel-wrapper");
-      const scrollLeftButton = document.querySelector(".scroll-left-button");
-      const scrollRightButton = document.querySelector(".scroll-right-button");
 
-      function handleScrollLeft() {
-        carrouselWrapper.scrollBy({
-          left: -1080,
-          behavior: "smooth",
-        });
-      }
+    const carrouselWrapper = document.querySelector(".carrousel-wrapper");
+    const scrollLeftButton = document.querySelector(".scroll-left-button");
+    const scrollRightButton = document.querySelector(".scroll-right-button");
 
-      function handleScrollRight() {
-        carrouselWrapper.scrollBy({
-          left: 1080,
-          behavior: "smooth",
-        });
-      }
+    function handleScrollLeft() {
+      carrouselWrapper.scrollBy({
+        left: -1080,
+        behavior: "smooth",
+      });
+    }
 
-      scrollLeftButton.addEventListener("click", handleScrollLeft);
-      scrollRightButton.addEventListener("click", handleScrollRight);
-    });
+    function handleScrollRight() {
+      carrouselWrapper.scrollBy({
+        left: 1080,
+        behavior: "smooth",
+      });
+    }
+
+    scrollLeftButton.addEventListener("click", handleScrollLeft);
+    scrollRightButton.addEventListener("click", handleScrollRight);
+
 
     // Submenu
     const subMenu = document.querySelector('.sub-menu-buy');
@@ -641,7 +641,6 @@ function deleteArticles(id) {
   localStorage.removeItem(`index: ${id - 1}`);
   location.href = location.href;
 }
-
 
 
 
