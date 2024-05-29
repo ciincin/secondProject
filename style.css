@@ -1715,7 +1715,7 @@ h3 {
 
 .cart-price-add {
   display: flex;
-  
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -1839,6 +1839,8 @@ h3 {
 }
 
 .cart-trash-button {
+  display: flex;
+  height: 12rem;
   border: none;
   background-color: white;
   color: var(--cart-blue-empty);
