@@ -566,6 +566,8 @@ function sumPriceCart() {
   let totalPrice = document.getElementById("cart-total-price");
   let iva = document.getElementById("cart-IVA");
   let paypal = document.getElementById("paypal-3-payments");
+  let totalPriceFix = document.getElementById("cart-total-price-fix");
+  let ivaFix = document.getElementById("cart-IVA-fix");
 
   let localStorageProduct = getProductToLocalStorage();
 
@@ -582,9 +584,11 @@ function sumPriceCart() {
         subtotal.textContent = `${productTotalPrice.toFixed(2)} €`;
 
         totalPrice.textContent = `${productTotalPrice.toFixed(2)} €`;
+        totalPriceFix.textContent = `${productTotalPrice.toFixed(2)} €`;
 
         const ivaTotal = productTotalPrice * 0.21;
         iva.textContent = `IVA ${ivaTotal.toFixed(2)} €`;
+        ivaFix.textContent = `IVA ${ivaTotal.toFixed(2)} €`;
 
         const paypalPayments = productTotalPrice / 3;
         paypal.textContent = `${paypalPayments.toFixed(2)} €`;
