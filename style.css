@@ -1864,6 +1864,10 @@ h3 {
 }
 
 /* PREGUNTAR SANTIAGO */
+.progress-bar, .progress-stacked {
+  --bs-progress-bar-bg:var(--header-yellow);
+  --bs-progress-bar-color:black;
+}
 
 .cart-delivery-white-space {
   display: inline;
@@ -2448,6 +2452,7 @@ h3 {
 
   .cart-name h3{
     line-height: 1.25rem;
+    width: fit-content;
   }
 
   .cart-name h3 span {
@@ -2466,7 +2471,7 @@ h3 {
   }
 
   .cart-price-add{
-    width: inherit;
+    width: 1rem;
   }
 
   .cart-price {
@@ -2503,15 +2508,22 @@ h3 {
     position: fixed;
     bottom: 0;
     left: 0;
-    margin: 0 1rem;
-    padding-top: 1rem;
+    padding: 1rem;
+    border-top: 1px solid grey
   }
 
   .cart-total-price-fixed {
     display: flex;
-    width: 90%;
     justify-content: space-between;
     align-items: center;
+    font-weight: 600;
+  }
+
+  .cart-iva-price{
+    font-weight: 100;
+  }
+  .cart-total-price-value{
+    font-weight: 600;
   }
 
   .cart-total-text-fixed {
@@ -2528,7 +2540,6 @@ h3 {
     color: white;
     font-size: 1.25rem;
     border-radius: 2rem;
-    width: 90%;
     height: 3rem;
     margin: 1rem 0;
     gap: 0.5rem;
@@ -2540,7 +2551,6 @@ h3 {
     align-items: center;
     background-color: var(--cart-orange-button);
     border-radius: 2rem;
-    width: 90%;
     height: 3rem;
     margin: 1rem 0;
     font-size: 1.25rem;

@@ -532,7 +532,8 @@ function modifiedTemplate(id, title, image, price, amount) {
   return templateItem;
 }
 
-//!Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
+
+//Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
 
 function editButtonQuery(productID) {
   const displayArticle = document.getElementById(`cart-article-display-${productID}`);
