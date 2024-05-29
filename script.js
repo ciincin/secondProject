@@ -462,7 +462,7 @@ function modifiedTemplate(id, title, image, price, amount) {
 
         <div class="cart-margin"></div>
 
-        <div class="cart-price-add">
+        <div class="cart-price-add" id="cart-container-article">
             <div class="cart-uds-price-container">
                 <div class="cart-uds">Uds. ${amount}</div>
                 <div class="cart-price">${price} €</div>
@@ -538,6 +538,7 @@ function editButtonQuery(productID) {
   const displayArticle = document.getElementById(
     `cart-article-display-${productID}`
   );
+  const containerArticle = document.getElementById("cart-container-article")
 
   const textBtn = document.getElementById("cart-btn-text");
 
@@ -548,8 +549,10 @@ function editButtonQuery(productID) {
     window.screen.availWidth < 900
   ) {
     // displayArticle.className ="cart-add-more-content cart-display-flex";
+    containerArticle.classList.add("cart-display-flex-wrap");
     displayArticle.classList.add("cart-display-flex");
     textBtn.innerHTML = "Listo";
+    
   }
 }
 

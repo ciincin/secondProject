@@ -2463,8 +2463,11 @@ h3 {
     align-items: center;
     margin-right: 1rem;
     color: grey;
+  }
 
-  
+  .cart-price-add{
+    width: inherit;
+    
   }
 
   .cart-price {
@@ -2554,5 +2557,10 @@ h3 {
 
   .carrousel {
     padding-bottom: 5rem;
+  }
+
+  .cart-display-flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
   }
 }
