@@ -229,6 +229,9 @@ function displayOnRefresh() {
 
 //? FILTERS
 
+const copiedListStringify = JSON.stringify(cartListPrueba);
+let copyList = JSON.parse(copiedListStringify)
+
 class LegoFilter {
   constructor(htmlID, condition, active) {
     this.htmlID = htmlID;
@@ -257,7 +260,36 @@ let filterList = [
 function toggleFilter(filterName) {
   const filterToChange = filterList.find(f => f.htmlID === filterName);
   filterToChange.active = !filterToChange.active
+  let listToDisplay = applyFilters(copyList);
+  displayFilteredProducts(listToDisplay);
+}
 
+function sortListByPrice(event){
+  if (event.target.checked){
+    sortList((a,b) => a.price - b.price)
+   }
+}
+
+function sortListByAge(event){
+  if (event.target.checked){
+    sortList((a,b) => a.minAge - b.minAge)
+   }
+}
+
+function sortListByPieces(event){
+  if (event.target.checked){
+    sortList((a,b) => a.pieces - b.pieces)
+   }
+}
+
+function sortList(sortCallback){
+  copyList.sort(sortCallback)
+  const LISTADEDAVID = applyFilters(copyList)
+  displayFilteredProducts(LISTADEDAVID)
+
+}
+
+  function applyFilters(array){
   // Step 1: Filter active filters
   const activePriceFilters = filterList.filter((f, index) => f.active && index < 4);
   const activeAgeFilters = filterList.filter((f, index) => f.active && (index >= 4 && index < 9));
@@ -291,13 +323,14 @@ function toggleFilter(filterName) {
   }
 
   // Step 3: Apply the combined filter to the list of items
-  const filteredItems = cartListPrueba
+  const filteredItems = array
     .filter(someAge)
     .filter(somePrice)
     .filter(somePieces);
 
   return filteredItems
 }
+
 
 function displayFilteredProducts(array) {
   if (array.length == 0) {

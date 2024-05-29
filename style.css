@@ -1441,7 +1441,7 @@ body {
   content: "";
 }
 
-.form-check-input:checked{
+.special-check:checked{
   background-color: transparent;
   /* content: url(https://img.icons8.com/forma-bold-filled/24/checkmark.png); */
   content: url(https://img.icons8.com/puffy-filled/32/checkmark.png)
