@@ -160,14 +160,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
       function handleScrollLeft() {
         carrouselWrapper.scrollBy({
-          left: -1080,
+          left: -1081,
           behavior: "smooth",
         });
       }
 
       function handleScrollRight() {
         carrouselWrapper.scrollBy({
-          left: 1080,
+          left: 1081,
           behavior: "smooth",
         });
       }

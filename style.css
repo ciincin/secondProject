@@ -243,7 +243,7 @@ footer {
 }
 
 .main-bar .sub-menu-buy {
-  height: 100vh;
+  height: 100dvh;
   width: 46.87rem;
   background: #fff;
   position: absolute;
