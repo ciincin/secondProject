@@ -278,10 +278,15 @@ function emptyHeartCheck() {
       if (element.id === item.id) {
         item.emptyHeart = element.emptyHeart;
         let heart = document.getElementById(`cart-icon-heart-${item.id}`);
+
         const wishList = document.getElementById(`add-wish-list-${item.id}`);
         if (element.emptyHeart === false) {
           heart.classList.replace("bi-heart", "bi-heart-fill");
           if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            let heartCarrousel = document.getElementById(
+              `cart-carrousel-icon-heart-${item.id}`
+            );
+            heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
             wishList.textContent = `Quitar de la lista de deseos`;
           }
         }
@@ -293,37 +298,67 @@ function emptyHeartCheck() {
 // Nueva funcion de addToTheWishList -> hay que cambiar ambos templates reemplazar el this.id.
 function addToTheWishList(productID) {
   const heart = document.getElementById(`cart-icon-heart-${productID}`);
+  const heartCarrousel = document.getElementById(
+    `cart-carrousel-icon-heart-${productID}`
+  );
   const wishList = document.getElementById(`add-wish-list-${productID}`);
 
   const storedProduct = JSON.parse(
     localStorage.getItem(`index: ${productID - 1}`)
   );
 
-  cartListPrueba.forEach((obj) => {
-    if (obj.id == productID) {
-      if (obj.emptyHeart) {
-        // fill the heart
-        heart.classList.replace("bi-heart", "bi-heart-fill");
-        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-          wishList.textContent = `Quitar de la lista de deseos`;
+  if (heart) {
+    cartListPrueba.forEach((obj) => {
+      if (obj.id == productID) {
+        if (obj.emptyHeart) {
+          // fill the heart
+          heart.classList.replace("bi-heart", "bi-heart-fill");
+          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            wishList.textContent = `Quitar de la lista de deseos`;
+            location.href=location.href
+          }
+          if (storedProduct) {
+            storedProduct.emptyHeart = false;
+          }
+          return (obj.emptyHeart = false);
+        } else {
+          // empty the heart
+          heart.classList.replace("bi-heart-fill", "bi-heart");
+          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            wishList.textContent = `Añadir a la lista de deseos`;
+            location.href=location.href
+          }
+          if (storedProduct) {
+            storedProduct.emptyHeart = true;
+          }
+          return (obj.emptyHeart = true);
         }
-        if (storedProduct) {
-          storedProduct.emptyHeart = false;
-        }
-        return (obj.emptyHeart = false);
-      } else {
-        // empty the heart
-        heart.classList.replace("bi-heart-fill", "bi-heart");
-        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-          wishList.textContent = `Añadir a la lista de deseos`;
-        }
-        if (storedProduct) {
-          storedProduct.emptyHeart = true;
-        }
-        return (obj.emptyHeart = true);
       }
-    }
-  });
+    });
+  } else if (heartCarrousel) {
+    cartListPrueba.forEach((obj) => {
+      if (obj.id == productID) {
+        if (obj.emptyHeart) {
+          // fill the heart
+          heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
+          obj.emptyHeart = false;
+          if (storedProduct) {
+            storedProduct.emptyHeart = false;
+            obj.emptyHeart = false;
+          }
+        } else {
+          // empty the heart
+          heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
+          obj.emptyHeart = true;
+          if (storedProduct) {
+            storedProduct.emptyHeart = true;
+            obj.emptyHeart = true;
+          }
+        }
+      }
+    });
+    location.href=location.href
+  }
 
   if (storedProduct) {
     localStorage.setItem(
@@ -344,7 +379,73 @@ function addToTheWishList(productID) {
       })
     );
   }
+
+  
 }
+
+//funcion para la web del carrito
+// function addToTheWishListCart(productID) {
+//   const heart = document.getElementById(`cart-icon-heart-${productID}`);
+//   const wishList = document.getElementById(`add-wish-list-${productID}`);
+//   const heartCarrousel = document.getElementById(`cart-carrousel-icon-heart-${productID}`);
+
+//   isStoredProduct(productID)
+
+//   cartListPrueba.forEach((obj) => {
+//     if (obj.id == productID) {
+//       if (obj.emptyHeart) {
+//         // fill the heart
+//         heart.classList.replace("bi-heart", "bi-heart-fill");
+//         heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
+//         if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+//           wishList.textContent = `Quitar de la lista de deseos`;
+
+//         }
+//         if (storedProduct) {
+//           storedProduct.emptyHeart = false;
+//         }
+//         return (obj.emptyHeart = false);
+//       } else {
+//         // empty the heart
+//         heart.classList.replace("bi-heart-fill", "bi-heart");
+//         heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
+//         if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+//           wishList.textContent = `Añadir a la lista de deseos`;
+//         }
+//         if (storedProduct) {
+//           storedProduct.emptyHeart = true;
+//         }
+//         return (obj.emptyHeart = true);
+//       }
+//     }
+//   });
+
+// }
+
+// function isStoredProduct(productID){
+//   const storedProduct = JSON.parse(
+//     localStorage.getItem(`index: ${productID - 1}`)
+//   );
+//   if (storedProduct) {
+//     localStorage.setItem(
+//       `index: ${productID - 1}`,
+//       JSON.stringify({
+//         id: cartListPrueba[productID - 1].id,
+//         amount: storedProduct.amount,
+//         emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+//       })
+//     );
+//   } else {
+//     localStorage.setItem(
+//       `index: ${productID - 1}`,
+//       JSON.stringify({
+//         id: cartListPrueba[productID - 1].id,
+//         amount: 0,
+//         emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+//       })
+//     );
+//   }
+// }
 
 //promo code button
 function btnCode() {
@@ -532,12 +633,15 @@ function modifiedTemplate(id, title, image, price, amount) {
   return templateItem;
 }
 
-
 //Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
 
 function editButtonQuery(productID) {
-  const displayArticle = document.getElementById(`cart-article-display-${productID}`);
-  const containerArticle = document.getElementById(`cart-container-article-${productID}`);
+  const displayArticle = document.getElementById(
+    `cart-article-display-${productID}`
+  );
+  const containerArticle = document.getElementById(
+    `cart-container-article-${productID}`
+  );
   const textBtn = document.getElementById(`cart-btn-text-${productID}`);
   const isDisplayed = displayArticle.classList.contains("cart-display-flex");
 
