@@ -89,7 +89,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="toggleFilter('filter-price0/20')"
+            onclick="displayFilteredProducts(toggleFilter('filter-price0/20'))"
           />
           <label class="form-check-label" for="filter-price0/20"
             >0 € - 20 €</label
@@ -101,7 +101,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="displayFilteredList(filterByPriceRange(20, 50)), allFiltersUnchecked()"
+            onclick="displayFilteredProducts(toggleFilter('filter-price20/50'))"
           />
           <label class="form-check-label" for="filter-price20/50"
             >20 € - 50 €</label
@@ -113,7 +113,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="toggleFilter('filter-price50/100')"
+            onclick="displayFilteredProducts(toggleFilter('filter-price50/100'))"
           />
           <label class="form-check-label" for="filter-price50/100"
             >50 € - 100 €</label
@@ -125,7 +125,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="displayFilteredList(filterByMaxPrice(100)), allFiltersUnchecked()"
+            onclick="displayFilteredProducts(toggleFilter('filter-price100+'))"
           />
           <label class="form-check-label" for="filter-price100+"
             >100 €+</label
@@ -139,7 +139,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="toggleFilter(3)"
+            onclick="displayFilteredProducts(toggleFilter('filter-age2+'))"
           />
           <label class="form-check-label" for="filter-age2+">2+</label>
         </div>
@@ -149,7 +149,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="displayFilteredList(filterByMinAge(6)), allFiltersUnchecked()"
+            onclick="displayFilteredProducts(toggleFilter('filter-age6+'))"
           />
           <label class="form-check-label" for="filter-age6+">6+</label>
         </div>
@@ -159,7 +159,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="displayFilteredList(filterByMinAge(9)), allFiltersUnchecked()"
+            onclick="displayFilteredProducts(toggleFilter('filter-age9+'))"
           />
           <label class="form-check-label" for="filter-age9+">9+</label>
         </div>
@@ -169,7 +169,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="displayFilteredList(filterByMinAge(12)), allFiltersUnchecked()"
+            onclick="displayFilteredProducts(toggleFilter('filter-age12+'))"
           />
           <label class="form-check-label" for="filter-age12+">12+</label>
         </div>
@@ -179,7 +179,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="displayFilteredList(filterByMinAge(18)), allFiltersUnchecked()"
+            onclick="displayFilteredProducts(toggleFilter('filter-age18+'))"
           />
           <label class="form-check-label" for="filter-age18+">18+</label>
         </div>
@@ -187,35 +187,49 @@
         <h4>Número de Piezas</h4>
         <div class="form-check">
           <input
-            id="filter-pieces100/249"
+            id="filter-pieces0/99"
             class="form-check-input"
             type="checkbox"
             value=""
-            onclick="allFiltersUnchecked()"
+            onclick="displayFilteredProducts(toggleFilter('filter-pieces0/99'))"
           />
-          <label class="form-check-label" for="filter-pieces100/249"
+          <label class="form-check-label" for="filter-pieces0/99"
+            >0-99</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            id="filter-price100/249"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            onclick="displayFilteredProducts(toggleFilter('filter-pieces100/249'))"
+          />
+          <label class="form-check-label" for="filter-price100/249"
             >100-249</label
           >
         </div>
         <div class="form-check">
           <input
-            id="filter-pieces250/499"
+            id="filter-price250/499"
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredProducts(toggleFilter('filter-pieces250/499'))"
           />
-          <label class="form-check-label" for="filter-pieces250/499"
+          <label class="form-check-label" for="filter-price250/499"
             >250-499</label
           >
         </div>
         <div class="form-check">
           <input
-            id="filter-pieces500/999"
+            id="filter-price500/999"
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredProducts(toggleFilter('filter-pieces500/999'))"
           />
-          <label class="form-check-label" for="filter-pieces500/999"
+          <label class="form-check-label" for="filter-price500/999"
             >500-999</label
           >
         </div>
@@ -225,6 +239,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
+            onclick="displayFilteredProducts(toggleFilter('filter-pieces1000+'))"
           />
           <label class="form-check-label" for="filter-pieces1000+">1000+</label>
         </div>
