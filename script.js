@@ -119,6 +119,7 @@ window.addEventListener("DOMContentLoaded", () => {
     emptyHeartCheck();
     shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
   } else {
+
     // M A I N  W E B P A G E
 
     emptyHeartCheck();
@@ -131,9 +132,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function updateSliderPosition() {
       const width = document.querySelector(".slider-p").clientWidth;
-      sliderInner.style.transform = `translateX(${
-        -sliderHeaderIndex * width
-      }px)`;
+      sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
     }
 
     function handlePrevClick() {
@@ -154,60 +153,63 @@ window.addEventListener("DOMContentLoaded", () => {
     buttonNext.addEventListener("click", handleNextClick);
 
     // Scroll del carrusel
-    const carrouselWrapper = document.querySelector(".carrousel-wrapper");
-    const scrollLeftButton = document.querySelector(".scroll-left-button");
-    const scrollRightButton = document.querySelector(".scroll-right-button");
+    document.addEventListener("DOMContentLoaded", () => {
+      const carrouselWrapper = document.querySelector(".carrousel-wrapper");
+      const scrollLeftButton = document.querySelector(".scroll-left-button");
+      const scrollRightButton = document.querySelector(".scroll-right-button");
 
-    function handleScrollLeft() {
-      carrouselWrapper.scrollBy({
-        left: -1080,
-        behavior: "smooth",
-      });
-    }
+      function handleScrollLeft() {
+        carrouselWrapper.scrollBy({
+          left: -1080,
+          behavior: "smooth",
+        });
+      }
 
-    function handleScrollRight() {
-      carrouselWrapper.scrollBy({
-        left: 1080,
-        behavior: "smooth",
-      });
-    }
+      function handleScrollRight() {
+        carrouselWrapper.scrollBy({
+          left: 1080,
+          behavior: "smooth",
+        });
+      }
 
-    scrollLeftButton.addEventListener("click", handleScrollLeft);
-    scrollRightButton.addEventListener("click", handleScrollRight);
+      scrollLeftButton.addEventListener("click", handleScrollLeft);
+      scrollRightButton.addEventListener("click", handleScrollRight);
+    });
 
     // Submenu
-    const subMenu = document.querySelector(".sub-menu-buy");
-    const detailsElement = document.querySelector(".sub-menu-details");
-    const buyButton = document.querySelector(".buy-button");
-    const exitButton = document.getElementById("button-exit");
+    const subMenu = document.querySelector('.sub-menu-buy');
+    const buyButton = document.querySelector('.buy-button');
+    const detailsElement = document.querySelector('.sub-menu-details');
+    const exitButton = document.getElementById('button-exit');
 
     function handleToggle() {
-      document.body.classList.add("active");
+      document.body.classList.add('active');
 
-      if (detailsElement.hasAttribute("open")) {
-        subMenu.style.width = "74.063rem"; // Ancho cuando está abierto
+      if (detailsElement.hasAttribute('open')) {
+        subMenu.style.width = '74.063rem'; // Ancho cuando está abierto
       } else {
-        subMenu.style.width = "46.87rem";
+        subMenu.style.width = '46.87rem';
       }
     }
 
     function handleSubMenu() {
-      document.body.classList.add("active");
+      document.body.classList.add('active');
     }
 
-    function handleExitClick() {
-      subMenu.style.display = "none";
-      document.body.classList.remove("active");
+    function handleExitClick(event) {
+      subMenu.style.display = 'none';
+      document.body.classList.remove('active');
     }
 
     function handleBuyClick(event) {
-      subMenu.style.display = "flex";
+      subMenu.style.display = 'flex';
     }
 
-    detailsElement.addEventListener("toggle", handleToggle);
+    detailsElement.addEventListener('toggle', handleToggle);
     exitButton.addEventListener("click", handleExitClick);
     buyButton.addEventListener("click", handleBuyClick);
     subMenu.addEventListener("click", handleSubMenu);
+
   }
 });
 
@@ -639,3 +641,9 @@ function deleteArticles(id) {
   localStorage.removeItem(`index: ${id - 1}`);
   location.href = location.href;
 }
+
+
+
+
+
+
