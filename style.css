@@ -285,6 +285,10 @@ footer {
   text-decoration: underline;
 }
 
+.main-bar .sub-menu-buy > .sub-menu-categories > ul > li a:hover {
+  color: #0045b7;
+}
+
 .main-bar .sub-menu-buy > .sub-menu-categories summary {
   font-size: 1rem;
   display: flex;
