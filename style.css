@@ -19,8 +19,6 @@
 }
 
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -191,6 +189,10 @@ footer {
   z-index: 3;
 }
 
+.main-bar .main-bar-nav {
+  margin-bottom: 0;
+}
+
 .main-bar .main-bar-nav > li {
   display: flex;
   justify-content: center;
@@ -252,6 +254,7 @@ footer {
   padding: 8.4375rem 0 2.5rem 9.375rem;
   display: none;
   z-index: 1;
+  transition:   250ms ease-in-out;
 }
 
 .main-bar .sub-menu-buy > button {
@@ -285,6 +288,10 @@ footer {
   text-decoration: underline;
 }
 
+.main-bar .sub-menu-buy > .sub-menu-categories > ul {
+  padding: 0;
+}
+
 .main-bar .sub-menu-buy > .sub-menu-categories > ul > li a:hover {
   color: #0045b7;
 }
@@ -299,7 +306,7 @@ footer {
   content: "";
   height: 15px;
   width: 15px;
-  background: url("assets/header/chevron-right.svg");
+  background: url("assets/footer/chevron-right.svg");
 }
 
 .main-bar .sub-menu-buy > .sub-menu-categories > ul {
@@ -991,6 +998,7 @@ p {
 .wrapper .links div:nth-child(2) > div > ul {
   line-height: 1.5625rem;
   align-items: center;
+  padding: 0;
 }
 
 .wrapper .lego-logo {
