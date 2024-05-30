@@ -120,8 +120,10 @@ window.addEventListener("DOMContentLoaded", () => {
     shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
   } else {
     // M A I N  W E B P A G E
+
     emptyHeartCheck();
-    // Slider del header
+
+    //
     const buttonPrev = document.querySelector(".prev-slider");
     const buttonNext = document.querySelector(".next-slider");
     const sliderInner = document.querySelector(".slider-p-inner");
@@ -129,47 +131,87 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function updateSliderPosition() {
       const width = document.querySelector(".slider-p").clientWidth;
-      sliderInner.style.transform = `translateX(${
-        -sliderHeaderIndex * width
-      }px)`;
+      sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
     }
 
-    buttonPrev.addEventListener("click", () => {
+    function handlePrevClick() {
       if (sliderHeaderIndex > 0) {
         sliderHeaderIndex--;
         updateSliderPosition();
       }
-    });
+    }
 
-    buttonNext.addEventListener("click", () => {
+    function handleNextClick() {
       if (sliderHeaderIndex < sliderInner.children.length - 1) {
         sliderHeaderIndex++;
         updateSliderPosition();
       }
-    });
+    }
+
+    buttonPrev.addEventListener("click", handlePrevClick);
+    buttonNext.addEventListener("click", handleNextClick);
 
     // Scroll del carrusel
-    document.addEventListener("DOMContentLoaded", () => {
-      const carrouselWrapper = document.querySelector(".carrousel-wrapper");
-      const scrollLeftButton = document.querySelector(".scroll-left-button");
-      const scrollRightButton = document.querySelector(".scroll-right-button");
 
-      scrollLeftButton.addEventListener("click", () => {
-        carrouselWrapper.scrollBy({
-          left: -1080,
-          behavior: "smooth",
-        });
-      });
+    const carrouselWrapper = document.querySelector(".carrousel-wrapper");
+    const scrollLeftButton = document.querySelector(".scroll-left-button");
+    const scrollRightButton = document.querySelector(".scroll-right-button");
 
-      scrollRightButton.addEventListener("click", () => {
-        carrouselWrapper.scrollBy({
-          left: 1080,
-          behavior: "smooth",
-        });
+    function handleScrollLeft() {
+      carrouselWrapper.scrollBy({
+        left: -1080,
+        behavior: "smooth",
       });
-    });
+    }
+
+    function handleScrollRight() {
+      carrouselWrapper.scrollBy({
+        left: 1080,
+        behavior: "smooth",
+      });
+    }
+
+    scrollLeftButton.addEventListener("click", handleScrollLeft);
+    scrollRightButton.addEventListener("click", handleScrollRight);
+
+
+    // Submenu
+    const subMenu = document.querySelector('.sub-menu-buy');
+    const buyButton = document.querySelector('.buy-button');
+    const detailsElement = document.querySelector('.sub-menu-details');
+    const exitButton = document.getElementById('button-exit');
+
+    function handleToggle() {
+      document.body.classList.add('active');
+
+      if (detailsElement.hasAttribute('open')) {
+        subMenu.style.width = '74.063rem'; // Ancho cuando está abierto
+      } else {
+        subMenu.style.width = '46.87rem';
+      }
+    }
+
+    function handleSubMenu() {
+      document.body.classList.add('active');
+    }
+
+    function handleExitClick(event) {
+      subMenu.style.display = 'none';
+      document.body.classList.remove('active');
+    }
+
+    function handleBuyClick(event) {
+      subMenu.style.display = 'flex';
+    }
+
+    detailsElement.addEventListener('toggle', handleToggle);
+    exitButton.addEventListener("click", handleExitClick);
+    buyButton.addEventListener("click", handleBuyClick);
+    subMenu.addEventListener("click", handleSubMenu);
+
   }
 });
+
 
 // D I S N E Y  S E T S //
 
