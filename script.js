@@ -84,18 +84,13 @@ let cartListPrueba = [
   },
 ];
 
-
 // la constante fullUrl almacena el valor de la referencia del .html
 const fullUrl = window.location.href;
-
-
-
 
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   if (fullUrl === "http://127.0.0.1:5500/disney.html") {
     displayOnRefresh();
-    
   } else if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
     //Cart website
     findProduct(getProductToLocalStorage()).forEach((item) => {
@@ -109,17 +104,17 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     btnCode();
-    //productCounter(getProductToLocalStorage());
+    // productCounter(0);
     sumPriceCart();
     shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
-    
+
     // Scroll del carrusel
 
     const carrouselWrapper = document.querySelector(".carrousel-wrapper");
     const scrollLeftButton = document.querySelector(".scroll-left-button");
     const scrollRightButton = document.querySelector(".scroll-right-button");
 
-    function handleScrollLeft() { 
+    function handleScrollLeft() {
       carrouselWrapper.scrollBy({
         left: -1080,
         behavior: "smooth",
@@ -135,18 +130,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
     scrollLeftButton.addEventListener("click", handleScrollLeft);
     scrollRightButton.addEventListener("click", handleScrollRight);
-
   } else {
-
     // M A I N  W E B P A G E
-    
+
     // Scroll del carrusel
 
     const carrouselWrapper = document.querySelector(".carrousel-wrapper");
     const scrollLeftButton = document.querySelector(".scroll-left-button");
     const scrollRightButton = document.querySelector(".scroll-right-button");
 
-    function handleScrollLeft() { 
+    function handleScrollLeft() {
       carrouselWrapper.scrollBy({
         left: -1080,
         behavior: "smooth",
@@ -162,79 +155,96 @@ window.addEventListener("DOMContentLoaded", () => {
 
     scrollLeftButton.addEventListener("click", handleScrollLeft);
     scrollRightButton.addEventListener("click", handleScrollRight);
-
   }
 
   //Funciones comunes a las tres páginas
 
-// white header buttons 
-const buttonPrev = document.querySelector(".prev-slider");
-const buttonNext = document.querySelector(".next-slider");
-const sliderInner = document.querySelector(".slider-p-inner");
-let sliderHeaderIndex = 0;
+  // white header buttons
+  const buttonPrev = document.querySelector(".prev-slider");
+  const buttonNext = document.querySelector(".next-slider");
+  const sliderInner = document.querySelector(".slider-p-inner");
+  let sliderHeaderIndex = 0;
 
-function updateSliderPosition() {
-  const width = document.querySelector(".slider-p").clientWidth;
-  sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
-}
-
-function handlePrevClick() {
-  if (sliderHeaderIndex > 0) {
-    sliderHeaderIndex--;
-    updateSliderPosition();
+  function updateSliderPosition() {
+    const width = document.querySelector(".slider-p").clientWidth;
+    sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
   }
-}
 
-function handleNextClick() {
-  if (sliderHeaderIndex < sliderInner.children.length - 1) {
-    sliderHeaderIndex++;
-    updateSliderPosition();
+  function handlePrevClick() {
+    if (sliderHeaderIndex > 0) {
+      sliderHeaderIndex--;
+      updateSliderPosition();
+    }
   }
-}
 
-buttonPrev.addEventListener("click", handlePrevClick);
-buttonNext.addEventListener("click", handleNextClick);
-
-// Submenu (yellow header)
-const subMenu = document.querySelector('.sub-menu-buy');
-const buyButton = document.querySelector('.buy-button');
-const detailsElement = document.querySelector('.sub-menu-details');
-const exitButton = document.getElementById('button-exit');
-
-function handleToggle() {
-  document.body.classList.add('active');
-
-  if (detailsElement.hasAttribute('open')) {
-    subMenu.style.width = '74.063rem'; // Ancho cuando está abierto
-  } else {
-    subMenu.style.width = '46.87rem';
+  function handleNextClick() {
+    if (sliderHeaderIndex < sliderInner.children.length - 1) {
+      sliderHeaderIndex++;
+      updateSliderPosition();
+    }
   }
-}
 
-function handleSubMenu() {
-  document.body.classList.add('active');
-}
+  buttonPrev.addEventListener("click", handlePrevClick);
+  buttonNext.addEventListener("click", handleNextClick);
 
-function handleExitClick(event) {
-  subMenu.style.display = 'none';
-  document.body.classList.remove('active');
-}
+  // Submenu (yellow header)
+  const subMenu = document.querySelector(".sub-menu-buy");
+  const buyButton = document.querySelector(".buy-button");
+  const detailsElement = document.querySelector(".sub-menu-details");
+  const exitButton = document.getElementById("button-exit");
 
-function handleBuyClick(event) {
-  subMenu.style.display = 'flex';
-}
+  function handleToggle() {
+    document.body.classList.add("active");
 
-detailsElement.addEventListener('toggle', handleToggle);
-exitButton.addEventListener("click", handleExitClick);
-buyButton.addEventListener("click", handleBuyClick);
-subMenu.addEventListener("click", handleSubMenu);
+    if (detailsElement.hasAttribute("open")) {
+      subMenu.style.width = "74.063rem"; // Ancho cuando está abierto
+    } else {
+      subMenu.style.width = "46.87rem";
+    }
+  }
 
+  function handleSubMenu() {
+    document.body.classList.add("active");
+  }
 
+  function handleExitClick(event) {
+    subMenu.style.display = "none";
+    document.body.classList.remove("active");
+  }
 
+  function handleBuyClick(event) {
+    subMenu.style.display = "flex";
+  }
 
-emptyHeartCheck();
+  detailsElement.addEventListener("toggle", handleToggle);
+  exitButton.addEventListener("click", handleExitClick);
+  buyButton.addEventListener("click", handleBuyClick);
+  subMenu.addEventListener("click", handleSubMenu);
 
+  emptyHeartCheck();
+  bagIconCounter();
 });
+
+// Funcion común
+// Función para ver el amount de la bolsa en el navbar
+function bagIconCounter() {
+  const bagIcon = document.getElementById("bag-icon-amount");
+  let totalAmount = 0;
+
+  getProductToLocalStorage().forEach((item) => {
+    totalAmount = totalAmount + item.amount;
+  });
+
+  bagIcon.textContent = `(${totalAmount})`;
+
+  if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+    const myCart = document.getElementById("cart-product-amount");
+    myCart.innerHTML = `Mi bolsa (${totalAmount})`;
+
+    const valueProduct = document.getElementById("cart-value-product-amount");
+    valueProduct.innerHTML = `Valor del pedido de (${totalAmount}) articulos`;
+  }
+}
 
 // D I S N E Y  S E T S //
 const disneyLayout = document.getElementById("disney-set-layout");
@@ -273,7 +283,7 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
                     <span><b>${price}</b><i class="bi bi-currency-euro"></i></span>
                 </div>
                 <div class="disney-card1-addToCart-container">
-                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id})">
+                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id}), bagIconCounter()">
                         <div class="disney-card1-addToCart-innerContainer">
                             <div class="disney-bagIcon-container">
                                 <img  class="disney-bag-icon" src="assets/disney-sets/shopping-bag-o.svg" alt="age-icon">
@@ -303,7 +313,7 @@ function displayOnRefresh() {
 //? FILTERS
 
 const copiedListStringify = JSON.stringify(cartListPrueba);
-let copyList = JSON.parse(copiedListStringify)
+let copyList = JSON.parse(copiedListStringify);
 
 class LegoFilter {
   constructor(htmlID, condition, active) {
@@ -314,67 +324,100 @@ class LegoFilter {
 }
 
 let filterList = [
-  new LegoFilter("filter-price0/20", (item) => 0 < item.price && item.price < 20, false), //index 0, 1, 2, 3.
-  new LegoFilter("filter-price20/50", (item) => 20 < item.price && item.price < 50, false),
-  new LegoFilter("filter-price50/100", (item) => 50 < item.price && item.price < 100, false),
+  new LegoFilter(
+    "filter-price0/20",
+    (item) => 0 < item.price && item.price < 20,
+    false
+  ), //index 0, 1, 2, 3.
+  new LegoFilter(
+    "filter-price20/50",
+    (item) => 20 < item.price && item.price < 50,
+    false
+  ),
+  new LegoFilter(
+    "filter-price50/100",
+    (item) => 50 < item.price && item.price < 100,
+    false
+  ),
   new LegoFilter("filter-price100+", (item) => item.price > 100, false),
   new LegoFilter("filter-age2+", (item) => item.minAge >= 2, false), //index 4, 5, 6, 7, 8
   new LegoFilter("filter-age6+", (item) => item.minAge >= 6, false),
   new LegoFilter("filter-age9+", (item) => item.minAge >= 9, false),
   new LegoFilter("filter-age12+", (item) => item.minAge >= 12, false),
   new LegoFilter("filter-age18+", (item) => item.minAge >= 18, false),
-  new LegoFilter("filter-pieces0/99", (item) => 0 < item.pieces && item.pieces <= 99, false), //index 9, 10, 11, 12, 13
-  new LegoFilter("filter-pieces100/249", (item) => 100 <= item.pieces && item.pieces <= 249, false),
-  new LegoFilter("filter-pieces250/499", (item) => 250 <= item.pieces && item.pieces <= 499, false),
-  new LegoFilter("filter-pieces500/999", (item) => 500 <= item.pieces && item.pieces <= 999, false),
+  new LegoFilter(
+    "filter-pieces0/99",
+    (item) => 0 < item.pieces && item.pieces <= 99,
+    false
+  ), //index 9, 10, 11, 12, 13
+  new LegoFilter(
+    "filter-pieces100/249",
+    (item) => 100 <= item.pieces && item.pieces <= 249,
+    false
+  ),
+  new LegoFilter(
+    "filter-pieces250/499",
+    (item) => 250 <= item.pieces && item.pieces <= 499,
+    false
+  ),
+  new LegoFilter(
+    "filter-pieces500/999",
+    (item) => 500 <= item.pieces && item.pieces <= 999,
+    false
+  ),
   new LegoFilter("filter-pieces1000+", (item) => item.pieces >= 1000, false),
-]
+];
 
 function toggleFilter(filterName) {
-  const filterToChange = filterList.find(f => f.htmlID === filterName);
-  filterToChange.active = !filterToChange.active
+  const filterToChange = filterList.find((f) => f.htmlID === filterName);
+  filterToChange.active = !filterToChange.active;
   let listToDisplay = applyFilters(copyList);
   displayFilteredProducts(listToDisplay);
 }
 
-function sortListByPrice(event){
-  if (event.target.checked){
-    sortList((a,b) => a.price - b.price)
-   }
+function sortListByPrice(event) {
+  if (event.target.checked) {
+    sortList((a, b) => a.price - b.price);
+  }
 }
 
-function sortListByAge(event){
-  if (event.target.checked){
-    sortList((a,b) => a.minAge - b.minAge)
-   }
+function sortListByAge(event) {
+  if (event.target.checked) {
+    sortList((a, b) => a.minAge - b.minAge);
+  }
 }
 
-function sortListByPieces(event){
-  if (event.target.checked){
-    sortList((a,b) => a.pieces - b.pieces)
-   }
+function sortListByPieces(event) {
+  if (event.target.checked) {
+    sortList((a, b) => a.pieces - b.pieces);
+  }
 }
 
-function sortList(sortCallback){
-  copyList.sort(sortCallback)
-  const LISTADEDAVID = applyFilters(copyList)
-  displayFilteredProducts(LISTADEDAVID)
-
+function sortList(sortCallback) {
+  copyList.sort(sortCallback);
+  const LISTADEDAVID = applyFilters(copyList);
+  displayFilteredProducts(LISTADEDAVID);
 }
 
-  function applyFilters(array){
+function applyFilters(array) {
   // Step 1: Filter active filters
-  const activePriceFilters = filterList.filter((f, index) => f.active && index < 4);
-  const activeAgeFilters = filterList.filter((f, index) => f.active && (index >= 4 && index < 9));
-  const activePiecesFilters = filterList.filter((f, index) => f.active && index >= 9);
+  const activePriceFilters = filterList.filter(
+    (f, index) => f.active && index < 4
+  );
+  const activeAgeFilters = filterList.filter(
+    (f, index) => f.active && index >= 4 && index < 9
+  );
+  const activePiecesFilters = filterList.filter(
+    (f, index) => f.active && index >= 9
+  );
   // Step 2: Concatenate callbacks with "OR" logic
   const somePrice = (item) => {
     if (activePriceFilters.length == 0) {
       return true;
     }
 
-    return activePriceFilters.some(f => f.condition(item));
-  }
+    return activePriceFilters.some((f) => f.condition(item));
+  };
 
   function someAge(item) {
     if (activeAgeFilters.length == 0) {
@@ -383,8 +426,8 @@ function sortList(sortCallback){
     // 50/100 Y 100+
     // Se cumple al menos uno de tus filtros?
 
-    //de la lista activeAgeFilters verifica que se cumpla "some" de las condiciones: 
-    return activeAgeFilters.some(f => f.condition(item));
+    //de la lista activeAgeFilters verifica que se cumpla "some" de las condiciones:
+    return activeAgeFilters.some((f) => f.condition(item));
   }
 
   const somePieces = (item) => {
@@ -392,8 +435,8 @@ function sortList(sortCallback){
       return true;
     }
 
-    return activePiecesFilters.some(f => f.condition(item));
-  }
+    return activePiecesFilters.some((f) => f.condition(item));
+  };
 
   // Step 3: Apply the combined filter to the list of items
   const filteredItems = array
@@ -401,13 +444,12 @@ function sortList(sortCallback){
     .filter(somePrice)
     .filter(somePieces);
 
-  return filteredItems
+  return filteredItems;
 }
-
 
 function displayFilteredProducts(array) {
   if (array.length == 0) {
-    disneyLayout.innerHTML = "No se encontraron coincidencias y/o resultados"
+    disneyLayout.innerHTML = "No se encontraron coincidencias y/o resultados";
   } else {
     disneyLayout.innerHTML = "";
     array.forEach((item) => {
@@ -429,7 +471,7 @@ function displayFilteredProducts(array) {
 const cartContainer = document.getElementById("cart-container");
 
 function increaseAmount(productID) {
-  const cartInputId = document.getElementById(`cart-input-${productID}`)
+  const cartInputId = document.getElementById(`cart-input-${productID}`);
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
   const selectedObj = JSON.parse(selectedString);
   let accumulator = selectedObj.amount;
@@ -448,7 +490,7 @@ function increaseAmount(productID) {
 }
 
 function decreaseAmount(productID) {
-  const cartInputId = document.getElementById(`cart-input-${productID}`)
+  const cartInputId = document.getElementById(`cart-input-${productID}`);
   const decreaseBtn = document.getElementById(`button-decrease-${productID}`);
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
   const selectedObj = JSON.parse(selectedString);
@@ -518,7 +560,7 @@ function addToTheWishList(productID) {
           heart.classList.replace("bi-heart", "bi-heart-fill");
           if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
             wishList.textContent = `Quitar de la lista de deseos`;
-            location.href=location.href
+            location.href = location.href;
           }
           if (storedProduct) {
             storedProduct.emptyHeart = false;
@@ -529,7 +571,7 @@ function addToTheWishList(productID) {
           heart.classList.replace("bi-heart-fill", "bi-heart");
           if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
             wishList.textContent = `Añadir a la lista de deseos`;
-            location.href=location.href
+            location.href = location.href;
           }
           if (storedProduct) {
             storedProduct.emptyHeart = true;
@@ -560,7 +602,7 @@ function addToTheWishList(productID) {
         }
       }
     });
-    location.href=location.href
+    location.href = location.href;
   }
 
   if (storedProduct) {
@@ -582,73 +624,7 @@ function addToTheWishList(productID) {
       })
     );
   }
-
-  
 }
-
-//funcion para la web del carrito
-// function addToTheWishListCart(productID) {
-//   const heart = document.getElementById(`cart-icon-heart-${productID}`);
-//   const wishList = document.getElementById(`add-wish-list-${productID}`);
-//   const heartCarrousel = document.getElementById(`cart-carrousel-icon-heart-${productID}`);
-
-//   isStoredProduct(productID)
-
-//   cartListPrueba.forEach((obj) => {
-//     if (obj.id == productID) {
-//       if (obj.emptyHeart) {
-//         // fill the heart
-//         heart.classList.replace("bi-heart", "bi-heart-fill");
-//         heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
-//         if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-//           wishList.textContent = `Quitar de la lista de deseos`;
-
-//         }
-//         if (storedProduct) {
-//           storedProduct.emptyHeart = false;
-//         }
-//         return (obj.emptyHeart = false);
-//       } else {
-//         // empty the heart
-//         heart.classList.replace("bi-heart-fill", "bi-heart");
-//         heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
-//         if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-//           wishList.textContent = `Añadir a la lista de deseos`;
-//         }
-//         if (storedProduct) {
-//           storedProduct.emptyHeart = true;
-//         }
-//         return (obj.emptyHeart = true);
-//       }
-//     }
-//   });
-
-// }
-
-// function isStoredProduct(productID){
-//   const storedProduct = JSON.parse(
-//     localStorage.getItem(`index: ${productID - 1}`)
-//   );
-//   if (storedProduct) {
-//     localStorage.setItem(
-//       `index: ${productID - 1}`,
-//       JSON.stringify({
-//         id: cartListPrueba[productID - 1].id,
-//         amount: storedProduct.amount,
-//         emptyHeart: cartListPrueba[productID - 1].emptyHeart,
-//       })
-//     );
-//   } else {
-//     localStorage.setItem(
-//       `index: ${productID - 1}`,
-//       JSON.stringify({
-//         id: cartListPrueba[productID - 1].id,
-//         amount: 0,
-//         emptyHeart: cartListPrueba[productID - 1].emptyHeart,
-//       })
-//     );
-//   }
-// }
 
 //promo code button
 function btnCode() {
@@ -776,7 +752,7 @@ function modifiedTemplate(id, title, image, price, amount) {
                     <button
                         class="cart-rest-article"
                         id="button-decrease-${id}"
-                        onclick="decreaseAmount(${id}), sumPriceCart(), productCounter(getProductToLocalStorage(), ${id})" >
+                        onclick="decreaseAmount(${id}), sumPriceCart(), productCounter(${id}), bagIconCounter()" >
                         <i class="bi bi-dash-lg"></i>
                     </button>
 
@@ -792,7 +768,7 @@ function modifiedTemplate(id, title, image, price, amount) {
                     <button
                         class="cart-add-article"
                         id="button-increase-${id}"
-                        onclick="increaseAmount(${id}), sumPriceCart(),  productCounter(getProductToLocalStorage(), ${id})">
+                        onclick="increaseAmount(${id}), sumPriceCart(),  productCounter(${id}), bagIconCounter()">
 
                         <i class="bi bi-plus-lg"></i>
                     </button>
@@ -811,7 +787,7 @@ function modifiedTemplate(id, title, image, price, amount) {
                     </div>
                 </div>
                 <div class="cart-trash">
-                  <button class="cart-trash-button" onclick="deleteArticles(${id})">
+                  <button class="cart-trash-button" onclick="deleteArticles(${id}), bagIconCounter()">
                     <i class="bi bi-trash3"></i>
                   </button>
                 </div>
@@ -864,7 +840,6 @@ function editButtonQuery(productID) {
       textBtn.innerHTML = "Listo";
     }
   }
-
 }
 
 //sum the total price of the cart
@@ -907,14 +882,13 @@ function sumPriceCart() {
 
 // función para poner el numero de articulos del carrito
 
-function productCounter(getProductLS, productID) {
-  
+function productCounter(productID) {
   const udsProduct = document.getElementById(`cart-uds-${productID}`);
   let totalAmount = 0;
 
-  getProductLS.forEach((item) => {
+  getProductToLocalStorage().forEach((item) => {
     totalAmount = totalAmount + item.amount;
-    udsProduct.innerHTML = `Uds. ${item.amount}`
+    udsProduct.innerHTML = `Uds. ${item.amount}`;
   });
 
   const myCart = document.getElementById("cart-product-amount");
@@ -922,8 +896,6 @@ function productCounter(getProductLS, productID) {
 
   const valueProduct = document.getElementById("cart-value-product-amount");
   valueProduct.innerHTML = `Valor del pedido de (${totalAmount}) articulos`;
-
-  
 }
 
 // Función para eliminar articulos
@@ -932,8 +904,3 @@ function deleteArticles(id) {
   localStorage.removeItem(`index: ${id - 1}`);
   location.href = location.href;
 }
-
-
-
-
-
