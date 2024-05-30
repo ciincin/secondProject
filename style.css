@@ -981,10 +981,17 @@ p {
   flex-direction: column;
 }
 
+.wrapper .links div:first-child > a {
+  text-decoration: none;
+}
+
 .wrapper .links div:nth-child(2) {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: start;
+}
+.wrapper .links div:nth-child(2) a {
+  text-decoration: none;
 }
 
 .wrapper .links div:nth-child(2) > div {
