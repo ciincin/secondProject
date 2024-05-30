@@ -158,7 +158,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const scrollLeftButton = document.querySelector(".scroll-left-button");
     const scrollRightButton = document.querySelector(".scroll-right-button");
 
-    function handleScrollLeft() { 
+    function handleScrollLeft() {
       carrouselWrapper.scrollBy({
         left: -1080,
         behavior: "smooth",
