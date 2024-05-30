@@ -106,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     btnCode();
-    productCounter(getProductToLocalStorage());
+    //productCounter(getProductToLocalStorage());
     sumPriceCart();
     emptyHeartCheck();
     shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
@@ -398,6 +398,7 @@ function displayFilteredProducts(array) {
 const cartContainer = document.getElementById("cart-container");
 
 function increaseAmount(productID) {
+  const cartInputId = document.getElementById(`cart-input-${productID}`)
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
   const selectedObj = JSON.parse(selectedString);
   let accumulator = selectedObj.amount;
@@ -411,11 +412,12 @@ function increaseAmount(productID) {
       amount: accumulator,
     })
   );
-
-  location.href = location.href;
+  cartInputId.value = accumulator;
+  // location.href = location.href;
 }
 
 function decreaseAmount(productID) {
+  const cartInputId = document.getElementById(`cart-input-${productID}`)
   const decreaseBtn = document.getElementById(`button-decrease-${productID}`);
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
   const selectedObj = JSON.parse(selectedString);
@@ -432,7 +434,7 @@ function decreaseAmount(productID) {
       })
     );
 
-    location.href = location.href;
+    cartInputId.value = accumulator;
   } else {
     decreaseBtn.attributes = "disabled";
   }
@@ -448,10 +450,15 @@ function emptyHeartCheck() {
       if (element.id === item.id) {
         item.emptyHeart = element.emptyHeart;
         let heart = document.getElementById(`cart-icon-heart-${item.id}`);
+
         const wishList = document.getElementById(`add-wish-list-${item.id}`);
         if (element.emptyHeart === false) {
           heart.classList.replace("bi-heart", "bi-heart-fill");
           if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            let heartCarrousel = document.getElementById(
+              `cart-carrousel-icon-heart-${item.id}`
+            );
+            heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
             wishList.textContent = `Quitar de la lista de deseos`;
           }
         }
@@ -463,37 +470,67 @@ function emptyHeartCheck() {
 // Nueva funcion de addToTheWishList -> hay que cambiar ambos templates reemplazar el this.id.
 function addToTheWishList(productID) {
   const heart = document.getElementById(`cart-icon-heart-${productID}`);
+  const heartCarrousel = document.getElementById(
+    `cart-carrousel-icon-heart-${productID}`
+  );
   const wishList = document.getElementById(`add-wish-list-${productID}`);
 
   const storedProduct = JSON.parse(
     localStorage.getItem(`index: ${productID - 1}`)
   );
 
-  cartListPrueba.forEach((obj) => {
-    if (obj.id == productID) {
-      if (obj.emptyHeart) {
-        // fill the heart
-        heart.classList.replace("bi-heart", "bi-heart-fill");
-        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-          wishList.textContent = `Quitar de la lista de deseos`;
+  if (heart) {
+    cartListPrueba.forEach((obj) => {
+      if (obj.id == productID) {
+        if (obj.emptyHeart) {
+          // fill the heart
+          heart.classList.replace("bi-heart", "bi-heart-fill");
+          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            wishList.textContent = `Quitar de la lista de deseos`;
+            location.href=location.href
+          }
+          if (storedProduct) {
+            storedProduct.emptyHeart = false;
+          }
+          return (obj.emptyHeart = false);
+        } else {
+          // empty the heart
+          heart.classList.replace("bi-heart-fill", "bi-heart");
+          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            wishList.textContent = `Añadir a la lista de deseos`;
+            location.href=location.href
+          }
+          if (storedProduct) {
+            storedProduct.emptyHeart = true;
+          }
+          return (obj.emptyHeart = true);
         }
-        if (storedProduct) {
-          storedProduct.emptyHeart = false;
-        }
-        return (obj.emptyHeart = false);
-      } else {
-        // empty the heart
-        heart.classList.replace("bi-heart-fill", "bi-heart");
-        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-          wishList.textContent = `Añadir a la lista de deseos`;
-        }
-        if (storedProduct) {
-          storedProduct.emptyHeart = true;
-        }
-        return (obj.emptyHeart = true);
       }
-    }
-  });
+    });
+  } else if (heartCarrousel) {
+    cartListPrueba.forEach((obj) => {
+      if (obj.id == productID) {
+        if (obj.emptyHeart) {
+          // fill the heart
+          heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
+          obj.emptyHeart = false;
+          if (storedProduct) {
+            storedProduct.emptyHeart = false;
+            obj.emptyHeart = false;
+          }
+        } else {
+          // empty the heart
+          heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
+          obj.emptyHeart = true;
+          if (storedProduct) {
+            storedProduct.emptyHeart = true;
+            obj.emptyHeart = true;
+          }
+        }
+      }
+    });
+    location.href=location.href
+  }
 
   if (storedProduct) {
     localStorage.setItem(
@@ -514,7 +551,73 @@ function addToTheWishList(productID) {
       })
     );
   }
+
+  
 }
+
+//funcion para la web del carrito
+// function addToTheWishListCart(productID) {
+//   const heart = document.getElementById(`cart-icon-heart-${productID}`);
+//   const wishList = document.getElementById(`add-wish-list-${productID}`);
+//   const heartCarrousel = document.getElementById(`cart-carrousel-icon-heart-${productID}`);
+
+//   isStoredProduct(productID)
+
+//   cartListPrueba.forEach((obj) => {
+//     if (obj.id == productID) {
+//       if (obj.emptyHeart) {
+//         // fill the heart
+//         heart.classList.replace("bi-heart", "bi-heart-fill");
+//         heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
+//         if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+//           wishList.textContent = `Quitar de la lista de deseos`;
+
+//         }
+//         if (storedProduct) {
+//           storedProduct.emptyHeart = false;
+//         }
+//         return (obj.emptyHeart = false);
+//       } else {
+//         // empty the heart
+//         heart.classList.replace("bi-heart-fill", "bi-heart");
+//         heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
+//         if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+//           wishList.textContent = `Añadir a la lista de deseos`;
+//         }
+//         if (storedProduct) {
+//           storedProduct.emptyHeart = true;
+//         }
+//         return (obj.emptyHeart = true);
+//       }
+//     }
+//   });
+
+// }
+
+// function isStoredProduct(productID){
+//   const storedProduct = JSON.parse(
+//     localStorage.getItem(`index: ${productID - 1}`)
+//   );
+//   if (storedProduct) {
+//     localStorage.setItem(
+//       `index: ${productID - 1}`,
+//       JSON.stringify({
+//         id: cartListPrueba[productID - 1].id,
+//         amount: storedProduct.amount,
+//         emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+//       })
+//     );
+//   } else {
+//     localStorage.setItem(
+//       `index: ${productID - 1}`,
+//       JSON.stringify({
+//         id: cartListPrueba[productID - 1].id,
+//         amount: 0,
+//         emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+//       })
+//     );
+//   }
+// }
 
 //promo code button
 function btnCode() {
@@ -618,100 +721,119 @@ function findProduct(cartArray) {
 function modifiedTemplate(id, title, image, price, amount) {
   let templateItem = `
   <div class="cart-article-fex">
-  <div class="cart-img-container">
-    <img
-      alt=${title}
-      src= ${image}
-    />
-  </div>
-
-  <div class="cart-information-container">
-    <div class="cart-name">
-      <h3><a href="#">${title}</a></h3>
+    <div class="cart-img-container">
+        <img
+            alt=${title}
+            src= ${image}
+        />
     </div>
 
-    <div class="cart-margin"></div>
-
-    <div class="cart-price-add">
-      <div class="cart-price">${price} €</div>
-
-      <div class="cart-add-more">
-        <div class="cart-add-more-content"  id="cart-article-display-${id}">
-          <button
-            class="cart-rest-article"
-            id="button-decrease-${id}"
-            onclick="decreaseAmount(${id})"
-          >
-            <i class="bi bi-dash-lg"></i>
-          </button>
-
-          <div class="cart-number-articles">
-            <input
-              type="text"
-              value="${amount}"
-              min="1"
-              id="cart-input-${id}"
-            />
-          </div>
-
-          <button
-            class="cart-add-article"
-            id="button-increase-${id}"
-             onclick="increaseAmount(${id})"  >
-          
-            <i class="bi bi-plus-lg"></i>
-          </button>
+    <div class="cart-information-container">
+        <div class="cart-name">
+            <h3><span href="#">${title}</span></h3>
         </div>
-      </div>
-    </div>
-  </div>
 
+        <div class="cart-margin"></div>
 
-      <article class="cart-wish-list">
-        <div class="cart-wish-list-container">
-          <div class="cart-heart-button-container" >
-            <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
-              <i class="bi-heart" id="cart-icon-heart-${id}" ></i>
-            </button>
-          </div>
+        <div class="cart-price-add" id="cart-container-article-${id}">
+            <div class="cart-uds-price-container">
+                <div class="cart-uds" id="cart-uds-${id}">Uds. ${amount}</div>
+                <div class="cart-price">${price} €</div>
+            </div>
+            <div class="cart-add-more">
+                <div class="cart-add-more-content" id="cart-article-display-${id}">
+                    <button
+                        class="cart-rest-article"
+                        id="button-decrease-${id}"
+                        onclick="decreaseAmount(${id}), sumPriceCart(), productCounter(getProductToLocalStorage(), ${id})" >
+                        <i class="bi bi-dash-lg"></i>
+                    </button>
 
-          <div class="cart-wish-list-text" id="add-wish-list-${id}">
-            Añadir a la lista de deseos
-          </div>
+                    <div class="cart-number-articles">
+                        <input
+                            type="text"
+                            value="${amount}"
+                            min="1"
+                            id="cart-input-${id}"
+                        />
+                    </div>
+
+                    <button
+                        class="cart-add-article"
+                        id="button-increase-${id}"
+                        onclick="increaseAmount(${id}), sumPriceCart(),  productCounter(getProductToLocalStorage(), ${id})">
+
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
+            <article class="cart-wish-list">
+                <div class="cart-wish-list-container">
+                    <div class="cart-heart-button-container" >
+                        <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
+                            <i class="bi-heart" id="cart-icon-heart-${id}" ></i>
+                        </button>
+                    </div>
+
+                    <div class="cart-wish-list-text" id="add-wish-list-${id}">
+                        Añadir a la lista de deseos
+                    </div>
+                </div>
+                <div class="cart-trash">
+                  <button class="cart-trash-button" onclick="deleteArticles(${id})">
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                </div>
+
+            </article>
+           
+            <div class="cart-trash-mq">
+                <button class="cart-trash-button-mq" onclick="deleteArticles(${id})">
+                    <i class="bi bi-trash3"></i>
+                </button>
+
+                <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
+                    <span class="cart-text-edit" id="cart-btn-text-${id}">(Editar)</span>
+                </button>
+            </div>
+
         </div>
-      </article>
-
-      <div class="cart-trash">
-        <button class="cart-trash-button" onclick="deleteArticles(${id})">
-          <i class="bi bi-trash3"></i>
-        </button>
-
-        <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
-          <span class="cart-text-edit">(Editar)</span>
-        </button>
     </div>
-
-  </div>
+    </div>
   `;
   return templateItem;
 }
 
-//!Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
+//Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
 
 function editButtonQuery(productID) {
   const displayArticle = document.getElementById(
     `cart-article-display-${productID}`
   );
+  const containerArticle = document.getElementById(
+    `cart-container-article-${productID}`
+  );
+  const textBtn = document.getElementById(`cart-btn-text-${productID}`);
+  const isDisplayed = displayArticle.classList.contains("cart-display-flex");
 
-  displayArticle.classList.add("cart-display-flex");
-  //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
-  if (
-    displayArticle.className === "cart-add-more-content cart-display-flex" &&
-    window.screen.availWidth < 900
-  ) {
-    // displayArticle.className ="cart-add-more-content cart-display-flex";
+  if (isDisplayed) {
+    displayArticle.classList.remove("cart-display-flex");
+    containerArticle.classList.remove("cart-display-flex-wrap");
+    textBtn.innerHTML = "(Editar)";
+  } else {
     displayArticle.classList.add("cart-display-flex");
+    //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
+    if (
+      displayArticle.className === "cart-add-more-content cart-display-flex" &&
+      window.innerWidth < 900
+    ) {
+      // displayArticle.className ="cart-add-more-content cart-display-flex";
+      containerArticle.classList.add("cart-display-flex-wrap");
+      displayArticle.classList.add("cart-display-flex");
+      textBtn.innerHTML = "Listo";
+    }
   }
+
 }
 
 //sum the total price of the cart
@@ -721,6 +843,8 @@ function sumPriceCart() {
   let totalPrice = document.getElementById("cart-total-price");
   let iva = document.getElementById("cart-IVA");
   let paypal = document.getElementById("paypal-3-payments");
+  let totalPriceFix = document.getElementById("cart-total-price-fix");
+  let ivaFix = document.getElementById("cart-IVA-fix");
 
   let localStorageProduct = getProductToLocalStorage();
 
@@ -737,9 +861,11 @@ function sumPriceCart() {
         subtotal.textContent = `${productTotalPrice.toFixed(2)} €`;
 
         totalPrice.textContent = `${productTotalPrice.toFixed(2)} €`;
+        totalPriceFix.textContent = `${productTotalPrice.toFixed(2)} €`;
 
         const ivaTotal = productTotalPrice * 0.21;
-        iva.textContent = `${ivaTotal.toFixed(2)} €`;
+        iva.textContent = `IVA ${ivaTotal.toFixed(2)} €`;
+        ivaFix.textContent = `IVA ${ivaTotal.toFixed(2)} €`;
 
         const paypalPayments = productTotalPrice / 3;
         paypal.textContent = `${paypalPayments.toFixed(2)} €`;
@@ -750,10 +876,14 @@ function sumPriceCart() {
 
 // función para poner el numero de articulos del carrito
 
-function productCounter(getProductLS) {
+function productCounter(getProductLS, productID) {
+  
+  const udsProduct = document.getElementById(`cart-uds-${productID}`);
   let totalAmount = 0;
+
   getProductLS.forEach((item) => {
     totalAmount = totalAmount + item.amount;
+    udsProduct.innerHTML = `Uds. ${item.amount}`
   });
 
   const myCart = document.getElementById("cart-product-amount");
@@ -761,6 +891,8 @@ function productCounter(getProductLS) {
 
   const valueProduct = document.getElementById("cart-value-product-amount");
   valueProduct.innerHTML = `Valor del pedido de (${totalAmount}) articulos`;
+
+  
 }
 
 // Función para eliminar articulos
