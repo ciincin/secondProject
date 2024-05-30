@@ -35,6 +35,9 @@ a:visited {
 
 body {
   font-family: sans-serif;
+  width: 100%;
+  margin: 0;
+  font-size: 1.1em;
 }
 
 .active {
@@ -1115,11 +1118,7 @@ p {
   margin-bottom: 20px;
 }
 
-body {
-  width: 100%;
-  margin: 0;
-  font-size: 1.1em;
-}
+
 
 /* S E T  D E  D I S N E Y */
 
