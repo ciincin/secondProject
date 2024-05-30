@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <title data-test="title-tag">Bolsa de la compra | LEGO Shop</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,7 +24,7 @@
   </head>
   <body>
     <!-- C A R T  W E B P A G E  -  E M P T Y -->
-    <div class="cart-empty-content">
+    <div class="cart-empty-content" id="cart-empty-cart">
       <div class="cart-bag-icono"><i class="bi bi-bag"></i></div>
       <h1 class="cart-empty-text">Su bolsa está vacía</h1>
       <h2 class="cart-empty-ask-logging">
@@ -35,9 +41,9 @@
 
     <!-- C A R T  W E B P A G E  -->
 
-    <div class="cart-container">
+    <div class="cart-container" id="cart-full-container">
       <div class="cart-my-bag">
-        <h1 class="cart-h1">Mi bolsa (1)</h1>
+        <h1 class="cart-h1" id="cart-product-amount">Mi bolsa (1)</h1>
       </div>
 
       <div class="cart-my-bag-content">
@@ -46,278 +52,141 @@
             <div class="cart-now-available">
               <h2>Ya disponible</h2>
             </div>
-            <div class="cart-article-container">
-              <div class="cart-article-fex">
-                <div class="cart-item">
-                  <div class="cart-img-container">
-                    <img
-                      alt="Plaza Mayor Medieval"
-                      src="https://www.lego.com/cdn/cs/set/assets/blt363dbbfb53d05684/10332.png?fit=bounds&amp;format=png&amp;width=320&amp;height=320&amp;dpr=1"
+            <div class="cart-article-container" id="cart-container"></div>
+          </div>
+        </div>
+
+        <div class="cart-divisor"></div>
+
+        <div class="cart-right-space">
+          <div class="cart-delivery-container">
+            <p class="cart-delivery-text">
+              Aumente en 45.01 € el importe del pedido para disfrutar de envío
+              GRATUITO
+            </p>
+            <div class="cart-delivery-white-space">
+              <div class="cart-progress-0">0 €</div>
+              <div class="cart-progress-inline-block">
+                <div class="progress">
+                  <div
+                    class="progress-bar w-75"
+                    role="progressbar"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+              <div class="cart-progress-55">55 €</div>
+            </div>
+          </div>
+
+          <!-- <div class="cart-divisor"></div> -->
+
+          <div class="cart-right-first">
+            <div class="cart-order-summary-container">
+              <div class="cart-order">
+                <h2 class="cart-summary">Resumen del pedido</h2>
+              </div>
+              <div class="cart-promo-code">
+                <div class="cart-promo-button-container">
+                  <button class="cart-promo-button" id="cart-promo-button">
+                    <h3 class="cart-h3-flex">
+                      Añada un código de descuento promocional/de LEGO® Insiders
+                    </h3>
+                    <i
+                        class="bi bi-chevron-right rotate-down"
+                        id="cart-icon"
+                    ></i>
+                    
+                  </button>
+                </div>
+                <div
+                  class="cart-promo-open cart-display-none"
+                  id="cart-promo-open"
+                >
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Introducir código"
+                      aria-describedby="button-addon2"
                     />
-                  </div>
-
-                  <div class="cart-information-container">
-                    <div class="cart-name">
-                      <h3><a href="#"> Plaza Mayor Medieval</a></h3>
-                    </div>
-
-                    <div class="cart-margin"></div>
-
-                    <div class="cart-price-add">
-                      <div class="cart-price">
-                        <span class="cart-price">229,99 €</span>
-                      </div>
-
-                      <div class="cart-add-more">
-                        <div class="cart-add-more-content">
-                          <button class="cart-rest-article">
-                            <svg
-                              class="minus"
-                              width="14px"
-                              height="2px"
-                              viewBox="0 0 14 2"
-                              aria-hidden="true"
-                            >
-                              <polygon
-                                fill="#E0E0E0"
-                                points="14 2 0 2 0 -6.03961325e-14 14 -6.03961325e-14"
-                              ></polygon>
-                            </svg>
-                            <span class="cart-rest">Decrease Quantity</span>
-                          </button>
-
-                          <div class="cart-number-articles">
-                            <input type="number" value="1" />
-                          </div>
-
-                          <button class="cart-add-article">
-                            <svg
-                              class="add"
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="14px"
-                              height="14px"
-                              viewBox="0 0 14 14"
-                              aria-hidden="true"
-                            >
-                              <polygon
-                                fill="black"
-                                points="14 8 0 8 0 6 14 6"
-                              ></polygon>
-                              <rect
-                                fill="black"
-                                fill-rule="nonzero"
-                                x="6"
-                                y="0"
-                                width="2"
-                                height="14"
-                              ></rect>
-                            </svg>
-                            <span class="cart-add">Increase Quantity</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <article class="cart-wish-list">
-                    <div class="cart-wish-list-container">
-                      <div class="cart-heart-button-container">
-                        <button class="cart-heart-button">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-heart"
-                            viewBox="0 0 16 16"
-                          >
-                            <path
-                              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-
-                      <div class="cart-wish-list-text">
-                        Añadir a la lista de deseos
-                      </div>
-                    </div>
-                  </article>
-
-                  <div class="cart-bin">
-                    <button class="cart-bin-button">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17"
-                        height="22"
-                        viewBox="0 0 17 22"
-                        aria-hidden="true"
-                        class="Icon__StyledSVG-lm07h6-0 haoLJy"
-                      >
-                        <g fill="currentColor" fill-rule="evenodd">
-                          <path
-                            d="M.773 5.5h15.454A.762.762 0 0017 4.75a.762.762 0 00-.773-.75H.773A.762.762 0 000 4.75c0 .414.346.75.773.75z"
-                          ></path>
-                          <path
-                            d="M5.744 4l.378-1.43c.08-.307.448-.607.742-.607h3.272c.294 0 .661.3.742.606L11.256 4 13 4.46l-.378-1.43C12.32 1.88 11.24.673 10.136.673H6.864C5.76.673 4.681 1.881 4.378 3.03L4 4.46 5.744 4z"
-                          ></path>
-                          <path
-                            d="M14.47 4.734l-.567 15.257a.515.515 0 01-.505.484H3.602a.516.516 0 01-.505-.484L2.53 4.734a.764.764 0 00-.793-.733.764.764 0 00-.736.79l.567 15.256A2.044 2.044 0 003.602 22h9.796c1.086 0 1.994-.87 2.034-1.953L16 4.791a.764.764 0 00-.736-.79.764.764 0 00-.793.733z"
-                          ></path>
-                          <path
-                            d="M8 8.532v8.945c0 .29.224.526.5.526s.5-.235.5-.526V8.532a.514.514 0 00-.5-.526c-.276 0-.5.236-.5.526zm3-.006v8.948c0 .29.224.526.5.526s.5-.236.5-.526V8.526A.514.514 0 0011.5 8c-.276 0-.5.236-.5.526zm-6 0v8.948c0 .29.224.526.5.526s.5-.236.5-.526V8.526A.514.514 0 005.5 8c-.276 0-.5.236-.5.526z"
-                          ></path>
-                        </g>
-                      </svg>
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      Aplicar
                     </button>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cart-right-space">
-          <div class="cart-order-summary-container">
-            <div class="cart-order">
-              <h2 class="cart-summary">Resumen del pedido</h2>
-            </div>
-            <div class="cart-promo-code">
-              <div class="cart-promo-button-container">
-                <button class="cart-promo-button">
-                  <h3 class="cart-h3-flex">
-                    Añada un código de descuento promocional/de LEGO® Insiders
-                    <svg
-                      width="18"
-                      height="28"
-                      viewBox="0 0 18 28"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="Icon__StyledSVG-lm07h6-0 jjgiBl Chevronstyles__ChevronIcon-sc-1qql32m-0 fzaww PromoCodeAccordionstyles__StyledChevron-sc-3p6639-2 SdTFd"
+              <div class="cart-payment-container">
+                <div class="cart-total-payment">
+                  <span class="cart-price-text" id="cart-value-product-amount"
+                    >Valor del pedido de (1) artículos</span
+                  >
+                  <span class="cart-price-value" id="cart-sum-total-price"
+                    >229.99 €</span
+                  >
+                </div>
+                <div class="cart-free-delivery">
+                  <div class="cart-congrats">
+                    <span class="cart-congrats-text"
+                      >¡Felicidades! Recibirá su pedido de forma GRATUITA</span
                     >
-                      <path
-                        d="M1.825 28L18 14 1.825 0 0 1.715 14.196 14 0 26.285z"
-                        fill="currentColor"
-                      ></path>
-                    </svg>
-                  </h3>
-                </button>
-              </div>
-
-              <div class="cart-promo-open">
-                <!-- aquí va la funcionalidad de abrir el boton de promociones para añadir el codigo -->
-              </div>
-            </div>
-            <div class="cart-payment-container">
-              <div class="cart-total-payment">
-                <span class="cart-price-text"
-                  >Valor del pedido de (1) artículos</span
-                >
-                <span class="cart-price">229.99 €</span>
-              </div>
-
-              <div class="cart-free-delivery">
-                <div class="cart-congrats">
-                  <span class="cart-congrats-text"
-                    >¡Felicidades! Recibirá su pedido de forma GRATUITA</span
+                  </div>
+                  <div class="cart-green-check">
+                    <i class="bi bi-check-lg"></i>
+                  </div>
+                </div>
+                <div class="cart-total-price">
+                  <span class="cart-total-text">Importe Total</span>
+                  <span class="cart-total-price-value" id="cart-total-price"
+                    >229,99 €</span
                   >
                 </div>
-                <div class="cart-green-check">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-check2"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"
-                    />
-                  </svg>
+                <div class="cart-iva">
+                  <span class="cart-iva-price" id="cart-IVA">IVA 39,92 €</span>
                 </div>
               </div>
-              <div class="cart-total-price">
-                <span class="cart-total-text">Importe Total</span>
-                <span class="cart-total-price">229,99 €</span>
+              <div class="cart-checkout">
+                <a href="#">
+                  <div class="cart-icono-checkout">
+                    <i class="bi bi-shield-check"></i>
+                  </div>
+                  <div class="cart-checkout-button">
+                    Tramitar pedido de forma segura
+                  </div>
+                </a>
               </div>
-
-              <div class="cart-iva">
-                <span class="cart-iva-price">IVA 39,92 €</span>
+            </div>
+            <div class="cart-fast-shopping">
+              <h2 class="cart-fast-shopping-title">Compra rápida</h2>
+              <div class="cart-fast-shopping-description">
+                Todos los detalles del pedido se tomarán directamente de su
+                proveedor de pago. Asegúrese de seleccionar las direcciones
+                correctas antes de realizar el pedido. Desde el proveedor de
+                pago, se le dirigirá a la página de confirmación del pedido. Si
+                tiene un código de descuento, elija «Tramitar pedido de forma
+                segura».
               </div>
-            </div>
-
-            <div class="cart-checkout">
-              <a href="#">
-                <div class="cart-icono-checkout">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-shield-check"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"
-                    />
-                    <path
-                      d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"
-                    />
-                  </svg>
-                </div>
-                <div class="cart-checkout-button">
-                  Tramitar pedido de forma segura
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="cart-fast-shopping">
-            <h2 class="cart-fast-shopping-title">Compra rápida</h2>
-            <span class="cart-fast-shopping-description">
-              Todos los detalles del pedido se tomarán directamente de su
-              proveedor de pago. Asegúrese de seleccionar las direcciones
-              correctas antes de realizar el pedido. Desde el proveedor de pago,
-              se le dirigirá a la página de confirmación del pedido. Si tiene un
-              código de descuento, elija «Tramitar pedido de forma segura».
-            </span>
-            <div class="cart-paypal">Pagar con <i>PayPal</i></div>
-
-            <div class="cart-pay-instalments">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-paypal"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.35.35 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91q.57-.403.993-1.005a4.94 4.94 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.7 2.7 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.7.7 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016q.326.186.548.438c.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.87.87 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.35.35 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32z"
-                />
-              </svg>
-              <span class="cart-pay-3-instalments">Pagar en 3 plazos</span>
-            </div>
-
-            <div class="cart-paypal-description">
-              <div class="cart-paypal-price">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-paypal"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.35.35 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91q.57-.403.993-1.005a4.94 4.94 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.7 2.7 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.7.7 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016q.326.186.548.438c.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.87.87 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.35.35 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32z"
-                  />
-                </svg>
-
-                <i>PayPal</i> Paga en 3 plazos de 76,66€, sin intereses.
-                <div class="cart-tae">
-                  0% TAE.
-                  <a href="#">Más información</a>
+              <div class="cart-paypal">Pagar con <i>PayPal</i></div>
+              <div class="cart-pay-instalments">
+                <i class="bi bi-paypal"></i>
+                <span class="cart-pay-3-instalments">Pagar en 3 plazos</span>
+              </div>
+              <div class="cart-paypal-description">
+                <div class="cart-paypal-price">
+                  <i class="bi bi-paypal"></i>
+                  <i class="cart-pay">Pay</i><i class="cart-pal">Pal</i> Paga en
+                  3 plazos de <span id="paypal-3-payments">76,66€</span>, sin
+                  intereses.
+                  <div class="cart-tae">
+                    0% TAE.
+                    <a href="#">Más información</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -330,7 +199,7 @@
                 <a href="#">Envío y manipulación</a>
               </div>
               <div class="cart-back">
-                <a href="#">Davolución de los productos</a>
+                <a href="#">Devolución de los productos</a>
               </div>
             </div>
             <div class="cart-payment-methods">
@@ -361,7 +230,408 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- C A R T  R E C O M E N D E D  C A R D S -->
+    <section class="carrousel">
+      <div class="carrousel-title">Recomendado para ti</div>
+      <div class="carrousel-container">
+        <div class="previous-button">
+          <button id="scroll-left-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="carrousel-wrapper">
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg"
+                    alt="Cabaña de Blancanieves y los Siete Enanitos"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">Cabaña de Blancanieves y los Siete Enanitos</a>
+              </div>
+            </div>
+            <div>
+              <div class="star-review">
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-half-star.svg" alt="" />
+              </div>
+              <div class="price">219,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(1)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/cars/cars-600x450.jpg"
+                    alt="Diversión en el Autolavado con Rayo McQueen y Mate"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href=""
+                  >Diversión en el Autolavado con Rayo McQueen y Mate</a
+                >
+              </div>
+            </div>
+            <div>
+              <div class="star-review">
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-star.svg" alt="" />
+                <img src="assets/cards/review-half-star.svg" alt="" />
+              </div>
+              <div class="price">34,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(2)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/frozen/frozen-600x450.jpg"
+                    alt="Palacio de Hielo de Elsa"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">Palacio de Hielo de Elsa</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">99,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(3)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/insideOut/insideOut-600x400.jpg"
+                    alt="Inside Out 2 Mood Cubes"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">Inside Out 2 Mood Cubes</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">34,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(4)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/reyLeon/reyLeon-600x450.jpg"
+                    alt="El Rey León: Simba Cachorro"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">El Rey León: Simba Cachorro</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">19,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(5)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/sirenita/sirenita-600x450.jpg"
+                    alt="Mini Castillo de Disney Ariel"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">Mini Castillo de Disney Ariel</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">39,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(6)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/stitch/stitch-600x450.jpg"
+                    alt="Stitch"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">Stitch</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">64,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(7)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/up/up-600x450.jpg"
+                    alt="Casa de Up"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">Casa de "Up"</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">54,99 €</div>
+              <div class="shop-button">
+                <button onclick="addProductToLocalStorage(8)">Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+          <div class="carrousel-object">
+            <div>
+              <div class="image-card">
+                <a href="#">
+                  <img
+                    src="assets/disney-sets/wall-e/walle-600x450.jpg"
+                    alt="EVA y WALL•E"
+                  />
+                </a>
+                <div>
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="blue"
+                      class="bi bi-heart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div>Novedad</div>
+              </div>
+              <div>
+                <a href="">EVA y WALL•E</a>
+              </div>
+            </div>
+            <div>
+              <div class="price">14,99 €</div>
+              <div class="shop-button" >
+                <button >Añadir a la bolsa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="next-button">
+          <button id="scroll-right-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-right"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script defer src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

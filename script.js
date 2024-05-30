@@ -84,22 +84,14 @@ let cartListPrueba = [
   },
 ];
 
+
 // la constante fullUrl almacena el valor de la referencia del .html
 const fullUrl = window.location.href;
 
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   if (fullUrl === "http://127.0.0.1:5500/disney.html") {
-    cartListPrueba.forEach((item) => {
-      disneyLayout.innerHTML += disneySetsTemplate(
-        item.id,
-        item.title,
-        item.image,
-        item.price,
-        item.minAge,
-        item.pieces
-      );
-    });
+    displayOnRefresh();
     emptyHeartCheck();
   } else if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
     //Cart website
@@ -214,7 +206,6 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // D I S N E Y  S E T S //
-
 const disneyLayout = document.getElementById("disney-set-layout");
 
 function disneySetsTemplate(id, title, image, price, age, pieces) {
@@ -262,6 +253,143 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
                 </div>
             </div>`;
   return disneyTemplateItem;
+}
+
+function displayOnRefresh() {
+  disneyLayout.innerHTML = "";
+  cartListPrueba.forEach((item) => {
+    disneyLayout.innerHTML += disneySetsTemplate(
+      item.id,
+      item.title,
+      item.image,
+      item.price,
+      item.minAge,
+      item.pieces
+    );
+  });
+}
+
+//? FILTERS
+
+const copiedListStringify = JSON.stringify(cartListPrueba);
+let copyList = JSON.parse(copiedListStringify)
+
+class LegoFilter {
+  constructor(htmlID, condition, active) {
+    this.htmlID = htmlID;
+    this.condition = condition;
+    this.active = active;
+  }
+}
+
+let filterList = [
+  new LegoFilter("filter-price0/20", (item) => 0 < item.price && item.price < 20, false), //index 0, 1, 2, 3.
+  new LegoFilter("filter-price20/50", (item) => 20 < item.price && item.price < 50, false),
+  new LegoFilter("filter-price50/100", (item) => 50 < item.price && item.price < 100, false),
+  new LegoFilter("filter-price100+", (item) => item.price > 100, false),
+  new LegoFilter("filter-age2+", (item) => item.minAge >= 2, false), //index 4, 5, 6, 7, 8
+  new LegoFilter("filter-age6+", (item) => item.minAge >= 6, false),
+  new LegoFilter("filter-age9+", (item) => item.minAge >= 9, false),
+  new LegoFilter("filter-age12+", (item) => item.minAge >= 12, false),
+  new LegoFilter("filter-age18+", (item) => item.minAge >= 18, false),
+  new LegoFilter("filter-pieces0/99", (item) => 0 < item.pieces && item.pieces <= 99, false), //index 9, 10, 11, 12, 13
+  new LegoFilter("filter-pieces100/249", (item) => 100 <= item.pieces && item.pieces <= 249, false),
+  new LegoFilter("filter-pieces250/499", (item) => 250 <= item.pieces && item.pieces <= 499, false),
+  new LegoFilter("filter-pieces500/999", (item) => 500 <= item.pieces && item.pieces <= 999, false),
+  new LegoFilter("filter-pieces1000+", (item) => item.pieces >= 1000, false),
+]
+
+function toggleFilter(filterName) {
+  const filterToChange = filterList.find(f => f.htmlID === filterName);
+  filterToChange.active = !filterToChange.active
+  let listToDisplay = applyFilters(copyList);
+  displayFilteredProducts(listToDisplay);
+}
+
+function sortListByPrice(event){
+  if (event.target.checked){
+    sortList((a,b) => a.price - b.price)
+   }
+}
+
+function sortListByAge(event){
+  if (event.target.checked){
+    sortList((a,b) => a.minAge - b.minAge)
+   }
+}
+
+function sortListByPieces(event){
+  if (event.target.checked){
+    sortList((a,b) => a.pieces - b.pieces)
+   }
+}
+
+function sortList(sortCallback){
+  copyList.sort(sortCallback)
+  const LISTADEDAVID = applyFilters(copyList)
+  displayFilteredProducts(LISTADEDAVID)
+
+}
+
+  function applyFilters(array){
+  // Step 1: Filter active filters
+  const activePriceFilters = filterList.filter((f, index) => f.active && index < 4);
+  const activeAgeFilters = filterList.filter((f, index) => f.active && (index >= 4 && index < 9));
+  const activePiecesFilters = filterList.filter((f, index) => f.active && index >= 9);
+  // Step 2: Concatenate callbacks with "OR" logic
+  const somePrice = (item) => {
+    if (activePriceFilters.length == 0) {
+      return true;
+    }
+
+    return activePriceFilters.some(f => f.condition(item));
+  }
+
+  function someAge(item) {
+    if (activeAgeFilters.length == 0) {
+      return true;
+    }
+    // 50/100 Y 100+
+    // Se cumple al menos uno de tus filtros?
+
+    //de la lista activeAgeFilters verifica que se cumpla "some" de las condiciones: 
+    return activeAgeFilters.some(f => f.condition(item));
+  }
+
+  const somePieces = (item) => {
+    if (activePiecesFilters.length == 0) {
+      return true;
+    }
+
+    return activePiecesFilters.some(f => f.condition(item));
+  }
+
+  // Step 3: Apply the combined filter to the list of items
+  const filteredItems = array
+    .filter(someAge)
+    .filter(somePrice)
+    .filter(somePieces);
+
+  return filteredItems
+}
+
+
+function displayFilteredProducts(array) {
+  if (array.length == 0) {
+    disneyLayout.innerHTML = "No se encontraron coincidencias y/o resultados"
+  } else {
+    disneyLayout.innerHTML = "";
+    array.forEach((item) => {
+      disneyLayout.innerHTML += disneySetsTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.minAge,
+        item.pieces
+      );
+    });
+  }
 }
 
 //C A R T
