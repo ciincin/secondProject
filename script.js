@@ -88,11 +88,14 @@ let cartListPrueba = [
 // la constante fullUrl almacena el valor de la referencia del .html
 const fullUrl = window.location.href;
 
+
+
+
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   if (fullUrl === "http://127.0.0.1:5500/disney.html") {
     displayOnRefresh();
-    emptyHeartCheck();
+    
   } else if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
     //Cart website
     findProduct(getProductToLocalStorage()).forEach((item) => {
@@ -108,42 +111,8 @@ window.addEventListener("DOMContentLoaded", () => {
     btnCode();
     //productCounter(getProductToLocalStorage());
     sumPriceCart();
-    emptyHeartCheck();
     shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
-  } else {
-
-    // M A I N  W E B P A G E
-
-    emptyHeartCheck();
-
-    //
-    const buttonPrev = document.querySelector(".prev-slider");
-    const buttonNext = document.querySelector(".next-slider");
-    const sliderInner = document.querySelector(".slider-p-inner");
-    let sliderHeaderIndex = 0;
-
-    function updateSliderPosition() {
-      const width = document.querySelector(".slider-p").clientWidth;
-      sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
-    }
-
-    function handlePrevClick() {
-      if (sliderHeaderIndex > 0) {
-        sliderHeaderIndex--;
-        updateSliderPosition();
-      }
-    }
-
-    function handleNextClick() {
-      if (sliderHeaderIndex < sliderInner.children.length - 1) {
-        sliderHeaderIndex++;
-        updateSliderPosition();
-      }
-    }
-
-    buttonPrev.addEventListener("click", handlePrevClick);
-    buttonNext.addEventListener("click", handleNextClick);
-
+    
     // Scroll del carrusel
 
     const carrouselWrapper = document.querySelector(".carrousel-wrapper");
@@ -167,42 +136,104 @@ window.addEventListener("DOMContentLoaded", () => {
     scrollLeftButton.addEventListener("click", handleScrollLeft);
     scrollRightButton.addEventListener("click", handleScrollRight);
 
+  } else {
 
-    // Submenu
-    const subMenu = document.querySelector('.sub-menu-buy');
-    const buyButton = document.querySelector('.buy-button');
-    const detailsElement = document.querySelector('.sub-menu-details');
-    const exitButton = document.getElementById('button-exit');
+    // M A I N  W E B P A G E
+    
+    // Scroll del carrusel
 
-    function handleToggle() {
-      document.body.classList.add('active');
+    const carrouselWrapper = document.querySelector(".carrousel-wrapper");
+    const scrollLeftButton = document.querySelector(".scroll-left-button");
+    const scrollRightButton = document.querySelector(".scroll-right-button");
 
-      if (detailsElement.hasAttribute('open')) {
-        subMenu.style.width = '74.063rem'; // Ancho cuando está abierto
-      } else {
-        subMenu.style.width = '46.87rem';
-      }
+    function handleScrollLeft() { 
+      carrouselWrapper.scrollBy({
+        left: -1080,
+        behavior: "smooth",
+      });
     }
 
-    function handleSubMenu() {
-      document.body.classList.add('active');
+    function handleScrollRight() {
+      carrouselWrapper.scrollBy({
+        left: 1080,
+        behavior: "smooth",
+      });
     }
 
-    function handleExitClick(event) {
-      subMenu.style.display = 'none';
-      document.body.classList.remove('active');
-    }
-
-    function handleBuyClick(event) {
-      subMenu.style.display = 'flex';
-    }
-
-    detailsElement.addEventListener('toggle', handleToggle);
-    exitButton.addEventListener("click", handleExitClick);
-    buyButton.addEventListener("click", handleBuyClick);
-    subMenu.addEventListener("click", handleSubMenu);
+    scrollLeftButton.addEventListener("click", handleScrollLeft);
+    scrollRightButton.addEventListener("click", handleScrollRight);
 
   }
+
+  //Funciones comunes a las tres páginas
+
+// white header buttons 
+const buttonPrev = document.querySelector(".prev-slider");
+const buttonNext = document.querySelector(".next-slider");
+const sliderInner = document.querySelector(".slider-p-inner");
+let sliderHeaderIndex = 0;
+
+function updateSliderPosition() {
+  const width = document.querySelector(".slider-p").clientWidth;
+  sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
+}
+
+function handlePrevClick() {
+  if (sliderHeaderIndex > 0) {
+    sliderHeaderIndex--;
+    updateSliderPosition();
+  }
+}
+
+function handleNextClick() {
+  if (sliderHeaderIndex < sliderInner.children.length - 1) {
+    sliderHeaderIndex++;
+    updateSliderPosition();
+  }
+}
+
+buttonPrev.addEventListener("click", handlePrevClick);
+buttonNext.addEventListener("click", handleNextClick);
+
+// Submenu (yellow header)
+const subMenu = document.querySelector('.sub-menu-buy');
+const buyButton = document.querySelector('.buy-button');
+const detailsElement = document.querySelector('.sub-menu-details');
+const exitButton = document.getElementById('button-exit');
+
+function handleToggle() {
+  document.body.classList.add('active');
+
+  if (detailsElement.hasAttribute('open')) {
+    subMenu.style.width = '74.063rem'; // Ancho cuando está abierto
+  } else {
+    subMenu.style.width = '46.87rem';
+  }
+}
+
+function handleSubMenu() {
+  document.body.classList.add('active');
+}
+
+function handleExitClick(event) {
+  subMenu.style.display = 'none';
+  document.body.classList.remove('active');
+}
+
+function handleBuyClick(event) {
+  subMenu.style.display = 'flex';
+}
+
+detailsElement.addEventListener('toggle', handleToggle);
+exitButton.addEventListener("click", handleExitClick);
+buyButton.addEventListener("click", handleBuyClick);
+subMenu.addEventListener("click", handleSubMenu);
+
+
+
+
+emptyHeartCheck();
+
 });
 
 // D I S N E Y  S E T S //
