@@ -188,42 +188,52 @@ window.addEventListener("DOMContentLoaded", () => {
   buttonNext.addEventListener("click", handleNextClick);
 
   // Submenu (yellow header)
-  const subMenu = document.querySelector(".sub-menu-buy");
-  const buyButton = document.querySelector(".buy-button");
-  const detailsElement = document.querySelector(".sub-menu-details");
-  const exitButton = document.getElementById("button-exit");
+  const subMenuElement = document.querySelector('.sub-menu-buy');
+  const detailsElement = document.querySelector('details')
+
+  const buyButton = document.querySelector('.buy-button');
+  const exitButton = document.getElementById('button-exit');
 
   function handleToggle() {
-    document.body.classList.add("active");
-
-    if (detailsElement.hasAttribute("open")) {
-      subMenu.style.width = "74.063rem"; // Ancho cuando está abierto
+    if (detailsElement.open) {
+      if (detailsElement.classList.contains('theme-sets')) {
+        subMenuElement.style.width = '75rem';
+      } else {
+        subMenuElement.style.width = '49rem'
+      }
     } else {
-      subMenu.style.width = "46.87rem";
+      subMenuElement.style.width = '49rem'; // Cambia este valor según el ancho cuando esté cerrado
+      document.body.classList.remove('active');
     }
+
   }
 
+  // Body fixed
   function handleSubMenu() {
-    document.body.classList.add("active");
+    document.body.classList.add('active');
   }
 
-  function handleExitClick(event) {
-    subMenu.style.display = "none";
-    document.body.classList.remove("active");
+  // Boton exit
+  function handleExitClick() {
+    subMenuElement.style.display = 'none';
+    document.body.classList.remove('active');
   }
 
-  function handleBuyClick(event) {
-    subMenu.style.display = "flex";
+  function handleBuyClick() {
+    subMenuElement.style.display = 'flex';
   }
 
-  detailsElement.addEventListener("toggle", handleToggle);
+  document.querySelectorAll('.sub-menu-details').forEach(details => {
+    detailsElement.addEventListener('toggle', handleToggle);
+  });
+
   exitButton.addEventListener("click", handleExitClick);
   buyButton.addEventListener("click", handleBuyClick);
-  subMenu.addEventListener("click", handleSubMenu);
+  subMenuElement.addEventListener("click", handleSubMenu);
 
   emptyHeartCheck();
-  bagIconCounter();
 });
+
 
 // Funcion común
 // Función para ver el amount de la bolsa en el navbar
@@ -908,3 +918,8 @@ function deleteArticles(id) {
   localStorage.removeItem(`index: ${id - 1}`);
   location.href = location.href;
 }
+
+
+
+
+
