@@ -267,13 +267,13 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
                         <img  class="disney-age-icon" src="assets/disney-sets/age-o.svg" alt="age-icon">
                     </div>
                     <div class="disney-textIcon-container">
-                        <span class="disney-age-text">${age}+</span>
+                        <div class="disney-age-text">${age}+</div>
                     </div>
                     <div class="disney-icon-container">
                         <img  class="disney-age-icon" src="assets/disney-sets/brick-o.svg" alt="age-icon">
                     </div>
                     <div class="disney-textIcon-container">
-                        <span class="disney-age-text">${pieces}</span>
+                        <div class="disney-age-text">${pieces}</div>
                     </div>
                 </div>
                 <div class="disney-card1-titleSet-container">
@@ -283,7 +283,7 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
                     <span><b>${price}</b><i class="bi bi-currency-euro"></i></span>
                 </div>
                 <div class="disney-card1-addToCart-container">
-                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id}), bagIconCounter()">
+                    <button type="button" class="disney-btn-addToCart" onclick="addProductToLocalStorage(${id}), bagIconCounter()">
                         <div class="disney-card1-addToCart-innerContainer">
                             <div class="disney-bagIcon-container">
                                 <img  class="disney-bag-icon" src="assets/disney-sets/shopping-bag-o.svg" alt="age-icon">

@@ -282,40 +282,47 @@
 
   <section class="disney-set-layout">
     <div class="disney-set-filter">
-      <span class="disney-hr"></span>
-      <div class="form-check">
-        <input class="form-check-input"
-         type="radio"
+      <!-- <span class="disney-hr"></span> -->
+      <hr class="disney-hr">
+      <div class="disney-form-filters-container">
+        <div class="form-check">
+          <input class="form-check-input"
+           type="radio"
+            name="flexRadioDefault"
+             id="filter-sortByPrice"
+             onclick="sortListByPrice(event)"
+             >
+          <label class="form-check-label" for="filter-sortByPrice">
+            Ordenar por precios: menor a mayor
+          </label>
+      </div>
+      </div>
+      <div class="disney-form-filters-container">
+        <div class="form-check">
+          <input class="form-check-input"
+           type="radio"
+            name="flexRadioDefault"
+             id="filter-sortByAge"
+             onclick="sortListByAge(event)">
+          <label class="form-check-label" for="filter-sortByAge">
+            Ordenar por edades: menor a mayor
+          </label>
+        </div>
+      </div>
+      <div class="disney-form-filters-container">
+        <div class="form-check">
+          <input class="form-check-input"
+          type="radio"
           name="flexRadioDefault"
-           id="filter-sortByPrice"
-           onclick="sortListByPrice(event)"
-           >
-        <label class="form-check-label" for="filter-sortByPrice">
-          Ordenar por precios: menor a mayor
-        </label>
+          id="filter-sortByPieces"
+          onclick="sortListByPieces(event)"
+             >
+          <label class="form-check-label" for="filter-sortByPieces">
+            Ordenar por piezas: menor a mayor
+          </label>
+        </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input"
-         type="radio"
-          name="flexRadioDefault"
-           id="filter-sortByAge"
-           onclick="sortListByAge(event)">
-        <label class="form-check-label" for="filter-sortByAge">
-          Ordenar por edades: menor a mayor
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        id="filter-sortByPieces"
-        onclick="sortListByPieces(event)"
-           >
-        <label class="form-check-label" for="filter-sortByPieces">
-          Ordenar por piezas: menor a mayor
-        </label>
-      </div>
-      <span class="disney-hr"></span>
+      <hr class="disney-hr">
       <h4>Precio</h4>
       <div class="form-check">
         <input id="filter-price0/20" class="form-check-input special-check" type="checkbox" value=""
@@ -337,7 +344,7 @@
           onclick="toggleFilter('filter-price100+')" />
         <label class="form-check-label" for="filter-price100+">100 €+</label>
       </div>
-      <span class="disney-hr"></span>
+      <hr class="disney-hr">
       <h4>Edad</h4>
       <div class="form-check">
         <input id="filter-age2+" class="form-check-input special-check" type="checkbox" value=""
@@ -364,7 +371,7 @@
           onclick="toggleFilter('filter-age18+')" />
         <label class="form-check-label" for="filter-age18+">18+</label>
       </div>
-      <span class="disney-hr"></span>
+      <hr class="disney-hr">
       <h4>Número de Piezas</h4>
       <div class="form-check">
         <input id="filter-pieces0/99" class="form-check-input special-check" type="checkbox" value=""
