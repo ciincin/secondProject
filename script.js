@@ -207,13 +207,15 @@ window.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("active");
   }
 
-  function handleExitClick(event) {
-    subMenu.style.display = "none";
+  function handleExitClick() {
     document.body.classList.remove("active");
+    subMenu.style.display = "none";
+    location.href=location.href;
   }
 
-  function handleBuyClick(event) {
+  function handleBuyClick() {
     subMenu.style.display = "flex";
+    document.body.classList.add("active");
   }
 
   detailsElement.addEventListener("toggle", handleToggle);

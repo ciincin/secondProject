@@ -69,6 +69,7 @@ footer {
 
 .utility-bar {
   height: 55px;
+  width: 100vw;
   padding: 0 30px;
   background: #fff;
   display: flex;
@@ -189,6 +190,7 @@ footer {
 
 .main-bar {
   height: 75px;
+  width: 100vw;
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
@@ -599,6 +601,7 @@ footer {
 /*mini images */
 
 .main-mini-images-container {
+  width: 100vw;
   background-color: var(--main-blueDark-background);
   padding: 1.25rem;
 }
