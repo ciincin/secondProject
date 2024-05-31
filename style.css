@@ -1941,86 +1941,6 @@ h3 {
   text-align: center;
 }
 
-@media only screen and (max-width: 900px) {
-
-.hr-query{
-  display: block;
-}
-
-.disney-modal-filter-display{
-  display: flex;
-  height: fit-content;
-  justify-content: space-around;
-  width: 100%;
-  margin-bottom: 15px;
-  max-width: 1600px;
-}
-
-.disney-set-layout{
-  display:flex;
-  height: auto;
-  max-height: fit-content;
-}
-
-.disney-set-filter{
-  display: none;
-}
-
-.disney-set-card-layout{
-  display: flex;
-  flex-direction: column;
-}
-
-.disney-card1{
-  padding-top: 10px;
-}
-
-.disney-card1-infoSet-container{
-  display: flex;
-  flex-direction: row;
-  /* height: 20px; */
-  width: 100%;
-  margin-top: 5px;
-
-}
-
-.disney-icon-container {
-  height: 20px;
-  width: 20px;
-}
-
-.disney-age-text {
-  font-size: 1rem;
-  text-align: center;
-}
-
-.disney-card1-titleSet-container {
-  height: 30px;
-  font-size: 1.1rem;
-}
-
-.disney-card1-priceSet-container {
-  height: 30px;
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-
-.disney-card1-addToCart-container{
-  margin-top: 10px;
-  height: 40px;
-}
-
-.disney-bagIcon-container{
-  height: 20px;
-  width: 20px;
-}
-
-}
-
-/* @media @media (max-width: 429px){
-
-} */
-
 /* C A R T  W E B P A G E  -  E M P T Y  */
 
 .cart-empty-content {
@@ -2977,6 +2897,80 @@ h3 {
 
   .wrapper .media .links-hidden details li>a:hover {
     text-decoration: underline;
+  }
+
+
+  /* D Y S N E Y  S E T S */
+  .hr-query{
+    display: block;
+  }
+  
+  .disney-modal-filter-display{
+    display: flex;
+    height: fit-content;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 15px;
+    max-width: 1600px;
+  }
+  
+  .disney-set-layout{
+    display:flex;
+    height: auto;
+    max-height: fit-content;
+  }
+  
+  .disney-set-filter{
+    display: none;
+  }
+  
+  .disney-set-card-layout{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .disney-card1{
+    padding-top: 10px;
+  }
+  
+  .disney-card1-infoSet-container{
+    display: flex;
+    flex-direction: row;
+    /* height: 20px; */
+    width: 100%;
+    margin-top: 5px;
+  
+  }
+  
+  .disney-icon-container {
+    height: 20px;
+    width: 20px;
+  }
+  
+  .disney-age-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .disney-card1-titleSet-container {
+    height: 30px;
+    font-size: 1.1rem;
+  }
+  
+  .disney-card1-priceSet-container {
+    height: 30px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  .disney-card1-addToCart-container{
+    margin-top: 10px;
+    height: 40px;
+  }
+  
+  .disney-bagIcon-container{
+    height: 20px;
+    width: 20px;
   }
 
   /* C A R T */
