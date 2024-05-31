@@ -208,14 +208,14 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleExitClick() {
-    document.body.classList.remove("active");
-    subMenu.style.display = "none";
-    location.href=location.href;
+    document.body.style.position = 'static';
+    subMenu.style.width = '49rem';
+    subMenu.style.display = 'none';
   }
 
   function handleBuyClick() {
-    subMenu.style.display = "flex";
-    document.body.classList.add("active");
+    subMenu.style.display = 'flex';
+    document.body.style.position = 'fixed';
   }
 
   detailsElement.addEventListener("toggle", handleToggle);

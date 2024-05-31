@@ -198,6 +198,11 @@ footer {
   background-color: var(--header-yellow);
 }
 
+.main-bar-nav{
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
 .main-bar .main-bar-nav,
 .main-bar>div {
   display: flex;
@@ -278,6 +283,19 @@ footer {
   background: transparent;
   border: none;
   cursor: pointer;
+}
+
+.sub-menu-categories{
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.sub-menu-categories ul{
+  padding-left: 0;
+}
+
+.sub-menu-categories li a{
+  text-decoration: none;
 }
 
 .main-bar .sub-menu-buy>.sub-menu-categories {
@@ -385,6 +403,7 @@ footer {
   align-items: start;
   justify-content: start;
   overflow: scroll;
+  scrollbar-width:thin;
   overflow-x: hidden;
 }
 
@@ -727,6 +746,10 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.carrousel-wrapper{
+  scrollbar-width: thin;
 }
 
 .carrousel-container .previous-button button,
@@ -1636,6 +1659,14 @@ footer a{
   text-decoration: none;
 }
 
+.links ul{
+  padding-left: 0;
+}
+
+.copyright ul{
+  padding-left: 0;
+}
+
 /* S E T  D E  D I S N E Y */
 
 .disney-hr {
@@ -1767,6 +1798,7 @@ h3 {
   flex-direction: column;
   height: 540px;
   overflow-y: scroll;
+  scrollbar-width: thin;
   min-width: 220px;
   width: 20%;
   gap: 1rem;
@@ -2015,9 +2047,9 @@ h3 {
 
 .cart-my-bag-content {
   display: flex;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 100rem;
+  /* margin: 0 auto; */
+  width: 100vw;
+  /* max-width: 100rem; */
   gap: 1.25rem;
   padding: 0px 1.875rem 1.875rem;
 }
