@@ -90,17 +90,7 @@ const fullUrl = window.location.href;
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
   if (fullUrl === "http://127.0.0.1:5500/disney.html") {
-    cartListPrueba.forEach((item) => {
-      disneyLayout.innerHTML += disneySetsTemplate(
-        item.id,
-        item.title,
-        item.image,
-        item.price,
-        item.minAge,
-        item.pieces
-      );
-    });
-    emptyHeartCheck();
+    displayOnRefresh();
   } else if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
     //Cart website
     findProduct(getProductToLocalStorage()).forEach((item) => {
@@ -114,43 +104,9 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     btnCode();
-    productCounter(getProductToLocalStorage());
+    // productCounter(0);
     sumPriceCart();
-    emptyHeartCheck();
     shoppingCartEmpty(); // Esto funciona, solo hay que inicializarlo
-  } else {
-
-    // M A I N  W E B P A G E
-
-    emptyHeartCheck();
-
-    //
-    const buttonPrev = document.querySelector(".prev-slider");
-    const buttonNext = document.querySelector(".next-slider");
-    const sliderInner = document.querySelector(".slider-p-inner");
-    let sliderHeaderIndex = 0;
-
-    function updateSliderPosition() {
-      const width = document.querySelector(".slider-p").clientWidth;
-      sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
-    }
-
-    function handlePrevClick() {
-      if (sliderHeaderIndex > 0) {
-        sliderHeaderIndex--;
-        updateSliderPosition();
-      }
-    }
-
-    function handleNextClick() {
-      if (sliderHeaderIndex < sliderInner.children.length - 1) {
-        sliderHeaderIndex++;
-        updateSliderPosition();
-      }
-    }
-
-    buttonPrev.addEventListener("click", handlePrevClick);
-    buttonNext.addEventListener("click", handleNextClick);
 
     // Scroll del carrusel
 
@@ -158,7 +114,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const scrollLeftButton = document.querySelector(".scroll-left-button");
     const scrollRightButton = document.querySelector(".scroll-right-button");
 
-    function handleScrollLeft() { 
+    function handleScrollLeft() {
       carrouselWrapper.scrollBy({
         left: -1080,
         behavior: "smooth",
@@ -174,47 +130,133 @@ window.addEventListener("DOMContentLoaded", () => {
 
     scrollLeftButton.addEventListener("click", handleScrollLeft);
     scrollRightButton.addEventListener("click", handleScrollRight);
+  } else {
+    // M A I N  W E B P A G E
 
+    // Scroll del carrusel
 
-    // Submenu
-    const subMenu = document.querySelector('.sub-menu-buy');
-    const buyButton = document.querySelector('.buy-button');
-    const detailsElement = document.querySelector('.sub-menu-details');
-    const exitButton = document.getElementById('button-exit');
+    const carrouselWrapper = document.querySelector(".carrousel-wrapper");
+    const scrollLeftButton = document.querySelector(".scroll-left-button");
+    const scrollRightButton = document.querySelector(".scroll-right-button");
 
-    function handleToggle() {
-      document.body.classList.add('active');
+    function handleScrollLeft() {
+      carrouselWrapper.scrollBy({
+        left: -1080,
+        behavior: "smooth",
+      });
+    }
 
-      if (detailsElement.hasAttribute('open')) {
-        subMenu.style.width = '74.063rem'; // Ancho cuando está abierto
+    function handleScrollRight() {
+      carrouselWrapper.scrollBy({
+        left: 1080,
+        behavior: "smooth",
+      });
+    }
+
+    scrollLeftButton.addEventListener("click", handleScrollLeft);
+    scrollRightButton.addEventListener("click", handleScrollRight);
+  }
+
+  //Funciones comunes a las tres páginas
+
+  // white header buttons
+  const buttonPrev = document.querySelector(".prev-slider");
+  const buttonNext = document.querySelector(".next-slider");
+  const sliderInner = document.querySelector(".slider-p-inner");
+  let sliderHeaderIndex = 0;
+
+  function updateSliderPosition() {
+    const width = document.querySelector(".slider-p").clientWidth;
+    sliderInner.style.transform = `translateX(${-sliderHeaderIndex * width}px)`;
+  }
+
+  function handlePrevClick() {
+    if (sliderHeaderIndex > 0) {
+      sliderHeaderIndex--;
+      updateSliderPosition();
+    }
+  }
+
+  function handleNextClick() {
+    if (sliderHeaderIndex < sliderInner.children.length - 1) {
+      sliderHeaderIndex++;
+      updateSliderPosition();
+    }
+  }
+
+  buttonPrev.addEventListener("click", handlePrevClick);
+  buttonNext.addEventListener("click", handleNextClick);
+
+  // Submenu (yellow header)
+  const subMenuElement = document.querySelector('.sub-menu-buy');
+  const detailsElement = document.querySelector('details')
+
+  const buyButton = document.querySelector('.buy-button');
+  const exitButton = document.getElementById('button-exit');
+
+  function handleToggle() {
+    if (detailsElement.open) {
+      if (detailsElement.classList.contains('theme-sets')) {
+        subMenuElement.style.width = '75rem';
       } else {
-        subMenu.style.width = '46.87rem';
+        subMenuElement.style.width = '49rem'
       }
-    }
-
-    function handleSubMenu() {
-      document.body.classList.add('active');
-    }
-
-    function handleExitClick(event) {
-      subMenu.style.display = 'none';
+    } else {
+      subMenuElement.style.width = '49rem'; // Cambia este valor según el ancho cuando esté cerrado
       document.body.classList.remove('active');
     }
 
-    function handleBuyClick(event) {
-      subMenu.style.display = 'flex';
-    }
-
-    detailsElement.addEventListener('toggle', handleToggle);
-    exitButton.addEventListener("click", handleExitClick);
-    buyButton.addEventListener("click", handleBuyClick);
-    subMenu.addEventListener("click", handleSubMenu);
-
   }
+
+  // Body fixed
+  function handleSubMenu() {
+    document.body.classList.add('active');
+  }
+
+  // Boton exit
+  function handleExitClick() {
+    subMenuElement.style.display = 'none';
+    document.body.classList.remove('active');
+  }
+
+  function handleBuyClick() {
+    subMenuElement.style.display = 'flex';
+  }
+
+  document.querySelectorAll('.sub-menu-details').forEach(details => {
+    detailsElement.addEventListener('toggle', handleToggle);
+  });
+
+  exitButton.addEventListener("click", handleExitClick);
+  buyButton.addEventListener("click", handleBuyClick);
+  subMenuElement.addEventListener("click", handleSubMenu);
+
+  emptyHeartCheck();
 });
 
-// D I S N E Y  S E T S //
 
+// Funcion común
+// Función para ver el amount de la bolsa en el navbar
+function bagIconCounter() {
+  const bagIcon = document.getElementById("bag-icon-amount");
+  let totalAmount = 0;
+
+  getProductToLocalStorage().forEach((item) => {
+    totalAmount = totalAmount + item.amount;
+  });
+
+  bagIcon.textContent = `(${totalAmount})`;
+
+  if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+    const myCart = document.getElementById("cart-product-amount");
+    myCart.innerHTML = `Mi bolsa (${totalAmount})`;
+
+    const valueProduct = document.getElementById("cart-value-product-amount");
+    valueProduct.innerHTML = `Valor del pedido de (${totalAmount}) articulos`;
+  }
+}
+
+// D I S N E Y  S E T S //
 const disneyLayout = document.getElementById("disney-set-layout");
 
 function disneySetsTemplate(id, title, image, price, age, pieces) {
@@ -251,7 +293,7 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
                     <span><b>${price}</b><i class="bi bi-currency-euro"></i></span>
                 </div>
                 <div class="disney-card1-addToCart-container">
-                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id})">
+                    <button type="button" class="btn btn-primary disney-btn-addToCart" onclick="addProductToLocalStorage(${id}), bagIconCounter()">
                         <div class="disney-card1-addToCart-innerContainer">
                             <div class="disney-bagIcon-container">
                                 <img  class="disney-bag-icon" src="assets/disney-sets/shopping-bag-o.svg" alt="age-icon">
@@ -264,12 +306,182 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
   return disneyTemplateItem;
 }
 
+function displayOnRefresh() {
+  disneyLayout.innerHTML = "";
+  cartListPrueba.forEach((item) => {
+    disneyLayout.innerHTML += disneySetsTemplate(
+      item.id,
+      item.title,
+      item.image,
+      item.price,
+      item.minAge,
+      item.pieces
+    );
+  });
+}
+
+//? FILTERS
+
+const copiedListStringify = JSON.stringify(cartListPrueba);
+let copyList = JSON.parse(copiedListStringify);
+
+class LegoFilter {
+  constructor(htmlID, condition, active) {
+    this.htmlID = htmlID;
+    this.condition = condition;
+    this.active = active;
+  }
+}
+
+let filterList = [
+  new LegoFilter(
+    "filter-price0/20",
+    (item) => 0 < item.price && item.price < 20,
+    false
+  ), //index 0, 1, 2, 3.
+  new LegoFilter(
+    "filter-price20/50",
+    (item) => 20 < item.price && item.price < 50,
+    false
+  ),
+  new LegoFilter(
+    "filter-price50/100",
+    (item) => 50 < item.price && item.price < 100,
+    false
+  ),
+  new LegoFilter("filter-price100+", (item) => item.price > 100, false),
+  new LegoFilter("filter-age2+", (item) => item.minAge >= 2, false), //index 4, 5, 6, 7, 8
+  new LegoFilter("filter-age6+", (item) => item.minAge >= 6, false),
+  new LegoFilter("filter-age9+", (item) => item.minAge >= 9, false),
+  new LegoFilter("filter-age12+", (item) => item.minAge >= 12, false),
+  new LegoFilter("filter-age18+", (item) => item.minAge >= 18, false),
+  new LegoFilter(
+    "filter-pieces0/99",
+    (item) => 0 < item.pieces && item.pieces <= 99,
+    false
+  ), //index 9, 10, 11, 12, 13
+  new LegoFilter(
+    "filter-pieces100/249",
+    (item) => 100 <= item.pieces && item.pieces <= 249,
+    false
+  ),
+  new LegoFilter(
+    "filter-pieces250/499",
+    (item) => 250 <= item.pieces && item.pieces <= 499,
+    false
+  ),
+  new LegoFilter(
+    "filter-pieces500/999",
+    (item) => 500 <= item.pieces && item.pieces <= 999,
+    false
+  ),
+  new LegoFilter("filter-pieces1000+", (item) => item.pieces >= 1000, false),
+];
+
+function toggleFilter(filterName) {
+  const filterToChange = filterList.find((f) => f.htmlID === filterName);
+  filterToChange.active = !filterToChange.active;
+  let listToDisplay = applyFilters(copyList);
+  displayFilteredProducts(listToDisplay);
+}
+
+function sortListByPrice(event) {
+  if (event.target.checked) {
+    sortList((a, b) => a.price - b.price);
+  }
+}
+
+function sortListByAge(event) {
+  if (event.target.checked) {
+    sortList((a, b) => a.minAge - b.minAge);
+  }
+}
+
+function sortListByPieces(event) {
+  if (event.target.checked) {
+    sortList((a, b) => a.pieces - b.pieces);
+  }
+}
+
+function sortList(sortCallback) {
+  copyList.sort(sortCallback);
+  const LISTADEDAVID = applyFilters(copyList);
+  displayFilteredProducts(LISTADEDAVID);
+}
+
+function applyFilters(array) {
+  // Step 1: Filter active filters
+  const activePriceFilters = filterList.filter(
+    (f, index) => f.active && index < 4
+  );
+  const activeAgeFilters = filterList.filter(
+    (f, index) => f.active && index >= 4 && index < 9
+  );
+  const activePiecesFilters = filterList.filter(
+    (f, index) => f.active && index >= 9
+  );
+  // Step 2: Concatenate callbacks with "OR" logic
+  const somePrice = (item) => {
+    if (activePriceFilters.length == 0) {
+      return true;
+    }
+
+    return activePriceFilters.some((f) => f.condition(item));
+  };
+
+  function someAge(item) {
+    if (activeAgeFilters.length == 0) {
+      return true;
+    }
+    // 50/100 Y 100+
+    // Se cumple al menos uno de tus filtros?
+
+    //de la lista activeAgeFilters verifica que se cumpla "some" de las condiciones:
+    return activeAgeFilters.some((f) => f.condition(item));
+  }
+
+  const somePieces = (item) => {
+    if (activePiecesFilters.length == 0) {
+      return true;
+    }
+
+    return activePiecesFilters.some((f) => f.condition(item));
+  };
+
+  // Step 3: Apply the combined filter to the list of items
+  const filteredItems = array
+    .filter(someAge)
+    .filter(somePrice)
+    .filter(somePieces);
+
+  return filteredItems;
+}
+
+function displayFilteredProducts(array) {
+  if (array.length == 0) {
+    disneyLayout.innerHTML = "No se encontraron coincidencias y/o resultados";
+  } else {
+    disneyLayout.innerHTML = "";
+    array.forEach((item) => {
+      disneyLayout.innerHTML += disneySetsTemplate(
+        item.id,
+        item.title,
+        item.image,
+        item.price,
+        item.minAge,
+        item.pieces
+      );
+    });
+  }
+}
+
 //C A R T
 
 //contenedor donde se le agregan los productos del carrito de compra
 const cartContainer = document.getElementById("cart-container");
 
 function increaseAmount(productID) {
+  const cartInputId = document.getElementById(`cart-input-${productID}`);
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
   const selectedObj = JSON.parse(selectedString);
   let accumulator = selectedObj.amount;
@@ -283,11 +495,12 @@ function increaseAmount(productID) {
       amount: accumulator,
     })
   );
-
-  location.href = location.href;
+  cartInputId.value = accumulator;
+  // location.href = location.href;
 }
 
 function decreaseAmount(productID) {
+  const cartInputId = document.getElementById(`cart-input-${productID}`);
   const decreaseBtn = document.getElementById(`button-decrease-${productID}`);
   const selectedString = localStorage.getItem(`index: ${productID - 1}`);
   const selectedObj = JSON.parse(selectedString);
@@ -304,7 +517,7 @@ function decreaseAmount(productID) {
       })
     );
 
-    location.href = location.href;
+    cartInputId.value = accumulator;
   } else {
     decreaseBtn.attributes = "disabled";
   }
@@ -320,10 +533,15 @@ function emptyHeartCheck() {
       if (element.id === item.id) {
         item.emptyHeart = element.emptyHeart;
         let heart = document.getElementById(`cart-icon-heart-${item.id}`);
+
         const wishList = document.getElementById(`add-wish-list-${item.id}`);
         if (element.emptyHeart === false) {
           heart.classList.replace("bi-heart", "bi-heart-fill");
           if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            let heartCarrousel = document.getElementById(
+              `cart-carrousel-icon-heart-${item.id}`
+            );
+            heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
             wishList.textContent = `Quitar de la lista de deseos`;
           }
         }
@@ -335,37 +553,67 @@ function emptyHeartCheck() {
 // Nueva funcion de addToTheWishList -> hay que cambiar ambos templates reemplazar el this.id.
 function addToTheWishList(productID) {
   const heart = document.getElementById(`cart-icon-heart-${productID}`);
+  const heartCarrousel = document.getElementById(
+    `cart-carrousel-icon-heart-${productID}`
+  );
   const wishList = document.getElementById(`add-wish-list-${productID}`);
 
   const storedProduct = JSON.parse(
     localStorage.getItem(`index: ${productID - 1}`)
   );
 
-  cartListPrueba.forEach((obj) => {
-    if (obj.id == productID) {
-      if (obj.emptyHeart) {
-        // fill the heart
-        heart.classList.replace("bi-heart", "bi-heart-fill");
-        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-          wishList.textContent = `Quitar de la lista de deseos`;
+  if (heart) {
+    cartListPrueba.forEach((obj) => {
+      if (obj.id == productID) {
+        if (obj.emptyHeart) {
+          // fill the heart
+          heart.classList.replace("bi-heart", "bi-heart-fill");
+          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            wishList.textContent = `Quitar de la lista de deseos`;
+            location.href = location.href;
+          }
+          if (storedProduct) {
+            storedProduct.emptyHeart = false;
+          }
+          return (obj.emptyHeart = false);
+        } else {
+          // empty the heart
+          heart.classList.replace("bi-heart-fill", "bi-heart");
+          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+            wishList.textContent = `Añadir a la lista de deseos`;
+            location.href = location.href;
+          }
+          if (storedProduct) {
+            storedProduct.emptyHeart = true;
+          }
+          return (obj.emptyHeart = true);
         }
-        if (storedProduct) {
-          storedProduct.emptyHeart = false;
-        }
-        return (obj.emptyHeart = false);
-      } else {
-        // empty the heart
-        heart.classList.replace("bi-heart-fill", "bi-heart");
-        if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
-          wishList.textContent = `Añadir a la lista de deseos`;
-        }
-        if (storedProduct) {
-          storedProduct.emptyHeart = true;
-        }
-        return (obj.emptyHeart = true);
       }
-    }
-  });
+    });
+  } else if (heartCarrousel) {
+    cartListPrueba.forEach((obj) => {
+      if (obj.id == productID) {
+        if (obj.emptyHeart) {
+          // fill the heart
+          heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
+          obj.emptyHeart = false;
+          if (storedProduct) {
+            storedProduct.emptyHeart = false;
+            obj.emptyHeart = false;
+          }
+        } else {
+          // empty the heart
+          heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
+          obj.emptyHeart = true;
+          if (storedProduct) {
+            storedProduct.emptyHeart = true;
+            obj.emptyHeart = true;
+          }
+        }
+      }
+    });
+    location.href = location.href;
+  }
 
   if (storedProduct) {
     localStorage.setItem(
@@ -490,99 +738,117 @@ function findProduct(cartArray) {
 function modifiedTemplate(id, title, image, price, amount) {
   let templateItem = `
   <div class="cart-article-fex">
-  <div class="cart-img-container">
-    <img
-      alt=${title}
-      src= ${image}
-    />
-  </div>
-
-  <div class="cart-information-container">
-    <div class="cart-name">
-      <h3><a href="#">${title}</a></h3>
+    <div class="cart-img-container">
+        <img
+            alt=${title}
+            src= ${image}
+        />
     </div>
 
-    <div class="cart-margin"></div>
-
-    <div class="cart-price-add">
-      <div class="cart-price">${price} €</div>
-
-      <div class="cart-add-more">
-        <div class="cart-add-more-content"  id="cart-article-display-${id}">
-          <button
-            class="cart-rest-article"
-            id="button-decrease-${id}"
-            onclick="decreaseAmount(${id})"
-          >
-            <i class="bi bi-dash-lg"></i>
-          </button>
-
-          <div class="cart-number-articles">
-            <input
-              type="text"
-              value="${amount}"
-              min="1"
-              id="cart-input-${id}"
-            />
-          </div>
-
-          <button
-            class="cart-add-article"
-            id="button-increase-${id}"
-             onclick="increaseAmount(${id})"  >
-          
-            <i class="bi bi-plus-lg"></i>
-          </button>
+    <div class="cart-information-container">
+        <div class="cart-name">
+            <h3><span href="#">${title}</span></h3>
         </div>
-      </div>
-    </div>
-  </div>
 
+        <div class="cart-margin"></div>
 
-      <article class="cart-wish-list">
-        <div class="cart-wish-list-container">
-          <div class="cart-heart-button-container" >
-            <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
-              <i class="bi-heart" id="cart-icon-heart-${id}" ></i>
-            </button>
-          </div>
+        <div class="cart-price-add" id="cart-container-article-${id}">
+            <div class="cart-uds-price-container">
+                <div class="cart-uds" id="cart-uds-${id}">Uds. ${amount}</div>
+                <div class="cart-price">${price} €</div>
+            </div>
+            <div class="cart-add-more">
+                <div class="cart-add-more-content" id="cart-article-display-${id}">
+                    <button
+                        class="cart-rest-article"
+                        id="button-decrease-${id}"
+                        onclick="decreaseAmount(${id}), sumPriceCart(), productCounter(${id}), bagIconCounter()" >
+                        <i class="bi bi-dash-lg"></i>
+                    </button>
 
-          <div class="cart-wish-list-text" id="add-wish-list-${id}">
-            Añadir a la lista de deseos
-          </div>
+                    <div class="cart-number-articles">
+                        <input
+                            type="text"
+                            value="${amount}"
+                            min="1"
+                            id="cart-input-${id}"
+                        />
+                    </div>
+
+                    <button
+                        class="cart-add-article"
+                        id="button-increase-${id}"
+                        onclick="increaseAmount(${id}), sumPriceCart(),  productCounter(${id}), bagIconCounter()">
+
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
+            <article class="cart-wish-list">
+                <div class="cart-wish-list-container">
+                    <div class="cart-heart-button-container" >
+                        <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
+                            <i class="bi-heart" id="cart-icon-heart-${id}" ></i>
+                        </button>
+                    </div>
+
+                    <div class="cart-wish-list-text" id="add-wish-list-${id}">
+                        Añadir a la lista de deseos
+                    </div>
+                </div>
+                <div class="cart-trash">
+                  <button class="cart-trash-button" onclick="deleteArticles(${id}), bagIconCounter()">
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                </div>
+
+            </article>
+           
+            <div class="cart-trash-mq">
+                <button class="cart-trash-button-mq" onclick="deleteArticles(${id})">
+                    <i class="bi bi-trash3"></i>
+                </button>
+
+                <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
+                    <span class="cart-text-edit" id="cart-btn-text-${id}">(Editar)</span>
+                </button>
+            </div>
+
         </div>
-      </article>
-
-      <div class="cart-trash">
-        <button class="cart-trash-button" onclick="deleteArticles(${id})">
-          <i class="bi bi-trash3"></i>
-        </button>
-
-        <button class="cart-edit-button" id="cart-edit-btn-${id}" onclick="editButtonQuery(${id})">
-          <span class="cart-text-edit">(Editar)</span>
-        </button>
     </div>
-
-  </div>
+    </div>
   `;
   return templateItem;
 }
 
-//!Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
+//Función para desplegar el boton Edit y poder añadir más contenido a la bolsa
 
 function editButtonQuery(productID) {
   const displayArticle = document.getElementById(
     `cart-article-display-${productID}`
   );
+  const containerArticle = document.getElementById(
+    `cart-container-article-${productID}`
+  );
+  const textBtn = document.getElementById(`cart-btn-text-${productID}`);
+  const isDisplayed = displayArticle.classList.contains("cart-display-flex");
 
-  displayArticle.classList.add("cart-display-flex");
-  //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
-  if (
-    displayArticle.className === "cart-add-more-content cart-display-flex" &&
-    window.screen.availWidth < 900
-  ) {
-    // displayArticle.className ="cart-add-more-content cart-display-flex";
+  if (isDisplayed) {
+    displayArticle.classList.remove("cart-display-flex");
+    containerArticle.classList.remove("cart-display-flex-wrap");
+    textBtn.innerHTML = "(Editar)";
+  } else {
     displayArticle.classList.add("cart-display-flex");
+    //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
+    if (
+      displayArticle.className === "cart-add-more-content cart-display-flex" &&
+      window.innerWidth < 900
+    ) {
+      // displayArticle.className ="cart-add-more-content cart-display-flex";
+      containerArticle.classList.add("cart-display-flex-wrap");
+      displayArticle.classList.add("cart-display-flex");
+      textBtn.innerHTML = "Listo";
+    }
   }
 }
 
@@ -593,6 +859,8 @@ function sumPriceCart() {
   let totalPrice = document.getElementById("cart-total-price");
   let iva = document.getElementById("cart-IVA");
   let paypal = document.getElementById("paypal-3-payments");
+  let totalPriceFix = document.getElementById("cart-total-price-fix");
+  let ivaFix = document.getElementById("cart-IVA-fix");
 
   let localStorageProduct = getProductToLocalStorage();
 
@@ -609,9 +877,11 @@ function sumPriceCart() {
         subtotal.textContent = `${productTotalPrice.toFixed(2)} €`;
 
         totalPrice.textContent = `${productTotalPrice.toFixed(2)} €`;
+        totalPriceFix.textContent = `${productTotalPrice.toFixed(2)} €`;
 
         const ivaTotal = productTotalPrice * 0.21;
-        iva.textContent = `${ivaTotal.toFixed(2)} €`;
+        iva.textContent = `IVA ${ivaTotal.toFixed(2)} €`;
+        ivaFix.textContent = `IVA ${ivaTotal.toFixed(2)} €`;
 
         const paypalPayments = productTotalPrice / 3;
         paypal.textContent = `${paypalPayments.toFixed(2)} €`;
@@ -622,10 +892,13 @@ function sumPriceCart() {
 
 // función para poner el numero de articulos del carrito
 
-function productCounter(getProductLS) {
+function productCounter(productID) {
+  const udsProduct = document.getElementById(`cart-uds-${productID}`);
   let totalAmount = 0;
-  getProductLS.forEach((item) => {
+
+  getProductToLocalStorage().forEach((item) => {
     totalAmount = totalAmount + item.amount;
+    udsProduct.innerHTML = `Uds. ${item.amount}`;
   });
 
   const myCart = document.getElementById("cart-product-amount");
@@ -641,8 +914,3 @@ function deleteArticles(id) {
   localStorage.removeItem(`index: ${id - 1}`);
   location.href = location.href;
 }
-
-
-
-
-
