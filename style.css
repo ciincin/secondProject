@@ -1918,6 +1918,11 @@ h3 {
   height: 40px;
 }
 
+.disney-bagIcon-container{
+  height: 20px;
+  width: 20px;
+}
+
 }
 
 /* @media @media (max-width: 429px){
