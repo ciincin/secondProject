@@ -1,6 +1,6 @@
 //! RECUERDA !! Index 0 corresponde con id 1
 
-let cartListPrueba = [
+let productList = [
   {
     id: 1,
     image: "assets/disney-sets/cabañaBlancanieves/cabaña-600x450.jpg",
@@ -304,7 +304,7 @@ function refreshWebpage(){
 
 function displayOnRefresh() {
   disneyLayout.innerHTML = "";
-  cartListPrueba.forEach((item) => {
+  productList.forEach((item) => {
     disneyLayout.innerHTML += disneySetsTemplate(
       item.id,
       item.title,
@@ -318,7 +318,7 @@ function displayOnRefresh() {
 
 //? FILTERS
 
-const copiedListStringify = JSON.stringify(cartListPrueba);
+const copiedListStringify = JSON.stringify(productList);
 let copyList = JSON.parse(copiedListStringify);
 
 class LegoFilter {
@@ -487,7 +487,7 @@ function increaseAmount(productID) {
   localStorage.setItem(
     `index: ${productID - 1}`,
     JSON.stringify({
-      id: cartListPrueba[productID - 1].id,
+      id: productList[productID - 1].id,
       amount: accumulator,
     })
   );
@@ -508,7 +508,7 @@ function decreaseAmount(productID) {
     localStorage.setItem(
       `index: ${productID - 1}`,
       JSON.stringify({
-        id: cartListPrueba[productID - 1].id,
+        id: productList[productID - 1].id,
         amount: accumulator,
       })
     );
@@ -525,7 +525,7 @@ function decreaseAmount(productID) {
 function emptyHeartCheck() {
   checkEmptyHeartList = getProductToLocalStorage();
   checkEmptyHeartList.forEach((element) => {
-    cartListPrueba.forEach((item) => {
+    productList.forEach((item) => {
       if (element.id === item.id) {
         item.emptyHeart = element.emptyHeart;
         let heart = document.getElementById(`cart-icon-heart-${item.id}`);
@@ -559,7 +559,7 @@ function addToTheWishList(productID) {
   );
 
   if (heart) {
-    cartListPrueba.forEach((obj) => {
+    productList.forEach((obj) => {
       if (obj.id == productID) {
         if (obj.emptyHeart) {
           // fill the heart
@@ -587,7 +587,7 @@ function addToTheWishList(productID) {
       }
     });
   } else if (heartCarrousel) {
-    cartListPrueba.forEach((obj) => {
+    productList.forEach((obj) => {
       if (obj.id == productID) {
         if (obj.emptyHeart) {
           // fill the heart
@@ -615,18 +615,18 @@ function addToTheWishList(productID) {
     localStorage.setItem(
       `index: ${productID - 1}`,
       JSON.stringify({
-        id: cartListPrueba[productID - 1].id,
+        id: productList[productID - 1].id,
         amount: storedProduct.amount,
-        emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+        emptyHeart: productList[productID - 1].emptyHeart,
       })
     );
   } else {
     localStorage.setItem(
       `index: ${productID - 1}`,
       JSON.stringify({
-        id: cartListPrueba[productID - 1].id,
+        id: productList[productID - 1].id,
         amount: 0,
-        emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+        emptyHeart: productList[productID - 1].emptyHeart,
       })
     );
   }
@@ -670,9 +670,9 @@ function addProductToLocalStorage(productID) {
   localStorage.setItem(
     `index: ${productID - 1}`,
     JSON.stringify({
-      id: cartListPrueba[productID - 1].id,
+      id: productList[productID - 1].id,
       amount: accumulator,
-      emptyHeart: cartListPrueba[productID - 1].emptyHeart,
+      emptyHeart: productList[productID - 1].emptyHeart,
     })
   );
   if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
@@ -686,7 +686,7 @@ function addProductToLocalStorage(productID) {
 function getProductToLocalStorage() {
   let cartArray = [];
 
-  for (let i = 0; i < cartListPrueba.length; i++) {
+  for (let i = 0; i < productList.length; i++) {
     let jsonItem = localStorage.getItem(`index: ${i}`);
 
     if (jsonItem !== null) {
@@ -719,7 +719,7 @@ function findProduct(cartArray) {
   const productsInCart = [];
   cartArray.forEach((shoppingProduct) => {
     // console.log("shopping product", shoppingProduct);
-    cartListPrueba.forEach((item) => {
+    productList.forEach((item) => {
       if (shoppingProduct.id === item.id) {
         // console.log("product found in catalog", shoppingProduct.id);
         productsInCart.push({ ...item, amount: shoppingProduct.amount });
@@ -861,7 +861,7 @@ function sumPriceCart() {
   let localStorageProduct = getProductToLocalStorage();
 
   let productTotalPrice = 0;
-  cartListPrueba.forEach((priceItem) => {
+  productList.forEach((priceItem) => {
     localStorageProduct.forEach((idItem) => {
       if (priceItem.id == idItem.id) {
         let productPrice = priceItem.price;
