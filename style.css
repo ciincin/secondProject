@@ -592,6 +592,7 @@ footer {
 }
 
 /*mini images */
+
 .main-mini-images-container {
   background-color: var(--main-blueDark-background);
   padding: 1.25rem;
@@ -619,6 +620,12 @@ footer {
   font-size: .75rem;
   line-height: 1.62;
   padding-top: .75rem;
+}
+
+.main-mini-images-textDecoration{
+  text-decoration: none;
+  text-decoration: #ffffff;
+  color: #ffffff;
 }
 
 /* S E L E C C I O N E S D E E S T A S E M A N A */
