@@ -253,7 +253,7 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
   let disneyTemplateItem = `
   <div class="disney-card1">
                 <div class="disney-card1-likeButton-banner">
-                <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})">
+                <button class="cart-heart-button" id="cart-btn-heart-${id}" onclick="addToTheWishList(${id})" title="Añadir a la lista de deseos">
               <i class="bi bi-heart" id="cart-icon-heart-${id}" ></i>
             </button>
                 </div>
@@ -264,15 +264,15 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
                 </div>
                 <div class="disney-card1-infoSet-container">
                     <div class="disney-icon-container">
-                        <img  class="disney-age-icon" src="assets/disney-sets/age-o.svg" alt="age-icon">
+                        <img  class="disney-age-icon" src="assets/disney-sets/age-o.svg" alt="age-icon" title="edad mínima">
                     </div>
-                    <div class="disney-textIcon-container">
+                    <div class="disney-textIcon-container" title="edad mínima">
                         <div class="disney-age-text">${age}+</div>
                     </div>
                     <div class="disney-icon-container">
-                        <img  class="disney-age-icon" src="assets/disney-sets/brick-o.svg" alt="age-icon">
+                        <img  class="disney-age-icon" src="assets/disney-sets/brick-o.svg" alt="age-icon" title="cantidad de piezas">
                     </div>
-                    <div class="disney-textIcon-container">
+                    <div class="disney-textIcon-container" title="cantidad de piezas">
                         <div class="disney-age-text">${pieces}</div>
                     </div>
                 </div>
@@ -294,6 +294,10 @@ function disneySetsTemplate(id, title, image, price, age, pieces) {
                 </div>
             </div>`;
   return disneyTemplateItem;
+}
+
+function refreshWebpage(){
+  location.href=location.href
 }
 
 function displayOnRefresh() {
